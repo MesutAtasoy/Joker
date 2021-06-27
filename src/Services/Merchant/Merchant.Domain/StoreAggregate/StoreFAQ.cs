@@ -20,6 +20,7 @@ namespace Merchant.Domain.StoreAggregate
             Check.NotNullOrEmpty(question, nameof(question));
             Check.NotNullOrEmpty(answer, nameof(answer));
 
+            Id = id;
             Question = question;
             Answer = answer;
             Order = order;

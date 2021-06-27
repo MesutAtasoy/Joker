@@ -8,13 +8,13 @@ namespace Merchant.Domain.StoreAggregate
     {
         public int DayOfWeek { get; private set; }
         public string DayName { get; private set; }
-        public TimeSpan? StartTime { get; private set; }
-        public TimeSpan? EndTime { get; private set; }
+        public string StartTime { get; private set; }
+        public string EndTime { get; private set; }
         public bool? IsTwentyFourHour { get; private set; }
 
         public StoreBusinessHour(int dayOfWeek,
-            TimeSpan? startTime,
-            TimeSpan? endTime,
+            string startTime,
+            string endTime,
             bool? isTwentyFourHour)
         {
             CheckRule(new DayOfWeekValidRule(dayOfWeek));

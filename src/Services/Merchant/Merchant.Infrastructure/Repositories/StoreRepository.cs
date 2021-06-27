@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Joker.EventBus;
 using Joker.Mongo.Domain.Context;
 using Joker.Mongo.Domain.Repository;
@@ -11,6 +13,11 @@ namespace Merchant.Infrastructure.Repositories
         public StoreRepository(IMongoDomainContext domainContext, IEventDispatcher eventDispatcher) 
             : base(domainContext, eventDispatcher)
         {
+        }
+
+        public async Task<Store> GetByIdAsync(Guid id)
+        {
+            return await base.FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == id);
         }
     }
 }

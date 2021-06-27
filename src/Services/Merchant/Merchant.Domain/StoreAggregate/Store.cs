@@ -137,7 +137,7 @@ namespace Merchant.Domain.StoreAggregate
         {
             Check.NotNull(storeBusinessHour, nameof(storeBusinessHour));
 
-            if (!_storeBusinessHours.Any(x => x.DayOfWeek != storeBusinessHour.DayOfWeek))
+            if (!_storeBusinessHours.Any(x => x.DayOfWeek == storeBusinessHour.DayOfWeek))
             {
                 _storeBusinessHours.Add(storeBusinessHour);
             }
@@ -184,10 +184,10 @@ namespace Merchant.Domain.StoreAggregate
         /// <summary>
         /// Remove a faq
         /// </summary>
-        /// <param name="storeFaq"></param>
-        public void RemoveFAQ(StoreFAQ storeFaq)
+        /// <param name="storeFaqId"></param>
+        public void RemoveFAQ(Guid storeFaqId)
         {
-            var faq = _storeFAQs.FirstOrDefault(x => x.Id == storeFaq.Id);
+            var faq = _storeFAQs.FirstOrDefault(x => x.Id == storeFaqId);
 
             if (faq != null)
             {

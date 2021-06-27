@@ -2,6 +2,7 @@ using System;
 using Joker.Domain;
 using Joker.Domain.Entities;
 using Joker.Exceptions;
+using Joker.Extensions;
 using Merchant.Domain.MerchantAggregate.Events;
 
 namespace Merchant.Domain.MerchantAggregate
@@ -15,6 +16,8 @@ namespace Merchant.Domain.MerchantAggregate
         public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Slogan { get; private set; }
+        public string Slug { get; private set; }
+        public string SlugKey { get; private set; }
         public string WebSiteUrl { get; private set; }
         public string PhoneNumber { get; private set; }
         public string TaxNumber { get; private set; }
@@ -50,11 +53,15 @@ namespace Merchant.Domain.MerchantAggregate
             Check.NotNullOrEmpty(name, nameof(name));
             Check.NotNullOrEmpty(slogan, nameof(slogan));
 
+            var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
+            
             return new Merchant
             {
                 Id = id,
                 Name = name,
                 Slogan = slogan,
+                SlugKey = slugKey,
+                Slug = $"{name.GenerateSlug()}-{slugKey}",
                 WebSiteUrl = webSiteUrl,
                 PhoneNumber = phoneNumber,
                 TaxNumber = taxNumber,
@@ -94,6 +101,7 @@ namespace Merchant.Domain.MerchantAggregate
             }
             
             Name = name;
+            Slug = $"{name.GenerateSlug()}-{SlugKey}";
             Slogan = slogan;
             WebSiteUrl = webSiteUrl;
             PhoneNumber = phoneNumber;
