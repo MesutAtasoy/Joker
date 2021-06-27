@@ -1,0 +1,17 @@
+﻿[
+  {
+    "Id": "B9CAC40A-2EBF-4E3C-8987-45DD2617704C",
+    "Name": "Yeni",
+    "Code": "NEW"
+  },
+  {
+    "Id": "672A188A-3E39-4DD7-A25B-519822544057",
+    "Name": "Popüler",
+    "Code": "POPULAR"
+  },
+  {
+    "Id": "C1BA347C-4A83-4C65-A9A3-C9D018AA9380",
+    "Name": "Reklam",
+    "Code": "AD"
+  }
+]

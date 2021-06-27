@@ -1,0 +1,40 @@
+[
+  {
+    "Id": "346dfadc-a164-41e1-9c2a-d74e8e779fde",
+    "Name": "Turkish",
+    "Code": "tr",
+    "IsoCode": "tr",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Turkish"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Turkce"
+      }
+    ],
+    "IsActive": true
+  },
+  {
+    "Id": "6e93c167-5ecc-425f-8c9a-2152dcd3f2b5",
+    "Name": "English",
+    "Code": "en",
+    "IsoCode": "en-US",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "English"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Ingilizce"
+      }
+    ],
+    "IsActive": true
+  }
+]

@@ -1,0 +1,36 @@
+[
+  {
+    "Id": "578c4be0-d27a-4ccf-b90d-84e37c0e656a",
+    "Name": "Cash",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Cash"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Nakit"
+      }
+    ],
+    "IsActive": true
+  },
+  {
+    "Id": "d6cfe72a-2dc6-4e10-99a2-5a7dbc2008fb",
+    "Name": "Credit Card / Bank Card",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Credit Card / Bank Card"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Kredi Kartý / Bankamatik Kartý"
+      }
+    ],
+    "IsActive": true
+  }
+]

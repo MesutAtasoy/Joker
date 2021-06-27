@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "c2f348aa-8408-43d9-a231-b9114e583a9d",
+    "Name": "Free Plan",
+    "Slug": "free-plan",
+    "Description" : "Description for free plan",
+    "Price": 0.0,
+    "CurrencyId": "C27360CA-7FE5-4F64-B6CA-F695072D7681"
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "Id": "C27360CA-7FE5-4F64-B6CA-F695072D7681",
+    "Name": "Turkish Lira",
+    "Code": "TRY",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Turkish Lira"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Türk Lirasi"
+      }
+    ],
+    "IsActive": true
+  },
+  {
+    "Id": "5615337F-5A90-42FD-AC9D-6FCA79CCE4D2",
+    "Name": "Euro",
+    "Code": "EUR",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Euro"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Euro"
+      }
+    ],
+    "IsActive": true
+  },
+  {
+    "Id": "6A21D820-7A0E-4271-A43B-5BF6F2DD39C9",
+    "Name": "Dolar",
+    "Code": "USD",
+    "LocalizedProperties": [
+      {
+        "LanguageCode": "en",
+        "PropertyName": "Name",
+        "PropertyValue": "Dolar"
+      },
+      {
+        "LanguageCode": "tr",
+        "PropertyName": "Name",
+        "PropertyValue": "Dolar"
+      }
+    ],
+    "IsActive": true
+  }
+]

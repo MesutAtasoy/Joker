@@ -7,7 +7,6 @@ using Location.Core.Entities;
 using Location.Infrastructure.Seed.Seeders.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Location.Infrastructure.Seed.Seeders
 {
@@ -84,7 +83,7 @@ namespace Location.Infrastructure.Seed.Seeders
         private T Load<T>(string contentRootPath, string fileLocation)
         {
             var currencyJson = File.ReadAllText(Path.Combine(contentRootPath, fileLocation));
-            return JsonConvert.DeserializeObject<T>(currencyJson);
+            return System.Text.Json.JsonSerializer.Deserialize<T>(currencyJson);
         }
     }
 }

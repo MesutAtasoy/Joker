@@ -1,0 +1,83 @@
+﻿[
+  {
+    "Id": "B9CAC40A-2EBF-4E3C-8987-45DD2617704C",
+    "Name": "EğlenceSanat",
+    "DisplayName": "Eğlence & Sanat",
+    "Order": 1,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "672A188A-3E39-4DD7-A25B-519822544057",
+    "Name": "Mağazalar",
+    "DisplayName": "Mağazalar",
+    "Order": 2,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "C1BA347C-4A83-4C65-A9A3-C9D018AA9380",
+    "Name": "Hizmetler",
+    "DisplayName": "Hizmetler",
+    "Order": 3,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "CA61F839-DAD9-4CCF-B21B-BF914EF4F7E8",
+    "Name": "FinansSigorta",
+    "DisplayName": "Finans & Sigorta",
+    "Order": 4,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "515114D9-D600-48F4-A9D0-D1394482DEDE",
+    "Name": "Otomotiv",
+    "DisplayName": "Otomotiv",
+    "Order": 5,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "29A025F2-4AF1-4A3C-A029-630EF91BDE24",
+    "Name": "Sağlık",
+    "DisplayName": "Sağlık",
+    "Order": 6,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "9316D24D-643C-44DA-A1CF-886A3065E513",
+    "Name": "Oteller",
+    "DisplayName": "Oteller",
+    "Order": 7,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "7520C39E-0655-4D53-B655-B9329E963B59",
+    "Name": "Resturantlar",
+    "DisplayName": "Resturantlar",
+    "Order":8,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  },
+  {
+    "Id": "811F3EA6-569C-4F4E-B96D-D3900C7EFC69",
+    "Name": "GüzellikSpa",
+    "DisplayName": "Güzellik & Spa",
+    "Order":9,
+    "Icon": "icon",
+    "ImageUrl": "ImageUrl",
+    "Description": "BusinessDirectory"
+  }
+]

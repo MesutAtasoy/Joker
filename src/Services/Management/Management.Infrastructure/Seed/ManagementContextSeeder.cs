@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Location.Infrastructure.Seed.Seeders.Base;
+using Management.Infrastructure.Seed.Base;
 using Microsoft.Extensions.Logging;
 
-namespace Location.Infrastructure.Seed
+namespace Management.Infrastructure.Seed
 {
-    public class LocationContextSeeder
+    public class ManagementContextSeeder
     {
-        public async Task SeedAsync(Action<LocationContextSeederOptions> action, IServiceProvider serviceProvider)
+        public async Task SeedAsync(Action<ManagementContextSeederOptions> action, IServiceProvider serviceProvider)
         {
-            var options = new LocationContextSeederOptions();
+            var options = new ManagementContextSeederOptions();
             action.Invoke(options);
             CheckNull(options);
 
@@ -29,7 +29,7 @@ namespace Location.Infrastructure.Seed
             }
             catch (Exception ex)
             {
-                options.Logger.LogError(ex, "EXCEPTION ERROR while migrating {DbContextName}", nameof(LocationContext));
+                options.Logger.LogError(ex, "EXCEPTION ERROR while migrating {DbContextName}", nameof(ManagementContext));
                 await SeedAsync(action, serviceProvider);
             }
         }
@@ -39,7 +39,7 @@ namespace Location.Infrastructure.Seed
 
         #region Utilies Functions
 
-        public void CheckNull(LocationContextSeederOptions options)
+        public void CheckNull(ManagementContextSeederOptions options)
         {
             if (string.IsNullOrEmpty(options.ContentRootPath))
                 throw new ArgumentNullException(options.ContentRootPath);

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
+      <ProjectReference Include="..\Management.Application\Management.Application.csproj" />
+      <ProjectReference Include="..\Management.Infrastructure\Management.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
