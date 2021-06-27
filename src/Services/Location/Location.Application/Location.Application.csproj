@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Cities\Queries" />
+      <Folder Include="Countries\Queries" />
+      <Folder Include="Districts\Queries" />
+      <Folder Include="Neighborhoods\Queries" />
+      <Folder Include="Quarters\Queries" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Location.Core\Location.Core.csproj" />
+      <ProjectReference Include="..\Location.Infrastructure\Location.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

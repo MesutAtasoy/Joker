@@ -1,0 +1,6788 @@
+[
+  {
+    "Id": "0011268a-a1fa-41d3-b1be-5390ca4f7b05",
+    "Name": "Abbasağa Mh.",
+    "Location": [ 29.0354345, 41.0608337 ],
+    "Active": true
+  },
+  {
+    "Id": "001f6b9d-ddd5-4c45-ad7b-4eef7cb227a4",
+    "Name": "Küçük Sinekli Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0064faf6-9b8d-4e3a-aea3-92af07f29a11",
+    "Name": "Beyazıt Mh.",
+    "Location": [ 28.9282544, 41.0045139 ],
+    "Active": true
+  },
+  {
+    "Id": "007ba88a-f5dc-41e8-a82f-3d271a62e241",
+    "Name": "Kervansaray Köyü",
+    "Location": [ 29.4510483, 41.0751346 ],
+    "Active": true
+  },
+  {
+    "Id": "00801633-2f31-4ef8-80dc-c51752c06ee4",
+    "Name": "Fatih Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "00c0a402-d466-4235-b53a-155db196ca6a",
+    "Name": "Şile Adaları",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "00cced55-0ade-4f1a-b757-f434475022c8",
+    "Name": "Parseller Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "01063bcc-8dec-4040-a314-9ed43f2347a9",
+    "Name": "Sururi Mehmet Efendi Mah.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "0113d954-50f3-464e-a3ad-f84321f54ab1",
+    "Name": "Yaylalı Mh.",
+    "Location": [ 29.6721896, 41.0939609 ],
+    "Active": true
+  },
+  {
+    "Id": "0136b12a-2836-416c-a75d-0c6f25856052",
+    "Name": "Alemdar Mah.",
+    "Location": [ 28.9741725, 41.0085725 ],
+    "Active": true
+  },
+  {
+    "Id": "014af964-097c-453f-9553-092d2f4ba849",
+    "Name": "Sancaktepe Mh.",
+    "Location": [ 28.248038, 41.071425 ],
+    "Active": true
+  },
+  {
+    "Id": "01911c7d-1084-4063-92ac-941f21943e63",
+    "Name": "Kalyoncu Kulluğu Mh.",
+    "Location": [ 28.9747306, 41.035424 ],
+    "Active": true
+  },
+  {
+    "Id": "01913107-5559-460d-9ab8-ffb3169e8036",
+    "Name": "Orhangazi Mah.",
+    "Location": [ 29.232724, 40.98332 ],
+    "Active": true
+  },
+  {
+    "Id": "01997d3d-9f9d-4a49-adb7-742c6c0dfba1",
+    "Name": "Yunus Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "01acf402-78c9-489c-b829-4f3621f5bd3e",
+    "Name": "Yeni Mahalle Mah.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "01ae3c52-07b6-433a-bf22-e0cdf2981dca",
+    "Name": "Şehremini Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "01d692d2-b62a-4c98-9107-abc0cc1ba65f",
+    "Name": "Suadiye Mah.",
+    "Location": [ 29.084983, 40.960262 ],
+    "Active": true
+  },
+  {
+    "Id": "025f9dc4-1b1c-4ec2-9d6c-669aa9b46337",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.984647, 41.0625265 ],
+    "Active": true
+  },
+  {
+    "Id": "02c93596-8472-4c11-8620-59a57443052a",
+    "Name": "Sofular Köyü",
+    "Location": [ 29.4927629, 41.172222 ],
+    "Active": true
+  },
+  {
+    "Id": "02cedcd5-404c-4662-8ce5-38d0c90d3e5c",
+    "Name": "Sortullu Köyü",
+    "Location": [ 29.7349517, 41.0715961 ],
+    "Active": true
+  },
+  {
+    "Id": "02de7556-7a1e-4c58-a64a-c16987c566bc",
+    "Name": "Mahmutbey Mah.",
+    "Location": [ 28.825817, 41.053496 ],
+    "Active": true
+  },
+  {
+    "Id": "03306d6b-3fb0-445e-a964-b42ae1fb2f2f",
+    "Name": "Çakmaklı Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "0388828d-72a3-4725-ad13-677edcf1fc36",
+    "Name": "Kalenderhane Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "03ccbf20-0d67-456b-99de-7c23ca9403db",
+    "Name": "Asmalı Mescit Mh.",
+    "Location": [ 28.9703304, 41.0382864 ],
+    "Active": true
+  },
+  {
+    "Id": "03fb637e-b463-4499-93a5-f99843b85177",
+    "Name": "Eğitim Mh.",
+    "Location": [ 29.048242, 40.988077 ],
+    "Active": true
+  },
+  {
+    "Id": "042c8354-23ad-4c5d-9fdd-09c017ab275c",
+    "Name": "Çeliktepe Mh.",
+    "Location": [ 29.0023746, 41.0833812 ],
+    "Active": true
+  },
+  {
+    "Id": "04556a0d-e2a5-4d38-b672-beef7f520471",
+    "Name": "Emin Sinan Mah.",
+    "Location": [ 28.9695395, 41.005964 ],
+    "Active": true
+  },
+  {
+    "Id": "04a1950e-1527-4966-b88f-a3ee37bd89e5",
+    "Name": "Cami Mah.",
+    "Location": [ 29.306843, 40.816062 ],
+    "Active": true
+  },
+  {
+    "Id": "04f03bde-10b4-486a-a440-706bdefa5b90",
+    "Name": "Nenehatun Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0514c27b-2d82-4530-86ca-eb615d0f67dc",
+    "Name": "Mevlanakapı Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "057646a0-e20c-479a-bcd2-23b3581868ef",
+    "Name": "Zafer Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "058b1052-3780-4719-93bb-a055201891a4",
+    "Name": "Tahtakale Mah.",
+    "Location": [ 28.962511, 41.048011 ],
+    "Active": true
+  },
+  {
+    "Id": "05aae745-14c3-4c57-97c1-0a5c6d9ac527",
+    "Name": "Osmanağa Mh.",
+    "Location": [ 29.032624, 40.990303 ],
+    "Active": true
+  },
+  {
+    "Id": "05c0d9c4-a251-4842-a4f3-2d7aa32ec6be",
+    "Name": "Paşamandıra Mh.",
+    "Location": [ 29.2498078, 41.1843963 ],
+    "Active": true
+  },
+  {
+    "Id": "05e3e2c2-8868-40b0-87a2-9cb058c512d6",
+    "Name": "Haseki Sultan Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "0612e481-7a6a-417d-bfdb-8bdbd0c1c112",
+    "Name": "Atatürk Mh.",
+    "Location": [ 29.0897195, 41.027248 ],
+    "Active": true
+  },
+  {
+    "Id": "0620a0e7-ec8f-4a42-8101-f3c10e2d8f0b",
+    "Name": "Kurtdoğmuş Mh.",
+    "Location": [ 29.3584265, 41.0131882 ],
+    "Active": true
+  },
+  {
+    "Id": "06481283-4e1d-4ca1-809a-c0665ab999b6",
+    "Name": "Bedrettin Mah.",
+    "Location": [ 28.9700608, 41.0296158 ],
+    "Active": true
+  },
+  {
+    "Id": "06706d16-6cf4-4990-a369-55ce8ffc5f90",
+    "Name": "Karayolları Mh.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "068589c1-1d9d-4f14-bddc-803fae5f6127",
+    "Name": "Meşrutiyet Mh.",
+    "Location": [ 28.991238, 41.052543 ],
+    "Active": true
+  },
+  {
+    "Id": "06a1aeb4-0250-49e2-9496-49104d58ec33",
+    "Name": "Akıncılar Mh.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "06c185ac-e7fa-407a-9e88-2a95550ab48d",
+    "Name": "Mecidiye Mah.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "06fd0a78-f6c9-40dd-913e-4aeda3fa0c4a",
+    "Name": "Uğur Mumcu Mh.",
+    "Location": [ 28.867468, 41.099271 ],
+    "Active": true
+  },
+  {
+    "Id": "07242117-bb26-4c88-87b1-ba800230f704",
+    "Name": "Beyazıt Mh.",
+    "Location": [ 28.9282544, 41.0045139 ],
+    "Active": true
+  },
+  {
+    "Id": "0762ec38-4bc9-460d-b4ba-45a5e4628579",
+    "Name": "Yeniköy Mh.",
+    "Location": [ 29.065577, 41.117765 ],
+    "Active": true
+  },
+  {
+    "Id": "0765979d-fc26-460a-a50e-afff1b5758bf",
+    "Name": "Karakiraz Köyü",
+    "Location": [ 29.3483413, 41.1801487 ],
+    "Active": true
+  },
+  {
+    "Id": "07800c8b-1e62-48dd-8c90-c0b80167b15d",
+    "Name": "Kirazlıdere Mh.",
+    "Location": [ 29.223986, 41.027765 ],
+    "Active": true
+  },
+  {
+    "Id": "081c9f83-6bfb-4b07-bec9-d3eb3648a9bd",
+    "Name": "Kurna Köyü",
+    "Location": [ 29.3663174, 41.1959866 ],
+    "Active": true
+  },
+  {
+    "Id": "08550685-fe22-42f2-a4a2-9472a367d496",
+    "Name": "Şehremini Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "08702642-75d1-4da8-9a75-be83704dd82c",
+    "Name": "Vişnezade Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "088846fd-2972-41e4-ba71-25c807320e58",
+    "Name": "İnönü Mh.",
+    "Location": [ 28.7967219, 41.023016 ],
+    "Active": true
+  },
+  {
+    "Id": "08908e55-cad9-4985-8386-e2336c0b9520",
+    "Name": "Yeşilova Mh.",
+    "Location": [ 28.786297, 40.989452 ],
+    "Active": true
+  },
+  {
+    "Id": "08e2b894-c7d0-4741-9ad2-f0ba55b49ef8",
+    "Name": "Çatma Mescit Mh.",
+    "Location": [ 28.974005, 41.029844 ],
+    "Active": true
+  },
+  {
+    "Id": "08f73f74-602e-485a-877f-58a8bda67c14",
+    "Name": "Güneştepe Mh.",
+    "Location": [ 28.888218, 41.004548 ],
+    "Active": true
+  },
+  {
+    "Id": "08f8a924-23ae-4e70-bc9c-6e68aa55ca62",
+    "Name": "İshaklı Mh.",
+    "Location": [ 29.3004787, 41.1379285 ],
+    "Active": true
+  },
+  {
+    "Id": "091ef6a0-7747-4be9-951f-990b5eb474ca",
+    "Name": "Topağacı Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0926f782-508a-486f-9f22-98919e9999d9",
+    "Name": "Ağva Merkez Mh.",
+    "Location": [ 29.6127778, 41.1763889 ],
+    "Active": true
+  },
+  {
+    "Id": "0929f14d-a16d-4e3c-bacb-5fad80f943e7",
+    "Name": "Havaalanı Mh.",
+    "Location": [ 28.869601, 41.058865 ],
+    "Active": true
+  },
+  {
+    "Id": "0963edc9-34d2-4b99-ac7f-bfe42bb5dcb0",
+    "Name": "Teşvikiye Mh.",
+    "Location": [ 28.9931691, 41.0519842 ],
+    "Active": true
+  },
+  {
+    "Id": "099efc91-c6e7-45c8-b545-aa880e7f76fa",
+    "Name": "Dursunköy Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "0a314e12-9273-462e-9eaa-6d86bc0a48cb",
+    "Name": "Bostancı Mh.",
+    "Location": [ 29.097561, 40.954112 ],
+    "Active": true
+  },
+  {
+    "Id": "0a395984-090e-45c3-b7b7-c4dc4e149cb5",
+    "Name": "Kocasinan Merkez Mah.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "0a39d389-8819-44e3-ac54-5f9ae05e1801",
+    "Name": "Safa Mah.",
+    "Location": [ 29.246368, 41.012283 ],
+    "Active": true
+  },
+  {
+    "Id": "0b0a5b25-b76a-4e79-8860-83d9ace4f551",
+    "Name": "Çengelköy Mh.",
+    "Location": [ 29.060935, 41.055915 ],
+    "Active": true
+  },
+  {
+    "Id": "0ba0e592-2939-4e88-855a-089dd94014b8",
+    "Name": "Ferhatpaşa Sb Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0bb24f65-ae05-4857-8c4a-6763daf19161",
+    "Name": "Anadolufeneri Köyü",
+    "Location": [ 29.1547735, 41.215352 ],
+    "Active": true
+  },
+  {
+    "Id": "0bcde4a6-b512-4d71-b6cf-c29d19033944",
+    "Name": "Yaylacık Mh.",
+    "Location": [ 28.2161122, 41.361262 ],
+    "Active": true
+  },
+  {
+    "Id": "0be8d168-ddf7-4405-84fc-d614a4dd55b8",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.705085, 41.218718 ],
+    "Active": true
+  },
+  {
+    "Id": "0be9c9b2-6943-4ec3-9495-fa89c7b2f8d4",
+    "Name": "Kazım Karabekir Mh.",
+    "Location": [ 29.099386, 41.043296 ],
+    "Active": true
+  },
+  {
+    "Id": "0c1c1c41-57f6-4f16-b9e8-c9891224dc57",
+    "Name": "Göktürk Merkez Mh.",
+    "Location": [ 28.889337, 41.180769 ],
+    "Active": true
+  },
+  {
+    "Id": "0c7b624f-dede-4eaf-981a-095ee3d8590f",
+    "Name": "Mahmut Şevket Paşa Mh.",
+    "Location": [ 28.995846, 41.068539 ],
+    "Active": true
+  },
+  {
+    "Id": "0cad4659-1368-45a5-b72e-13a2829666ee",
+    "Name": "Anadolu Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0caeca97-c6dd-4a82-aae0-1f90d12d2980",
+    "Name": "Maden Mh.",
+    "Location": [ 29.118256, 40.870812 ],
+    "Active": true
+  },
+  {
+    "Id": "0cd1d286-08ab-4948-942d-81a75a4e6fe8",
+    "Name": "Mareşal Çakmak Mh.",
+    "Location": [ 28.865147, 41.0145495 ],
+    "Active": true
+  },
+  {
+    "Id": "0ce7f683-5801-424a-b593-b118bf987a54",
+    "Name": "Zeynep Kamil Mah.",
+    "Location": [ 29.027352, 41.015455 ],
+    "Active": true
+  },
+  {
+    "Id": "0d1f4c85-b18e-4939-9587-d4ef02d04018",
+    "Name": "Malkoçoğlu Mh.",
+    "Location": [ 28.847862, 41.114641 ],
+    "Active": true
+  },
+  {
+    "Id": "0d32b80c-2c2e-4fa5-9232-487b0677345f",
+    "Name": "Seyitnizam Mah.",
+    "Location": [ 28.907315, 41.005 ],
+    "Active": true
+  },
+  {
+    "Id": "0d45a253-0203-4a9d-896a-7b2a4ed352af",
+    "Name": "Aşağı Dudullu Mh.",
+    "Location": [ 29.15891, 41.025906 ],
+    "Active": true
+  },
+  {
+    "Id": "0d638d83-4e4f-4bf9-857c-9a9f84cc1db0",
+    "Name": "Şehitler Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "0de1a2bf-7c6c-486f-99fe-34cf82cc1901",
+    "Name": "Boğazköy İstiklal Mh.",
+    "Location": [ 28.853073, 41.148264 ],
+    "Active": true
+  },
+  {
+    "Id": "0de57c2c-fb3b-41e7-8dd8-673000602fc8",
+    "Name": "Oruçoğlu Mh.",
+    "Location": [ 29.4898824, 41.0688871 ],
+    "Active": true
+  },
+  {
+    "Id": "0e0f1f8d-5482-495c-9ec0-471d62c81ee9",
+    "Name": "Büyük Çavuşlu Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "0e6411fc-e256-4e20-b877-c8e1e8811137",
+    "Name": "Orhanlı Mh.",
+    "Location": [ 29.374118, 40.901953 ],
+    "Active": true
+  },
+  {
+    "Id": "0e7f1320-a871-4ac0-ade2-2199f7dc231f",
+    "Name": "Talatpaşa Mh.",
+    "Location": [ 28.963104, 41.058673 ],
+    "Active": true
+  },
+  {
+    "Id": "0ec3a8f3-664d-4579-b3a0-77e8d89516f0",
+    "Name": "Atakent Mah.",
+    "Location": [ 28.775342, 41.008658 ],
+    "Active": true
+  },
+  {
+    "Id": "0ecf5bf7-2291-46ce-ba49-c774464925d2",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 29.220927, 40.907462 ],
+    "Active": true
+  },
+  {
+    "Id": "0ef5f1cb-0690-4e26-b5b6-c1f4aa7e5725",
+    "Name": "Meclis Mah.",
+    "Location": [ 29.196951, 41.012817 ],
+    "Active": true
+  },
+  {
+    "Id": "0f4d855a-8296-4e31-8987-479d3eca66a7",
+    "Name": "Alacalı Mh.",
+    "Location": [ 29.4569287, 41.1845762 ],
+    "Active": true
+  },
+  {
+    "Id": "0fb00a37-17e4-4e83-958b-26c1513e2b06",
+    "Name": "Balabanağa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "0fbc09a6-629b-4890-8469-da0ab24b3b4c",
+    "Name": "Büyükdere Mh.",
+    "Location": [ 29.044486, 41.160865 ],
+    "Active": true
+  },
+  {
+    "Id": "1034ee64-7660-4565-9d27-9f4b83760207",
+    "Name": "Yeşilköy Mh.",
+    "Location": [ 28.8228, 40.968155 ],
+    "Active": true
+  },
+  {
+    "Id": "1041b00f-7c28-496d-960a-d95220606bdf",
+    "Name": "Küçüksu Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "10bf94a8-9c9d-44c1-a7cd-3a585ec4560b",
+    "Name": "Yenidoğan Mh.",
+    "Location": [ 28.90523, 40.989938 ],
+    "Active": true
+  },
+  {
+    "Id": "11146e1e-8f07-46b2-953c-94da75493e22",
+    "Name": "Murat Çeşme Mh.",
+    "Location": [ 28.576705, 41.020837 ],
+    "Active": true
+  },
+  {
+    "Id": "113181bb-1b4d-43dc-ad23-2d265ff4d361",
+    "Name": "Tayakadın Mh.",
+    "Location": [ 28.6892734, 41.2688096 ],
+    "Active": true
+  },
+  {
+    "Id": "115bc6f0-b417-4d04-b626-489a41d5ef4f",
+    "Name": "Adil Mah.",
+    "Location": [ 29.2643954, 40.9791054 ],
+    "Active": true
+  },
+  {
+    "Id": "11658bed-2da0-495a-954e-6feafb544268",
+    "Name": "Mehmet Nesih Özmen Mh.",
+    "Location": [ 28.8833333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "11bbde31-1709-4d0c-beb5-3a336fcb8b39",
+    "Name": "Mescit Mah.",
+    "Location": [ 29.355146, 40.89497 ],
+    "Active": true
+  },
+  {
+    "Id": "12198465-5d15-4ede-8229-8a9846c4b8b4",
+    "Name": "Levazım Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "1247e406-a427-41e7-b150-7094be4b62e9",
+    "Name": "Yunus Emre Mah.",
+    "Location": [ 28.890627, 41.097104 ],
+    "Active": true
+  },
+  {
+    "Id": "126146b0-40cf-4734-bb37-8c3c50e9c0f9",
+    "Name": "Güngören Mh.",
+    "Location": [ 29.220717, 41.028635 ],
+    "Active": true
+  },
+  {
+    "Id": "127beaf0-8beb-4f16-b2f4-c41de4d8621f",
+    "Name": "Balıkçı Adası",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "12ed9169-8009-4464-aa7c-9ab25e0a39f5",
+    "Name": "Demirkapı Mh.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "12f3e22b-af95-41b6-b30d-b0dc28a024da",
+    "Name": "Pınar Mh.",
+    "Location": [ 29.031866, 41.114148 ],
+    "Active": true
+  },
+  {
+    "Id": "1303ed37-5aaf-41ae-b682-3a16f18d9e71",
+    "Name": "Balaban Mh.",
+    "Location": [ 28.92872, 41.004033 ],
+    "Active": true
+  },
+  {
+    "Id": "134ca720-2c8f-48d9-9178-482f4ad71bd6",
+    "Name": "Huzur Mah.",
+    "Location": [ 29.149096, 41.015342 ],
+    "Active": true
+  },
+  {
+    "Id": "13534898-b02b-45e1-86df-83892837e875",
+    "Name": "İsmet Paşa Mh.",
+    "Location": [ 28.90819, 41.041099 ],
+    "Active": true
+  },
+  {
+    "Id": "137373dd-72f4-40a4-9b8a-16aca4b1ba94",
+    "Name": "Hasanlı Mh.",
+    "Location": [ 29.667741, 41.0165818 ],
+    "Active": true
+  },
+  {
+    "Id": "137a964e-49fe-47c2-a6c8-e05f0b03a6ec",
+    "Name": "Kılıçali Paşa Mh.",
+    "Location": [ 28.982774, 41.030899 ],
+    "Active": true
+  },
+  {
+    "Id": "13930803-7788-4519-8eff-4dc9717aa467",
+    "Name": "Yalıköy Mh.",
+    "Location": [ 28.2949123, 41.4791942 ],
+    "Active": true
+  },
+  {
+    "Id": "13aa97e6-db28-401f-a555-34a9b4fbe299",
+    "Name": "Bağlarbaşı Mh.",
+    "Location": [ 28.9155372, 41.0649539 ],
+    "Active": true
+  },
+  {
+    "Id": "14389f84-f3a2-4cc7-a17c-15a29c2eee3f",
+    "Name": "Hürriyet Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "145e4293-efd7-416e-bcca-d004e5c977eb",
+    "Name": "Rumelifeneri Köyü",
+    "Location": [ 29.1082825, 41.2351416 ],
+    "Active": true
+  },
+  {
+    "Id": "14765b87-9159-4abf-80f1-0f21561c53d4",
+    "Name": "Garipçe Mh.",
+    "Location": [ 29.1068418, 41.2100727 ],
+    "Active": true
+  },
+  {
+    "Id": "148819bb-ebee-4a92-8788-e4f045a8b602",
+    "Name": "Subaşı Mh.",
+    "Location": [ 28.4557373, 41.2254294 ],
+    "Active": true
+  },
+  {
+    "Id": "1517576a-ba34-43a8-a27e-f7ae93ed2f7f",
+    "Name": "Başak Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "159075ed-a455-4367-a1c6-b0180935a480",
+    "Name": "İstiklal Mh.",
+    "Location": [ 29.104506, 41.016878 ],
+    "Active": true
+  },
+  {
+    "Id": "15a85302-b2d9-4c86-a6b2-70d0994e9733",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.971062, 41.082116 ],
+    "Active": true
+  },
+  {
+    "Id": "163f7952-fbf2-4846-8858-a053103eceef",
+    "Name": "Sancaktepe Mah.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "164f9068-a8dc-41d3-af82-1676c11168f6",
+    "Name": "Kanarya Mah.",
+    "Location": [ 28.785428, 40.999227 ],
+    "Active": true
+  },
+  {
+    "Id": "175bc2e8-8e69-47f3-9c08-9b7a4bd644d7",
+    "Name": "Yarımburgaz Mh.",
+    "Location": [ 28.754122, 41.049731 ],
+    "Active": true
+  },
+  {
+    "Id": "17d80176-784c-4446-a73b-2d9d9d6f2b0f",
+    "Name": "Barbaros Hayrettinpaşa Mh.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "17e6889d-df3d-4bd5-b1b1-383b4258131f",
+    "Name": "Çukur Mh.",
+    "Location": [ 28.9774139, 41.0365883 ],
+    "Active": true
+  },
+  {
+    "Id": "18736efe-541e-4edd-892d-6b43aa02ed37",
+    "Name": "Kadımehmet Efendi Mh.",
+    "Location": [ 28.9703304, 41.0382864 ],
+    "Active": true
+  },
+  {
+    "Id": "18c25dee-a427-47a2-beae-ae7d48aa0da3",
+    "Name": "Rasimpaşa Mh.",
+    "Location": [ 29.030506, 40.994514 ],
+    "Active": true
+  },
+  {
+    "Id": "18ccad90-cec4-494d-8757-ec3a25354260",
+    "Name": "Eğitim Mh.",
+    "Location": [ 29.048242, 40.988077 ],
+    "Active": true
+  },
+  {
+    "Id": "18eb910a-639c-4d60-a10a-0b599bc2ce83",
+    "Name": "Yunus Emre Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "18fa017c-959d-4a3f-b77a-0abbf21c81fe",
+    "Name": "Sahilköy Mh.",
+    "Location": [ 29.4134354, 41.2036934 ],
+    "Active": true
+  },
+  {
+    "Id": "19110ef8-5fdc-4916-944d-24e3d907f387",
+    "Name": "Hallaçlı Mh.",
+    "Location": [ 28.1020263, 41.3220853 ],
+    "Active": true
+  },
+  {
+    "Id": "198cf40e-3b5f-4f76-bf24-e8cdac237773",
+    "Name": "Reşadiye Mh.",
+    "Location": [ 29.2509649, 41.0777309 ],
+    "Active": true
+  },
+  {
+    "Id": "199beed0-307d-4ddd-b034-31edd5142ccb",
+    "Name": "Hilal Mah.",
+    "Location": [ 29.258462, 41.02299 ],
+    "Active": true
+  },
+  {
+    "Id": "19ba8415-e028-4ed3-a66f-d68412730c07",
+    "Name": "Kamiloba Mah.",
+    "Location": [ 28.590003, 41.034133 ],
+    "Active": true
+  },
+  {
+    "Id": "19d7189c-7267-45fc-ac6a-89cb9177baca",
+    "Name": "Atatürk Mh.",
+    "Location": [ 28.602185, 41.011305 ],
+    "Active": true
+  },
+  {
+    "Id": "1a1838ea-fbd8-46df-8cad-2c211d0b7ce1",
+    "Name": "Haseki Sultan Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "1abb9856-0bed-43fe-ba95-5159768ae966",
+    "Name": "Esenkent Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "1ad77f26-bad9-4d2c-a99a-f59e214420f6",
+    "Name": "Karamandere Köyü",
+    "Location": [ 28.3077043, 41.3761644 ],
+    "Active": true
+  },
+  {
+    "Id": "1b0001fa-b645-409f-a3bf-1707369720f4",
+    "Name": "Ekşioğlu Mh.",
+    "Location": [ 29.234729, 41.032914 ],
+    "Active": true
+  },
+  {
+    "Id": "1b8ff36c-a042-448e-ab38-220b140f2a76",
+    "Name": "Göztepe Mh.",
+    "Location": [ 29.0748861, 41.0794061 ],
+    "Active": true
+  },
+  {
+    "Id": "1ba64e07-afe5-4285-8ea9-608edda89612",
+    "Name": "Rüzgarlıbahçe Mh.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "1ba6848b-446f-4363-9f51-1718fe407d31",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.6469416, 41.0028675 ],
+    "Active": true
+  },
+  {
+    "Id": "1bac0d82-d788-43d8-888b-0855489079cb",
+    "Name": "Çatma Mescit Mh.",
+    "Location": [ 28.974005, 41.029844 ],
+    "Active": true
+  },
+  {
+    "Id": "1c2c2cef-cff7-43d1-98fd-80a2979c1249",
+    "Name": "Altınşehir Mh.",
+    "Location": [ 28.75056, 41.072885 ],
+    "Active": true
+  },
+  {
+    "Id": "1c453975-9f33-4c24-8ac5-7939dcf9426c",
+    "Name": "Galatasaray Adası",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "1c4e75ad-c553-464f-8d1c-0c822f11ff99",
+    "Name": "Bıçkıdere Mh.",
+    "Location": [ 29.4762717, 41.0703876 ],
+    "Active": true
+  },
+  {
+    "Id": "1c5b6cd3-1e00-4a02-b817-f92e8906c159",
+    "Name": "Davutpaşa Mh.",
+    "Location": [ 28.8874465, 41.033759 ],
+    "Active": true
+  },
+  {
+    "Id": "1c853a94-7b9b-4dad-bf50-a6dbd86072f4",
+    "Name": "İçmeler Mh.",
+    "Location": [ 29.305641, 40.848428 ],
+    "Active": true
+  },
+  {
+    "Id": "1ce14ec4-12ac-4abd-8011-24a8d63a8df8",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 28.9848785, 41.0719925 ],
+    "Active": true
+  },
+  {
+    "Id": "1d17f208-41b3-482b-913d-c38458d43377",
+    "Name": "Ekinoba Mah.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "1d3a462d-3a5d-4138-a7b0-acdbe02ab67c",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.46773, 41.148239 ],
+    "Active": true
+  },
+  {
+    "Id": "1dbab38f-5ff6-42e6-a4e4-311a98aef01b",
+    "Name": "Heybeliada Mah.",
+    "Location": [ 29.118256, 40.870812 ],
+    "Active": true
+  },
+  {
+    "Id": "1e4eaa0d-8614-46de-a0d3-172f726d92a6",
+    "Name": "Anadolu Kavağı Mh.",
+    "Location": [ 29.135629, 41.204274 ],
+    "Active": true
+  },
+  {
+    "Id": "1e5366a3-002b-492e-9e0b-43c4372d3a1f",
+    "Name": "Güzelyurt Mh.",
+    "Location": [ 28.665493, 41.009167 ],
+    "Active": true
+  },
+  {
+    "Id": "1f19d923-0893-46c7-a98b-5b4846d1de3b",
+    "Name": "Esenceli Köyü",
+    "Location": [ 29.3932622, 41.0543168 ],
+    "Active": true
+  },
+  {
+    "Id": "1f3c4ae6-c9e2-4c6a-acb0-77ecf1adb2dc",
+    "Name": "Mehmet Akif Ersoy Mah.",
+    "Location": [ 28.714498, 41.19907 ],
+    "Active": true
+  },
+  {
+    "Id": "1f4455b3-e9df-46d7-984c-1b587d10108c",
+    "Name": "100. Yıl Mh.",
+    "Location": [ 28.852853, 41.064334 ],
+    "Active": true
+  },
+  {
+    "Id": "1f48c29d-6617-4ff0-8e8d-561bdf634d26",
+    "Name": "Ferah Mah.",
+    "Location": [ 29.072884, 41.032722 ],
+    "Active": true
+  },
+  {
+    "Id": "1f6d2238-55ee-4710-a9b9-1563d13ba057",
+    "Name": "Mevlana Mah.",
+    "Location": [ 29.088211, 40.993662 ],
+    "Active": true
+  },
+  {
+    "Id": "1fd088b8-ad83-494c-9394-8568c94eac1d",
+    "Name": "Yavuz Selim Mah.",
+    "Location": [ 29.155618, 41.080612 ],
+    "Active": true
+  },
+  {
+    "Id": "2012c7b8-bf40-4de5-b740-bef7f54e260b",
+    "Name": "Silahtarağa Mh.",
+    "Location": [ 28.940449, 41.0609725 ],
+    "Active": true
+  },
+  {
+    "Id": "2017be63-7eda-4ae8-a0a1-31bae4d18c64",
+    "Name": "Bereketzade Mah.",
+    "Location": [ 28.973705, 41.02389 ],
+    "Active": true
+  },
+  {
+    "Id": "205419ea-c8ca-4bc0-90c2-332584114230",
+    "Name": "Necip Fazıl Kısakürek Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "20d6ce6d-7a75-41da-9050-58c0a772c951",
+    "Name": "Yavuz Sinan Mah.",
+    "Location": [ 28.963593, 41.019959 ],
+    "Active": true
+  },
+  {
+    "Id": "213a34fd-26c8-4a23-8f11-3748081224c5",
+    "Name": "Poyrazköy Mh.",
+    "Location": [ 29.1303421, 41.1885451 ],
+    "Active": true
+  },
+  {
+    "Id": "2147a547-d906-4f4f-88b2-782447d013ee",
+    "Name": "Fetihtepe Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2159e786-197a-428c-b8dc-9e805642b1d2",
+    "Name": "Mevlana Mah.",
+    "Location": [ 29.088211, 40.993662 ],
+    "Active": true
+  },
+  {
+    "Id": "216dbb50-eb7e-42bc-a066-04ed42ac68f6",
+    "Name": "Göçbeyli Mh.",
+    "Location": [ 29.4600072, 40.9755901 ],
+    "Active": true
+  },
+  {
+    "Id": "217f5c0d-7015-4cd3-86f2-93c5deef12b8",
+    "Name": "Mimar Sinan Mh.",
+    "Location": [ 29.181561, 41.033278 ],
+    "Active": true
+  },
+  {
+    "Id": "21a12d9c-add2-4200-87df-c3ed4925dd02",
+    "Name": "Konaklar Mah.",
+    "Location": [ 29.010647, 41.089304 ],
+    "Active": true
+  },
+  {
+    "Id": "21d40348-b5b2-4b58-bb7b-dda654b2ce30",
+    "Name": "Yenimahalle Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "21f73754-0f8b-4e0c-bf41-7fe3200ba360",
+    "Name": "Yenişehir Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "22025498-4548-4447-852a-aba44f844427",
+    "Name": "Akpınar Mh.",
+    "Location": [ 28.810311, 41.2821563 ],
+    "Active": true
+  },
+  {
+    "Id": "222a2225-82e0-4a36-92b6-ea1f2e21f1c3",
+    "Name": "Gülsuyu Mh.",
+    "Location": [ 29.155052, 40.928697 ],
+    "Active": true
+  },
+  {
+    "Id": "2248a248-445c-46b3-9920-1cf7a865511f",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.6469416, 41.0028675 ],
+    "Active": true
+  },
+  {
+    "Id": "22eac712-f2a8-4305-9569-80bb1bc5d257",
+    "Name": "Çiftlikköy Mh.",
+    "Location": [ 28.46773, 41.148239 ],
+    "Active": true
+  },
+  {
+    "Id": "22f81352-d509-48ad-8a8f-7df03abea0be",
+    "Name": "Kuzguncuk Mah.",
+    "Location": [ 29.029919, 41.035824 ],
+    "Active": true
+  },
+  {
+    "Id": "232c0e6e-4709-4d44-9eea-231062697a32",
+    "Name": "Nizam Mh.",
+    "Location": [ 29.118256, 40.870812 ],
+    "Active": true
+  },
+  {
+    "Id": "23511f73-63a3-43db-b46d-0bf308ef5de3",
+    "Name": "Küçük Kılıçlı Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "238b5bf0-142b-4f80-9825-1948201a51cb",
+    "Name": "Hüseyinli Mh.",
+    "Location": [ 29.2923527, 41.1240025 ],
+    "Active": true
+  },
+  {
+    "Id": "23f826c3-f442-464e-99e4-1b63a4439bd5",
+    "Name": "Gürpınar Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "2406b1f6-ac47-4ae7-8649-b52cea76d26d",
+    "Name": "Çakmak Mh.",
+    "Location": [ 29.119704, 41.020321 ],
+    "Active": true
+  },
+  {
+    "Id": "241bde09-dc53-4843-8b11-3212991f2883",
+    "Name": "Kemankeş Karamustafa Paşa Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "241e00bd-f66e-4530-b620-e9819762f5a1",
+    "Name": "Paşa Mh.",
+    "Location": [ 28.978183, 41.054326 ],
+    "Active": true
+  },
+  {
+    "Id": "245cce33-ef06-4b13-a9cc-98a629683669",
+    "Name": "Dikilitaş Mh.",
+    "Location": [ 29.003026, 41.055318 ],
+    "Active": true
+  },
+  {
+    "Id": "246905cd-c385-4be3-943f-b617382c7113",
+    "Name": "Eskişehir Mh.",
+    "Location": [ 28.979798, 41.04599 ],
+    "Active": true
+  },
+  {
+    "Id": "246a913e-63f4-4cbd-aa97-8faa5be15579",
+    "Name": "Çiftalan Mh.",
+    "Location": [ 28.856746, 41.257691 ],
+    "Active": true
+  },
+  {
+    "Id": "24716b2d-cf33-41fb-a5da-2c4f855be0af",
+    "Name": "Rüstem Paşa Mh.",
+    "Location": [ 28.968748, 41.017609 ],
+    "Active": true
+  },
+  {
+    "Id": "2475fc23-c429-4b6d-bff3-537537a80f22",
+    "Name": "Altayçeşme Mh.",
+    "Location": [ 29.129908, 40.931346 ],
+    "Active": true
+  },
+  {
+    "Id": "2513b71f-b727-4f56-9c16-db02b8e713ec",
+    "Name": "Bahçeşehir 1. Kısım Mh.",
+    "Location": [ 28.688484, 41.063932 ],
+    "Active": true
+  },
+  {
+    "Id": "2520dec7-27e9-4fb7-8c58-26083d0b17c6",
+    "Name": "Aksaray Mah.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "25b5bc08-adf9-4c74-b4fc-63855e2e5e36",
+    "Name": "Fevzipaşa Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "25d3deac-894f-46f0-a907-973991b6b492",
+    "Name": "Karagümrük Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "25d9978e-b1ae-4fd9-888e-a9948b9c24ee",
+    "Name": "İslambey Mh.",
+    "Location": [ 28.920327, 41.074292 ],
+    "Active": true
+  },
+  {
+    "Id": "25f427c9-be92-4c9b-a73d-bda77ae9097d",
+    "Name": "Hamidiye Mah.",
+    "Location": [ 28.9699124, 41.0948562 ],
+    "Active": true
+  },
+  {
+    "Id": "262b9996-e649-4ab3-9a2c-3b53848095f7",
+    "Name": "Şirintepe Mh.",
+    "Location": [ 28.9903755, 41.0881127 ],
+    "Active": true
+  },
+  {
+    "Id": "26820d4a-62f7-4461-8bc3-8a7282f5e641",
+    "Name": "Belgrat Köyü",
+    "Location": [ 28.3827552, 41.3792236 ],
+    "Active": true
+  },
+  {
+    "Id": "26a20740-df60-4b26-bbec-068f445fa1ea",
+    "Name": "İnönü Mh.",
+    "Location": [ 29.138164, 40.977954 ],
+    "Active": true
+  },
+  {
+    "Id": "26bd20ec-5f0c-46f9-a033-fd8ed2e8f499",
+    "Name": "Abdurrahmangazi Mah.",
+    "Location": [ 29.256331, 40.968982 ],
+    "Active": true
+  },
+  {
+    "Id": "2724356f-a8d7-4513-8924-0f5e70dc5876",
+    "Name": "Adnan Kahveci Mah.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "272a77e8-9a09-4843-b3b5-569e84092a6f",
+    "Name": "Sahrayı Cedit Mh.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "275989e8-f25d-4b00-8db4-4391e060d15a",
+    "Name": "Yenidoğan Mh.",
+    "Location": [ 29.2403564, 41.005111 ],
+    "Active": true
+  },
+  {
+    "Id": "277fee45-fc5e-4395-ade5-21ae6ba9a1bd",
+    "Name": "Zühtüpaşa Mh.",
+    "Location": [ 29.041625, 40.9849305 ],
+    "Active": true
+  },
+  {
+    "Id": "2791b24e-2725-4198-bda3-6c7b7863b6d9",
+    "Name": "Yavuz Sinan Mah.",
+    "Location": [ 28.963593, 41.019959 ],
+    "Active": true
+  },
+  {
+    "Id": "27ae6bab-5835-43e3-9910-58c5e1e21055",
+    "Name": "Ulupelit Köyü",
+    "Location": [ 29.5147904, 41.087336 ],
+    "Active": true
+  },
+  {
+    "Id": "27d09c15-0fd4-4500-8e44-c15c7ad8792c",
+    "Name": "Pirinççi Mh.",
+    "Location": [ 28.849485, 41.1627804 ],
+    "Active": true
+  },
+  {
+    "Id": "28405063-de2e-4a18-9a76-d4e618b8e4b4",
+    "Name": "Merdivenköy Mh.",
+    "Location": [ 29.069299, 40.982247 ],
+    "Active": true
+  },
+  {
+    "Id": "286696d3-cbb7-4c2e-b6ff-9ba899d2d376",
+    "Name": "Taşoluk Mh.",
+    "Location": [ 28.716119, 41.196507 ],
+    "Active": true
+  },
+  {
+    "Id": "2869f614-849f-48a4-bf71-25523924c3ab",
+    "Name": "Selami Ali Mah.",
+    "Location": [ 29.033627, 41.023692 ],
+    "Active": true
+  },
+  {
+    "Id": "287df728-3eba-4de8-a154-ed79f26b9ab8",
+    "Name": "Mimar Sinan Mah.",
+    "Location": [ 29.270255, 40.990327 ],
+    "Active": true
+  },
+  {
+    "Id": "28ae39eb-725a-44a2-9221-2c2f1b41812b",
+    "Name": "Veysel Karani Mah.",
+    "Location": [ 29.23799, 40.964476 ],
+    "Active": true
+  },
+  {
+    "Id": "28bf527d-df3d-4217-bd50-671f700b8adf",
+    "Name": "Kulaksız Mh.",
+    "Location": [ 28.962225, 41.038935 ],
+    "Active": true
+  },
+  {
+    "Id": "28cdd5ae-59e3-464b-95d2-0845b73adf1e",
+    "Name": "Gazitepe Mah.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "2911a307-a1c5-46ce-999c-a90ef8912442",
+    "Name": "Göztepe Mh.",
+    "Location": [ 29.064481, 40.979193 ],
+    "Active": true
+  },
+  {
+    "Id": "29b8c067-8bcf-4289-88a4-11697f63bc8e",
+    "Name": "Ataköy 1. Kısım Mh.",
+    "Location": [ 28.846767, 40.988029 ],
+    "Active": true
+  },
+  {
+    "Id": "29cb8b05-e4b9-47a3-ba15-304b075444b0",
+    "Name": "Oklalı Mh.",
+    "Location": [ 28.5272661, 41.2235531 ],
+    "Active": true
+  },
+  {
+    "Id": "29f4060a-11f7-401e-a47a-ee3066802927",
+    "Name": "Yeni Mah.",
+    "Location": [ 29.060041, 41.171112 ],
+    "Active": true
+  },
+  {
+    "Id": "2a11a9e7-5bf3-4372-9c58-0d81d75af0ae",
+    "Name": "Kavaklı Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "2a859152-d8d4-44ac-9854-c5dee4cbf41b",
+    "Name": "Abdurrahman Nafiz Gürman Mh.",
+    "Location": [ 28.888218, 41.004548 ],
+    "Active": true
+  },
+  {
+    "Id": "2ab67ea1-bd76-4db7-8939-7ada6cc2335d",
+    "Name": "Bahşayiş Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "2adb96c3-1bf7-497d-aacd-dda9b22d9a4d",
+    "Name": "Hacıllı Mh.",
+    "Location": [ 29.7701934, 41.0454199 ],
+    "Active": true
+  },
+  {
+    "Id": "2b0af33d-80dc-4b65-b6ae-52fb84bce442",
+    "Name": "Valide-i Atik Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "2b5a01d9-c17f-4e43-b907-f2fec46f9b5b",
+    "Name": "Barbaros Mah.",
+    "Location": [ 28.8408, 41.024352 ],
+    "Active": true
+  },
+  {
+    "Id": "2b81cf1b-3687-4b05-9edb-1ef48cb855c8",
+    "Name": "Üçevler Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2c0cc1a1-0d4c-4dcc-976a-83f29659ffb5",
+    "Name": "Acıbadem Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "2c53013e-5c30-47ff-8702-6361bdd0d5d4",
+    "Name": "Akpınar Mh.",
+    "Location": [ 29.229147, 40.968626 ],
+    "Active": true
+  },
+  {
+    "Id": "2c58dfcc-e266-4491-b8ff-005df44c2858",
+    "Name": "Levent Mah.",
+    "Location": [ 29.0023746, 41.0833812 ],
+    "Active": true
+  },
+  {
+    "Id": "2c657870-ee43-489e-9854-e1b634f27228",
+    "Name": "Hasanpaşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2cad5b0f-09ec-4b36-a7ba-2549a6393471",
+    "Name": "Türkali Mh.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "2cce3d5c-0367-4dc4-9be3-8309908d7b3c",
+    "Name": "Anadolu Hisarı Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2cd17e9b-d0ba-46ce-95ac-41ee58143fd6",
+    "Name": "Hürriyet Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2d2c84ac-ccc3-4d41-94b3-39ef3e247373",
+    "Name": "Sultançiftliği Mh.",
+    "Location": [ 28.868648, 41.091811 ],
+    "Active": true
+  },
+  {
+    "Id": "2d744738-69d5-4acb-b00a-d56ad0fdd8c7",
+    "Name": "Orta Mah.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "2d87ffcc-f0ff-4486-9356-37d987319014",
+    "Name": "Yeşilvadi Mh.",
+    "Location": [ 29.4777906, 41.1254661 ],
+    "Active": true
+  },
+  {
+    "Id": "2df790b6-1eef-4b2a-ac5b-5675e6734986",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 28.646814, 41.033137 ],
+    "Active": true
+  },
+  {
+    "Id": "2e2e33a4-d440-415d-bd07-66cede8f1daf",
+    "Name": "Burhaniye Mah.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "2e689a47-7ce3-437f-94e1-e4149f97dd08",
+    "Name": "Fatih Mah.",
+    "Location": [ 29.125722, 41.090438 ],
+    "Active": true
+  },
+  {
+    "Id": "2e7c1c13-635e-4974-9b1f-ab6863d2afe2",
+    "Name": "Esentepe Mah.",
+    "Location": [ 28.9400676, 41.0683852 ],
+    "Active": true
+  },
+  {
+    "Id": "2ec3cda2-00c1-4ca2-a5a6-c24767b1bc46",
+    "Name": "Sultan Selim Mh.",
+    "Location": [ 29.00612, 41.087478 ],
+    "Active": true
+  },
+  {
+    "Id": "2ee591b2-8e5f-44a1-aedd-2b92a0937c5f",
+    "Name": "Demokrasi ve Özgürlük Adası",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2f90c44d-2f3a-441e-9514-3404fc6b9d93",
+    "Name": "İkitelli OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "2fec353d-c12e-4658-ab9f-81e079259a7f",
+    "Name": "Çelebi Mh.",
+    "Location": [ 29.9058195, 41.0925829 ],
+    "Active": true
+  },
+  {
+    "Id": "304b2d84-bbb4-4154-b51b-50da161a7374",
+    "Name": "Çınar Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "3073f118-b4af-466a-9679-104768b3baa5",
+    "Name": "Feyzullah Mah.",
+    "Location": [ 29.127142, 40.927179 ],
+    "Active": true
+  },
+  {
+    "Id": "316d8a42-5186-4e47-b031-fb6f62cab08b",
+    "Name": "Akfırat Mh.",
+    "Location": [ 29.416217, 40.924322 ],
+    "Active": true
+  },
+  {
+    "Id": "31f98abb-3f0b-474f-bf18-24911f9fa58c",
+    "Name": "Çınar Mh.",
+    "Location": [ 29.121805, 40.94105 ],
+    "Active": true
+  },
+  {
+    "Id": "32457300-6117-469c-ae84-f9080f6e1b4a",
+    "Name": "Kabakoz Köyü",
+    "Location": [ 29.6885056, 41.1449599 ],
+    "Active": true
+  },
+  {
+    "Id": "3251e72f-9b17-483d-9581-1c58886b012c",
+    "Name": "Ferah Mah.",
+    "Location": [ 29.072884, 41.032722 ],
+    "Active": true
+  },
+  {
+    "Id": "326d642d-7aea-45b8-aaed-a5b57445b1d9",
+    "Name": "Birlik Mah.",
+    "Location": [ 28.873359, 41.050507 ],
+    "Active": true
+  },
+  {
+    "Id": "32c8940e-455e-4ea5-9ae5-76fe6bc713ac",
+    "Name": "Kumbaba Mah.",
+    "Location": [ 29.577324, 41.166676 ],
+    "Active": true
+  },
+  {
+    "Id": "32e223d5-f9b1-44fd-a6ad-d08da83220f7",
+    "Name": "Dereseki Köyü",
+    "Location": [ 29.1292181, 41.1553268 ],
+    "Active": true
+  },
+  {
+    "Id": "32eec76e-55c3-4cd7-a8c6-8c9d95110583",
+    "Name": "Mesih Paşa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "33334676-9239-4f35-9067-169f128b4e60",
+    "Name": "Çiğdem Mh.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "334f9154-353d-47d1-b1cf-2a97699cfc76",
+    "Name": "Güllü Bağlar Mh.",
+    "Location": [ 29.275166, 40.895241 ],
+    "Active": true
+  },
+  {
+    "Id": "337af351-7874-4e6c-87bf-84136b60f5eb",
+    "Name": "Fatih Sultan Mehmet Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "33f4354f-5ae5-4ae9-b162-c0e68264af6c",
+    "Name": "Göztepe Mh.",
+    "Location": [ 28.836328, 41.059411 ],
+    "Active": true
+  },
+  {
+    "Id": "33fba33b-19a0-49f5-bc22-a6e67bfc4111",
+    "Name": "Bahçeköy Yeni Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "340adbf1-7771-4495-805a-a7f255ed9d94",
+    "Name": "Bedrettin Mah.",
+    "Location": [ 28.9700608, 41.0296158 ],
+    "Active": true
+  },
+  {
+    "Id": "34581560-da14-42ed-bc8b-1cb58d8746d7",
+    "Name": "Esenkent Mah.",
+    "Location": [ 29.167678, 40.927093 ],
+    "Active": true
+  },
+  {
+    "Id": "3494cc11-8ec5-488e-955c-f793ba4896e4",
+    "Name": "Yazlık Mh.",
+    "Location": [ 28.46773, 41.148239 ],
+    "Active": true
+  },
+  {
+    "Id": "3497f8ff-b84e-4ad2-bff9-b19aa7bbf060",
+    "Name": "Güzelyalı Mh.",
+    "Location": [ 29.2806423, 40.8598245 ],
+    "Active": true
+  },
+  {
+    "Id": "34b549fc-9782-408c-8c8d-c2cf09296acc",
+    "Name": "Aşıkveysel Mh.",
+    "Location": [ 29.126315, 40.982026 ],
+    "Active": true
+  },
+  {
+    "Id": "34b606f6-1ce7-45c7-8ee9-956a81b7380e",
+    "Name": "Yeşiltepe Mh.",
+    "Location": [ 28.8990675, 40.9935653 ],
+    "Active": true
+  },
+  {
+    "Id": "34ea4747-b416-4f42-ad44-dc00bfa34f91",
+    "Name": "Çengilli Mh.",
+    "Location": [ 29.6722018, 41.0037736 ],
+    "Active": true
+  },
+  {
+    "Id": "34efedf3-9e55-4862-8d31-1ff42cbc5821",
+    "Name": "Akşemsettin Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "34f6aa29-2bc6-45c6-a991-38f88b7da4de",
+    "Name": "Şeyhli Mh.",
+    "Location": [ 29.284772, 40.9064505 ],
+    "Active": true
+  },
+  {
+    "Id": "35843908-f199-4a43-818d-0d2e76e99f9d",
+    "Name": "Kazım Karabekir Mh.",
+    "Location": [ 28.912142, 41.083734 ],
+    "Active": true
+  },
+  {
+    "Id": "35b59333-cd12-4cbc-beb5-53412a5c2672",
+    "Name": "Ahmediye Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "35ccb588-c743-441e-acc8-83f1784e8faa",
+    "Name": "Bahçelievler Mh.",
+    "Location": [ 28.864523, 41.004211 ],
+    "Active": true
+  },
+  {
+    "Id": "366e94b0-3e34-4ba7-86ee-98e8e1bd2456",
+    "Name": "Tomtom Mah.",
+    "Location": [ 28.978196, 41.030147 ],
+    "Active": true
+  },
+  {
+    "Id": "36d82f00-8f53-447c-ab49-4dc760e788b7",
+    "Name": "Basınköy Mh.",
+    "Location": [ 28.8228, 40.968155 ],
+    "Active": true
+  },
+  {
+    "Id": "374eee86-33e6-49af-a0b7-82dfd8053dad",
+    "Name": "Yeşilyurt Mh.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "3781584b-7aa7-4f3e-a9f3-5480e92981d1",
+    "Name": "Molla Gürani Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "37f2521e-56c0-4491-8fbc-c12558af12a0",
+    "Name": "Fener Mh.",
+    "Location": [ 28.2380432, 41.1502879 ],
+    "Active": true
+  },
+  {
+    "Id": "38626d46-fc8a-45be-af9b-1a40744d7f18",
+    "Name": "Çayırbaşı Mh.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "38e0d937-6f34-4db8-af91-09063b2b6657",
+    "Name": "Kayabaşı Mh.",
+    "Location": [ 28.7394587, 41.1107394 ],
+    "Active": true
+  },
+  {
+    "Id": "38ee1321-9a04-4cf8-813d-2e2408544965",
+    "Name": "Tomtom Mah.",
+    "Location": [ 28.978196, 41.030147 ],
+    "Active": true
+  },
+  {
+    "Id": "3a79e996-a58e-4345-912a-b582a59d6527",
+    "Name": "Karamandere Köyü",
+    "Location": [ 29.5923646, 41.1349829 ],
+    "Active": true
+  },
+  {
+    "Id": "3abc1a96-8183-4d99-b89a-c223262524d5",
+    "Name": "Esatpaşa Mh.",
+    "Location": [ 29.085351, 41.001062 ],
+    "Active": true
+  },
+  {
+    "Id": "3b1e6d28-afdf-4d86-94e0-3215359ee994",
+    "Name": "Rami Cuma Mah.",
+    "Location": [ 28.922155, 41.049374 ],
+    "Active": true
+  },
+  {
+    "Id": "3b7d4897-9b99-4400-a409-43556f9a8398",
+    "Name": "Ortaçeşme Mh.",
+    "Location": [ 29.084062, 41.145063 ],
+    "Active": true
+  },
+  {
+    "Id": "3b92e581-50b8-48b5-96df-cab41e0c02ad",
+    "Name": "Evliya Çelebi Mh.",
+    "Location": [ 28.96963, 41.028673 ],
+    "Active": true
+  },
+  {
+    "Id": "3b961a46-0d93-4461-94aa-5ea736713f76",
+    "Name": "Zühtüpaşa Mh.",
+    "Location": [ 29.041625, 40.9849305 ],
+    "Active": true
+  },
+  {
+    "Id": "3c4bfbb0-4876-4dda-ab1a-599d29c9f726",
+    "Name": "Yunus Emre Mah.",
+    "Location": [ 29.2498336, 41.0187936 ],
+    "Active": true
+  },
+  {
+    "Id": "3c6c2446-51fb-40ef-8c18-1b43058fa0df",
+    "Name": "Mevlana Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "3c880e0f-179a-4766-9608-b40b30386582",
+    "Name": "Feneryolu Mah.",
+    "Location": [ 29.048516, 40.984612 ],
+    "Active": true
+  },
+  {
+    "Id": "3cb86631-e547-4539-9586-7e86f91cf97a",
+    "Name": "İmrahor Mh.",
+    "Location": [ 28.999408, 41.071305 ],
+    "Active": true
+  },
+  {
+    "Id": "3ceb595b-8b0b-4b9b-8b28-6ffa76ba98aa",
+    "Name": "Saraç İshak Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "3d05d28c-47a3-4a9d-ac95-db2d81966c7f",
+    "Name": "Topselvi Mah.",
+    "Location": [ 29.212823, 40.895776 ],
+    "Active": true
+  },
+  {
+    "Id": "3d103572-449a-45c7-8c22-248f967695b2",
+    "Name": "Soğanlı Mh.",
+    "Location": [ 28.864523, 41.004211 ],
+    "Active": true
+  },
+  {
+    "Id": "3d17543d-d4f9-4391-bbce-b6f9e0165f03",
+    "Name": "Kocataş Mh.",
+    "Location": [ 29.0358971, 41.1677474 ],
+    "Active": true
+  },
+  {
+    "Id": "3d5103f7-b634-4d9f-8d15-367c2b63e99d",
+    "Name": "Halil Rıfat Paşa Mh.",
+    "Location": [ 28.967477, 41.058675 ],
+    "Active": true
+  },
+  {
+    "Id": "3d59ec7b-c0e0-4ac5-8c3d-a6804a10ad9e",
+    "Name": "Riva Köyü",
+    "Location": [ 29.11443, 41.137 ],
+    "Active": true
+  },
+  {
+    "Id": "3e485695-dc09-40e3-b021-ee64ba118d7e",
+    "Name": "Boyalık Mh.",
+    "Location": [ 28.6337717, 41.2630431 ],
+    "Active": true
+  },
+  {
+    "Id": "3e6c69f9-2ac9-4d87-a380-b83d052fad19",
+    "Name": "Gayrettepe Mah.",
+    "Location": [ 29.006514, 41.063731 ],
+    "Active": true
+  },
+  {
+    "Id": "3e85c887-8ee2-4064-b058-b53c1d6bb1a7",
+    "Name": "Fatih Mah.",
+    "Location": [ 29.342002, 40.92623 ],
+    "Active": true
+  },
+  {
+    "Id": "3e8c77ea-f01c-452e-a625-c9d9026d8e91",
+    "Name": "Bulgurlu Mah.",
+    "Location": [ 29.075523, 41.0165 ],
+    "Active": true
+  },
+  {
+    "Id": "3ead34e9-743f-4a01-8258-8ebb60750557",
+    "Name": "Yıldıztepe Mh.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "3ec66395-a809-4cda-98a6-e6ca4fd737ca",
+    "Name": "Atatürk Mh.",
+    "Location": [ 29.0897195, 41.027248 ],
+    "Active": true
+  },
+  {
+    "Id": "3edd7d10-b54e-4256-920e-a99cac39c955",
+    "Name": "Güzeltepe Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "3f73bd39-6999-4cbc-8777-2e2ff0b98193",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.6469416, 41.0028675 ],
+    "Active": true
+  },
+  {
+    "Id": "3fbd9d27-54de-4ef3-903a-547997b99e31",
+    "Name": "Koca Mustafapaşa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "40354e8f-3fa4-4571-8c92-28ae0042e411",
+    "Name": "Fulya Mah.",
+    "Location": [ 28.996078, 41.065578 ],
+    "Active": true
+  },
+  {
+    "Id": "403ba437-f037-474a-819d-69787ce83a52",
+    "Name": "Selimpaşa Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "407e57cd-c65c-4a2e-af74-1dd376235490",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 28.84043, 40.997098 ],
+    "Active": true
+  },
+  {
+    "Id": "411d1181-1d87-4cd2-a192-2d4e358ffdb2",
+    "Name": "Zühtüpaşa Mh.",
+    "Location": [ 29.041625, 40.9849305 ],
+    "Active": true
+  },
+  {
+    "Id": "411de295-dbea-4a60-a1dd-1488aada241c",
+    "Name": "Mehmet Nesih Özmen Mh.",
+    "Location": [ 28.8833333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "41319c56-87ad-4f33-b16c-06d58449752b",
+    "Name": "Çiftlik Mh.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "415181d9-22fa-4e45-8b47-d2149fb9bfad",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 29.085137, 40.977222 ],
+    "Active": true
+  },
+  {
+    "Id": "41c2d38e-3735-4642-a156-c8e88fbde33b",
+    "Name": "Maslak Mah.",
+    "Location": [ 28.98108, 41.045687 ],
+    "Active": true
+  },
+  {
+    "Id": "41f05ee8-938c-4105-805d-f993ae380c4e",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.864388, 41.031149 ],
+    "Active": true
+  },
+  {
+    "Id": "42316023-7571-41f2-87a7-9156f09be5b5",
+    "Name": "Celaliye Mah.",
+    "Location": [ 28.590003, 41.034133 ],
+    "Active": true
+  },
+  {
+    "Id": "42c5610d-b887-43a4-aec3-8e555ba69875",
+    "Name": "Bebek Mah.",
+    "Location": [ 29.042759, 41.077153 ],
+    "Active": true
+  },
+  {
+    "Id": "42cd6dab-7cf7-40b8-8a8a-a7c56c11060e",
+    "Name": "Aydınlı Mh.",
+    "Location": [ 29.331446, 40.871332 ],
+    "Active": true
+  },
+  {
+    "Id": "436cc3d9-fb43-474e-9f46-49c0ff572f71",
+    "Name": "Hacımaşlı Mh.",
+    "Location": [ 28.7023068, 41.1484432 ],
+    "Active": true
+  },
+  {
+    "Id": "43b9ce0d-ce47-49e3-9ab9-4b8fe58b85d0",
+    "Name": "Eskişehir Mh.",
+    "Location": [ 28.979798, 41.04599 ],
+    "Active": true
+  },
+  {
+    "Id": "43e5eab5-1d00-4908-b0d3-fb208e41b1f8",
+    "Name": "Çataklı Mh.",
+    "Location": [ 29.7986427, 41.0767067 ],
+    "Active": true
+  },
+  {
+    "Id": "4434bbca-bdc1-4275-a027-457ebee23999",
+    "Name": "Düğmeciler Mh.",
+    "Location": [ 28.930232, 41.046172 ],
+    "Active": true
+  },
+  {
+    "Id": "448ba37d-a8ef-4a7e-89dc-ae8102bed509",
+    "Name": "Güven Mh.",
+    "Location": [ 28.888218, 41.004548 ],
+    "Active": true
+  },
+  {
+    "Id": "44a166ef-472c-4f61-9dd2-968709bef9cc",
+    "Name": "Yeni Mah.",
+    "Location": [ 29.060041, 41.171112 ],
+    "Active": true
+  },
+  {
+    "Id": "44c92282-62aa-4817-b05b-7b98dc278aca",
+    "Name": "Göksu Mh.",
+    "Location": [ 29.7742882, 41.0789799 ],
+    "Active": true
+  },
+  {
+    "Id": "44f60dbf-6d7c-47ad-b22b-c521468e0edc",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "45166a2e-4a0e-4965-9b78-1914b37a032d",
+    "Name": "Alkent 2000 Mah.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "4543157d-cbec-4471-926b-c9af83d3ab29",
+    "Name": "Deri OSB",
+    "Location": [ 29.295, 40.842 ],
+    "Active": true
+  },
+  {
+    "Id": "454db46b-253a-4d9d-a53d-6d755de322f4",
+    "Name": "Kültür Mh.",
+    "Location": [ 29.0023746, 41.0833812 ],
+    "Active": true
+  },
+  {
+    "Id": "459c8731-7d6c-484c-b5b2-7fbeff2ecbfe",
+    "Name": "Sarıgazi Mh.",
+    "Location": [ 29.211221, 41.005638 ],
+    "Active": true
+  },
+  {
+    "Id": "45b13733-2353-4922-8290-6427359f7a92",
+    "Name": "Yenimahalle Mah.",
+    "Location": [ 28.89726, 41.016589 ],
+    "Active": true
+  },
+  {
+    "Id": "45c99111-81c5-4e0c-9486-5d323e9b5e99",
+    "Name": "Örcünlü Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "45ef1fd5-9cbd-4cea-8836-c7674f96f932",
+    "Name": "Yıldız Mh.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "462cb90c-f4f5-4709-87df-6f48b5d33a1a",
+    "Name": "Yalı Mh.",
+    "Location": [ 29.1299, 40.92199 ],
+    "Active": true
+  },
+  {
+    "Id": "46d956a5-3441-4210-8b91-495845663024",
+    "Name": "Yenimahalle Mah.",
+    "Location": [ 28.89726, 41.016589 ],
+    "Active": true
+  },
+  {
+    "Id": "46dcf6c5-a38d-4caa-b36b-36f6cfe121bc",
+    "Name": "Büyük Sinekli Mh.",
+    "Location": [ 28.20149, 41.2354284 ],
+    "Active": true
+  },
+  {
+    "Id": "46ea2496-594f-46ea-a31e-2a27b7cb5fa1",
+    "Name": "Batı Mh.",
+    "Location": [ 29.229067, 40.877784 ],
+    "Active": true
+  },
+  {
+    "Id": "46f4c2ab-f917-4099-b6e7-6c597878a65c",
+    "Name": "Cevizlik Mah.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "470cd54e-53ef-43db-9deb-6b5cab0109d6",
+    "Name": "Kemalpaşa Mh.",
+    "Location": [ 28.8533208, 41.0537176 ],
+    "Active": true
+  },
+  {
+    "Id": "476875b7-4c91-4adc-8638-89cee0f670ca",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 28.78922, 41.00669 ],
+    "Active": true
+  },
+  {
+    "Id": "47b83e32-59dd-4ddb-b5de-ea89c4774ec1",
+    "Name": "Gülensu Mh.",
+    "Location": [ 29.161889, 40.935334 ],
+    "Active": true
+  },
+  {
+    "Id": "47ffa72c-5d2c-48b2-856c-7729889a1427",
+    "Name": "Dizdariye Mah.",
+    "Location": [ 28.576705, 41.020837 ],
+    "Active": true
+  },
+  {
+    "Id": "48222e1e-3ae6-48b8-8368-9408e50245c0",
+    "Name": "Eğitim Mh.",
+    "Location": [ 29.048242, 40.988077 ],
+    "Active": true
+  },
+  {
+    "Id": "48289d1e-5728-4fba-98ae-be4ab172fc24",
+    "Name": "Atatürk Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "486a887e-caea-4fbd-ad89-21f180c83e9d",
+    "Name": "Çınardere Mh.",
+    "Location": [ 29.2404563, 40.8944603 ],
+    "Active": true
+  },
+  {
+    "Id": "48ac6f58-e14a-4cf5-a0dd-ea6f05e7d412",
+    "Name": "Aydıntepe Mh.",
+    "Location": [ 29.299027, 40.852481 ],
+    "Active": true
+  },
+  {
+    "Id": "48cf72a0-3d6d-4638-83a3-2c5851dbdb64",
+    "Name": "Arap Cami Mah.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "48d47f6b-d04a-492d-b723-e6c18e297b74",
+    "Name": "Telsizler Mah.",
+    "Location": [ 28.996248, 41.078437 ],
+    "Active": true
+  },
+  {
+    "Id": "48e6533a-03e6-4245-b815-55f4df5afdb5",
+    "Name": "Gümüşpınar Mh.",
+    "Location": [ 29.205745, 40.918416 ],
+    "Active": true
+  },
+  {
+    "Id": "49192d37-88ce-4117-882e-4d1f7b0c1525",
+    "Name": "Kısırkaya Mh.",
+    "Location": [ 28.9796652, 41.2497071 ],
+    "Active": true
+  },
+  {
+    "Id": "4923a96b-a225-4e03-be3b-0f95d7923df5",
+    "Name": "Şirinevler Mh.",
+    "Location": [ 28.846585, 40.99511 ],
+    "Active": true
+  },
+  {
+    "Id": "4925d93e-1e66-47b3-8306-12f01a18e08a",
+    "Name": "Küçük Ayasofya Mh.",
+    "Location": [ 28.973586, 41.003815 ],
+    "Active": true
+  },
+  {
+    "Id": "495485c0-2bbe-49b1-aea7-de64f68b2dbe",
+    "Name": "Nakkaş Mh.",
+    "Location": [ 28.5558645, 41.1872815 ],
+    "Active": true
+  },
+  {
+    "Id": "495e39fd-e125-464b-a263-272dddd8493d",
+    "Name": "Kandilli Mah.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "497913ec-4b36-4445-b877-eea6e7c6f962",
+    "Name": "Cumhuriyet Köyü",
+    "Location": [ 29.2666478, 41.1299873 ],
+    "Active": true
+  },
+  {
+    "Id": "4a17c0ce-40a8-4c0f-8587-64400650f741",
+    "Name": "Huzur Mah.",
+    "Location": [ 28.997784, 41.1043624 ],
+    "Active": true
+  },
+  {
+    "Id": "4a3383e4-346d-4c11-96e5-f051bae2ca47",
+    "Name": "İhsaniye Mh.",
+    "Location": [ 28.3593437, 41.2535894 ],
+    "Active": true
+  },
+  {
+    "Id": "4a7f86e2-1fa9-4683-873e-09d0b4e51759",
+    "Name": "Yakuplu Mah.",
+    "Location": [ 28.679024, 40.992338 ],
+    "Active": true
+  },
+  {
+    "Id": "4a8351a9-c7b7-492f-81c3-f46191896775",
+    "Name": "Mehmet Akif Mah.",
+    "Location": [ 28.8065345, 41.0576375 ],
+    "Active": true
+  },
+  {
+    "Id": "4a9efe78-f288-4a98-910d-86d70ce5104c",
+    "Name": "Çamlık Mh.",
+    "Location": [ 29.1946389, 41.0175109 ],
+    "Active": true
+  },
+  {
+    "Id": "4ab9d742-1274-49ba-b922-74d0f006a48a",
+    "Name": "Bostancı Mh.",
+    "Location": [ 29.097561, 40.954112 ],
+    "Active": true
+  },
+  {
+    "Id": "4ae8c447-1b5e-4697-bbdb-b3020eb58690",
+    "Name": "Yeniköy Mh.",
+    "Location": [ 29.651616, 41.122925 ],
+    "Active": true
+  },
+  {
+    "Id": "4ae8f7bb-c473-47ed-9351-0d99e65b198d",
+    "Name": "Cemil Meriç Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "4b366583-a5b7-4fd3-b473-859540bdecd1",
+    "Name": "Balıkyolu Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "4bca748d-1e31-433a-99e9-e4dc092775c6",
+    "Name": "Şemsipaşa Mh.",
+    "Location": [ 28.894651, 41.071494 ],
+    "Active": true
+  },
+  {
+    "Id": "4c131c0f-cb1d-49ec-ab14-5239c1d913c2",
+    "Name": "Mareşal Fevzi Çakmak Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "4c5f2abe-4efd-4c16-ad50-d1f9d5667d61",
+    "Name": "Kurfallı Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "4c7b4ac4-0508-4d5d-be2c-ecf9935f54ca",
+    "Name": "Erenler Köyü",
+    "Location": [ 29.5606704, 41.1207353 ],
+    "Active": true
+  },
+  {
+    "Id": "4c8b34ed-9b72-4138-883b-41f145efde29",
+    "Name": "İnönü Mh.",
+    "Location": [ 28.984613, 41.043933 ],
+    "Active": true
+  },
+  {
+    "Id": "4d6903a7-d7e0-4b84-a944-2073075a7846",
+    "Name": "Yedikule Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "4dd3e85f-4772-4e9f-aa25-95037d0fd474",
+    "Name": "Kaptan Paşa Mh.",
+    "Location": [ 28.970996, 41.064487 ],
+    "Active": true
+  },
+  {
+    "Id": "4e1166f8-5342-402e-aa43-6b02be76bc64",
+    "Name": "Zafer Mah.",
+    "Location": [ 28.835461, 41.001461 ],
+    "Active": true
+  },
+  {
+    "Id": "4e46008f-6ba0-4b72-a725-72036f50f905",
+    "Name": "İskenderpaşa Mh.",
+    "Location": [ 28.946621, 41.0151665 ],
+    "Active": true
+  },
+  {
+    "Id": "4e49d940-eb05-407c-ba00-b7082ae7b7d0",
+    "Name": "Yunus Emre Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "4eb5fbd0-20f1-4d34-a3f3-2af5cbae3bb9",
+    "Name": "Kalfa Köyü",
+    "Location": [ 28.4391051, 41.2893114 ],
+    "Active": true
+  },
+  {
+    "Id": "4f81c188-75ee-42fe-aacf-9f367023fd63",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.876285, 41.086499 ],
+    "Active": true
+  },
+  {
+    "Id": "4f935d8f-dc09-44a2-a0ff-dca5d1b4a82a",
+    "Name": "Vatan Mah.",
+    "Location": [ 28.90761, 41.033215 ],
+    "Active": true
+  },
+  {
+    "Id": "4fc2e1d9-e5d8-4f8e-a1ac-70116aa587ec",
+    "Name": "Bozgoca Mh.",
+    "Location": [ 29.7715112, 41.1400253 ],
+    "Active": true
+  },
+  {
+    "Id": "4ffd6ca0-c7dd-4d40-8f11-60aad0c8656d",
+    "Name": "Turgut Özal Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "501478a0-58cf-42f9-94d7-d05bcc1ac8a0",
+    "Name": "Avcıkoru Mh.",
+    "Location": [ 29.4132882, 41.1226817 ],
+    "Active": true
+  },
+  {
+    "Id": "50a839c6-00e7-44bf-9a65-bc1943e7b2f4",
+    "Name": "Taya Hatun Mah.",
+    "Location": [ 28.978785, 41.01349 ],
+    "Active": true
+  },
+  {
+    "Id": "511ef49f-4671-42a6-924a-147e9ebb1998",
+    "Name": "Kirazlı Mh.",
+    "Location": [ 28.840646, 41.033571 ],
+    "Active": true
+  },
+  {
+    "Id": "5178e656-ecc4-4040-9d64-bb490d7fb9b3",
+    "Name": "Erenköy Mh.",
+    "Location": [ 29.073671, 40.977508 ],
+    "Active": true
+  },
+  {
+    "Id": "51985700-a84e-44b9-8bb5-21b0b2651e49",
+    "Name": "Sümbül Efendi Mh.",
+    "Location": [ 28.903697, 41.0522795 ],
+    "Active": true
+  },
+  {
+    "Id": "519b54da-983e-472c-81de-26d70835ef4c",
+    "Name": "Nisbetiye Mh.",
+    "Location": [ 29.0354345, 41.0608337 ],
+    "Active": true
+  },
+  {
+    "Id": "51d8834f-6226-4e1b-9e97-15ef9405f3c9",
+    "Name": "Altınşehir Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "52007c80-fdd9-4aae-bd9e-cdf8b1797fa6",
+    "Name": "Kamer Hatun Mah.",
+    "Location": [ 28.976878, 41.034894 ],
+    "Active": true
+  },
+  {
+    "Id": "526bb284-a36b-4449-8f8c-ac264685fc35",
+    "Name": "Atatürk Mh.",
+    "Location": [ 28.7989883, 41.052781 ],
+    "Active": true
+  },
+  {
+    "Id": "538055e9-bed3-4ae0-aa2f-019871efeaca",
+    "Name": "Kızılcaali Mh.",
+    "Location": [ 28.5579118, 41.23728 ],
+    "Active": true
+  },
+  {
+    "Id": "53f3b117-b382-4ee5-9837-986ae8039adc",
+    "Name": "Atalar Mah.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "5487c81e-bbb8-4145-9281-202a99f3a3e9",
+    "Name": "Molla Gürani Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "54cf007f-1c36-4fe2-864a-fb32aa7f792c",
+    "Name": "Yavuz Selim Mah.",
+    "Location": [ 28.73915, 41.186369 ],
+    "Active": true
+  },
+  {
+    "Id": "54e86a66-9c2e-4e2f-96dc-c4971ab22f74",
+    "Name": "Kemal Paşa Mh.",
+    "Location": [ 28.954764, 41.012587 ],
+    "Active": true
+  },
+  {
+    "Id": "54efca95-45e1-4e39-a47c-481f13f3dbf7",
+    "Name": "Kemal Paşa Mh.",
+    "Location": [ 28.954764, 41.012587 ],
+    "Active": true
+  },
+  {
+    "Id": "5597ec62-24a0-48eb-a62d-baf4bdf98fb8",
+    "Name": "Balat Mah.",
+    "Location": [ 28.950117, 41.026899 ],
+    "Active": true
+  },
+  {
+    "Id": "55b3132d-d7d7-4147-a5b7-520455a1b4f6",
+    "Name": "İnceğiz Mh.",
+    "Location": [ 28.4031659, 41.1862392 ],
+    "Active": true
+  },
+  {
+    "Id": "55cb9cdf-210a-40b5-b296-e1970b485129",
+    "Name": "Denizköşkler Mh.",
+    "Location": [ 28.738136, 40.9772 ],
+    "Active": true
+  },
+  {
+    "Id": "55e48b8b-ca2b-4551-9dcb-3f18acf0b717",
+    "Name": "Hamidiye Mah.",
+    "Location": [ 29.223258, 40.996726 ],
+    "Active": true
+  },
+  {
+    "Id": "5610002e-e85c-4ea9-ad98-35994f9d0929",
+    "Name": "Veliefendi Mah.",
+    "Location": [ 28.89863, 40.995352 ],
+    "Active": true
+  },
+  {
+    "Id": "5638227e-dddb-4e3a-8f82-6c2eaff7818c",
+    "Name": "Sivri Ada",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "56e38bc7-97f8-4bf9-bee8-036a97fdc3f9",
+    "Name": "Acarlar Mah.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "56f42638-0c35-439b-a02a-60ba6e2e74cd",
+    "Name": "Mehmet Akif Ersoy Mah.",
+    "Location": [ 28.95429, 41.060417 ],
+    "Active": true
+  },
+  {
+    "Id": "56f8de07-8ace-460e-8d27-0963d0a9ee11",
+    "Name": "Örencik Mh.",
+    "Location": [ 28.4820764, 41.3317277 ],
+    "Active": true
+  },
+  {
+    "Id": "570fe97f-bed5-4b7f-a557-9977152a8308",
+    "Name": "Yeni Sahra Mah.",
+    "Location": [ 29.126315, 40.982026 ],
+    "Active": true
+  },
+  {
+    "Id": "577303c4-c3cf-4b4c-b1ab-480d04d3b560",
+    "Name": "Yavuz Selim Mah.",
+    "Location": [ 29.2669438, 40.9611123 ],
+    "Active": true
+  },
+  {
+    "Id": "5789f9a7-1277-48fd-8eb5-e399d34419b2",
+    "Name": "Ünalan Mh.",
+    "Location": [ 29.0691, 41.0016 ],
+    "Active": true
+  },
+  {
+    "Id": "5873242f-8c61-4cef-8313-ff2e7c6d1583",
+    "Name": "Süleymaniye Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "589066d2-7c9b-4d2b-a4ec-50753570b67f",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 28.894651, 41.071494 ],
+    "Active": true
+  },
+  {
+    "Id": "58e97941-4c89-42dd-afca-7bbbdec03c16",
+    "Name": "Sultançiftliği Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "59435ede-70a2-4eaf-9eea-5203bf5812c7",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.842801, 41.0505055 ],
+    "Active": true
+  },
+  {
+    "Id": "5957121c-0017-4ba0-847a-b0e64aced2b3",
+    "Name": "Akbaba Köyü",
+    "Location": [ 29.1165251, 41.1542084 ],
+    "Active": true
+  },
+  {
+    "Id": "5959dc0d-962d-4ac6-a408-84c2344d7a21",
+    "Name": "Küplüce Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "598983f8-5115-4f81-a53b-11e4101bd95a",
+    "Name": "Atatürk Mh.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "5a021abb-8482-4688-bc49-23707a77465b",
+    "Name": "Ortamahalle Mah.",
+    "Location": [ 28.913019, 41.034257 ],
+    "Active": true
+  },
+  {
+    "Id": "5a759e0b-66bd-4088-b72d-56c09eea2db8",
+    "Name": "Meşrutiyet Mh.",
+    "Location": [ 28.991238, 41.052543 ],
+    "Active": true
+  },
+  {
+    "Id": "5aa758dd-6688-40d3-ae40-166bdb429d0e",
+    "Name": "Habibler Mh.",
+    "Location": [ 28.839618, 41.133666 ],
+    "Active": true
+  },
+  {
+    "Id": "5ad66aef-e346-48b0-8abc-f5e2768fa216",
+    "Name": "Çamlık Mh.",
+    "Location": [ 29.2847154, 40.92347 ],
+    "Active": true
+  },
+  {
+    "Id": "5b210214-1683-4aee-b6f7-d8bc7e455ae4",
+    "Name": "Çukur Mh.",
+    "Location": [ 28.9774139, 41.0365883 ],
+    "Active": true
+  },
+  {
+    "Id": "5bacdb23-98ff-49e6-9736-936b873cd3bc",
+    "Name": "Aksaray Mah.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "5c021815-fb8d-415c-9f3e-c89529a71368",
+    "Name": "Hüseyinağa Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "5c147e0a-a89d-4b64-9213-ec2a39b25609",
+    "Name": "Tahtakale Mah.",
+    "Location": [ 28.9681855, 41.017135 ],
+    "Active": true
+  },
+  {
+    "Id": "5c44467e-2c1c-4ab8-960e-73e296f393e6",
+    "Name": "Saray Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "5cb3f469-f567-4879-9e96-1c9df8771512",
+    "Name": "İsmetpaşa Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "5d65b3ab-44ac-4f49-85a3-a5fe17ac2b9d",
+    "Name": "Piyalepaşa Mh.",
+    "Location": [ 28.964034, 41.045211 ],
+    "Active": true
+  },
+  {
+    "Id": "5d675303-a542-45a8-a79a-308c9a52bec7",
+    "Name": "Gümüşdere Mh.",
+    "Location": [ 28.9863242, 41.2386198 ],
+    "Active": true
+  },
+  {
+    "Id": "5d8e1990-130d-445a-aeeb-2e6bf7ab34b0",
+    "Name": "Dumlupınar Mh.",
+    "Location": [ 29.247135, 40.891406 ],
+    "Active": true
+  },
+  {
+    "Id": "5db84590-49a0-4420-8712-cee53d4115a7",
+    "Name": "İsaköy Mh.",
+    "Location": [ 29.8242321, 41.1088353 ],
+    "Active": true
+  },
+  {
+    "Id": "5e30d51c-732a-4e0b-b58c-14362ea0babd",
+    "Name": "Muratbey Merkez Mah.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "5e6d0375-f518-40a6-a4dd-9a129e435050",
+    "Name": "Yenikent Mah.",
+    "Location": [ 28.680832, 41.041191 ],
+    "Active": true
+  },
+  {
+    "Id": "5e944000-4207-49cd-ab9e-f8b4dc3bf9e4",
+    "Name": "Sanayi Mah.",
+    "Location": [ 28.8781748, 41.0208067 ],
+    "Active": true
+  },
+  {
+    "Id": "5eb6de87-d3c4-4b70-8426-4ef587f11385",
+    "Name": "Orta Mah.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "5ed5e777-2004-487e-8c52-b2785801be43",
+    "Name": "Terazidere Mah.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "5edee660-424a-4a38-ab7a-afa63e774b7d",
+    "Name": "Sururi Mehmet Efendi Mah.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "5efe5289-f13a-4044-8290-37ef33a9b160",
+    "Name": "Telsiz Mah.",
+    "Location": [ 28.910629, 41.002062 ],
+    "Active": true
+  },
+  {
+    "Id": "5f21034b-3dc9-4c58-9509-0ee17a09b50b",
+    "Name": "Söğütlü Çeşme Mh.",
+    "Location": [ 28.785318, 41.017501 ],
+    "Active": true
+  },
+  {
+    "Id": "5f2a6880-a00c-489c-bf43-bfdcc0ace4d7",
+    "Name": "Yassıören Mh.",
+    "Location": [ 28.5929285, 41.2370818 ],
+    "Active": true
+  },
+  {
+    "Id": "5f35072d-c50c-4cee-9bdb-65a1761f9468",
+    "Name": "Acıbadem Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "5f49ee3c-592e-483a-bee6-ae95d90490c2",
+    "Name": "Kocatepe Mah.",
+    "Location": [ 28.896875, 41.052939 ],
+    "Active": true
+  },
+  {
+    "Id": "5f4c701f-d4a3-4b30-95f1-61ac84dfb865",
+    "Name": "Zühtüpaşa Mh.",
+    "Location": [ 29.041625, 40.9849305 ],
+    "Active": true
+  },
+  {
+    "Id": "5f58d223-54a8-4a8a-9891-0e9a6efe071f",
+    "Name": "Çamlık Mh.",
+    "Location": [ 29.1946389, 41.0175109 ],
+    "Active": true
+  },
+  {
+    "Id": "5f5d50ee-dd2a-41a5-85b5-f67406f3d1bf",
+    "Name": "Muhsine Hatun Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "5f5e505e-c6de-4218-97f0-c2cf6a61b4ff",
+    "Name": "Selami Ali Mah.",
+    "Location": [ 29.033627, 41.023692 ],
+    "Active": true
+  },
+  {
+    "Id": "5f86e10f-1ffd-4591-8836-4b6e5791b475",
+    "Name": "İstiklal Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "5fc5c113-29b1-48c3-8b52-a8a1fa1596c7",
+    "Name": "Ahmet Yesevi Mah.",
+    "Location": [ 29.306261, 40.866316 ],
+    "Active": true
+  },
+  {
+    "Id": "603bd8f5-777a-4500-8a3c-37a5a066103d",
+    "Name": "Necip Fazıl Mh.",
+    "Location": [ 29.278157, 40.940179 ],
+    "Active": true
+  },
+  {
+    "Id": "6057a8c3-26aa-4d4d-b8fa-99e5af81aaf3",
+    "Name": "Öğümce Mh.",
+    "Location": [ 29.247478, 41.124038 ],
+    "Active": true
+  },
+  {
+    "Id": "60c23728-692c-4190-bab7-c5b8844ce21d",
+    "Name": "Yenigün Mh.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "60e6850b-66d6-41c8-a205-8493fd650668",
+    "Name": "Sümer Mh.",
+    "Location": [ 28.923755, 41.041331 ],
+    "Active": true
+  },
+  {
+    "Id": "611035ff-1874-47b8-a345-caf4c07f54d6",
+    "Name": "Bağlar Mh.",
+    "Location": [ 28.906268, 41.060399 ],
+    "Active": true
+  },
+  {
+    "Id": "613370e0-7bad-4507-a96a-675e1c0adb78",
+    "Name": "Mehmet Akif Ersoy Mah.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "6157b8f5-7f6b-4138-a75a-2280cd4314a8",
+    "Name": "Aydınlar Mh.",
+    "Location": [ 29.223825, 41.023563 ],
+    "Active": true
+  },
+  {
+    "Id": "61835c36-6f0a-4725-a5a5-faa4f944177f",
+    "Name": "Yeni Mahalle Mah.",
+    "Location": [ 28.785428, 40.999227 ],
+    "Active": true
+  },
+  {
+    "Id": "61a8e9ef-93f5-44da-ab41-6a6a9cdf7c6f",
+    "Name": "Esentepe Mah.",
+    "Location": [ 28.8833221, 41.0986046 ],
+    "Active": true
+  },
+  {
+    "Id": "61d2fcdc-c6e8-43a4-8f1e-563460635e7f",
+    "Name": "Muradiye Mah.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "620503fa-7d38-47eb-b9bf-94785d4df822",
+    "Name": "Karlıtepe Mh.",
+    "Location": [ 28.927678, 41.057282 ],
+    "Active": true
+  },
+  {
+    "Id": "62a9bd33-1c9c-4737-be60-deb8a7abe846",
+    "Name": "Ahmediye Mah.",
+    "Location": [ 28.590003, 41.034133 ],
+    "Active": true
+  },
+  {
+    "Id": "62be28ed-f4bb-4f33-b7f9-dfba34f14f2a",
+    "Name": "Mehmet Akif Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "62d04782-be8a-4016-8014-a5617aa8edaa",
+    "Name": "Bahçeköy Merkez Mh.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "62d723ea-69de-4029-9993-098efe3638c4",
+    "Name": "Ramazanoğlu Mh.",
+    "Location": [ 29.244259, 40.88973 ],
+    "Active": true
+  },
+  {
+    "Id": "62f03356-77b1-47e4-b0b8-e1efcb40f73c",
+    "Name": "Şehsuvar Bey Mh.",
+    "Location": [ 28.9668055, 41.0037534 ],
+    "Active": true
+  },
+  {
+    "Id": "632ba4fe-adfe-4a20-b2c4-df42227bd12a",
+    "Name": "İnönü Mh.",
+    "Location": [ 28.853892, 41.031477 ],
+    "Active": true
+  },
+  {
+    "Id": "637f1b2b-16d8-44b0-a77e-86f95d788c77",
+    "Name": "İçerenköy Mh.",
+    "Location": [ 29.098782, 40.977563 ],
+    "Active": true
+  },
+  {
+    "Id": "63a07a65-2486-4def-8934-8f9e3e93bf94",
+    "Name": "Balmumcu Mah.",
+    "Location": [ 29.01481, 41.059318 ],
+    "Active": true
+  },
+  {
+    "Id": "63b1f867-6126-4cb0-abe9-b900f22c48c4",
+    "Name": "Karacaköy Mh.",
+    "Location": [ 29.7699686, 41.1520619 ],
+    "Active": true
+  },
+  {
+    "Id": "64122c52-f1eb-4324-853c-7b2ce8e04ae9",
+    "Name": "Yeşilbayır Mh.",
+    "Location": [ 28.608095, 41.130197 ],
+    "Active": true
+  },
+  {
+    "Id": "64481aae-31e0-418c-b2ca-849df8d19b28",
+    "Name": "İstasyon Mh.",
+    "Location": [ 28.776038, 41.028163 ],
+    "Active": true
+  },
+  {
+    "Id": "64558657-eb2d-4e12-b6d1-9206a44749dc",
+    "Name": "Koza Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "64b8b437-cf16-4e23-b25b-d0edfff7fb8e",
+    "Name": "Merkez Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "64c91ec7-b71e-4af5-838b-7d3b55cdcea6",
+    "Name": "Çamlık Mh.",
+    "Location": [ 29.1946389, 41.0175109 ],
+    "Active": true
+  },
+  {
+    "Id": "650c4810-f6ea-4b11-b47c-d7babd10d7e5",
+    "Name": "Mimar Sinan Mah.",
+    "Location": [ 29.181541, 41.033232 ],
+    "Active": true
+  },
+  {
+    "Id": "65120113-4856-4ed0-9db6-62fb55382a96",
+    "Name": "Akçakese Mh.",
+    "Location": [ 29.7178123, 41.1436326 ],
+    "Active": true
+  },
+  {
+    "Id": "6555a837-d50b-4f98-8d8d-9b995cd3db19",
+    "Name": "Soğullu Mh.",
+    "Location": [ 29.8208341, 41.0958928 ],
+    "Active": true
+  },
+  {
+    "Id": "657c8467-fb05-4ff2-b0ad-c1f019d634ac",
+    "Name": "Cankurtaran Mah.",
+    "Location": [ 28.982046, 41.005227 ],
+    "Active": true
+  },
+  {
+    "Id": "65db40cf-406e-4523-b141-12e0257b47d1",
+    "Name": "Selahaddin Eyyubi Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "65fe6c01-0f24-4134-b123-503841d7a06b",
+    "Name": "Kavacık Mh.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "661cca27-dbbd-4b2e-ba63-6550226bdccf",
+    "Name": "Halide Edip Adıvar Mh.",
+    "Location": [ 28.975497, 41.061665 ],
+    "Active": true
+  },
+  {
+    "Id": "6621b7e2-1b67-4aec-b577-6526db4ef089",
+    "Name": "Ömerli Mh.",
+    "Location": [ 29.3177272, 41.104235 ],
+    "Active": true
+  },
+  {
+    "Id": "672405f6-46c9-43c5-bf3a-902cd05b5a23",
+    "Name": "Danamandıra Mh.",
+    "Location": [ 28.243891, 41.311045 ],
+    "Active": true
+  },
+  {
+    "Id": "67583414-55cb-44f9-9890-82481a049afb",
+    "Name": "Kuloğlu Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "676bc536-ef9c-43f0-b290-9f3d58b53373",
+    "Name": "Hacıahmet Mh.",
+    "Location": [ 28.975078, 41.042067 ],
+    "Active": true
+  },
+  {
+    "Id": "67c05989-1c40-4bf6-8cc1-8391e9441c4e",
+    "Name": "Mimar Kemalettin Mah.",
+    "Location": [ 28.9605288, 41.0088416 ],
+    "Active": true
+  },
+  {
+    "Id": "6814af45-d2a0-4e5b-bc73-ccf5eb1ba704",
+    "Name": "Mimaroba",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "682b9ca8-b03d-47e6-9748-02f51247a0db",
+    "Name": "Karacaköy Merkez Mh.",
+    "Location": [ 28.46773, 41.148239 ],
+    "Active": true
+  },
+  {
+    "Id": "6840335d-ecab-48d7-be08-4f1be3daca28",
+    "Name": "Merve Mah.",
+    "Location": [ 29.2392652, 41.006246 ],
+    "Active": true
+  },
+  {
+    "Id": "68bf1876-7056-4aa7-80a7-6a79ae103271",
+    "Name": "Elbasan Köyü",
+    "Location": [ 28.4148498, 41.1390424 ],
+    "Active": true
+  },
+  {
+    "Id": "68c0d16e-c7bb-4dfd-a98e-f9a2b29709db",
+    "Name": "Aydınlı Sb Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "68cfa9b9-cb78-49fa-b40f-bea18bb9f88f",
+    "Name": "Yavuztürk Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "68eced54-abda-41e3-bc9c-af3e7d89bfdf",
+    "Name": "Küçükçekmece İkitelli OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "690d89c2-558a-4f4d-9a03-e3d05665f810",
+    "Name": "Hicret Mah.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "69107f0c-63cc-4f84-8613-042a0f406a6c",
+    "Name": "Çakıl Mh.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "6916b96e-9b5f-4919-b8fa-04641680df93",
+    "Name": "Yenimahalle Mah.",
+    "Location": [ 28.89726, 41.016589 ],
+    "Active": true
+  },
+  {
+    "Id": "69174169-49d6-4548-8ced-5e8379b465aa",
+    "Name": "Mimar Sinan Mh.",
+    "Location": [ 28.889198, 41.034193 ],
+    "Active": true
+  },
+  {
+    "Id": "691c10b5-7e32-467d-9d16-4db2270c7474",
+    "Name": "İnönü Mh.",
+    "Location": [ 29.138164, 40.977954 ],
+    "Active": true
+  },
+  {
+    "Id": "699f5262-d394-4f42-87a7-95cbc6e7e759",
+    "Name": "Silivrikapı Mh.",
+    "Location": [ 28.92872, 41.004033 ],
+    "Active": true
+  },
+  {
+    "Id": "6a0dc322-8187-4096-bf8f-db0726fb2d0c",
+    "Name": "Altunizade Mah.",
+    "Location": [ 29.039262, 41.024317 ],
+    "Active": true
+  },
+  {
+    "Id": "6a939930-d97c-49b9-a290-5789edd5d846",
+    "Name": "Bağlarbaşı Mh.",
+    "Location": [ 29.138378, 40.931759 ],
+    "Active": true
+  },
+  {
+    "Id": "6aa0c764-748e-4b21-a225-e91f2072653d",
+    "Name": "Molla Fenari Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "6ade2a35-c83e-454b-94f1-30ca2649ec30",
+    "Name": "Vişnezade Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "6b59bfe7-3d7b-4aab-9606-4400d3bb5e96",
+    "Name": "Evliya Çelebi Mh.",
+    "Location": [ 29.300134, 40.841571 ],
+    "Active": true
+  },
+  {
+    "Id": "6b668b07-c532-4141-8572-b48c6a30f22f",
+    "Name": "Yeşilköy Sb Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "6b97147c-dcf8-4a8a-9a39-fd6016255d79",
+    "Name": "Çubuklu Mh.",
+    "Location": [ 29.0831219, 41.104479 ],
+    "Active": true
+  },
+  {
+    "Id": "6b9b6671-d1fd-45ad-9c38-c00ab3da837c",
+    "Name": "Tepeören OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "6bbe8576-ccc2-4f0a-a581-276994a09e53",
+    "Name": "Şehit Muhtar Mh.",
+    "Location": [ 28.9832579, 41.0393103 ],
+    "Active": true
+  },
+  {
+    "Id": "6c49dca0-af81-47e4-a935-e3753a132551",
+    "Name": "Baklacı Mh.",
+    "Location": [ 29.1455565, 41.0654747 ],
+    "Active": true
+  },
+  {
+    "Id": "6c558dcf-fd1a-40f0-a241-7fcc00883558",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.677314, 41.032761 ],
+    "Active": true
+  },
+  {
+    "Id": "6c7f472b-7b96-4143-85de-b22d5b546eed",
+    "Name": "Kumköy Mh.",
+    "Location": [ 29.0375, 41.2491667 ],
+    "Active": true
+  },
+  {
+    "Id": "6ca1182d-f954-4740-aca9-8dd5f7699a12",
+    "Name": "Gökevler Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "6ca400c3-88d4-47cc-803a-016d7b8b6db1",
+    "Name": "Yalıköy Mh.",
+    "Location": [ 29.086322, 41.137143 ],
+    "Active": true
+  },
+  {
+    "Id": "6cbfe760-4906-4d3d-80a1-a3054963197a",
+    "Name": "Petroliş Mh.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "6d19af16-659b-46bf-8cc8-a046f336ae67",
+    "Name": "Abdurrahman Nafiz Gürman Mh.",
+    "Location": [ 28.888218, 41.004548 ],
+    "Active": true
+  },
+  {
+    "Id": "6d58cc78-a1f0-4bb6-abe2-d386a0cd9e93",
+    "Name": "Kalem Köyü",
+    "Location": [ 29.8490623, 41.0519711 ],
+    "Active": true
+  },
+  {
+    "Id": "6db541c6-4fbf-447c-8cef-3b93999696f6",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 28.586226, 41.025063 ],
+    "Active": true
+  },
+  {
+    "Id": "6de63341-0928-4bd4-b117-bc8cd6832f56",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 29.2657296, 40.8748776 ],
+    "Active": true
+  },
+  {
+    "Id": "6e1adce4-e639-495c-b377-40de3305275e",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 29.085137, 40.977222 ],
+    "Active": true
+  },
+  {
+    "Id": "6e32476e-bd38-47eb-bb85-ac330aa0f03f",
+    "Name": "İstinye Mh.",
+    "Location": [ 29.054194, 41.112763 ],
+    "Active": true
+  },
+  {
+    "Id": "6f2af1b4-42d8-4234-9358-8446fe3a4277",
+    "Name": "Hacımimi Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "6f81b210-3131-46e9-93ce-880bdf9eb923",
+    "Name": "Sultantepe Mah.",
+    "Location": [ 29.021842, 41.015903 ],
+    "Active": true
+  },
+  {
+    "Id": "6f8c9455-3672-4bee-a0af-09611fb7459c",
+    "Name": "Harmantepe Mah.",
+    "Location": [ 28.990538, 41.080926 ],
+    "Active": true
+  },
+  {
+    "Id": "6fc4e523-9ccf-497d-a725-e3950518dc1b",
+    "Name": "Fikirtepe Mah.",
+    "Location": [ 29.049508, 40.993975 ],
+    "Active": true
+  },
+  {
+    "Id": "6ff39de6-6b9b-41b5-b83f-cfddb3d67fbc",
+    "Name": "Ovacık Mh.",
+    "Location": [ 29.6203474, 41.1074198 ],
+    "Active": true
+  },
+  {
+    "Id": "6ff587aa-26d8-446f-bd4f-42b2d7181b73",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 28.901915, 41.072499 ],
+    "Active": true
+  },
+  {
+    "Id": "70ed893e-68cf-47e6-b2fb-c97ef8df31aa",
+    "Name": "Kazım Karabekir Paşa Mh.",
+    "Location": [ 29.0385466, 41.1814742 ],
+    "Active": true
+  },
+  {
+    "Id": "712f7e71-df14-453d-a57c-27ee31df2095",
+    "Name": "Küçükbakkalköy Mh.",
+    "Location": [ 29.126315, 40.982026 ],
+    "Active": true
+  },
+  {
+    "Id": "714608df-3ce8-49ef-afd4-a2daab773b03",
+    "Name": "Harmandere Mah.",
+    "Location": [ 29.322122, 40.92825 ],
+    "Active": true
+  },
+  {
+    "Id": "71753e9e-38a9-417a-ba80-228cf4557507",
+    "Name": "Bülbül Mh.",
+    "Location": [ 28.978084, 41.039824 ],
+    "Active": true
+  },
+  {
+    "Id": "72f0f003-2b33-4b07-84cf-499c6fb49fb9",
+    "Name": "Cerrahpaşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "73028a03-800b-4585-bb6e-606fee65926f",
+    "Name": "Uğur Mumcu Mh.",
+    "Location": [ 29.21406, 40.92883 ],
+    "Active": true
+  },
+  {
+    "Id": "73402199-4f8b-47ca-9f45-999ad4e653e9",
+    "Name": "Mollahüsrev Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "737a2977-cb57-4a95-bb20-c9c38614a598",
+    "Name": "Gökalp Mh.",
+    "Location": [ 28.9078045, 40.992149 ],
+    "Active": true
+  },
+  {
+    "Id": "737fb1d6-611d-4703-9a0b-a4d1ddf31fae",
+    "Name": "Örnekköy Mh.",
+    "Location": [ 29.105328, 41.122774 ],
+    "Active": true
+  },
+  {
+    "Id": "73b9426d-d81e-47ed-843c-dc4c6b6e429f",
+    "Name": "Finanskent Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "73ca5b3b-2a35-4a70-b2fc-6676a86e4603",
+    "Name": "Karaburun Köyü",
+    "Location": [ 28.6766806, 41.3381803 ],
+    "Active": true
+  },
+  {
+    "Id": "74097ff5-5e52-48d3-8adb-d4c15400e1ed",
+    "Name": "Ağaçdere Mh.",
+    "Location": [ 29.7085739, 41.0420364 ],
+    "Active": true
+  },
+  {
+    "Id": "742c3276-b4ac-4ec5-ab03-aba2737ba5d5",
+    "Name": "Ulus Mah.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "74628c65-7e07-4bd1-86bb-7a8336b2bdff",
+    "Name": "Aydınevler Mh.",
+    "Location": [ 29.123219, 40.949282 ],
+    "Active": true
+  },
+  {
+    "Id": "74a1250e-4b34-48dd-8b15-9abd6fb2ad3d",
+    "Name": "Bostan Mah.",
+    "Location": [ 28.975031, 41.037876 ],
+    "Active": true
+  },
+  {
+    "Id": "74bb1e52-1324-4a90-bee2-0bf93afe956d",
+    "Name": "Büyük Kılıçlı Mh.",
+    "Location": [ 28.1912538, 41.1673711 ],
+    "Active": true
+  },
+  {
+    "Id": "7550174f-5014-4408-a606-af9a8e0263dc",
+    "Name": "Mimar Sinan Mah.",
+    "Location": [ 28.889488, 41.077594 ],
+    "Active": true
+  },
+  {
+    "Id": "75719dbd-7dff-49c0-a488-4c559776af71",
+    "Name": "Merkez Mah.",
+    "Location": [ 29.035755, 41.15623 ],
+    "Active": true
+  },
+  {
+    "Id": "7577672e-50d8-43c5-b3cb-876ca184f4d1",
+    "Name": "Celepköy Mh.",
+    "Location": [ 28.5007254, 41.3660516 ],
+    "Active": true
+  },
+  {
+    "Id": "758f82a0-2ddc-43cb-b2a9-c7c946b675dc",
+    "Name": "Nişanca Mh.",
+    "Location": [ 28.958558, 41.005152 ],
+    "Active": true
+  },
+  {
+    "Id": "75c720ea-35c1-495e-a46b-4d1642ed6e24",
+    "Name": "Kartaltepe Mah.",
+    "Location": [ 28.904042, 41.055878 ],
+    "Active": true
+  },
+  {
+    "Id": "75d4ba75-fc4b-4f6b-8e39-587fe9cfd2d7",
+    "Name": "Mavigöl Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "75f7a0bb-cb58-48ed-b08c-baa97231f283",
+    "Name": "Evliya Çelebi Mh.",
+    "Location": [ 28.96963, 41.028673 ],
+    "Active": true
+  },
+  {
+    "Id": "75f8ebee-fbd9-4eab-9ac9-f3b81d65d85c",
+    "Name": "Piri Reis Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "7601c5b4-0284-458c-8719-8a79d762d3b7",
+    "Name": "Feneryolu Mah.",
+    "Location": [ 29.048516, 40.984612 ],
+    "Active": true
+  },
+  {
+    "Id": "7604d0fe-4536-4b12-84b2-1ae1a03109a7",
+    "Name": "Yavuz Sultan Selim Mah.",
+    "Location": [ 28.952087, 41.0247735 ],
+    "Active": true
+  },
+  {
+    "Id": "768765d7-b717-48f5-93db-9e952b053c68",
+    "Name": "Sarıgöl Mh.",
+    "Location": [ 28.916533, 41.06005 ],
+    "Active": true
+  },
+  {
+    "Id": "77162eff-5cdf-43c0-b903-1e92d656ceeb",
+    "Name": "Kirazlıtepe Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "771891c3-3cae-4a58-9c49-bb770d6fd34f",
+    "Name": "Kestanelik Köyü",
+    "Location": [ 28.4907757, 41.234535 ],
+    "Active": true
+  },
+  {
+    "Id": "772d3f7f-f903-417e-b0f6-3f8050820f29",
+    "Name": "Kuzguncuk Mah.",
+    "Location": [ 29.029919, 41.035824 ],
+    "Active": true
+  },
+  {
+    "Id": "7778f74b-4b6a-47ad-9e63-6d1dbd9eaca4",
+    "Name": "Akat Mah.",
+    "Location": [ 29.022446, 41.08254 ],
+    "Active": true
+  },
+  {
+    "Id": "777aa149-b548-4269-98ee-5fa507b121ec",
+    "Name": "Meşrutiyet Mh.",
+    "Location": [ 29.5627925, 41.1595193 ],
+    "Active": true
+  },
+  {
+    "Id": "777bc32c-2b93-495f-9ff7-fad876e1b184",
+    "Name": "Mimar Hayrettin Mah.",
+    "Location": [ 28.967079, 41.006956 ],
+    "Active": true
+  },
+  {
+    "Id": "779d1480-1440-46ca-bb01-1f8a7d5467b8",
+    "Name": "Çayırdere Mh.",
+    "Location": [ 28.1429889, 41.2811025 ],
+    "Active": true
+  },
+  {
+    "Id": "77b3b97d-8d91-4b37-b95d-4635d84a6ab7",
+    "Name": "Çamlıbahçe Mh.",
+    "Location": [ 29.084062, 41.145063 ],
+    "Active": true
+  },
+  {
+    "Id": "77b4eb40-0bc0-4034-b784-afe3b23f4fdb",
+    "Name": "İncirtepe Mh.",
+    "Location": [ 28.688795, 41.022868 ],
+    "Active": true
+  },
+  {
+    "Id": "77d76e59-acc0-4c6a-bd7e-47c194489c88",
+    "Name": "Mimar Sinan Mah.",
+    "Location": [ 29.075906, 40.997819 ],
+    "Active": true
+  },
+  {
+    "Id": "78187750-a58e-4aa2-b398-c9db930b70de",
+    "Name": "Seyitnizam Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "781e948d-51da-4a53-8ee7-affbf3b076e7",
+    "Name": "Güzeltepe Mh.",
+    "Location": [ 28.950196, 41.076227 ],
+    "Active": true
+  },
+  {
+    "Id": "782a8cf7-cc7b-454a-90f0-f9a7a464ed27",
+    "Name": "Selimiye Mah.",
+    "Location": [ 29.016165, 41.010875 ],
+    "Active": true
+  },
+  {
+    "Id": "78ea8394-ba70-4508-a6d2-3f3638e38209",
+    "Name": "Mimar Sinan Mh.",
+    "Location": [ 28.92872, 41.004033 ],
+    "Active": true
+  },
+  {
+    "Id": "78efba67-acfa-4d1e-8ed9-48470c3a24d9",
+    "Name": "İnönü Mh.",
+    "Location": [ 28.853892, 41.031477 ],
+    "Active": true
+  },
+  {
+    "Id": "79c6dd46-bcef-46b0-92cc-7d80d0cc7d4b",
+    "Name": "Örnek Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "79ecec90-3c93-4eb8-bda7-337de090c9ec",
+    "Name": "Şahkulu Mh.",
+    "Location": [ 28.973896, 41.02712 ],
+    "Active": true
+  },
+  {
+    "Id": "7a5fb892-e4f3-435d-8e60-8b9c43cbf898",
+    "Name": "Bekirli Köyü",
+    "Location": [ 28.3008964, 41.225182 ],
+    "Active": true
+  },
+  {
+    "Id": "7a81eb39-5823-409f-bfbe-ae80188843d3",
+    "Name": "Beyciler Köyü",
+    "Location": [ 28.117001, 41.238689 ],
+    "Active": true
+  },
+  {
+    "Id": "7a95e040-1fd5-4e9e-867d-db4eb9122ac2",
+    "Name": "Rasimpaşa Mh.",
+    "Location": [ 29.030506, 40.994514 ],
+    "Active": true
+  },
+  {
+    "Id": "7ab4294e-3611-41cc-904e-48a23ecffd49",
+    "Name": "Fatih Mah.",
+    "Location": [ 29.2718689, 40.9555986 ],
+    "Active": true
+  },
+  {
+    "Id": "7ac2b763-6f67-4efb-b56a-b143ab276147",
+    "Name": "Katip Kasım Mh.",
+    "Location": [ 28.9573108, 41.0052779 ],
+    "Active": true
+  },
+  {
+    "Id": "7b51117a-f915-46e2-80c4-97c8a5ecb846",
+    "Name": "Yenidoğan Mh.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "7b593223-b87b-4445-a191-34ebdb4b94aa",
+    "Name": "Hoca Gıyasettin Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "7b842d10-e095-4587-8f18-65c17d5a5adb",
+    "Name": "Ziya Gökalp Mh.",
+    "Location": [ 28.812551, 41.077895 ],
+    "Active": true
+  },
+  {
+    "Id": "7bdee392-f8e0-43b1-b254-7012114ed8f9",
+    "Name": "Kurtköy Mh.",
+    "Location": [ 29.275196, 40.895046 ],
+    "Active": true
+  },
+  {
+    "Id": "7be80808-7a80-4a65-8a46-9838d318aaeb",
+    "Name": "Mehmet Akif Mah.",
+    "Location": [ 28.8065345, 41.0576375 ],
+    "Active": true
+  },
+  {
+    "Id": "7c11cfb7-260e-4c12-8fbb-6ee77f021eed",
+    "Name": "Gümüşyaka Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "7c24cfe0-cd8f-4b87-8f93-9d07b1dd5a42",
+    "Name": "Yaka Köyü",
+    "Location": [ 29.6490233, 40.9952995 ],
+    "Active": true
+  },
+  {
+    "Id": "7cde1d30-2881-41ad-8db5-25b547a7f76b",
+    "Name": "Beştelsiz Mh.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "7d0e4d6c-a19b-4c58-8f7c-eb7b95202354",
+    "Name": "Şerifali Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "7d77fb73-727b-4647-8f3b-08bd0fe7b6d4",
+    "Name": "Hırka-i Şerif Mh.",
+    "Location": [ 29.0149615, 41.011394 ],
+    "Active": true
+  },
+  {
+    "Id": "7dca12b5-f493-4dd2-9420-108be6f2fd85",
+    "Name": "Şahkulu Mh.",
+    "Location": [ 28.973896, 41.02712 ],
+    "Active": true
+  },
+  {
+    "Id": "7e36ab9f-2561-4a47-afb0-b0b6827f3df2",
+    "Name": "Kozyatağı Mh.",
+    "Location": [ 29.097034, 40.966326 ],
+    "Active": true
+  },
+  {
+    "Id": "7e4ecfd7-f071-4a91-b2cb-41718bab91e8",
+    "Name": "Esentepe Mah.",
+    "Location": [ 29.188555, 40.90469 ],
+    "Active": true
+  },
+  {
+    "Id": "7e58751e-3deb-4378-92e5-e9c352cfc039",
+    "Name": "Hadımköy Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "7e8c4451-0fa7-46d0-848d-2768102cbf75",
+    "Name": "Halıcıoğlu Mh.",
+    "Location": [ 28.949178, 41.050578 ],
+    "Active": true
+  },
+  {
+    "Id": "7ea7bd47-c701-4539-9906-dcab2f2e2005",
+    "Name": "Menderes Mah.",
+    "Location": [ 28.911992, 41.057794 ],
+    "Active": true
+  },
+  {
+    "Id": "7f13cb16-277d-4ed3-9729-b365f60055b8",
+    "Name": "Göztepe Mh.",
+    "Location": [ 28.836328, 41.059411 ],
+    "Active": true
+  },
+  {
+    "Id": "7f1dec0f-a4d6-48ca-9ed3-9c374a51de47",
+    "Name": "Taşdelen Mh.",
+    "Location": [ 29.2238566, 41.0270762 ],
+    "Active": true
+  },
+  {
+    "Id": "7f5b3c01-2ebc-4ca1-a425-f25623a11711",
+    "Name": "İsmetpaşa Mh.",
+    "Location": [ 28.858082, 41.109786 ],
+    "Active": true
+  },
+  {
+    "Id": "7f68d73c-2deb-4e14-b1e3-0777937fa781",
+    "Name": "Pınar Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "7f81e83a-c9e1-4b26-8ce4-e3c83c0d91df",
+    "Name": "Ardıçlı Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "7f992aab-15a9-41ef-9472-0eb68b159f7f",
+    "Name": "Atakent Mah.",
+    "Location": [ 29.104506, 41.016878 ],
+    "Active": true
+  },
+  {
+    "Id": "7fe49859-4968-4baf-aec4-300f4267aa23",
+    "Name": "Kaşıkadası",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "8025bdd5-e21f-49fa-b3ca-419fcb293d91",
+    "Name": "Sütlüce Mh.",
+    "Location": [ 28.946778, 41.051953 ],
+    "Active": true
+  },
+  {
+    "Id": "80aafed5-ae25-455f-b648-b8c84dc63e56",
+    "Name": "Merkez Mah.",
+    "Location": [ 29.084062, 41.145063 ],
+    "Active": true
+  },
+  {
+    "Id": "80af355f-b7cf-4cb8-9868-99f74aa139fc",
+    "Name": "İslambey Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "81385148-2782-4216-8e21-daad58fe3b64",
+    "Name": "Erenköy Mh.",
+    "Location": [ 29.073671, 40.977508 ],
+    "Active": true
+  },
+  {
+    "Id": "818618a4-41fb-4f88-b86f-f3bff4c34d04",
+    "Name": "İnönü Mh.",
+    "Location": [ 28.688923, 41.025859 ],
+    "Active": true
+  },
+  {
+    "Id": "819326fb-65e2-4f9b-94ba-9011da1a156d",
+    "Name": "Ortaköy Mh.",
+    "Location": [ 29.018873, 41.059391 ],
+    "Active": true
+  },
+  {
+    "Id": "81adcd5d-c578-4394-a2df-dd3b09f59296",
+    "Name": "Katip Mustafa Çelebi Mh.",
+    "Location": [ 28.9703304, 41.0382864 ],
+    "Active": true
+  },
+  {
+    "Id": "81ca20bf-461e-43e6-8f3d-2deee088469b",
+    "Name": "Işıklar Mh.",
+    "Location": [ 28.8483333, 41.055 ],
+    "Active": true
+  },
+  {
+    "Id": "81cb8eee-05b5-4525-abfd-6861ffb6f4cc",
+    "Name": "Baltalimanı Mh.",
+    "Location": [ 29.049341, 41.096928 ],
+    "Active": true
+  },
+  {
+    "Id": "823969f0-e8bd-4a3a-8935-355f0925056b",
+    "Name": "Balaban Köyü",
+    "Location": [ 29.003742, 41.070314 ],
+    "Active": true
+  },
+  {
+    "Id": "823e80f9-b213-4c1a-b1a4-24e1c2669b12",
+    "Name": "Hasanpaşa Mh.",
+    "Location": [ 29.2669438, 40.9611123 ],
+    "Active": true
+  },
+  {
+    "Id": "825808ba-e60d-4d79-a5ca-d6df73aba9d9",
+    "Name": "100. Yıl Mh.",
+    "Location": [ 28.852853, 41.064334 ],
+    "Active": true
+  },
+  {
+    "Id": "8271c528-04c4-4391-9096-ebcfeb6a9162",
+    "Name": "Rumeli Hisarı Mh.",
+    "Location": [ 29.037471, 41.103254 ],
+    "Active": true
+  },
+  {
+    "Id": "829a325a-6afd-4fce-8fc7-ae2037aef447",
+    "Name": "Bostan Mah.",
+    "Location": [ 28.975031, 41.037876 ],
+    "Active": true
+  },
+  {
+    "Id": "82d0b23b-d350-4e89-bbfb-287a2a7ca9b3",
+    "Name": "Bozkurt Mah.",
+    "Location": [ 28.984048, 41.05131 ],
+    "Active": true
+  },
+  {
+    "Id": "83205151-e2b5-45e3-8f35-7e5620374b2c",
+    "Name": "Şehit Muhtar Mh.",
+    "Location": [ 28.9832579, 41.0393103 ],
+    "Active": true
+  },
+  {
+    "Id": "8331a6a5-5593-4195-beb0-9c7712bcb404",
+    "Name": "Topkapı Mh.",
+    "Location": [ 28.9841561, 41.0119056 ],
+    "Active": true
+  },
+  {
+    "Id": "8348d9b1-0b30-4d5e-93e3-033accf73659",
+    "Name": "Anadolu Mah.",
+    "Location": [ 29.295, 40.842 ],
+    "Active": true
+  },
+  {
+    "Id": "83515839-3916-4117-8283-1c217c794061",
+    "Name": "Zerzavatçı Mh.",
+    "Location": [ 29.149439, 41.12139 ],
+    "Active": true
+  },
+  {
+    "Id": "8394ddde-9e9b-4105-8c9a-6d34a099f250",
+    "Name": "Tuna Mah.",
+    "Location": [ 28.906067, 41.036195 ],
+    "Active": true
+  },
+  {
+    "Id": "84d15680-bfb2-423e-ab28-85971ae177a1",
+    "Name": "Hacı Kadın Mh.",
+    "Location": [ 28.958813, 41.017069 ],
+    "Active": true
+  },
+  {
+    "Id": "8501d2cc-c29a-4600-b786-ec430e4ef498",
+    "Name": "Gökçeali Mh.",
+    "Location": [ 28.4338345, 41.2023517 ],
+    "Active": true
+  },
+  {
+    "Id": "85c346c2-f2fe-4914-a6da-c65f6d6fc121",
+    "Name": "Ömer Avni Mh.",
+    "Location": [ 28.992582, 41.035285 ],
+    "Active": true
+  },
+  {
+    "Id": "85d5fce2-9b9a-42f1-a70c-0a1063c709d1",
+    "Name": "Kaleiçi Mh.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "85faaa5e-c135-4e3c-9e4b-1b5fb6b5beb1",
+    "Name": "Aksaray Mah.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "86076da4-7392-4815-9626-d88d52de1da3",
+    "Name": "Poligon Mah.",
+    "Location": [ 29.040985, 41.116554 ],
+    "Active": true
+  },
+  {
+    "Id": "860e7b7d-3dbb-4616-82f1-78d24b4bbece",
+    "Name": "Örnek Mh.",
+    "Location": [ 29.074921, 40.998427 ],
+    "Active": true
+  },
+  {
+    "Id": "86733db4-5e54-43f2-9612-8e4df32d9fae",
+    "Name": "İzzet Paşa Mh.",
+    "Location": [ 28.996773, 41.053177 ],
+    "Active": true
+  },
+  {
+    "Id": "868fb7c7-adc3-4f72-9a64-21928b1cfcca",
+    "Name": "Gülbahar Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "86d229de-6a29-40c1-a199-c524819d84e5",
+    "Name": "Turgut Reis Mah.",
+    "Location": [ 29.278721, 40.965235 ],
+    "Active": true
+  },
+  {
+    "Id": "86d270c3-847d-4cf4-a5b9-4904a4feec6c",
+    "Name": "Kamer Hatun Mah.",
+    "Location": [ 28.976878, 41.034894 ],
+    "Active": true
+  },
+  {
+    "Id": "87025c13-edcd-48d1-945b-a5b2dd68d0f4",
+    "Name": "Sanayi Mah.",
+    "Location": [ 29.275196, 40.895046 ],
+    "Active": true
+  },
+  {
+    "Id": "872f560f-1bbe-4b86-a59d-309cf8e16e4f",
+    "Name": "Caferağa Mh.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "8840bad2-0943-4fbc-ab28-a55f0d71f8c5",
+    "Name": "Topkapı Mh.",
+    "Location": [ 28.9841561, 41.0119056 ],
+    "Active": true
+  },
+  {
+    "Id": "88b2ad39-23b8-4534-ba76-307990b840f0",
+    "Name": "Sırapınar Mh.",
+    "Location": [ 29.3288918, 41.1022837 ],
+    "Active": true
+  },
+  {
+    "Id": "88eb72e5-b8c1-436a-a93e-2a9f806b5c36",
+    "Name": "Cevizli Mah.",
+    "Location": [ 29.16866, 40.911605 ],
+    "Active": true
+  },
+  {
+    "Id": "891b695c-5a90-477f-bbab-f07e024cb3ea",
+    "Name": "Dumlupınar Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "891e0a68-b5ac-4d71-a665-d2cb1daba2b4",
+    "Name": "Zümrütevler Mh.",
+    "Location": [ 29.146345, 40.93593 ],
+    "Active": true
+  },
+  {
+    "Id": "89324150-62a9-4043-a500-ead9f9966ce3",
+    "Name": "Pazariçi Mh.",
+    "Location": [ 28.933161, 41.057329 ],
+    "Active": true
+  },
+  {
+    "Id": "89552f81-5345-421b-8aac-1ea924410f1a",
+    "Name": "Darüşşafaka Mh.",
+    "Location": [ 29.035033, 41.124595 ],
+    "Active": true
+  },
+  {
+    "Id": "89c2a800-c145-4004-ab6b-25af11010548",
+    "Name": "Paşabahçe Mh.",
+    "Location": [ 29.093989, 41.092118 ],
+    "Active": true
+  },
+  {
+    "Id": "89e66e9d-0971-48fe-af43-178bd7656f08",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 28.992177, 41.058828 ],
+    "Active": true
+  },
+  {
+    "Id": "8a48bdde-cba4-4349-8d2c-27202bca4aad",
+    "Name": "Paşaköy Mh.",
+    "Location": [ 29.2742064, 41.0157941 ],
+    "Active": true
+  },
+  {
+    "Id": "8a4adda7-f7b5-4ccc-9406-ce3f09e7853a",
+    "Name": "Yeşilkent Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "8b1ae6d9-b9c3-48fa-8f06-25c580ac9792",
+    "Name": "Çınar Mh.",
+    "Location": [ 28.859845, 41.035473 ],
+    "Active": true
+  },
+  {
+    "Id": "8b1c2fef-b5de-4ce2-b989-6ac4f9d5f4cc",
+    "Name": "Ortaköy Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "8b27be94-7194-47ff-8aed-28e3ae5795bd",
+    "Name": "Feyzullah Mah.",
+    "Location": [ 29.127142, 40.927179 ],
+    "Active": true
+  },
+  {
+    "Id": "8b89b8a0-e82e-4acf-8bd0-dfc14faae7c9",
+    "Name": "Esenkent Mah.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "8bd68162-f300-4172-8962-1e759d5e4389",
+    "Name": "Yeni Mah.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "8cb3b8d6-4883-4ab0-8df0-eed87eea8e2d",
+    "Name": "Kurna Köyü",
+    "Location": [ 29.338102, 40.9563894 ],
+    "Active": true
+  },
+  {
+    "Id": "8cb8e645-7eb3-4699-a155-6bfe855d3137",
+    "Name": "Yayla Mah.",
+    "Location": [ 28.9764636, 41.0495737 ],
+    "Active": true
+  },
+  {
+    "Id": "8d08b91a-f3f0-4e1e-adcb-2ed5eaefef0c",
+    "Name": "Mustafa Kemal Mah.",
+    "Location": [ 29.09459, 41.003492 ],
+    "Active": true
+  },
+  {
+    "Id": "8d9cad17-e05d-4285-8f0b-108a88f16d38",
+    "Name": "Orhangazi Mah.",
+    "Location": [ 29.2870241, 40.8663806 ],
+    "Active": true
+  },
+  {
+    "Id": "8daa1c77-8b3e-40bb-ba04-863e13e26690",
+    "Name": "Çifte Havuzlar Mh.",
+    "Location": [ 28.924683, 41.041461 ],
+    "Active": true
+  },
+  {
+    "Id": "8dc5b08d-a05c-4e89-aafc-6c8231e5c2bc",
+    "Name": "Kazım Karabekir Mh.",
+    "Location": [ 28.872344, 41.046529 ],
+    "Active": true
+  },
+  {
+    "Id": "8e1a2c35-cdbf-462f-a881-740642ac2e19",
+    "Name": "Yayla Mah.",
+    "Location": [ 28.9764636, 41.0495737 ],
+    "Active": true
+  },
+  {
+    "Id": "8e40720f-d131-4acb-a894-34712e286229",
+    "Name": "Bahçeşehir 2. Kısım Mh.",
+    "Location": [ 28.678419, 41.066108 ],
+    "Active": true
+  },
+  {
+    "Id": "8e45eed5-10c6-4150-8366-ceaf9e535ec4",
+    "Name": "Tarabya Mah.",
+    "Location": [ 29.0385466, 41.1814742 ],
+    "Active": true
+  },
+  {
+    "Id": "8e5770da-c04e-4566-abae-59417ffa0477",
+    "Name": "Ataköy 2-5-6. Kısım Mh.",
+    "Location": [ 28.846767, 40.988029 ],
+    "Active": true
+  },
+  {
+    "Id": "8e882500-e924-43f4-a1b8-6e458d8a7f03",
+    "Name": "Hamidiye Mah.",
+    "Location": [ 29.223258, 40.996726 ],
+    "Active": true
+  },
+  {
+    "Id": "8ee3995a-2643-45ad-b97a-e4858c9b065b",
+    "Name": "50. Yıl Mh.",
+    "Location": [ 28.868648, 41.091811 ],
+    "Active": true
+  },
+  {
+    "Id": "8f1f6192-b67f-412e-a2c2-46ab49ce6471",
+    "Name": "Ziya Gökalp Mh.",
+    "Location": [ 28.812551, 41.077895 ],
+    "Active": true
+  },
+  {
+    "Id": "8f5644c7-3ca6-4b7f-805a-0497d3108789",
+    "Name": "Muratpaşa Mh.",
+    "Location": [ 28.947519, 41.0106985 ],
+    "Active": true
+  },
+  {
+    "Id": "90389a0d-75e3-4574-a33c-e570590fd657",
+    "Name": "Reşitpaşa Mh.",
+    "Location": [ 29.04765, 41.103956 ],
+    "Active": true
+  },
+  {
+    "Id": "9072a0fd-11ba-4d4c-9bd7-c12d1b7f737c",
+    "Name": "Atikali Mah.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "907f26cd-1eae-4c51-bacb-9d8ddba3dc3d",
+    "Name": "Gümüşpala Mh.",
+    "Location": [ 28.7113734, 40.9881707 ],
+    "Active": true
+  },
+  {
+    "Id": "90859789-9a61-4e3c-94e5-961e1e1b9f37",
+    "Name": "Aziz Mahmut Hüdayi Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "90c5c27d-bb0c-4a4d-bc5e-f13908b3cba6",
+    "Name": "Emirgan Mah.",
+    "Location": [ 29.056358, 41.104911 ],
+    "Active": true
+  },
+  {
+    "Id": "90e27897-6ae5-4a34-a6bc-0b92de0ab544",
+    "Name": "Osmangazi Mah.",
+    "Location": [ 29.232724, 40.98332 ],
+    "Active": true
+  },
+  {
+    "Id": "912f09c6-d837-4b40-b462-76e9a16b8ee8",
+    "Name": "Baklalı Mh.",
+    "Location": [ 28.6512728, 41.2606164 ],
+    "Active": true
+  },
+  {
+    "Id": "9143e1bf-6aed-47db-b072-31c98aa4d0cd",
+    "Name": "Hırka-i Şerif Mh.",
+    "Location": [ 29.0149615, 41.011394 ],
+    "Active": true
+  },
+  {
+    "Id": "91778d1c-c99b-4b2d-8397-53079c3db061",
+    "Name": "Deliklikaya Mah.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "91c45bb2-2a63-4367-86db-9cdfcbe1ade0",
+    "Name": "Esenyalı Mh.",
+    "Location": [ 29.258135, 40.879326 ],
+    "Active": true
+  },
+  {
+    "Id": "922aa4d7-89e9-4df8-b82c-6fd10d51baac",
+    "Name": "Oruçreis Mh.",
+    "Location": [ 28.890476, 41.065349 ],
+    "Active": true
+  },
+  {
+    "Id": "928c6ae3-05bd-4d21-b0df-63e303e01ec4",
+    "Name": "Kısıklı Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "92faa26b-b8af-40de-930c-1613d2a3353e",
+    "Name": "Yenişehir Mh.",
+    "Location": [ 29.301901, 40.924857 ],
+    "Active": true
+  },
+  {
+    "Id": "9300f22c-0b27-4bea-8de0-6dfc555bf8f2",
+    "Name": "Emniyet Evleri Mh.",
+    "Location": [ 29.00612, 41.087478 ],
+    "Active": true
+  },
+  {
+    "Id": "932d81b7-fcb0-40a2-ae16-b5b8bb301ae0",
+    "Name": "Yakacık Yeni Mh.",
+    "Location": [ 29.244259, 40.88973 ],
+    "Active": true
+  },
+  {
+    "Id": "933388f8-e98b-4bbc-973d-9192d39b837c",
+    "Name": "Arnavutköy Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "93eca978-6bee-458e-b832-1b37f26a4f77",
+    "Name": "Esentepe Mah.",
+    "Location": [ 28.9400676, 41.0683852 ],
+    "Active": true
+  },
+  {
+    "Id": "93ecfec3-4980-4c4c-aa6d-3a22695cb83e",
+    "Name": "Suadiye Mah.",
+    "Location": [ 29.084983, 40.960262 ],
+    "Active": true
+  },
+  {
+    "Id": "93fa6322-3a7a-4496-bb97-c42f543cc007",
+    "Name": "Ferhatpaşa Mh.",
+    "Location": [ 29.172007, 40.986861 ],
+    "Active": true
+  },
+  {
+    "Id": "9476a536-5733-49bf-a916-d7f17edac7bf",
+    "Name": "Rasimpaşa Mh.",
+    "Location": [ 29.030506, 40.994514 ],
+    "Active": true
+  },
+  {
+    "Id": "948569c2-2002-46bb-a723-2674cca536dc",
+    "Name": "Altıntepsi Mh.",
+    "Location": [ 28.902778, 41.039243 ],
+    "Active": true
+  },
+  {
+    "Id": "949b3009-26de-4a51-a7ce-4759bb2ef7fb",
+    "Name": "Mecidiyeköy Mh.",
+    "Location": [ 28.999415, 41.071354 ],
+    "Active": true
+  },
+  {
+    "Id": "949d4aec-e58a-4a07-bf9b-f29b17b0df08",
+    "Name": "Kısıklı Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "94e4818c-e6cd-456a-b23e-81bd6474a712",
+    "Name": "Yenibosna Merkez Mah.",
+    "Location": [ 28.823203, 41.014431 ],
+    "Active": true
+  },
+  {
+    "Id": "95018f32-abd4-4a53-a17e-ecb7aaa64af2",
+    "Name": "Akıncılar Mh.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "95256d3f-545f-42ce-95dd-4b85d07bf355",
+    "Name": "Güneşli Mh.",
+    "Location": [ 28.832257, 41.03449 ],
+    "Active": true
+  },
+  {
+    "Id": "9526405e-8bfe-429c-9d16-35edc5a043f6",
+    "Name": "Yıldıztabya Mh.",
+    "Location": [ 28.9296625, 41.0630939 ],
+    "Active": true
+  },
+  {
+    "Id": "95c4daa1-eb66-4625-a904-23bc23b63396",
+    "Name": "Yıldırım Mh.",
+    "Location": [ 28.891878, 41.0635811 ],
+    "Active": true
+  },
+  {
+    "Id": "95cbfa37-391e-46e3-a2c3-5c85d1982d68",
+    "Name": "Osmanköy Mh.",
+    "Location": [ 29.7313901, 41.0818638 ],
+    "Active": true
+  },
+  {
+    "Id": "95f1e441-c209-4dea-ab2d-1223e8f70254",
+    "Name": "Yenişehir Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "9616556b-537f-4cfd-8b65-77c1cc59e162",
+    "Name": "Çilingir Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "961692a6-9082-4860-8f9f-db38540d4abd",
+    "Name": "İcadiye Mh.",
+    "Location": [ 29.033833, 41.027084 ],
+    "Active": true
+  },
+  {
+    "Id": "962f3e3e-0bb6-4db5-addf-07f3ae149fea",
+    "Name": "Ferhatpaşa Mh.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "9631bdde-4e09-4c42-bbe0-1d7026b7dd3e",
+    "Name": "Dumlupınar Mh.",
+    "Location": [ 29.061397, 40.988589 ],
+    "Active": true
+  },
+  {
+    "Id": "96ae03a1-2406-4568-8cc5-c56c603ffa01",
+    "Name": "Kılıçlı Mh.",
+    "Location": [ 29.3003416, 41.1530017 ],
+    "Active": true
+  },
+  {
+    "Id": "96c844af-20d6-4776-9820-dcdbcd5345c6",
+    "Name": "Küçükyalı Mh.",
+    "Location": [ 29.1068928, 40.9476227 ],
+    "Active": true
+  },
+  {
+    "Id": "96f830c6-9296-4983-ab44-272523470a54",
+    "Name": "Soğuksu Mh.",
+    "Location": [ 29.0941246, 41.0922621 ],
+    "Active": true
+  },
+  {
+    "Id": "971003d1-41d7-40b3-83fd-56a5770c3020",
+    "Name": "Yahya Kemal Mah.",
+    "Location": [ 28.987746, 41.084911 ],
+    "Active": true
+  },
+  {
+    "Id": "97468c0f-936b-4973-9c6a-9f55230ac53f",
+    "Name": "Hırka-i Şerif Mh.",
+    "Location": [ 29.0149615, 41.011394 ],
+    "Active": true
+  },
+  {
+    "Id": "97fc342b-0e24-4e78-b7f4-7ccb04cf5c0f",
+    "Name": "Bulgurlu Mah.",
+    "Location": [ 29.075523, 41.0165 ],
+    "Active": true
+  },
+  {
+    "Id": "97fdbbd6-86e0-4090-86ad-85d31ec780d6",
+    "Name": "Nisbetiye Mh.",
+    "Location": [ 29.0354345, 41.0608337 ],
+    "Active": true
+  },
+  {
+    "Id": "982a6882-ff3d-4feb-80b2-f4524dd9bc31",
+    "Name": "Yahya Kahya Mah.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "9885fa0c-7a68-41b2-acaf-227b5db10ef7",
+    "Name": "Yukarı Mh.",
+    "Location": [ 29.184926, 40.890235 ],
+    "Active": true
+  },
+  {
+    "Id": "988fdfb3-9275-4d0f-bab4-a72c000c10c3",
+    "Name": "Demirtaş Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "98b4fac9-0314-48af-bd9e-272a35022011",
+    "Name": "Çayırbaşı Mh.",
+    "Location": [ 29.6127778, 41.1763889 ],
+    "Active": true
+  },
+  {
+    "Id": "98f481f5-7979-4708-ac92-9149c17c04c3",
+    "Name": "Satmazlı Mh.",
+    "Location": [ 29.5581697, 41.1353322 ],
+    "Active": true
+  },
+  {
+    "Id": "990ddfc6-9bf5-4030-9236-a34786027767",
+    "Name": "Arnavutköy Merkez Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "994b1088-8b68-4651-acee-41019f032b2b",
+    "Name": "Süleymaniye Mh.",
+    "Location": [ 28.961864, 41.015111 ],
+    "Active": true
+  },
+  {
+    "Id": "9987736f-e11a-4f4e-8942-2b5e563ee58e",
+    "Name": "Elmalıkent Mh.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "99dfe139-efbe-47a3-ab15-bbc7526e1704",
+    "Name": "Yenidoğan Mh.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "99e01dea-2fd2-4b0a-b4c8-ae4430f6413a",
+    "Name": "Yenişehir Mh.",
+    "Location": [ 29.1166667, 40.9833333 ],
+    "Active": true
+  },
+  {
+    "Id": "9a53a75e-1727-4b29-b43d-2af3beed9633",
+    "Name": "Barbaros Hayrettin Paşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "9a76c557-0213-4d68-86ec-ebdf15f7c06b",
+    "Name": "Ali Kuşçu Mh.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "9aa0996f-9edc-45f0-8554-7345a5e66bd5",
+    "Name": "Yeniköy Mh.",
+    "Location": [ 28.7209122, 41.3180664 ],
+    "Active": true
+  },
+  {
+    "Id": "9afb6088-0ca0-4df5-ba89-8bf6842d29ac",
+    "Name": "Battalgazi Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "9b3b310e-1b85-4bb3-89bf-141b831b6bdb",
+    "Name": "Arap Cami Mah.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "9ba5b574-e759-4564-b43e-a2c05bf69bc1",
+    "Name": "Kemer Mah.",
+    "Location": [ 28.907133, 41.020327 ],
+    "Active": true
+  },
+  {
+    "Id": "9c23c204-4c67-45e9-b36d-245ab4bc7adf",
+    "Name": "Caferağa Mh.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "9c443277-2550-4346-8977-cfe0fe94dc07",
+    "Name": "Adem Yavuz Mah.",
+    "Location": [ 29.149096, 41.015342 ],
+    "Active": true
+  },
+  {
+    "Id": "9c70b486-a062-466e-80fa-56e15deea7dc",
+    "Name": "Adnan Menderes Mah.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "9ceee1b0-4653-4496-900d-13db0304e853",
+    "Name": "Sayalar Köyü",
+    "Location": [ 28.1751669, 41.3189037 ],
+    "Active": true
+  },
+  {
+    "Id": "9d164610-79f8-4c2f-a496-0f67c63cc50c",
+    "Name": "İstasyon Mh.",
+    "Location": [ 28.776038, 41.028163 ],
+    "Active": true
+  },
+  {
+    "Id": "9d1d68ec-df51-410f-923c-8ed8b735a88c",
+    "Name": "Eski Habipler Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "9d8b930a-85d0-4c0d-b7fd-9d585aa86795",
+    "Name": "Yayla Mah.",
+    "Location": [ 29.308264, 40.831614 ],
+    "Active": true
+  },
+  {
+    "Id": "9dbaaa0c-8ec4-453d-b948-597c4f9553bd",
+    "Name": "Göztepe Mh.",
+    "Location": [ 29.064481, 40.979193 ],
+    "Active": true
+  },
+  {
+    "Id": "9e652174-cc45-454a-b54a-f3f2969bf3b5",
+    "Name": "Görele Mh.",
+    "Location": [ 29.146333, 41.1113184 ],
+    "Active": true
+  },
+  {
+    "Id": "9ec75e4e-462c-4a5e-bc65-b542f5c00b3f",
+    "Name": "Kalenderhane Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "9ef663cf-ac3b-4da5-8808-fa00fb68aede",
+    "Name": "Akören Mh.",
+    "Location": [ 28.3330449, 41.1980483 ],
+    "Active": true
+  },
+  {
+    "Id": "9f131629-8a37-480d-a8b4-b6f8f51ba1fa",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 29.032783, 41.144899 ],
+    "Active": true
+  },
+  {
+    "Id": "9f9adee2-86fe-4064-8219-c5c57b9d5fb2",
+    "Name": "Saadetdere Mah.",
+    "Location": [ 28.695722, 41.009205 ],
+    "Active": true
+  },
+  {
+    "Id": "9fa28f57-d193-4941-837a-1070d10f52a5",
+    "Name": "Ortabayır Mh.",
+    "Location": [ 29.003525, 41.077645 ],
+    "Active": true
+  },
+  {
+    "Id": "a038cb5a-7f32-4bb1-bc48-09a56ca6f787",
+    "Name": "Esenevler Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "a075c9bd-b20b-47fe-a8b1-ac48f9abeac3",
+    "Name": "Mareşal Çakmak Mh.",
+    "Location": [ 28.865147, 41.0145495 ],
+    "Active": true
+  },
+  {
+    "Id": "a083aff6-cb35-4fe8-9b0b-dfb6d7d0f30d",
+    "Name": "Aydınlar Mh.",
+    "Location": [ 28.20149, 41.3744068 ],
+    "Active": true
+  },
+  {
+    "Id": "a0a841ef-03e3-40a0-a94d-fc5ee8b61b05",
+    "Name": "Göztepe Mh.",
+    "Location": [ 29.064481, 40.979193 ],
+    "Active": true
+  },
+  {
+    "Id": "a0f08a6b-a0b3-49a7-a4e1-46c4b4aa510e",
+    "Name": "Kuruçeşme Mh.",
+    "Location": [ 29.0354345, 41.0608337 ],
+    "Active": true
+  },
+  {
+    "Id": "a193deb6-52de-4000-befd-dad279fbf3a8",
+    "Name": "Demirciköy Mh.",
+    "Location": [ 29.040137, 41.203932 ],
+    "Active": true
+  },
+  {
+    "Id": "a1ecd06f-8556-4794-8638-1311b8607d94",
+    "Name": "Şifa Mh.",
+    "Location": [ 29.3538, 40.8235 ],
+    "Active": true
+  },
+  {
+    "Id": "a21042e3-16d7-4b5f-a0ae-a85863710add",
+    "Name": "Fatih Sultan Mehmet Mah.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "a2282887-9895-41b2-ada4-4ee584a0c46d",
+    "Name": "Gümüşsuyu Mh.",
+    "Location": [ 29.1009962, 41.1268122 ],
+    "Active": true
+  },
+  {
+    "Id": "a2b45e33-19e0-4235-91c8-65a07f1aea64",
+    "Name": "Akşemsettin Mh.",
+    "Location": [ 28.922757, 41.08432 ],
+    "Active": true
+  },
+  {
+    "Id": "a36b487f-b9de-4fba-84ab-6a5fed1a0f34",
+    "Name": "Kazım Karabekir Mh.",
+    "Location": [ 28.844486, 41.028567 ],
+    "Active": true
+  },
+  {
+    "Id": "a3bfe6f7-3590-4a1d-b44d-d6ca44094d14",
+    "Name": "Eyüp Merkez Mah.",
+    "Location": [ 28.889337, 41.180769 ],
+    "Active": true
+  },
+  {
+    "Id": "a4425c35-d491-4bd7-86e3-3648a46a0736",
+    "Name": "Nine Hatun Mah.",
+    "Location": [ 28.882201, 41.035801 ],
+    "Active": true
+  },
+  {
+    "Id": "a489b92b-ad9c-4635-a0e9-27d287859e9d",
+    "Name": "Mehmet Akif Ersoy Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "a49500d4-2662-4bf4-984e-ecf76fa85945",
+    "Name": "Çamçeşme Mh.",
+    "Location": [ 29.244259, 40.88973 ],
+    "Active": true
+  },
+  {
+    "Id": "a4a0d978-4852-4f81-8e33-a08b4838fac9",
+    "Name": "Sururi Mah.",
+    "Location": [ 28.972423, 41.036772 ],
+    "Active": true
+  },
+  {
+    "Id": "a4c0a3a7-cab4-4804-afb4-01147866e62e",
+    "Name": "Nişancı Mh.",
+    "Location": [ 28.935638, 41.042394 ],
+    "Active": true
+  },
+  {
+    "Id": "a4c57d5a-f7b2-4106-a6eb-c0a751a10e08",
+    "Name": "İmrahor Mh.",
+    "Location": [ 28.999408, 41.071305 ],
+    "Active": true
+  },
+  {
+    "Id": "a541952b-dd44-4d0c-b932-d407dde2314c",
+    "Name": "Nuripaşa Mh.",
+    "Location": [ 28.900556, 40.9883095 ],
+    "Active": true
+  },
+  {
+    "Id": "a5b7e0da-c24e-498f-97a4-6dff3d5f54ff",
+    "Name": "Hüseyinağa Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "a5ca1217-fc21-43f4-b7b4-c2c946b7dc11",
+    "Name": "Balat Mah.",
+    "Location": [ 28.950117, 41.026899 ],
+    "Active": true
+  },
+  {
+    "Id": "a5caa929-943f-401f-8b7c-b5011b6cdadc",
+    "Name": "Yavuz Selim Mah.",
+    "Location": [ 28.846799, 41.035527 ],
+    "Active": true
+  },
+  {
+    "Id": "a5e675a6-8080-48e4-a150-6725cfaacfda",
+    "Name": "Fatih Silivri Mah.",
+    "Location": [ 27.983465, 41.284482 ],
+    "Active": true
+  },
+  {
+    "Id": "a6236b42-f537-467f-a09d-e9dbbf820a39",
+    "Name": "Kemankeş Karamustafa Paşa Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "a6243457-98a5-473c-83a0-31024ccb098b",
+    "Name": "Fenerbahçe Mh.",
+    "Location": [ 29.043517, 40.973969 ],
+    "Active": true
+  },
+  {
+    "Id": "a63118ec-249e-4b45-8a6b-e8d85433a314",
+    "Name": "Ergenekon Mah.",
+    "Location": [ 28.985044, 41.04682 ],
+    "Active": true
+  },
+  {
+    "Id": "a63f54a6-07b5-4e58-9caa-e912f35723f1",
+    "Name": "Gökmaşlı Mh.",
+    "Location": [ 29.8071978, 41.0974462 ],
+    "Active": true
+  },
+  {
+    "Id": "a6694aa9-3e7a-4625-a72d-29e5f0ef53d0",
+    "Name": "Gültepe Mh.",
+    "Location": [ 28.791559, 40.995523 ],
+    "Active": true
+  },
+  {
+    "Id": "a70ce64a-9955-418f-829b-de3c9043ea03",
+    "Name": "Şamlar Mh.",
+    "Location": [ 28.75773, 41.109019 ],
+    "Active": true
+  },
+  {
+    "Id": "a7ed6c9b-babc-4ca8-9019-23d2c46aa296",
+    "Name": "Cevatpaşa Mh.",
+    "Location": [ 28.913599, 41.058014 ],
+    "Active": true
+  },
+  {
+    "Id": "a7ee1da1-43b3-4bfa-9268-57e26a31a27a",
+    "Name": "İmrendere Mh.",
+    "Location": [ 29.5983888, 41.1402381 ],
+    "Active": true
+  },
+  {
+    "Id": "a8564b7c-b65a-429f-bed5-6f4a5c336fae",
+    "Name": "Alibahadır Mh.",
+    "Location": [ 29.2009468, 41.1817425 ],
+    "Active": true
+  },
+  {
+    "Id": "a8825ba3-abdf-4acd-ae77-24eee0de86b0",
+    "Name": "Yolçatı Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "a8898c18-e220-43f7-9874-c5ad0a6065a1",
+    "Name": "Kaynarca Mah.",
+    "Location": [ 29.260268, 40.874365 ],
+    "Active": true
+  },
+  {
+    "Id": "a92e4dd1-d189-4d09-a27a-b45a8eb8be95",
+    "Name": "Ayvansaray Mah.",
+    "Location": [ 28.9426145, 41.0388295 ],
+    "Active": true
+  },
+  {
+    "Id": "a92f8118-6211-4094-a150-ba6ead125d27",
+    "Name": "Pürtelaş Hasan Efendi Mh.",
+    "Location": [ 28.986581, 41.033382 ],
+    "Active": true
+  },
+  {
+    "Id": "a95aba9c-94b6-4c91-87ba-a275726bd48e",
+    "Name": "Haznedar Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "a96a8c8a-89be-4c6b-965c-09dfa8af400c",
+    "Name": "Kordonboyu Mah.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "a9dd1a2a-79db-4937-a256-c46c30aaa5f1",
+    "Name": "Seyyid Ömer Mh.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "a9dd5fe2-a255-44a7-b4fb-faacdf6ee9d5",
+    "Name": "Caferağa Mh.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "a9f58375-5e32-4e4c-b6fa-6d2592f1bc86",
+    "Name": "Polonezköy Mh.",
+    "Location": [ 29.15776, 41.115052 ],
+    "Active": true
+  },
+  {
+    "Id": "aa091d51-b82a-4915-8fb1-a6403d6f59c3",
+    "Name": "Ömer Avni Mh.",
+    "Location": [ 28.992582, 41.035285 ],
+    "Active": true
+  },
+  {
+    "Id": "aa36bdef-499c-427b-b117-2e0756900a11",
+    "Name": "Murat Reis Mah.",
+    "Location": [ 29.0301, 41.020202 ],
+    "Active": true
+  },
+  {
+    "Id": "aafeded4-ab8d-47cd-8729-377eff3872d3",
+    "Name": "Ataköy 7-8-9-10. Kısım Mh.",
+    "Location": [ 28.846767, 40.988029 ],
+    "Active": true
+  },
+  {
+    "Id": "abb36794-8130-4774-adf7-b8e1d41e5d53",
+    "Name": "Alibeyköy Mh.",
+    "Location": [ 28.927022, 41.096527 ],
+    "Active": true
+  },
+  {
+    "Id": "abd07db5-9c73-40da-a313-62a311738608",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 28.831444, 41.027954 ],
+    "Active": true
+  },
+  {
+    "Id": "abdd8b7b-c6ac-4afa-9b16-fd93b047c4ca",
+    "Name": "Osmangazi Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "abf11900-bf77-4ae6-b1b2-3cdd275d39e6",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 28.992177, 41.058828 ],
+    "Active": true
+  },
+  {
+    "Id": "ac02cb7b-b20a-4d21-b29e-a9a29ead8fb3",
+    "Name": "Tepeüstü Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ac73a625-6e00-4b5f-857c-51438a4149f8",
+    "Name": "Yeşilkent Mh.",
+    "Location": [ 28.7314618, 41.0153479 ],
+    "Active": true
+  },
+  {
+    "Id": "acc41da6-ed1e-4ead-ad94-ba9748623d28",
+    "Name": "Gümüşsuyu Mh.",
+    "Location": [ 28.9943, 41.038282 ],
+    "Active": true
+  },
+  {
+    "Id": "acc6393f-3359-4acd-bc94-63b4a8f67c4d",
+    "Name": "Cibali Mah.",
+    "Location": [ 28.956716, 41.024305 ],
+    "Active": true
+  },
+  {
+    "Id": "ad1d6a19-0cc7-4d0c-b683-b3d1e66961e4",
+    "Name": "Talatpaşa Mh.",
+    "Location": [ 28.6745976, 41.0209921 ],
+    "Active": true
+  },
+  {
+    "Id": "ad2f29d0-7402-4182-b414-8679df7187bc",
+    "Name": "Kızılca Mh.",
+    "Location": [ 29.5451357, 41.1575276 ],
+    "Active": true
+  },
+  {
+    "Id": "ad71b672-0733-4c82-9946-99469b1c8cbe",
+    "Name": "Çatalmeşe Mh.",
+    "Location": [ 29.223986, 41.027765 ],
+    "Active": true
+  },
+  {
+    "Id": "adb1890e-e957-4444-8c83-1b2a023a483b",
+    "Name": "Elmalı Mh.",
+    "Location": [ 29.1298786, 41.1389689 ],
+    "Active": true
+  },
+  {
+    "Id": "adc739fc-f9ed-44b9-8628-11a372df5bb8",
+    "Name": "Dikilitaş Mh.",
+    "Location": [ 29.003026, 41.055318 ],
+    "Active": true
+  },
+  {
+    "Id": "adfcfa42-78d9-4bad-a3bb-5e7f00cc326b",
+    "Name": "Katip Mustafa Çelebi Mh.",
+    "Location": [ 28.9703304, 41.0382864 ],
+    "Active": true
+  },
+  {
+    "Id": "ae8a656f-0a2b-4881-84aa-c747dcbb9df6",
+    "Name": "Balabanağa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "aea28735-45cd-4a56-b280-3cc8a7f0f8dd",
+    "Name": "Kartaltepe Mah.",
+    "Location": [ 28.875686, 40.983324 ],
+    "Active": true
+  },
+  {
+    "Id": "aecc885c-72bd-423d-8bbc-7533ab0c1091",
+    "Name": "Kavaklı Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "aee920db-5061-4522-ba45-7dc8f1ed5007",
+    "Name": "Akçaburgaz Mh.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "af36ebe7-c88f-46fe-ae37-5790deef3294",
+    "Name": "Ömerli Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "af73f90b-7bca-4097-8a5d-d92ce2e80f4a",
+    "Name": "İmrenli Mh.",
+    "Location": [ 29.7404152, 41.146514 ],
+    "Active": true
+  },
+  {
+    "Id": "afd389e5-07b1-4899-a27f-235f5d9793a4",
+    "Name": "Atatürk Mh.",
+    "Location": [ 29.223258, 40.996726 ],
+    "Active": true
+  },
+  {
+    "Id": "afdae448-c6c7-48b1-acf1-9ddb0638d07c",
+    "Name": "Madenler Mah.",
+    "Location": [ 29.189509, 41.011347 ],
+    "Active": true
+  },
+  {
+    "Id": "affe9fcc-37cd-42cb-9875-6c7a2b28e8c7",
+    "Name": "Haseki Sultan Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "b00a0286-123f-4c45-b68b-a53616a6a6b0",
+    "Name": "Fatih Mah.",
+    "Location": [ 29.214288, 40.958531 ],
+    "Active": true
+  },
+  {
+    "Id": "b0609870-ad82-444f-81de-2759e5de92e8",
+    "Name": "Küçük Piyale Mh.",
+    "Location": [ 28.967507, 41.038108 ],
+    "Active": true
+  },
+  {
+    "Id": "b098d160-d472-43b6-bb60-f8e543b3a15b",
+    "Name": "Çavuşoğlu Mh.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "b0c9aa1c-a48a-4a1d-86a6-62820bd80e90",
+    "Name": "Karabeyli Köyü",
+    "Location": [ 29.731194, 41.1050796 ],
+    "Active": true
+  },
+  {
+    "Id": "b1e189b2-5c6a-48a5-b9c8-0d306f4210e3",
+    "Name": "Orta Mah.",
+    "Location": [ 29.374118, 40.901953 ],
+    "Active": true
+  },
+  {
+    "Id": "b20003f4-312a-48c9-8b9e-a010ca0a4d06",
+    "Name": "Salacak Mah.",
+    "Location": [ 29.010231, 41.021078 ],
+    "Active": true
+  },
+  {
+    "Id": "b2588835-8250-4cc3-95d4-5e66ac3a64a2",
+    "Name": "Sarıdemir Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "b27b7342-01bd-4485-85e1-e09f6a2768a0",
+    "Name": "Fatih Mah.",
+    "Location": [ 29.2718689, 40.9555986 ],
+    "Active": true
+  },
+  {
+    "Id": "b28c2870-c084-45ac-bc2a-9520c8be2e81",
+    "Name": "Büyükbakkalköy Mh.",
+    "Location": [ 29.138378, 40.931759 ],
+    "Active": true
+  },
+  {
+    "Id": "b2cd0f91-da1d-4dfc-8d53-a99f0fb0ae4b",
+    "Name": "Cebeci Mah.",
+    "Location": [ 28.865612, 41.108448 ],
+    "Active": true
+  },
+  {
+    "Id": "b31b8a5c-aa3c-4b13-9192-9e14f677d05a",
+    "Name": "Feriköy Mh.",
+    "Location": [ 28.978525, 41.050263 ],
+    "Active": true
+  },
+  {
+    "Id": "b34c96d5-f84a-4ccf-8eb4-00cb100f960a",
+    "Name": "Turgut Reis Mah.",
+    "Location": [ 28.913246, 41.031874 ],
+    "Active": true
+  },
+  {
+    "Id": "b39a35d6-a729-4f2a-af6e-d711bd39721e",
+    "Name": "75. Yıl Mh.",
+    "Location": [ 28.905623, 41.096018 ],
+    "Active": true
+  },
+  {
+    "Id": "b423edab-9f5d-45ab-9480-59a3dbb4ca83",
+    "Name": "Soğanlık Yeni Mh.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "b46a8fdf-2e7b-4485-a8df-ec5dd417dbf5",
+    "Name": "Tozkoparan Mah.",
+    "Location": [ 28.8963207, 41.0160365 ],
+    "Active": true
+  },
+  {
+    "Id": "b4b1c644-a13b-48eb-aab6-9d53e3457adf",
+    "Name": "Haraççı Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "b514c8be-7de2-4725-9886-e85517510395",
+    "Name": "Dudullu OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "b5211832-bede-466a-aa35-d3a51e58220d",
+    "Name": "Hoca Paşa Mh.",
+    "Location": [ 28.976853, 41.014425 ],
+    "Active": true
+  },
+  {
+    "Id": "b54742e8-048c-4b32-9286-b4cd813502d3",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.7314618, 41.0153479 ],
+    "Active": true
+  },
+  {
+    "Id": "b5a14cb9-dbe3-437d-b2da-4c3070ac27d3",
+    "Name": "Hacı Kadın Mh.",
+    "Location": [ 28.958813, 41.017069 ],
+    "Active": true
+  },
+  {
+    "Id": "b5e6dfbf-5f4f-481e-b53b-30180d2b2827",
+    "Name": "Firuzağa Mh.",
+    "Location": [ 28.981057, 41.03039 ],
+    "Active": true
+  },
+  {
+    "Id": "b5f4118f-b1d7-45a0-8ba1-16aa0fbc8a69",
+    "Name": "Dereağzı Mh.",
+    "Location": [ 28.6498144, 40.9910381 ],
+    "Active": true
+  },
+  {
+    "Id": "b642e715-ce65-4ff8-9852-14a41c0f1f65",
+    "Name": "İstiklal Mh.",
+    "Location": [ 28.9802745, 41.034729 ],
+    "Active": true
+  },
+  {
+    "Id": "b6a0fdc1-5900-45c4-a0a8-5c15ea41aec9",
+    "Name": "İzzettin Mh.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "b7690c7c-e1f0-4305-b34a-f4c7d1e627ca",
+    "Name": "Esenşehir Mh.",
+    "Location": [ 29.158954, 41.022423 ],
+    "Active": true
+  },
+  {
+    "Id": "b76a3094-ce9a-490b-b9f1-c509631e501c",
+    "Name": "Sakarya Mah.",
+    "Location": [ 28.935797, 41.036296 ],
+    "Active": true
+  },
+  {
+    "Id": "b8097c2d-281e-4557-ae91-91bcc9b3e19d",
+    "Name": "Orhantepe Mah.",
+    "Location": [ 29.159304, 40.907446 ],
+    "Active": true
+  },
+  {
+    "Id": "b861e1bf-c3c1-4998-910e-923d8bcd2cb1",
+    "Name": "Teke Mh.",
+    "Location": [ 29.6625938, 41.0688961 ],
+    "Active": true
+  },
+  {
+    "Id": "b8ffc082-c856-43da-bff9-a88aaa785473",
+    "Name": "Aydınlı - Birlik OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "b959af29-0a44-4bed-85b4-4293367f4242",
+    "Name": "Yenikent Mah.",
+    "Location": [ 28.680832, 41.041191 ],
+    "Active": true
+  },
+  {
+    "Id": "b95df468-bce1-4e88-8336-20e623845d81",
+    "Name": "Çobançeşme Mh.",
+    "Location": [ 28.8280013, 41.0066935 ],
+    "Active": true
+  },
+  {
+    "Id": "b9c84359-3469-410f-adc3-79edc9cc5b35",
+    "Name": "Korucu Köyü",
+    "Location": [ 29.570495, 41.1226049 ],
+    "Active": true
+  },
+  {
+    "Id": "b9f2dec4-eb5b-4912-b8a5-baef79a6a8e6",
+    "Name": "Alibey Mah.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "ba6bfb59-a601-4ad7-b5cc-c1fa85e8f2ec",
+    "Name": "Gençosman Mh.",
+    "Location": [ 28.878638, 41.02743 ],
+    "Active": true
+  },
+  {
+    "Id": "ba7624c7-4c14-4bf6-97c4-a9f739251c93",
+    "Name": "Göksu Mh.",
+    "Location": [ 29.0748861, 41.0794061 ],
+    "Active": true
+  },
+  {
+    "Id": "baac988d-c29e-492c-a188-66288ac88be5",
+    "Name": "Piri Mehmet Paşa Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "baf74e27-2ea0-4f4e-83c9-990778f340a0",
+    "Name": "Osmaniye Mah.",
+    "Location": [ 28.883392, 40.994964 ],
+    "Active": true
+  },
+  {
+    "Id": "bb63baa2-20d6-4953-92bf-e45c175f2123",
+    "Name": "Armağanevler Mh.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "bbc56163-6136-43cf-b149-65a7f3a63fe1",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.873122, 41.020342 ],
+    "Active": true
+  },
+  {
+    "Id": "bbdbdfed-757e-4a03-a4c6-48c4c3be0dc8",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 28.858103, 41.045382 ],
+    "Active": true
+  },
+  {
+    "Id": "bc2cd4f2-44ce-4c30-af6e-cf966c8ccf73",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 28.834409, 40.996095 ],
+    "Active": true
+  },
+  {
+    "Id": "bcf07862-7ef6-4b14-af07-b108e15ec4cc",
+    "Name": "Ömer Avni Mh.",
+    "Location": [ 28.992582, 41.035285 ],
+    "Active": true
+  },
+  {
+    "Id": "bd64e33c-988f-40f1-abfa-f32e4a7a7cf9",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.968976, 41.054566 ],
+    "Active": true
+  },
+  {
+    "Id": "bdca5901-d92b-4f80-b1d6-11ea99eba586",
+    "Name": "Başak Mh.",
+    "Location": [ 28.4611045, 41.3246473 ],
+    "Active": true
+  },
+  {
+    "Id": "bdd098b6-8900-40c0-a5f4-c726471b20f8",
+    "Name": "Bağlarçeşme Mh.",
+    "Location": [ 28.66961, 40.988898 ],
+    "Active": true
+  },
+  {
+    "Id": "bde46714-6727-42bf-90e5-32e98c2040ac",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 29.126315, 40.982026 ],
+    "Active": true
+  },
+  {
+    "Id": "be24cad1-d3d7-41fa-9dd7-5bda40035fda",
+    "Name": "Muradiye Mah.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "be60d202-2b15-445f-b41b-f69c93ea44f0",
+    "Name": "Zübeyde Hanım Mh.",
+    "Location": [ 28.905106, 41.101338 ],
+    "Active": true
+  },
+  {
+    "Id": "beef95d4-ad78-457e-adbd-4a27330dd31c",
+    "Name": "Dağyenice Mh.",
+    "Location": [ 28.4820168, 41.2739228 ],
+    "Active": true
+  },
+  {
+    "Id": "bf090a3f-178d-4269-8dd5-0aea31c793d3",
+    "Name": "Seyrantepe Mah.",
+    "Location": [ 28.9982306, 41.0932666 ],
+    "Active": true
+  },
+  {
+    "Id": "bf1a38a2-2322-4cb1-aafe-1bfa4ecf11f6",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 29.08517, 41.012375 ],
+    "Active": true
+  },
+  {
+    "Id": "bf1dacdb-7b2c-4783-94c1-6ec2b8ee1da1",
+    "Name": "Büyükşehir Mh.",
+    "Location": [ 28.6469416, 41.0028675 ],
+    "Active": true
+  },
+  {
+    "Id": "bf26d2a8-b8a4-4019-9146-875a335cd87c",
+    "Name": "Müeyyetzade Mh.",
+    "Location": [ 28.9747053, 41.0264048 ],
+    "Active": true
+  },
+  {
+    "Id": "bf30c0ae-baf8-4505-b9b5-5f1d50959387",
+    "Name": "Rami Yeni Mah.",
+    "Location": [ 29.225981, 40.986646 ],
+    "Active": true
+  },
+  {
+    "Id": "bf3bfbc7-eb36-43e9-92be-3c3ca02e38ae",
+    "Name": "Velibaba Mah.",
+    "Location": [ 29.257375, 40.901941 ],
+    "Active": true
+  },
+  {
+    "Id": "bf3dc7a0-6942-41f2-817e-ce9f361d2d25",
+    "Name": "Sultaniye Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "bf79d0b9-3fa7-48b4-be35-0aaa9e17dd92",
+    "Name": "Sinanoba",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "bf8237ee-5a4c-4fbf-a713-e840836c6d52",
+    "Name": "Sülüntepe Mh.",
+    "Location": [ 29.279018, 40.914851 ],
+    "Active": true
+  },
+  {
+    "Id": "bf8c38d8-8fff-425d-84ae-c2a3a1c90217",
+    "Name": "Mevlanakapı Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "c0291717-4756-46aa-8089-45989d095992",
+    "Name": "Cennet Mah.",
+    "Location": [ 28.785428, 40.999227 ],
+    "Active": true
+  },
+  {
+    "Id": "c0386635-a9e2-4784-bce6-56856712aafc",
+    "Name": "Kuloğlu Mh.",
+    "Location": [ 28.991181, 41.034575 ],
+    "Active": true
+  },
+  {
+    "Id": "c0436630-8417-4c1e-89d8-551468d0168a",
+    "Name": "Kumburgaz Merkez Mah.",
+    "Location": [ 28.590003, 41.034133 ],
+    "Active": true
+  },
+  {
+    "Id": "c045f354-8d16-4a4c-acc4-cd531c561158",
+    "Name": "Kadıköy Mh.",
+    "Location": [ 29.9066002, 41.1132329 ],
+    "Active": true
+  },
+  {
+    "Id": "c0502bd8-a6dd-40ea-bb7b-c9107bc8c441",
+    "Name": "Ahmetli Köyü",
+    "Location": [ 29.5800402, 41.1477176 ],
+    "Active": true
+  },
+  {
+    "Id": "c07f4b26-3d78-45d8-be03-a27ec7743534",
+    "Name": "Altıntepe Mh.",
+    "Location": [ 29.138378, 40.931759 ],
+    "Active": true
+  },
+  {
+    "Id": "c0c9bad2-83d7-4a23-b4b1-9641a6923e97",
+    "Name": "Çengeldere Mh.",
+    "Location": [ 29.146057, 41.095123 ],
+    "Active": true
+  },
+  {
+    "Id": "c0fd51a6-b73f-4cf0-8537-a86a6efdb091",
+    "Name": "Koşuyolu Mh.",
+    "Location": [ 29.035664, 41.008933 ],
+    "Active": true
+  },
+  {
+    "Id": "c12d66ee-6d3a-41be-8480-06ca59db40e8",
+    "Name": "Yayalar Mah.",
+    "Location": [ 29.266408, 40.900262 ],
+    "Active": true
+  },
+  {
+    "Id": "c1f427c2-d900-4bb8-ab04-5ec16688e79e",
+    "Name": "Teşvikiye Mh.",
+    "Location": [ 28.9931691, 41.0519842 ],
+    "Active": true
+  },
+  {
+    "Id": "c25cda81-79ed-4576-a140-2044d0b92d49",
+    "Name": "Gültepe Mh.",
+    "Location": [ 28.935435, 41.079852 ],
+    "Active": true
+  },
+  {
+    "Id": "c2650761-7c58-4bd7-b171-9ae2efecc6ac",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 28.646814, 41.033137 ],
+    "Active": true
+  },
+  {
+    "Id": "c275435f-5d9d-4ce8-8fb4-d68e0b2f6c01",
+    "Name": "Ayazağa Mh.",
+    "Location": [ 28.997873, 41.11577 ],
+    "Active": true
+  },
+  {
+    "Id": "c2ba87e6-e069-40ee-8f7f-2474c990a80e",
+    "Name": "Beylerbeyi Mah.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "c3b049cc-0ac8-4280-8b1f-fe315b771ee5",
+    "Name": "Emekyemez Mah.",
+    "Location": [ 28.970933, 41.0256238 ],
+    "Active": true
+  },
+  {
+    "Id": "c3dc4d31-5fd6-434d-b67f-9df0a1458e1f",
+    "Name": "Kanlıca Mh.",
+    "Location": [ 29.065672, 41.100298 ],
+    "Active": true
+  },
+  {
+    "Id": "c3ebe4e2-cf79-495d-a6e2-69389a6ac369",
+    "Name": "Çatma Mescit Mh.",
+    "Location": [ 28.974005, 41.029844 ],
+    "Active": true
+  },
+  {
+    "Id": "c3ef6ee0-d9f6-4db8-a6b1-c3e3875334a7",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "c41c4c7f-4409-40a4-8383-cf6ec99c29b3",
+    "Name": "Çanakça Mh.",
+    "Location": [ 28.4936952, 41.2453243 ],
+    "Active": true
+  },
+  {
+    "Id": "c486679e-4b76-421c-af9d-23f07cd29966",
+    "Name": "Barış Mh.",
+    "Location": [ 28.653576, 41.000325 ],
+    "Active": true
+  },
+  {
+    "Id": "c4c3ebc2-d679-4cec-a426-98bbb0b75da1",
+    "Name": "Kınalıada Mh.",
+    "Location": [ 29.05, 40.9130556 ],
+    "Active": true
+  },
+  {
+    "Id": "c4f17f5b-1bf6-43b4-bb4a-375afec0ce18",
+    "Name": "Orhantepe Mah.",
+    "Location": [ 29.159304, 40.907446 ],
+    "Active": true
+  },
+  {
+    "Id": "c529e269-6242-4d78-98f6-b667e7078bcf",
+    "Name": "Tokatköy Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "c52cb134-aff5-434c-8f12-77d17ca7422a",
+    "Name": "Sarıdemir Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "c57e5b15-694a-4466-9f67-e3c8efcf27b2",
+    "Name": "Vişnezade Mh.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "c582849c-fde6-4324-a449-8a487e3c54b4",
+    "Name": "Kayışdağı Mh.",
+    "Location": [ 29.1475826, 40.9812174 ],
+    "Active": true
+  },
+  {
+    "Id": "c5f03cf3-a5f5-4f52-9d19-288624583855",
+    "Name": "Yeşilbağlar Mh.",
+    "Location": [ 29.225994, 40.894058 ],
+    "Active": true
+  },
+  {
+    "Id": "c618975e-d6b5-431c-85f2-1c4ca3ef90e5",
+    "Name": "Soğukpınar Mh.",
+    "Location": [ 29.231649, 41.022859 ],
+    "Active": true
+  },
+  {
+    "Id": "c621c945-e760-4162-8c27-60617d7a69b9",
+    "Name": "Karaağaç Mh.",
+    "Location": [ 28.613986, 41.026845 ],
+    "Active": true
+  },
+  {
+    "Id": "c629d05b-39b2-4b86-af7c-a063fa008de0",
+    "Name": "Seyyid Ömer Mh.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "c65efa98-a6e1-4dac-bf36-12461a714ea0",
+    "Name": "Emirli Köyü",
+    "Location": [ 29.3453611, 40.9879195 ],
+    "Active": true
+  },
+  {
+    "Id": "c67d950e-af4f-4f7e-8eca-1b7cfd9d6920",
+    "Name": "Yayla Mah.",
+    "Location": [ 28.853073, 41.148264 ],
+    "Active": true
+  },
+  {
+    "Id": "c6a854d8-12e0-4964-9d2b-9a7ec48164fc",
+    "Name": "Yalı Mh.",
+    "Location": [ 29.220608, 40.892063 ],
+    "Active": true
+  },
+  {
+    "Id": "c6cb6d4d-1498-4921-8062-b2b842c59215",
+    "Name": "Fetih Mah.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "c726deb3-cfd6-40ba-bd33-595c20dde25d",
+    "Name": "Pınartepe Mh.",
+    "Location": [ 28.6105994, 40.9922176 ],
+    "Active": true
+  },
+  {
+    "Id": "c827e4c3-7df7-47bc-8135-8ccd91de0e5a",
+    "Name": "Etiler Mah.",
+    "Location": [ 29.036287, 41.06368 ],
+    "Active": true
+  },
+  {
+    "Id": "c83f9655-5bf0-4b6a-837b-ea931c985c3c",
+    "Name": "Mimar Sinan Mah.",
+    "Location": [ 29.3599, 40.8404 ],
+    "Active": true
+  },
+  {
+    "Id": "c85862b9-7eb5-4067-af31-fd5acc3f2b21",
+    "Name": "Topçular Mh.",
+    "Location": [ 28.930232, 41.046172 ],
+    "Active": true
+  },
+  {
+    "Id": "c8dec988-369c-4b1a-970a-338398835fd7",
+    "Name": "Sinanpaşa Mh.",
+    "Location": [ 29.0073931, 41.0409571 ],
+    "Active": true
+  },
+  {
+    "Id": "c903bc81-f2ed-4b8f-bd22-8c482c48fd25",
+    "Name": "Şuayipli Mh.",
+    "Location": [ 29.8086618, 41.1387668 ],
+    "Active": true
+  },
+  {
+    "Id": "c9521336-9fb3-46c8-9122-7e091fc3b42c",
+    "Name": "Beylikdüzü OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "c98664ae-40a5-4d7e-982e-56a0d21c7c8b",
+    "Name": "Ovayenice Mah.",
+    "Location": [ 28.446708, 41.123828 ],
+    "Active": true
+  },
+  {
+    "Id": "c9c78add-08c9-4e3c-95f6-2c910f73908d",
+    "Name": "Tevfik Bey Mah.",
+    "Location": [ 28.800561, 41.009214 ],
+    "Active": true
+  },
+  {
+    "Id": "c9cec79a-048e-47b4-a781-1d45369235cb",
+    "Name": "Cumhuriyet Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "c9f92ef0-6e94-4311-87e1-2610774e0ae3",
+    "Name": "Mustafa Kemal Paşa Mh.",
+    "Location": [ 28.7068615, 41.0034055 ],
+    "Active": true
+  },
+  {
+    "Id": "ca976436-c9f8-4567-9e7a-01e89c911d33",
+    "Name": "Koçullu Mh.",
+    "Location": [ 29.3507124, 41.0777264 ],
+    "Active": true
+  },
+  {
+    "Id": "cb13b362-48b4-443e-b513-a0c16b207155",
+    "Name": "Zuhuratbaba Mah.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "cbb7997d-8850-4316-8a23-c51d62803e98",
+    "Name": "Feriköy Mh.",
+    "Location": [ 28.978525, 41.050263 ],
+    "Active": true
+  },
+  {
+    "Id": "cc82ac5c-e734-4b24-9a6f-e9c11aebc873",
+    "Name": "Mehmet Akif Mah.",
+    "Location": [ 29.2645205, 40.9615755 ],
+    "Active": true
+  },
+  {
+    "Id": "cce8a579-647a-4065-975f-6c7ef8633230",
+    "Name": "Mehterçeşme Mh.",
+    "Location": [ 28.664846, 41.018265 ],
+    "Active": true
+  },
+  {
+    "Id": "ccf9e4af-b7ad-448c-b210-7a49803d100d",
+    "Name": "Hürriyet Mh.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "cd581e76-c465-4210-af37-ba41fe66ffc1",
+    "Name": "Caddebostan Mah.",
+    "Location": [ 29.050273, 40.981006 ],
+    "Active": true
+  },
+  {
+    "Id": "cd8fd400-385e-42c1-be62-4f3f6109f875",
+    "Name": "Yenimahalle Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "cdb4617a-6e78-4c22-b1ad-6ac04b8ab261",
+    "Name": "Feneryolu Mah.",
+    "Location": [ 29.048516, 40.984612 ],
+    "Active": true
+  },
+  {
+    "Id": "cdd06c9d-a9ac-47a5-a062-62bd372dda49",
+    "Name": "Aydınlı - KOSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ce47f381-2766-42a5-95e7-bce620c532c9",
+    "Name": "Hacı Kasım Mh.",
+    "Location": [ 29.6127778, 41.1763889 ],
+    "Active": true
+  },
+  {
+    "Id": "ce966e43-257b-472e-9768-cc8a60e76705",
+    "Name": "Yıldız Mh.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "cf516dfd-ca04-494d-bf8d-7d8b3bab029e",
+    "Name": "Siyavuşpaşa Mh.",
+    "Location": [ 28.852016, 40.999235 ],
+    "Active": true
+  },
+  {
+    "Id": "cf647df8-b15a-453d-adbd-a665a2a5412f",
+    "Name": "Çeltik Mh.",
+    "Location": [ 28.1195829, 41.1108583 ],
+    "Active": true
+  },
+  {
+    "Id": "cf831d72-d258-427e-bd85-e72734028946",
+    "Name": "Seyyid Ömer Mh.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "cf84d24b-332f-45eb-9fb8-82a012f863cf",
+    "Name": "Marmara Mah.",
+    "Location": [ 28.657481, 40.987025 ],
+    "Active": true
+  },
+  {
+    "Id": "cf9a0fa6-7a2e-401d-9710-605bcac161bc",
+    "Name": "Harbiye Mah.",
+    "Location": [ 28.9931691, 41.0519842 ],
+    "Active": true
+  },
+  {
+    "Id": "cfbeba2b-37ec-4473-8998-433879718108",
+    "Name": "Çayırbaşı Mh.",
+    "Location": [ 29.6127778, 41.1763889 ],
+    "Active": true
+  },
+  {
+    "Id": "cfc5d1e8-6b8d-4b71-9de2-b1a348567ba3",
+    "Name": "Aydınlı - İstanbul Ay OSB",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "d010e39a-9290-4694-b29d-6daacb81d9e8",
+    "Name": "Şenlikköy Mh.",
+    "Location": [ 28.8228, 40.968155 ],
+    "Active": true
+  },
+  {
+    "Id": "d0a04899-6e2e-4c0a-90e6-544ff7fb92a9",
+    "Name": "Defterdar Mah.",
+    "Location": [ 28.934962, 41.037866 ],
+    "Active": true
+  },
+  {
+    "Id": "d0a2ee99-ff5a-40c4-94c1-3aafdfc25fec",
+    "Name": "Çağlayan Mh.",
+    "Location": [ 28.978297, 41.066598 ],
+    "Active": true
+  },
+  {
+    "Id": "d0f3df1d-b2a6-449c-a56f-c8d257851dc9",
+    "Name": "Tatlısu Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "d184bf57-5d3e-4413-8ae5-90535f57c86f",
+    "Name": "Derviş Ali Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "d18966f8-19ae-46b2-bfe6-f8641702e364",
+    "Name": "Seyyid Ömer Mh.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "d1f877e4-a86b-493e-8224-155657201e57",
+    "Name": "Rasimpaşa Mh.",
+    "Location": [ 29.030506, 40.994514 ],
+    "Active": true
+  },
+  {
+    "Id": "d1f9e646-b9e4-4203-ae76-0a3abb7c496d",
+    "Name": "Sazlıbosna Mh.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "d20f7a40-a01e-4e53-bc9e-e4f4c4c2ec61",
+    "Name": "Boyalık Mh.",
+    "Location": [ 28.6337717, 41.2630431 ],
+    "Active": true
+  },
+  {
+    "Id": "d243e1e9-ca70-4bb3-8cb9-df25beb4e5fe",
+    "Name": "Küçük Çamlıca Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "d24a5b83-4b67-4dd9-accf-0b6b90868fc1",
+    "Name": "Karlıktepe Mh.",
+    "Location": [ 29.16831, 40.911842 ],
+    "Active": true
+  },
+  {
+    "Id": "d2695cc4-d467-4635-b6ba-73ba7a07581d",
+    "Name": "Mecidiye Mah.",
+    "Location": [ 29.2960308, 40.9595274 ],
+    "Active": true
+  },
+  {
+    "Id": "d28f5806-ba10-46b8-8c9c-c3d9958b9907",
+    "Name": "Şehremini Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "d2c25cfe-0dfa-4fcf-885a-b5931fec405a",
+    "Name": "Mimar Kemalettin Mah.",
+    "Location": [ 28.9605288, 41.0088416 ],
+    "Active": true
+  },
+  {
+    "Id": "d2dc64c5-3adf-4742-bdb0-8ecf92e38971",
+    "Name": "Emek Mah.",
+    "Location": [ 29.199208, 41.003596 ],
+    "Active": true
+  },
+  {
+    "Id": "d2f12515-e94c-44ab-80dd-c207e44a6ba9",
+    "Name": "Gümüşpınar Mh.",
+    "Location": [ 28.2833583, 41.3132569 ],
+    "Active": true
+  },
+  {
+    "Id": "d2f562a4-0a64-412a-b5d9-bc142cce67b1",
+    "Name": "Mercan Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "d3438fd9-f79a-4530-b330-25c5f4ebd4ab",
+    "Name": "Kadıköy Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "d34a8326-ea1c-4129-849f-529f8879faa5",
+    "Name": "Barbaros Mah.",
+    "Location": [ 29.0965, 40.993714 ],
+    "Active": true
+  },
+  {
+    "Id": "d3a211ac-ba32-4a4f-bcb3-49f44559cf39",
+    "Name": "Sapan Bağları Mh.",
+    "Location": [ 29.2218506, 40.8874681 ],
+    "Active": true
+  },
+  {
+    "Id": "d4004098-0b06-491e-9aae-682d8f1ab4c3",
+    "Name": "Türkali Mh.",
+    "Location": [ 29.0061427, 41.0475851 ],
+    "Active": true
+  },
+  {
+    "Id": "d410d566-26ec-401d-9ffa-ab7d8176befb",
+    "Name": "Bozhane Köyü",
+    "Location": [ 29.2727829, 41.1641313 ],
+    "Active": true
+  },
+  {
+    "Id": "d43590c0-96f3-4a76-b459-6886cfc9f406",
+    "Name": "Eyüp Sultan Mh.",
+    "Location": [ 29.225981, 40.986646 ],
+    "Active": true
+  },
+  {
+    "Id": "d476d44f-4908-474c-9b53-ef4ec36e4628",
+    "Name": "Saraç İshak Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "d4cfa299-05fd-47df-8c2d-07da9c0a4e87",
+    "Name": "Bolluca Mah.",
+    "Location": [ 28.733333, 41.2 ],
+    "Active": true
+  },
+  {
+    "Id": "d538298d-4c66-4893-836b-200c821be664",
+    "Name": "Teşvikiye Mh.",
+    "Location": [ 28.9931691, 41.0519842 ],
+    "Active": true
+  },
+  {
+    "Id": "d58abbc6-95e8-4f93-9e7a-f6cc8966670a",
+    "Name": "Yakacık Çarşı Mh.",
+    "Location": [ 29.226876, 40.917797 ],
+    "Active": true
+  },
+  {
+    "Id": "d5964a56-95ad-404d-bccb-384f094eccfb",
+    "Name": "Yalı Mh.",
+    "Location": [ 29.1299, 40.92199 ],
+    "Active": true
+  },
+  {
+    "Id": "d5b4721d-92c6-43ec-9a97-c5dfbf1a51c5",
+    "Name": "Güzelce Mh.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "d5b65564-afd3-4dd0-8e66-c6eefdc2166a",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.879495, 41.087826 ],
+    "Active": true
+  },
+  {
+    "Id": "d65d1b0a-58c7-4169-8034-b0a8bb8b0490",
+    "Name": "Hoca Gıyasettin Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "d673279e-a90b-4839-87a2-412b194309ca",
+    "Name": "Yeni Çamlıca Mh.",
+    "Location": [ 29.172007, 40.986861 ],
+    "Active": true
+  },
+  {
+    "Id": "d6d77ed6-a7d2-4f57-8b79-ddf477298d85",
+    "Name": "İncirköy Mh.",
+    "Location": [ 29.10569, 41.132719 ],
+    "Active": true
+  },
+  {
+    "Id": "d6dcf5d8-d804-4789-a7fe-3c385c87fc2d",
+    "Name": "Yavuz Selim Mah.",
+    "Location": [ 28.846799, 41.035527 ],
+    "Active": true
+  },
+  {
+    "Id": "d718ecdd-e9f5-4374-a5fd-8c8604371a1c",
+    "Name": "Cihangir Mah.",
+    "Location": [ 28.984126, 41.032843 ],
+    "Active": true
+  },
+  {
+    "Id": "d735503e-dfcc-444f-89bd-bc78c63dde78",
+    "Name": "Osmanağa Mh.",
+    "Location": [ 29.032624, 40.990303 ],
+    "Active": true
+  },
+  {
+    "Id": "d7d6399c-95c4-464f-8f6a-bba9d4468ed1",
+    "Name": "Ormanlı Mh.",
+    "Location": [ 28.4520249, 41.3907341 ],
+    "Active": true
+  },
+  {
+    "Id": "d7e87262-2676-40c7-af58-a5018fd80078",
+    "Name": "İnkılap Mh.",
+    "Location": [ 29.100068, 41.026059 ],
+    "Active": true
+  },
+  {
+    "Id": "d80c3458-bea5-4269-b3d9-0fa2b8f67ba3",
+    "Name": "İstasyon Mh.",
+    "Location": [ 29.321196, 40.829451 ],
+    "Active": true
+  },
+  {
+    "Id": "d84f4c01-bb76-475f-a818-4f6ccc9e3361",
+    "Name": "Piri Paşa Mh.",
+    "Location": [ 28.951159, 41.043888 ],
+    "Active": true
+  },
+  {
+    "Id": "d8b05624-2217-455d-b607-b3528e8d8049",
+    "Name": "Kabakça Mh.",
+    "Location": [ 28.368109, 41.2280767 ],
+    "Active": true
+  },
+  {
+    "Id": "d99c846a-5b28-444e-a3fa-1cfa21843b94",
+    "Name": "Ahmediye Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "d9ce0f0d-6b25-4d33-a741-3cb4c185f475",
+    "Name": "Katip Kasım Mh.",
+    "Location": [ 28.9573108, 41.0052779 ],
+    "Active": true
+  },
+  {
+    "Id": "da81d686-15a2-4341-a6be-33a3b84f4e13",
+    "Name": "Hasanpaşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "daafc273-c379-41d6-8f47-46dd15e5bdab",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 29.032783, 41.144899 ],
+    "Active": true
+  },
+  {
+    "Id": "db47b80b-5e8b-41ab-a2fa-63e8d0a513c0",
+    "Name": "Yukarı Dudullu Mh.",
+    "Location": [ 29.149096, 41.015342 ],
+    "Active": true
+  },
+  {
+    "Id": "dbe751f8-2004-4d6f-8df1-9ff259ec5fa3",
+    "Name": "Gayrettepe Mah.",
+    "Location": [ 29.006514, 41.063731 ],
+    "Active": true
+  },
+  {
+    "Id": "dc666984-e899-439f-9e10-c5aa628d670d",
+    "Name": "Cihannüma Mh.",
+    "Location": [ 29.008295, 41.04413 ],
+    "Active": true
+  },
+  {
+    "Id": "dc7178e7-9f31-415b-838d-dabb2cef40ad",
+    "Name": "Karlıbayır Mh.",
+    "Location": [ 28.714303, 41.184251 ],
+    "Active": true
+  },
+  {
+    "Id": "dc98b37b-6156-4ccf-ae78-0d6ffafe9ca9",
+    "Name": "Ulus Mah.",
+    "Location": [ 29.0354345, 41.0608337 ],
+    "Active": true
+  },
+  {
+    "Id": "ddece709-0ed2-46c6-b1c4-c0c4d9175045",
+    "Name": "Yeşilpınar Mh.",
+    "Location": [ 28.917126, 41.07766 ],
+    "Active": true
+  },
+  {
+    "Id": "de616fd2-c84c-4706-ba71-667dd2198980",
+    "Name": "Burgazada Mh.",
+    "Location": [ 29.095444, 40.8763772 ],
+    "Active": true
+  },
+  {
+    "Id": "df00d4b1-cf66-4d75-adf2-bb4ffb1a14a4",
+    "Name": "Mevlanakapı Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "df4a1323-1480-4889-acaa-81a1739d1596",
+    "Name": "Balibey Mah.",
+    "Location": [ 29.6127778, 41.1763889 ],
+    "Active": true
+  },
+  {
+    "Id": "df516eee-de79-491f-8682-07b5f62173e0",
+    "Name": "Ferahevler Mah.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "df727ab1-169f-4052-b6cf-67c7611374d5",
+    "Name": "Çırpıcı Mh.",
+    "Location": [ 28.924683, 41.041461 ],
+    "Active": true
+  },
+  {
+    "Id": "df8dcadb-e3e4-47a1-a619-a159c9d2ebd1",
+    "Name": "19 Mayıs Mh.",
+    "Location": [ 29.085137, 40.977222 ],
+    "Active": true
+  },
+  {
+    "Id": "e06d00f6-3813-45ee-bcf3-b3c88c41d1da",
+    "Name": "Maltepe Mah.",
+    "Location": [ 28.907133, 41.020327 ],
+    "Active": true
+  },
+  {
+    "Id": "e0e13765-a5be-4cfd-b5b6-1fd14c1ebda3",
+    "Name": "Göllü Mh.",
+    "Location": [ 29.2711022, 41.1761692 ],
+    "Active": true
+  },
+  {
+    "Id": "e0f0f03d-fe76-4e7f-afac-5f76cc398821",
+    "Name": "Molla Gürani Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "e0fb6d47-e644-4f7d-b680-afd60f3f7c48",
+    "Name": "Cerrahpaşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "e1445a97-e4ba-474b-922c-322f4584b429",
+    "Name": "Ballıca Mh.",
+    "Location": [ 29.4019698, 40.9918013 ],
+    "Active": true
+  },
+  {
+    "Id": "e14efff0-bd16-412b-ba5e-38f902befb61",
+    "Name": "İdealtepe Mh.",
+    "Location": [ 29.121805, 40.94105 ],
+    "Active": true
+  },
+  {
+    "Id": "e1b64a61-82b4-4395-b040-1cc7ff6e2af3",
+    "Name": "Bozkurt Mah.",
+    "Location": [ 28.984048, 41.05131 ],
+    "Active": true
+  },
+  {
+    "Id": "e1beb443-7c15-4840-a34c-941b3f95dc52",
+    "Name": "Akşemseddin Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "e1f51074-4431-486c-ade7-4d3354464e55",
+    "Name": "Rumeli Kavağı Mh.",
+    "Location": [ 29.073475, 41.181275 ],
+    "Active": true
+  },
+  {
+    "Id": "e20309c5-ea34-42b9-a4ca-e5459762adb9",
+    "Name": "Mithatpaşa Mh.",
+    "Location": [ 28.91298, 41.159638 ],
+    "Active": true
+  },
+  {
+    "Id": "e292f7eb-da01-4f8d-9e4c-783314c4d242",
+    "Name": "Kuştepe Mh.",
+    "Location": [ 28.999415, 41.071354 ],
+    "Active": true
+  },
+  {
+    "Id": "e2bd6faa-982a-4867-b3b9-aa0d6cbdcb93",
+    "Name": "Mesih Paşa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "e2d3b0de-24eb-45c2-94f3-72cfbb3e2ac0",
+    "Name": "Terkos Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "e2e12c20-57ab-4b01-85e8-50c276ff5d9b",
+    "Name": "Duatepe Mah.",
+    "Location": [ 28.9822985, 41.0527855 ],
+    "Active": true
+  },
+  {
+    "Id": "e32fb710-70fc-4616-9b85-f2d484ab3a88",
+    "Name": "Zeynep Kamil Mah.",
+    "Location": [ 29.027352, 41.015455 ],
+    "Active": true
+  },
+  {
+    "Id": "e35ced8a-7355-466d-994d-0db3225dcaf3",
+    "Name": "Keçeci Piri Mh.",
+    "Location": [ 28.9546929, 41.0413026 ],
+    "Active": true
+  },
+  {
+    "Id": "e3d496b6-2538-449c-8e82-3abb673f7968",
+    "Name": "Güven Mh.",
+    "Location": [ 28.888218, 41.004548 ],
+    "Active": true
+  },
+  {
+    "Id": "e3f522bf-aa65-4f18-88ec-fe769cb88cfb",
+    "Name": "Bahçelievler Mh.",
+    "Location": [ 28.590003, 41.034133 ],
+    "Active": true
+  },
+  {
+    "Id": "e4227964-0493-4803-a986-6d15e33308f0",
+    "Name": "İhsaniye Mh.",
+    "Location": [ 28.8069242, 41.241439 ],
+    "Active": true
+  },
+  {
+    "Id": "e42fcc1f-fa0c-433c-9146-5861526e645c",
+    "Name": "Bahçelievler Mh.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "e50b0459-f9a1-4763-88a6-925fe830b30b",
+    "Name": "Esenler Mah.",
+    "Location": [ 29.273642, 40.884168 ],
+    "Active": true
+  },
+  {
+    "Id": "e512c42f-b685-47a4-9461-7cfb7300b763",
+    "Name": "Yamanevler Mh.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "e56372ae-4867-4b7a-9ce5-c79a7d5fb02f",
+    "Name": "Molla Hüsrev Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "e584b4cb-f1e5-4395-b854-de6c9ba45cfb",
+    "Name": "Zeytinlik Mah.",
+    "Location": [ 28.872326, 40.975154 ],
+    "Active": true
+  },
+  {
+    "Id": "e5dc492a-728c-4abe-89f2-51f3a10e3a46",
+    "Name": "Üvezli Mh.",
+    "Location": [ 29.4432595, 41.1119923 ],
+    "Active": true
+  },
+  {
+    "Id": "e5f0cceb-c177-44ad-a822-c9ee344ac83f",
+    "Name": "Bahçeköy Kemer Mh.",
+    "Location": [ 29.0385466, 41.1814742 ],
+    "Active": true
+  },
+  {
+    "Id": "e5f7d981-7c13-4bba-b0f7-d988e84d07dc",
+    "Name": "Başakşehir Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "e62b4dab-64fd-48cc-b4e0-b3640e6637a4",
+    "Name": "Fenerbahçe Mh.",
+    "Location": [ 29.043517, 40.973969 ],
+    "Active": true
+  },
+  {
+    "Id": "e647954e-f69e-4060-9842-aa0dbfcc81d9",
+    "Name": "Çavuş Mh.",
+    "Location": [ 29.608065, 41.167122 ],
+    "Active": true
+  },
+  {
+    "Id": "e671d61e-fd42-42bb-87c1-10b309c5605a",
+    "Name": "Merkezefendi Mah.",
+    "Location": [ 28.91749, 41.012143 ],
+    "Active": true
+  },
+  {
+    "Id": "e69458a5-a528-4d70-9890-89c20f4f409c",
+    "Name": "Site Mah.",
+    "Location": [ 29.158954, 41.022423 ],
+    "Active": true
+  },
+  {
+    "Id": "e6e71123-fd91-40a8-98d5-cc668e8fdfac",
+    "Name": "Girne Mah.",
+    "Location": [ 29.141592, 40.942461 ],
+    "Active": true
+  },
+  {
+    "Id": "e7033d1f-892c-418b-aa6a-07cf0d57987f",
+    "Name": "Atikali Mah.",
+    "Location": [ 28.9333333, 41.0166667 ],
+    "Active": true
+  },
+  {
+    "Id": "e793e97e-c641-4c73-92f1-1a53cc4dc991",
+    "Name": "Zekeriyaköy Mh.",
+    "Location": [ 29.0295791, 41.1989698 ],
+    "Active": true
+  },
+  {
+    "Id": "e7d4b21b-e66a-4ad8-852e-a0f70127cf52",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 29.223986, 41.027765 ],
+    "Active": true
+  },
+  {
+    "Id": "e8c56103-1dc9-4bdc-abbf-be6d3854775e",
+    "Name": "Topkapı Mh.",
+    "Location": [ 28.9841561, 41.0119056 ],
+    "Active": true
+  },
+  {
+    "Id": "e8cedbbd-d4b6-4ab9-8b83-ff684d54702b",
+    "Name": "Harbiye Mah.",
+    "Location": [ 28.9931691, 41.0519842 ],
+    "Active": true
+  },
+  {
+    "Id": "e92ef56b-6f5d-4ce4-983a-f98d5474ab93",
+    "Name": "Fenerbahçe Mh.",
+    "Location": [ 29.043517, 40.973969 ],
+    "Active": true
+  },
+  {
+    "Id": "e9415ce4-edc8-4cae-8f33-4732e65c76cb",
+    "Name": "Nurtepe Mah.",
+    "Location": [ 28.996248, 41.078437 ],
+    "Active": true
+  },
+  {
+    "Id": "e9522d8c-7ac6-4962-ac4d-8b65e18d9080",
+    "Name": "Akşemsettin Mh.",
+    "Location": [ 29.2669438, 40.9611123 ],
+    "Active": true
+  },
+  {
+    "Id": "e954a4bf-6a50-43a7-a5d9-d957e98f7ec9",
+    "Name": "Cevizli Mah.",
+    "Location": [ 29.145721, 40.918451 ],
+    "Active": true
+  },
+  {
+    "Id": "e966cda1-5316-4c97-908a-53f4ba3294c8",
+    "Name": "Gazi Mah.",
+    "Location": [ 28.897158, 41.105174 ],
+    "Active": true
+  },
+  {
+    "Id": "e96b9673-d782-46ab-bc71-5f4eac9caea1",
+    "Name": "Karadeniz Mah.",
+    "Location": [ 28.882034, 41.0813 ],
+    "Active": true
+  },
+  {
+    "Id": "e971fedb-3a53-4a70-b6dc-ef8ba00c91d0",
+    "Name": "Mustafa Kemal Mah.",
+    "Location": [ 29.09459, 41.003492 ],
+    "Active": true
+  },
+  {
+    "Id": "e9b20eca-bdf9-4e13-a3d4-c72951ccf9cf",
+    "Name": "Armağanevler Mh.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "ea51976a-e84c-4a07-9fa7-0165a6150e81",
+    "Name": "Müeyyedzade Mah.",
+    "Location": [ 28.9747053, 41.0264048 ],
+    "Active": true
+  },
+  {
+    "Id": "ea9e0fc3-8d51-420e-befd-3171aaf57d2c",
+    "Name": "Darlık Mh.",
+    "Location": [ 29.5769423, 41.0444588 ],
+    "Active": true
+  },
+  {
+    "Id": "eab95709-e99b-419c-b436-b8640de27b83",
+    "Name": "Bahçelievler Mh.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "ead15b8d-bd64-4a98-a290-e3f317bced81",
+    "Name": "Fatih Mah.",
+    "Location": [ 28.842801, 41.0505055 ],
+    "Active": true
+  },
+  {
+    "Id": "ebb42a26-42c9-4dff-8625-dc61136ad9f3",
+    "Name": "Barbaros Mah.",
+    "Location": [ 29.031711, 41.01471 ],
+    "Active": true
+  },
+  {
+    "Id": "ebbe9b93-ccbc-4641-844c-aa1803018006",
+    "Name": "Yeni Mahalle Mh.",
+    "Location": [ 28.944373, 41.030345 ],
+    "Active": true
+  },
+  {
+    "Id": "ec3cf370-51a6-461d-b167-b1a1110490d4",
+    "Name": "Osmanağa Mh.",
+    "Location": [ 29.032624, 40.990303 ],
+    "Active": true
+  },
+  {
+    "Id": "ec6b7b5b-d29f-4512-a9dd-3d5a6b4098b7",
+    "Name": "Tepeören Mh.",
+    "Location": [ 29.295, 40.842 ],
+    "Active": true
+  },
+  {
+    "Id": "ec882307-b71c-41cd-8f13-d30a8422d6fd",
+    "Name": "Doğu Mh.",
+    "Location": [ 29.227112, 40.888192 ],
+    "Active": true
+  },
+  {
+    "Id": "eca1b33d-01cd-47d3-a2fd-b77e7befbe2a",
+    "Name": "Battalgazi Mah.",
+    "Location": [ 29.268683, 40.981677 ],
+    "Active": true
+  },
+  {
+    "Id": "eca97dcd-ae2a-4cfb-9aad-8a0795d7cfa7",
+    "Name": "Değirmençayırı Mh.",
+    "Location": [ 29.6644027, 40.9771113 ],
+    "Active": true
+  },
+  {
+    "Id": "ecbaf710-0480-4d08-b534-e054ec1236ca",
+    "Name": "Emniyettepe Mah.",
+    "Location": [ 28.946978, 41.069128 ],
+    "Active": true
+  },
+  {
+    "Id": "ecc167a2-1f9c-4d2e-9d40-9913438cab7b",
+    "Name": "Bülbül Mh.",
+    "Location": [ 28.978084, 41.039824 ],
+    "Active": true
+  },
+  {
+    "Id": "ecd4987d-a764-4cf6-b5b0-fe01db5357c9",
+    "Name": "Beşyol Mh.",
+    "Location": [ 28.797519, 40.994912 ],
+    "Active": true
+  },
+  {
+    "Id": "ece2bb89-20ee-42e3-9d67-3a1b7284282b",
+    "Name": "Zafer Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ecf15610-d222-461a-9ac3-63483f6fe360",
+    "Name": "Çamlıtepe Mh.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "ed81f5e5-e796-439f-bfaa-0b8ceb05191f",
+    "Name": "Molla Gürani Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "eda28a77-c887-418a-a951-709b21401e08",
+    "Name": "Kocatepe Mah.",
+    "Location": [ 28.9832579, 41.0393103 ],
+    "Active": true
+  },
+  {
+    "Id": "edc4dd62-b5e2-4e2d-9f6b-028613d74753",
+    "Name": "Cihangir Mah.",
+    "Location": [ 28.7113734, 40.9881707 ],
+    "Active": true
+  },
+  {
+    "Id": "edfd2163-cd3e-4fac-ac47-de6de4046536",
+    "Name": "Necip Fazıl Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ee1675f6-a344-4967-9381-deefc9b06349",
+    "Name": "Kaynarca Köyü",
+    "Location": [ 29.1589904, 41.1817852 ],
+    "Active": true
+  },
+  {
+    "Id": "ee1aaaad-4f67-4b7e-a40f-9444b18bcb4d",
+    "Name": "Ağaçlı Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ee1e0edb-9fa2-4db1-9b06-8b52c031f869",
+    "Name": "Kireçburnu Mh.",
+    "Location": [ 29.0385466, 41.1814742 ],
+    "Active": true
+  },
+  {
+    "Id": "ee32477f-541d-4611-9fda-c74ee1f6396f",
+    "Name": "Geredeli Köyü",
+    "Location": [ 29.862427, 41.091395 ],
+    "Active": true
+  },
+  {
+    "Id": "ee66dc5b-3721-4035-95ab-c1bf59419309",
+    "Name": "Üniversite Mh.",
+    "Location": [ 28.7113734, 40.9881707 ],
+    "Active": true
+  },
+  {
+    "Id": "ee987b4c-bce4-4d18-b7e1-c95ce6af6315",
+    "Name": "Hisarbeyli Köyü",
+    "Location": [ 28.4753799, 41.3705583 ],
+    "Active": true
+  },
+  {
+    "Id": "eed57e6f-1798-4277-91c0-9cf09e431bee",
+    "Name": "Fevzi Çakmak Mh.",
+    "Location": [ 28.880675, 41.042456 ],
+    "Active": true
+  },
+  {
+    "Id": "eee0eaad-fcd0-4dbe-a505-83cc77b8f22c",
+    "Name": "Şahintepe Mh.",
+    "Location": [ 28.812551, 41.077895 ],
+    "Active": true
+  },
+  {
+    "Id": "ef1e6ee6-0bb1-4e59-b020-046ad979b383",
+    "Name": "Kurfallı Mh.",
+    "Location": [ 28.2628949, 41.2028515 ],
+    "Active": true
+  },
+  {
+    "Id": "ef27b26e-8894-4916-bc46-75a1d7342201",
+    "Name": "Kemalpaşa Mh.",
+    "Location": [ 28.794444, 41.000822 ],
+    "Active": true
+  },
+  {
+    "Id": "ef282c02-8499-4466-bff8-eb61051c79c5",
+    "Name": "Binbirdirek Mah.",
+    "Location": [ 28.9739993, 41.0073285 ],
+    "Active": true
+  },
+  {
+    "Id": "ef7baf92-ef24-4bfa-9d88-bb139e9f9522",
+    "Name": "Emekyemez Mah.",
+    "Location": [ 28.970933, 41.0256238 ],
+    "Active": true
+  },
+  {
+    "Id": "efad5147-56c6-4ecb-b148-e6baeabce9f1",
+    "Name": "Rüstem Paşa Mh.",
+    "Location": [ 28.968748, 41.017609 ],
+    "Active": true
+  },
+  {
+    "Id": "efe3e697-d19d-450e-8ae8-6649a05c4c19",
+    "Name": "Halkalı Merkez Mh.",
+    "Location": [ 28.79089, 41.034238 ],
+    "Active": true
+  },
+  {
+    "Id": "f0be5232-f654-4bf2-b690-eb609c06b99a",
+    "Name": "Karadolap Mah.",
+    "Location": [ 28.933504, 41.077608 ],
+    "Active": true
+  },
+  {
+    "Id": "f0c0e2ec-7d84-44dc-87ce-829a219ba916",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 28.911992, 41.057794 ],
+    "Active": true
+  },
+  {
+    "Id": "f0d5e6c7-0995-4752-890d-7bff99047641",
+    "Name": "Kavakpınar Mh.",
+    "Location": [ 29.284002, 40.87652 ],
+    "Active": true
+  },
+  {
+    "Id": "f0db6b96-6a85-4b30-9a2e-91eecff0eb63",
+    "Name": "Türkoba Mh.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "f0e4ef5d-6fe7-4e3c-9eb9-c9a158785c78",
+    "Name": "Uskumruköy Mh.",
+    "Location": [ 29.0211844, 41.2220977 ],
+    "Active": true
+  },
+  {
+    "Id": "f10c1cd9-8b4e-4314-8f3d-f62a43f703fc",
+    "Name": "Seymen Mahallesi",
+    "Location": [ 28.1678543, 41.1550036 ],
+    "Active": true
+  },
+  {
+    "Id": "f134a1a6-aa68-40d2-99c9-4a46fd0b65e5",
+    "Name": "Sahil Mah.",
+    "Location": [ 28.613986, 41.026845 ],
+    "Active": true
+  },
+  {
+    "Id": "f1385ec1-1f14-4281-b39d-f93bf5ea0255",
+    "Name": "Bereketzade Mah.",
+    "Location": [ 28.973705, 41.02389 ],
+    "Active": true
+  },
+  {
+    "Id": "f1bffca2-bbd5-469a-846e-eab1c890923f",
+    "Name": "Tantavi Mah.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "f206db43-44e9-4273-b13b-8fc81ef7a9c4",
+    "Name": "Göçe Mh.",
+    "Location": [ 29.8535346, 41.1074642 ],
+    "Active": true
+  },
+  {
+    "Id": "f218d5cd-8e27-415b-a487-c65b70724410",
+    "Name": "Yazımanayır Mh.",
+    "Location": [ 29.6860384, 41.0692207 ],
+    "Active": true
+  },
+  {
+    "Id": "f2435201-3630-459e-9ac6-0576e47e7edd",
+    "Name": "Cerrahpaşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f2b683be-6953-41cf-87e0-4c9f8dd954b7",
+    "Name": "Akalan Köyü",
+    "Location": [ 28.4206915, 41.2579939 ],
+    "Active": true
+  },
+  {
+    "Id": "f2c2589b-ba71-471e-8b95-c1a4c416a4d9",
+    "Name": "Paşa Mh.",
+    "Location": [ 28.978183, 41.054326 ],
+    "Active": true
+  },
+  {
+    "Id": "f2cab98b-35bd-493f-9e13-967f757fb1aa",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 29.126315, 40.982026 ],
+    "Active": true
+  },
+  {
+    "Id": "f2cebbf7-b487-41a8-a179-a65ec53322e2",
+    "Name": "Alemdağ Mh.",
+    "Location": [ 29.223986, 41.027765 ],
+    "Active": true
+  },
+  {
+    "Id": "f306cdef-577b-43d6-a98a-eb22ec41d37b",
+    "Name": "Kuleli Mah.",
+    "Location": [ 29.056662, 41.033641 ],
+    "Active": true
+  },
+  {
+    "Id": "f3354741-02c4-4ace-aa6f-4ae4c52fe3b3",
+    "Name": "Firuzköy Mh.",
+    "Location": [ 28.7113734, 40.9881707 ],
+    "Active": true
+  },
+  {
+    "Id": "f374fef2-e996-470e-b9d6-f2d7beaeb0a4",
+    "Name": "Halkalı Merkez Mh.",
+    "Location": [ 28.79089, 41.034238 ],
+    "Active": true
+  },
+  {
+    "Id": "f3e551c0-1a1c-443f-940c-3eff42872364",
+    "Name": "Yeni Mahalle Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f3f488f1-c364-4bd1-bfe1-30299756273d",
+    "Name": "Sultan Murat Mah.",
+    "Location": [ 28.785428, 40.999227 ],
+    "Active": true
+  },
+  {
+    "Id": "f40cf811-0e78-4a83-b7b0-379d1afd01e2",
+    "Name": "Zeyrek Mah.",
+    "Location": [ 28.957302, 41.019734 ],
+    "Active": true
+  },
+  {
+    "Id": "f4113ff1-4e1b-432e-b995-c33694e4787e",
+    "Name": "Demirtaş Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "f4284641-d46d-4f8e-9b86-60f661a792c4",
+    "Name": "Sultan Ahmet Mah.",
+    "Location": [ 28.954944, 41.025518 ],
+    "Active": true
+  },
+  {
+    "Id": "f451eca8-2e35-4edc-b9b0-f14237667b27",
+    "Name": "Mehmet Akif Ersoy Mah.",
+    "Location": [ 29.223986, 41.027765 ],
+    "Active": true
+  },
+  {
+    "Id": "f47e18ad-a418-486d-95bf-c2568faf30e8",
+    "Name": "Akevler Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f4ce7d51-7b9c-4ca8-9b9e-8d90806e6582",
+    "Name": "Maden Mah.",
+    "Location": [ 29.053425, 41.172581 ],
+    "Active": true
+  },
+  {
+    "Id": "f5209ed4-c70a-461f-a4dc-56b6c96d8869",
+    "Name": "Hekimbaşı Mh.",
+    "Location": [ 29.089553, 41.024213 ],
+    "Active": true
+  },
+  {
+    "Id": "f52ce1d6-b479-40c1-85a8-37e0fce0103c",
+    "Name": "Bucaklı Mh.",
+    "Location": [ 29.86048, 41.128636 ],
+    "Active": true
+  },
+  {
+    "Id": "f5345e32-d2a2-4d91-862d-44521d330c99",
+    "Name": "Kaptanpaşa Mh.",
+    "Location": [ 28.962399, 41.041658 ],
+    "Active": true
+  },
+  {
+    "Id": "f5350620-474e-4d03-805f-47a4236b2c31",
+    "Name": "Çırçır Mh.",
+    "Location": [ 28.935435, 41.079852 ],
+    "Active": true
+  },
+  {
+    "Id": "f571ffd7-70ab-4c17-bb20-f171571c92a1",
+    "Name": "Kartaltepe Mah.",
+    "Location": [ 28.797069, 40.999378 ],
+    "Active": true
+  },
+  {
+    "Id": "f57f2178-87ed-459f-938e-8586e1ef5f41",
+    "Name": "Hastane Mah.",
+    "Location": [ 29.000366, 41.048791 ],
+    "Active": true
+  },
+  {
+    "Id": "f5860adf-d059-48bf-97a7-0092a1c7ddae",
+    "Name": "Kömürlük Mh.",
+    "Location": [ 29.442338, 41.0775703 ],
+    "Active": true
+  },
+  {
+    "Id": "f5f6cd8b-1a31-4a81-8925-69c59fae13a8",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.6469416, 41.0028675 ],
+    "Active": true
+  },
+  {
+    "Id": "f660724d-cff2-479a-b556-cbc73120e4a2",
+    "Name": "Mevlana Mah.",
+    "Location": [ 28.912301, 41.085071 ],
+    "Active": true
+  },
+  {
+    "Id": "f6913f52-d897-4685-8d39-530a77bdef37",
+    "Name": "Odayeri Köyü",
+    "Location": [ 28.8556138, 41.2374025 ],
+    "Active": true
+  },
+  {
+    "Id": "f6a18121-f4c0-4886-919a-c9289c081841",
+    "Name": "Hobyar Mah.",
+    "Location": [ 28.942338, 41.007777 ],
+    "Active": true
+  },
+  {
+    "Id": "f6f03a12-de3b-4394-a3eb-0be47a518d0d",
+    "Name": "Fındıklı Mh.",
+    "Location": [ 29.1228091, 40.9680846 ],
+    "Active": true
+  },
+  {
+    "Id": "f795ac24-6a6a-4b89-94ba-f8a183ecf1b6",
+    "Name": "Güvercintepe Mh.",
+    "Location": [ 28.75056, 41.072885 ],
+    "Active": true
+  },
+  {
+    "Id": "f79af088-40ae-4e50-b1f7-13b3e3e87467",
+    "Name": "Halaskargazi Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f7affb9b-661e-40d2-ae6c-2019b2e2b95c",
+    "Name": "Kalyoncu Kulluğu Mh.",
+    "Location": [ 28.9747306, 41.035424 ],
+    "Active": true
+  },
+  {
+    "Id": "f7b2c0b3-b840-4847-bcef-3e16bcff0186",
+    "Name": "Semizkumlar Mah.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "f7bfa4b2-a345-42d2-bba1-387da987d9bf",
+    "Name": "Kazlıçeşme Mh.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "f8115670-448c-4603-857f-ad08b6d88c61",
+    "Name": "Orhan Gazi Mah.",
+    "Location": [ 28.646981, 41.03795 ],
+    "Active": true
+  },
+  {
+    "Id": "f821deda-d2fa-415a-b9eb-2b1835f7d6c2",
+    "Name": "Postane Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f82349f2-7b0c-482c-89c4-884c0a730f29",
+    "Name": "Örnektepe Mh.",
+    "Location": [ 28.955182, 41.055052 ],
+    "Active": true
+  },
+  {
+    "Id": "f84c008d-187b-40ad-8c93-771dbadf5295",
+    "Name": "Alipaşa Mh.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "f87e2be8-8d46-430e-9e7d-68311c072d1e",
+    "Name": "Ihlamurkuyu Mah.",
+    "Location": [ 29.141115, 41.018162 ],
+    "Active": true
+  },
+  {
+    "Id": "f88f5101-ea09-4b36-aa96-fefaa0844b3a",
+    "Name": "15 Temmuz Mh.",
+    "Location": [ 28.820691, 41.037705 ],
+    "Active": true
+  },
+  {
+    "Id": "f89b9f66-c057-4f9b-b4bd-c2af327516db",
+    "Name": "Murat Reis Mah.",
+    "Location": [ 29.0301, 41.020202 ],
+    "Active": true
+  },
+  {
+    "Id": "f8bf9897-3b22-445c-991a-2c53d0413a44",
+    "Name": "Gürsel Mh.",
+    "Location": [ 28.972171, 41.0711915 ],
+    "Active": true
+  },
+  {
+    "Id": "f8cac272-5b85-4b0e-a8e1-4f2d9a527317",
+    "Name": "Durusu Mah.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "f8ef7cb3-dbb7-4e57-9611-e14eeb3f3648",
+    "Name": "Ahmet Yesevi Mah.",
+    "Location": [ 29.274021, 40.972994 ],
+    "Active": true
+  },
+  {
+    "Id": "f9423dbb-094f-4e4f-9b5b-5a8fdc03cad6",
+    "Name": "Piri Paşa Mh.",
+    "Location": [ 28.951159, 41.043888 ],
+    "Active": true
+  },
+  {
+    "Id": "f9add833-d4d0-4391-a083-8ce55c57430c",
+    "Name": "Nişanca Mh.",
+    "Location": [ 28.958558, 41.005152 ],
+    "Active": true
+  },
+  {
+    "Id": "f9c6d2b6-00f8-437a-8ae3-d634c35375ad",
+    "Name": "Koca Mustafapaşa Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "f9d6e1df-ba37-4548-8a5b-4f0ac581d21e",
+    "Name": "Ptt Evleri Mah.",
+    "Location": [ 29.045998, 41.134861 ],
+    "Active": true
+  },
+  {
+    "Id": "fa0b3343-1abd-405c-8d3b-2d5b46be7dfc",
+    "Name": "Başıbüyük Mh.",
+    "Location": [ 29.1484415, 40.958815 ],
+    "Active": true
+  },
+  {
+    "Id": "fa0dcc8d-f0ba-41f3-8726-5f8aa0ed925d",
+    "Name": "Namık Kemal Mh.",
+    "Location": [ 28.646814, 41.033137 ],
+    "Active": true
+  },
+  {
+    "Id": "fa33764f-949d-4083-826a-9982403e584d",
+    "Name": "Doğancılı Mh.",
+    "Location": [ 29.4439204, 41.191693 ],
+    "Active": true
+  },
+  {
+    "Id": "fa4ba44f-a9c5-4dc6-8da2-0413f98aec42",
+    "Name": "Keçeci Piri Mh.",
+    "Location": [ 28.9546929, 41.0413026 ],
+    "Active": true
+  },
+  {
+    "Id": "facbfc35-9710-4875-b239-6846add5cb8e",
+    "Name": "Merkez Mah.",
+    "Location": [ 28.984647, 41.0625265 ],
+    "Active": true
+  },
+  {
+    "Id": "fad8eda8-51c2-4558-95ad-f67f0425817c",
+    "Name": "Mevlana Mah.",
+    "Location": [ 29.155045, 40.9891945 ],
+    "Active": true
+  },
+  {
+    "Id": "fae74705-ce18-4279-9123-1b3877597c4a",
+    "Name": "Fetihtepe Mah.",
+    "Location": [ 28.957586, 41.05252 ],
+    "Active": true
+  },
+  {
+    "Id": "fb378096-b827-455c-b614-8896aef2769b",
+    "Name": "Yeşilce Mh.",
+    "Location": [ 28.9982306, 41.0932666 ],
+    "Active": true
+  },
+  {
+    "Id": "fb6cf18e-24b0-4266-bbe3-c1f13f6e5cff",
+    "Name": "Balmumcu Mah.",
+    "Location": [ 29.01481, 41.059318 ],
+    "Active": true
+  },
+  {
+    "Id": "fb83dee9-e0be-43e2-99e3-6632de0b0d74",
+    "Name": "Ambarlı Mh.",
+    "Location": [ 28.7158097, 40.9731476 ],
+    "Active": true
+  },
+  {
+    "Id": "fbdaf7cd-b2eb-4ce6-b756-687cac877836",
+    "Name": "Camiikebir Mah.",
+    "Location": [ 28.966428, 41.0326935 ],
+    "Active": true
+  },
+  {
+    "Id": "fbf71ff3-8aa3-429c-ba68-4fb1e12f28c0",
+    "Name": "Abdurrahmangazi Mah.",
+    "Location": [ 29.258462, 41.02299 ],
+    "Active": true
+  },
+  {
+    "Id": "fc1bba39-5fa0-4466-8fad-aad4caeee986",
+    "Name": "Esentepe Mah.",
+    "Location": [ 28.9400676, 41.0683852 ],
+    "Active": true
+  },
+  {
+    "Id": "fdda9730-b0fe-4308-a7bc-fb2893c911b1",
+    "Name": "Mimar Sinan Merkez Mh.",
+    "Location": [ 28.542855, 41.002539 ],
+    "Active": true
+  },
+  {
+    "Id": "fe2773cb-497c-4556-929f-b4edd12d7e03",
+    "Name": "Atatürk Mh.",
+    "Location": [ 29.139071, 40.986927 ],
+    "Active": true
+  },
+  {
+    "Id": "fe4c2aa0-0421-4385-90a0-5749f09e2dff",
+    "Name": "Ataköy 3-4-11. Kısım Mh.",
+    "Location": [ 28.846767, 40.988029 ],
+    "Active": true
+  },
+  {
+    "Id": "fecce74d-3ee8-40c4-9599-a1e1afa749b3",
+    "Name": "Ertuğrul Gazi Mh.",
+    "Location": [ 29.244259, 40.88973 ],
+    "Active": true
+  },
+  {
+    "Id": "fee2900e-1a45-45ad-9df1-322af4bf52b0",
+    "Name": "Cumhuriyet Mah.",
+    "Location": [ 28.26829, 41.080158 ],
+    "Active": true
+  },
+  {
+    "Id": "feea0cde-5c97-442f-a4fd-25a6e6337807",
+    "Name": "Mahmutşevketpaşa Mh.",
+    "Location": [ 29.193319, 41.161121 ],
+    "Active": true
+  },
+  {
+    "Id": "ff3cc9cb-a7c8-44a4-badc-f5cbcf66d2c0",
+    "Name": "Mustafa Kemal Paşa Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ff518e55-ec84-4b78-9e24-0e6902974cd4",
+    "Name": "Kemal Türkler Mh.",
+    "Location": [ 29.218703, 41.003476 ],
+    "Active": true
+  },
+  {
+    "Id": "ff64548b-1833-41a6-8335-96f11fccfd0a",
+    "Name": "Akşemsettin Mh.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "ff727dbe-3c63-450c-b7b9-95740602a17c",
+    "Name": "Aşık Veysel Mh.",
+    "Location": null,
+    "Active": true
+  },
+  {
+    "Id": "ff72d953-ee53-4a3c-b9ca-7fa3efb3b616",
+    "Name": "Sakızağacı Mh.",
+    "Location": [ 28.876565, 40.975473 ],
+    "Active": true
+  },
+  {
+    "Id": "ffb66a3e-b919-409b-8aa1-2139e3ebdd11",
+    "Name": "Muhsine Hatun Mah.",
+    "Location": [ 28.947214, 41.01624 ],
+    "Active": true
+  },
+  {
+    "Id": "ffe3b240-34b8-4258-b333-96dbde4a2a7b",
+    "Name": "Nişantepe Mh.",
+    "Location": [ 29.3177272, 41.104235 ],
+    "Active": true
+  }
+]

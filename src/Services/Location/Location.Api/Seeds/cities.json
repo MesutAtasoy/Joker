@@ -1,0 +1,14 @@
+[
+  {
+    "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+    "Name": "İstanbul",
+    "CityCode": "34",
+    "Active": true,
+    "Country": {
+      "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+      "Name": "Türkiye",
+      "PhoneCode": "+90",
+      "Active": true
+    }
+  }
+]

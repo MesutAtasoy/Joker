@@ -1,0 +1,704 @@
+[
+  {
+    "Id": "0935c723-15c8-4434-b8ad-5f14842e2f56",
+    "Name": "Maltepe",    
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.155549999999998, 40.9439 ],
+    "Active": true
+  },
+  {
+    "Id": "0d377cb4-5aa5-4c35-98ce-e000827b1cef",
+    "Name": "Tuzla",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.3567, 40.8917 ],
+    "Active": true
+  },
+  {
+    "Id": "113c9efc-44e5-407c-b49c-9d28e4826dc5",
+    "Name": "Büyükçekmece",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.5129, 41.05715 ],
+    "Active": true
+  },
+  {
+    "Id": "16446140-dfb2-44ba-9034-e74bbe8aedde",
+    "Name": "Esenler",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.857100000000003, 41.0763 ],
+    "Active": true
+  },
+  {
+    "Id": "21f92bba-62f1-46bf-b95c-ce8e7694b4ec",
+    "Name": "Sancaktepe",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.273600000000002, 40.99935 ],
+    "Active": true
+  },
+  {
+    "Id": "23c27d81-3bd3-46b7-8d27-ef9c025233dc",
+    "Name": "Bahçelievler",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.844549999999998, 41.0094 ],
+    "Active": true
+  },
+  {
+    "Id": "2d33d0ac-f77f-4f31-8099-f436a625ee5f",
+    "Name": "Şile",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.6179, 41.08905 ],
+    "Active": true
+  },
+  {
+    "Id": "34236dd1-c1b2-44cb-be8f-c4553e473382",
+    "Name": "Çatalca",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.3322, 41.3202 ],
+    "Active": true
+  },
+  {
+    "Id": "344da219-98ea-4914-bf8b-3033f2937956",
+    "Name": "Bağcılar",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.84035, 41.04505 ],
+    "Active": true
+  },
+  {
+    "Id": "3d2abf75-29ae-45fe-af14-975b4a532b02",
+    "Name": "Üsküdar",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.0478, 41.035250000000005 ],
+    "Active": true
+  },
+  {
+    "Id": "3e1a7f8e-5cf5-4937-b489-dd6ec08cfb71",
+    "Name": "Fatih",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.95365, 41.014250000000004 ],
+    "Active": true
+  },
+  {
+    "Id": "3f15cc32-1aa0-41ba-a68d-9f6f389969c9",
+    "Name": "Güngören",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.879649999999998, 41.019949999999994 ],
+    "Active": true
+  },
+  {
+    "Id": "42296818-c05c-4ea6-a6f2-327c77211e2a",
+    "Name": "Kadıköy",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.06305, 40.98115 ],
+    "Active": true
+  },
+  {
+    "Id": "4799b72c-bbf0-45ca-a67c-a836943d4fbd",
+    "Name": "Sultanbeyli",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.28225, 40.96825 ],
+    "Active": true
+  },
+  {
+    "Id": "49200613-5af6-40f2-ab90-419118b08ec4",
+    "Name": "Beşiktaş",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.02395, 41.071749999999994 ],
+    "Active": true
+  },
+  {
+    "Id": "5129048c-8d09-4739-b400-ccb29320eb0f",
+    "Name": "Gaziosmanpaşa",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.906750000000002, 41.0739 ],
+    "Active": true
+  },
+  {
+    "Id": "5deaca66-6029-4abc-ae88-65795937d021",
+    "Name": "Esenyurt",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.6612, 41.0487 ],
+    "Active": true
+  },
+  {
+    "Id": "6defdaaf-627c-4557-b7f3-2c9b3bc7a0fe",
+    "Name": "Çekmeköy",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.269750000000002, 41.07285 ],
+    "Active": true
+  },
+  {
+    "Id": "72e34aff-da9c-4e29-abd9-d4ec8197b57f",
+    "Name": "Şişli",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.98885, 41.061949999999996 ],
+    "Active": true
+  },
+  {
+    "Id": "73e937e6-1521-48fe-90c9-74ca7f37c493",
+    "Name": "Arnavutköy",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.655050000000003, 41.24895 ],
+    "Active": true
+  },
+  {
+    "Id": "7a74008a-39c8-44f4-a1b8-b7e28b24db38",
+    "Name": "Ümraniye",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.13755, 41.027249999999995 ],
+    "Active": true
+  },
+  {
+    "Id": "7cde3c0a-ae2a-496c-85c2-6a0573d7e2e6",
+    "Name": "Beylikdüzü",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.64665, 40.987899999999996 ],
+    "Active": true
+  },
+  {
+    "Id": "851013d4-3621-435c-b191-c187cf385993",
+    "Name": "Başakşehir",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.73165, 41.1036 ],
+    "Active": true
+  },
+  {
+    "Id": "8647aaec-7e11-415c-8732-ee80b2bbe833",
+    "Name": "Kartal",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.19675, 40.9206 ],
+    "Active": true
+  },
+  {
+    "Id": "889ffd93-916b-4881-8e8e-f8133410e20e",
+    "Name": "Beyoğlu",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.967399999999998, 41.04305 ],
+    "Active": true
+  },
+  {
+    "Id": "8a005323-850d-4972-9e35-fb3a1d5e046d",
+    "Name": "Eyüpsultan",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.873399999999997, 41.1665 ],
+    "Active": true
+  },
+  {
+    "Id": "8a69f01b-26ad-4b11-a101-24e9b7340a7a",
+    "Name": "Sultangazi",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.87355, 41.120599999999996 ],
+    "Active": true
+  },
+  {
+    "Id": "919f81c7-3b34-4867-a0bb-faf706636ba3",
+    "Name": "Zeytinburnu",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.909149999999997, 41.00515 ],
+    "Active": true
+  },
+  {
+    "Id": "93e387eb-a9ab-4419-a43d-4226a05248bc",
+    "Name": "Kağıthane",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.9788, 41.082899999999995 ],
+    "Active": true
+  },
+  {
+    "Id": "ba5c469c-cf71-401b-98bb-b51c1c4bc86a",
+    "Name": "Pendik",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.36095, 40.944900000000004 ],
+    "Active": true
+  },
+  {
+    "Id": "bf039923-b792-495d-aec3-5383b1c3dc78",
+    "Name": "Küçükçekmece",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.77935, 41.020700000000005 ],
+    "Active": true
+  },
+  {
+    "Id": "d55ed78e-7f8f-410d-afe1-2cc517a8998f",
+    "Name": "Bakırköy",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.83485, 40.9808 ],
+    "Active": true
+  },
+  {
+    "Id": "d74cf400-283d-4487-aad9-139d0006b328",
+    "Name": "Beykoz",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.21455, 41.1387 ],
+    "Active": true
+  },
+  {
+    "Id": "d873e698-05db-46a5-a1fd-ffb44279ce1f",
+    "Name": "Sarıyer",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.0243, 41.171800000000005 ],
+    "Active": true
+  },
+  {
+    "Id": "dffc6c60-464f-4cd1-9ffb-2c14185d3efc",
+    "Name": "Bayrampaşa",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.9012, 41.0507 ],
+    "Active": true
+  },
+  {
+    "Id": "ee258727-1b4e-4492-9f3d-957aa056d938",
+    "Name": "Adalar",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.0587, 40.8664 ],
+    "Active": true
+  },
+  {
+    "Id": "f2349889-de91-482c-a036-eef50596fe8e",
+    "Name": "Ataşehir",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 29.139249999999997, 40.98425 ],
+    "Active": true
+  },
+  {
+    "Id": "f2fc483c-60ef-4ba5-bd18-0dc158ff879a",
+    "Name": "Avcılar",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.7195, 41.037499999999994 ],
+    "Active": true
+  },
+  {
+    "Id": "fba6d9ce-c5ff-45ea-9e1f-5d083a5f06dc",
+    "Name": "Silivri",
+    "City": {
+      "Id": "BA5725CE-1A24-4A7C-B44E-A5D79BE3CFF1",
+      "Name": "İstanbul",
+      "CityCode": "34",
+      "Active": true,
+      "Country": {
+        "Id": "F851213B-6A40-4648-B3F2-F3FF1AE1E7AC",
+        "Name": "Türkiye",
+        "PhoneCode": "+90",
+        "Active": true
+      }
+    },
+    "Location": [ 28.18345, 41.1974 ],
+    "Active": true
+  }
+]
