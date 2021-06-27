@@ -25,6 +25,7 @@ namespace Merchant.Domain.StoreAggregate
         public string Email { get; private set; }
         public bool EmailConfirmed { get; private set; }
         public string Description { get; private set; }
+        public StoreLocation Location { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime? ModifiedDate { get; private set; }
         public bool IsDeleted { get; private set; }
@@ -46,6 +47,7 @@ namespace Merchant.Domain.StoreAggregate
         /// <param name="phoneNumber"></param>
         /// <param name="email"></param>
         /// <param name="description"></param>
+        /// <param name="location"></param>
         /// <returns></returns>
         public static Store Create(Guid id,
             Guid merchantId,
@@ -53,10 +55,12 @@ namespace Merchant.Domain.StoreAggregate
             string slogan,
             string phoneNumber,
             string email,
-            string description)
+            string description,
+            StoreLocation location)
         {
             Check.NotEmpty(id, nameof(id));
             Check.NotEmpty(merchantId, nameof(merchantId));
+            Check.NotNull(location, nameof(location));
             Check.NotNullOrEmpty(name, nameof(name));
 
             return new Store
@@ -68,6 +72,7 @@ namespace Merchant.Domain.StoreAggregate
                 PhoneNumber = phoneNumber,
                 Email = email,
                 Description = description,
+                Location = location,
                 EmailConfirmed = false,
                 IsDeleted = false,
                 CreatedDate = DateTime.UtcNow
@@ -116,6 +121,17 @@ namespace Merchant.Domain.StoreAggregate
         public void MarkAsConfirmedMail()
         {
             EmailConfirmed = true;
+            ModifiedDate = DateTime.UtcNow;
+        }
+
+
+        /// <summary>
+        /// Updates store's location
+        /// </summary>
+        /// <param name="location"></param>
+        public void UpdateLocation(StoreLocation location)
+        {
+            Location = location;
             ModifiedDate = DateTime.UtcNow;
         }
 

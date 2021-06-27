@@ -1,5 +1,6 @@
 using System;
 using MediatR;
+using Merchant.Application.Stores.Dto;
 
 namespace Merchant.Application.Stores.Commands.CreateStore
 {
@@ -11,5 +12,6 @@ namespace Merchant.Application.Stores.Commands.CreateStore
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        public StoreLocationDto Location { get; set; }
     }
 }

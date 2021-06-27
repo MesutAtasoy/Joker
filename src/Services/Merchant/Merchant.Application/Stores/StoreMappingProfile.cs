@@ -12,6 +12,7 @@ namespace Merchant.Application.Stores
             CreateMap<Store, StoreDto>();
             CreateMap<StoreBusinessHour, StoreBusinessHourDto>();
             CreateMap<StoreFAQ, StoreFAQDto>();
+            CreateMap<StoreLocation, StoreLocationDto>();
         }
     }
 }

@@ -7,7 +7,9 @@ using Merchant.Application.Stores.Commands.CreateStore;
 using Merchant.Application.Stores.Commands.DeleteStore;
 using Merchant.Application.Stores.Commands.RemoveBusinessHour;
 using Merchant.Application.Stores.Commands.RemoveFaq;
+using Merchant.Application.Stores.Commands.UpdateLocation;
 using Merchant.Application.Stores.Commands.UpdateStore;
+using Merchant.Application.Stores.Dto;
 using Merchant.Application.Stores.Dto.Request;
 using Merchant.Application.Stores.Queries.GetStoreById;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +37,7 @@ namespace Merchant.Api.Controllers
         {
             return Ok(await _mediator.Send(new GetStoreByIdQuery(id)));
         }
-        
-        
+
         /// <summary>
         /// Create a new store
         /// </summary>
@@ -60,7 +61,18 @@ namespace Merchant.Api.Controllers
             return Ok(await _mediator.Send(new UpdateStoreCommand(id,command)));
         }
         
-        
+        /// <summary>
+        /// Updates store's location
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPut("{id}/Location")]
+        public async Task<IActionResult> UpdateLocationAsync(Guid id, [FromBody] StoreLocationDto command)
+        {
+            return Ok(await _mediator.Send(new UpdateLocationCommand(id,command)));
+        }
+
         /// <summary>
         /// Deletes a store
         /// </summary>
@@ -71,8 +83,7 @@ namespace Merchant.Api.Controllers
         {
             return Ok(await _mediator.Send(new DeleteStoreCommand(id)));
         }
-        
-          
+
         /// <summary>
         /// Add business hour to store
         /// </summary>
@@ -84,8 +95,7 @@ namespace Merchant.Api.Controllers
         {
             return Ok(await _mediator.Send(new AddBusinessHourCommand(id, command)));
         }
-        
-                
+
         /// <summary>
         /// Remove business hour
         /// </summary>
@@ -109,8 +119,7 @@ namespace Merchant.Api.Controllers
         {
             return Ok(await _mediator.Send(new AddFaqCommand(id, command)));
         }
-        
-                
+
         /// <summary>
         /// Remove FAQ
         /// </summary>
