@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mongo.Domain\Joker.Mongo.Domain.csproj" />
+      <ProjectReference Include="..\Campaign.Domain\Campaign.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
