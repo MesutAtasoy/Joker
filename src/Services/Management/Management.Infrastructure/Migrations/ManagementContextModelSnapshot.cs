@@ -24,7 +24,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("a81371af-1c65-4c26-b260-05fd7afdf0fc"));
+                        .HasDefaultValue(new Guid("1313de76-39d8-4e03-ac41-aa2e92afcb49"));
 
                     b.Property<string>("BackgroundColor")
                         .HasMaxLength(250)
@@ -61,7 +61,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("2b1de0dd-975a-4ab1-ad2b-e9629e83d371"));
+                        .HasDefaultValue(new Guid("93501ebb-0fe2-449a-b96d-f2159e49ef50"));
 
                     b.Property<string>("Description")
                         .HasMaxLength(250)
@@ -96,45 +96,12 @@ namespace Management.Infrastructure.Migrations
                     b.ToTable("BusinessDirectories");
                 });
 
-            modelBuilder.Entity("Management.Core.Entities.BusinessDirectoryFeature", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("b56ded7f-72ce-4afd-9b2f-086186bf8000"));
-
-                    b.Property<Guid>("BusinessDirectoryId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("DisplayName")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("character varying(250)");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BusinessDirectoryId");
-
-                    b.ToTable("BusinessDirectoryFeatures");
-                });
-
             modelBuilder.Entity("Management.Core.Entities.Currency", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("a5a85aed-4a5d-4904-8bac-53a5e6803601"));
+                        .HasDefaultValue(new Guid("46312bd4-c023-4475-88d9-49e35acf1dc1"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(10)
@@ -161,7 +128,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("dd77e77d-793e-4e5a-995a-a291747e3df7"));
+                        .HasDefaultValue(new Guid("e9da72ac-154d-4e1e-867a-b613d722ff5a"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(10)
@@ -192,7 +159,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("db45fabe-8c56-46eb-81a2-938508672e35"));
+                        .HasDefaultValue(new Guid("61a24fa2-2a91-4acb-bc6d-81dc05b6da6e"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(10)
@@ -219,7 +186,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("508cbcef-e5c4-4f8e-baca-11aa220fea57"));
+                        .HasDefaultValue(new Guid("40f04675-9cf0-4bda-9ef8-ec618e8ad0ca"));
 
                     b.Property<Guid>("CurrencyId")
                         .HasColumnType("uuid");
@@ -256,7 +223,7 @@ namespace Management.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasDefaultValue(new Guid("17795f15-ec23-44fb-a8c5-bdc9d42750bd"));
+                        .HasDefaultValue(new Guid("079ca133-fabc-424f-954d-6687b9a41e5f"));
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
@@ -284,18 +251,6 @@ namespace Management.Infrastructure.Migrations
                     b.ToTable("SocialProviders");
                 });
 
-            modelBuilder.Entity("Management.Core.Entities.BusinessDirectoryFeature", b =>
-                {
-                    b.HasOne("Management.Core.Entities.BusinessDirectory", "BusinessDirectory")
-                        .WithMany("BusinessDirectoryFeatures")
-                        .HasForeignKey("BusinessDirectoryId")
-                        .HasConstraintName("FK_BusinessDirectoryFeature_BusinessDirectory")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("BusinessDirectory");
-                });
-
             modelBuilder.Entity("Management.Core.Entities.PricingPlan", b =>
                 {
                     b.HasOne("Management.Core.Entities.Currency", "Currency")
@@ -305,11 +260,6 @@ namespace Management.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Currency");
-                });
-
-            modelBuilder.Entity("Management.Core.Entities.BusinessDirectory", b =>
-                {
-                    b.Navigation("BusinessDirectoryFeatures");
                 });
 
             modelBuilder.Entity("Management.Core.Entities.Currency", b =>

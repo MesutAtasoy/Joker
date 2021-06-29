@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Management.Application.BusinessDirectories.Queries.GetBusinessDirectories;
-using Management.Application.BusinessDirectories.Queries.GetBusinessDirectoryFeaturesByDirectoryId;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,13 +22,5 @@ namespace Management.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
             => Ok(await _mediator.Send(new GetBusinessDirectoriesQuery()));
-
-        /// <summary>
-        /// Returns business directories features by business directory Id
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("{id}/Features")]
-        public async Task<IActionResult> BusinessDirectoryFeatures(Guid id)
-            => Ok(await _mediator.Send(new GetBusinessDirectoryFeaturesByDirectoryIdQuery(id)));
     }
 }

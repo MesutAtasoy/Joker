@@ -10,7 +10,6 @@ namespace Management.Application
         {
             //Repositories
             services.AddScoped<IBusinessDirectoryRepository, BusinessDirectoryRepository>();
-            services.AddScoped<IBusinessDirectoryFeatureRepository, BusinessDirectoryFeatureRepository>();
             services.AddScoped<ICurrencyRepository, CurrencyRepository>();
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<IPricingPlanRepository, PricingPlanRepository>();

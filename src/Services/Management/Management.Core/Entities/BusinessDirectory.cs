@@ -6,7 +6,6 @@ namespace Management.Core.Entities
     {
         public BusinessDirectory()
         {
-            BusinessDirectoryFeatures = new HashSet<BusinessDirectoryFeature>();
         }
 
         public string Name { get; set; }
@@ -15,6 +14,5 @@ namespace Management.Core.Entities
         public string Icon { get; set; }
         public string ImageUrl { get; set; }
         public int Order { get; set; }
-        public virtual ICollection<BusinessDirectoryFeature> BusinessDirectoryFeatures { get; set; }
     }
 }

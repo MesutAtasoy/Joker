@@ -11,7 +11,7 @@ namespace Management.Infrastructure.Migrations
                 name: "Badges",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("a81371af-1c65-4c26-b260-05fd7afdf0fc")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("1313de76-39d8-4e03-ac41-aa2e92afcb49")),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     Code = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -28,7 +28,7 @@ namespace Management.Infrastructure.Migrations
                 name: "BusinessDirectories",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("2b1de0dd-975a-4ab1-ad2b-e9629e83d371")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("93501ebb-0fe2-449a-b96d-f2159e49ef50")),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     DisplayName = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -46,7 +46,7 @@ namespace Management.Infrastructure.Migrations
                 name: "Currencies",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("a5a85aed-4a5d-4904-8bac-53a5e6803601")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("46312bd4-c023-4475-88d9-49e35acf1dc1")),
                     Code = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
                     ImageUrl = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -61,7 +61,7 @@ namespace Management.Infrastructure.Migrations
                 name: "Languages",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("dd77e77d-793e-4e5a-995a-a291747e3df7")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("e9da72ac-154d-4e1e-867a-b613d722ff5a")),
                     Code = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
                     IsoCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -77,7 +77,7 @@ namespace Management.Infrastructure.Migrations
                 name: "PaymentMethods",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("db45fabe-8c56-46eb-81a2-938508672e35")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("61a24fa2-2a91-4acb-bc6d-81dc05b6da6e")),
                     Code = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
                     ImageUrl = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -92,7 +92,7 @@ namespace Management.Infrastructure.Migrations
                 name: "SocialProviders",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("17795f15-ec23-44fb-a8c5-bdc9d42750bd")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("079ca133-fabc-424f-954d-6687b9a41e5f")),
                     Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     DisplayName = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
                     Icon = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -105,32 +105,10 @@ namespace Management.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BusinessDirectoryFeatures",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("b56ded7f-72ce-4afd-9b2f-086186bf8000")),
-                    BusinessDirectoryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
-                    DisplayName = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: false),
-                    Order = table.Column<int>(type: "integer", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BusinessDirectoryFeatures", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BusinessDirectoryFeature_BusinessDirectory",
-                        column: x => x.BusinessDirectoryId,
-                        principalTable: "BusinessDirectories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PricingPlans",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("508cbcef-e5c4-4f8e-baca-11aa220fea57")),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValue: new Guid("40f04675-9cf0-4bda-9ef8-ec618e8ad0ca")),
                     Name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Slug = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
@@ -150,11 +128,6 @@ namespace Management.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BusinessDirectoryFeatures_BusinessDirectoryId",
-                table: "BusinessDirectoryFeatures",
-                column: "BusinessDirectoryId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PricingPlans_CurrencyId",
                 table: "PricingPlans",
                 column: "CurrencyId");
@@ -166,7 +139,7 @@ namespace Management.Infrastructure.Migrations
                 name: "Badges");
 
             migrationBuilder.DropTable(
-                name: "BusinessDirectoryFeatures");
+                name: "BusinessDirectories");
 
             migrationBuilder.DropTable(
                 name: "Languages");
@@ -179,9 +152,6 @@ namespace Management.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "SocialProviders");
-
-            migrationBuilder.DropTable(
-                name: "BusinessDirectories");
 
             migrationBuilder.DropTable(
                 name: "Currencies");

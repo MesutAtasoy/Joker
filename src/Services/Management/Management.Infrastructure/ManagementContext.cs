@@ -8,7 +8,6 @@ namespace Management.Infrastructure
     {
         public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<BusinessDirectory> BusinessDirectories { get; set; }
-        public virtual DbSet<BusinessDirectoryFeature> BusinessDirectoryFeatures { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
