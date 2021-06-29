@@ -30,15 +30,22 @@ namespace Campaign.Application.Campaigns.Command.CreateCampaign
 
             var campaignGalleries = new List<CampaignGallery>();
 
-            if (request.Galleries.Any())
+            if (request.Galleries != null && request.Galleries.Any())
             {
                 campaignGalleries = request.Galleries
                     .Select(x => new CampaignGallery(x.ImageUrl, x.Order))
                     .ToList();
             }
+
+            var businessDirectoryRef = BusinessDirectoryRef.Create(request.BusinessDirectory.RefId,
+                request.BusinessDirectory.Name);
+
+            var storeRef = StoreRef.Create(request.Store.RefId, 
+                request.Store.Name);
             
             var campaign = Domain.CampaignAggregate.Campaign.Create(campaignId,
-                StoreRef.Create(request.Store.RefId, request.Store.Name),
+                storeRef,
+                businessDirectoryRef,
                 request.Title,
                 request.Code,
                 request.Description,

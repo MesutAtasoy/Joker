@@ -9,6 +9,7 @@ namespace Campaign.Application.Campaigns.Command.CreateCampaign
     public class CreateCampaignCommand : IRequest<CampaignListDto>
     {
         public IdNameDto Store { get; set; }
+        public IdNameDto BusinessDirectory { get; set; }
         public string Title { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Campaign.Domain.CampaignAggregate.Events;
 using Campaign.Domain.Refs;
 using Joker.Domain;
 using Joker.Domain.Entities;
@@ -19,6 +20,7 @@ namespace Campaign.Domain.CampaignAggregate
 
         public Guid Id { get; private set; }
         public StoreRef Store { get; private set; }
+        public BusinessDirectoryRef BusinessDirectory { get; private set; }
         public string Slug { get; private set; }
         public string SlugKey { get; private set; }
         public string Title { get; private set; }
@@ -45,6 +47,7 @@ namespace Campaign.Domain.CampaignAggregate
         /// </summary>
         /// <param name="id"></param>
         /// <param name="store"></param>
+        /// <param name="businessDirectory"></param>
         /// <param name="title"></param>
         /// <param name="code"></param>
         /// <param name="description"></param>
@@ -57,6 +60,7 @@ namespace Campaign.Domain.CampaignAggregate
         /// <returns></returns>
         public static Campaign Create(Guid id,
             StoreRef store,
+            BusinessDirectoryRef businessDirectory,
             string title,
             string code,
             string description,
@@ -69,6 +73,7 @@ namespace Campaign.Domain.CampaignAggregate
         {
             Check.NotEmpty(id, nameof(id));
             Check.NotNull(store, nameof(store));
+            Check.NotNull(businessDirectory, nameof(businessDirectory));
             Check.NotNullOrEmpty(title, nameof(title));
 
             var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
@@ -77,6 +82,7 @@ namespace Campaign.Domain.CampaignAggregate
             {
                 Id = id,
                 Store = store,
+                BusinessDirectory = businessDirectory,
                 Title = title,
                 Code = code,
                 Description = description,
@@ -95,6 +101,8 @@ namespace Campaign.Domain.CampaignAggregate
             {
                 campaign.AddImages(galleries);
             }
+            
+            campaign.AddDomainEvent(new CampaignCreatedEvent(campaign));
 
             return campaign;
         }
@@ -138,6 +146,8 @@ namespace Campaign.Domain.CampaignAggregate
         {
             IsDeleted = true;
             ModifiedDate = DateTime.UtcNow;
+            
+            AddDomainEvent(new CampaignDeletedEvent(Id, Title));
         }
 
         /// <summary>
@@ -211,8 +221,7 @@ namespace Campaign.Domain.CampaignAggregate
             _campaignGalleries.Add(gallery);
             ModifiedDate = DateTime.UtcNow;
         }
-        
-        
+
         /// <summary>
         /// Add an image to campaign
         /// </summary>
@@ -223,7 +232,7 @@ namespace Campaign.Domain.CampaignAggregate
             {
                 return;
             }
-            
+
             _campaignGalleries.AddRange(galleries);
             ModifiedDate = DateTime.UtcNow;
         }
