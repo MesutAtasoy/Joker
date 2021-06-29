@@ -13,6 +13,7 @@ namespace Merchant.Application.Shared
             CreateMap<NeighborhoodRef, IdNameDto>();
             CreateMap<QuarterRef, IdNameDto>();
             CreateMap<DistrictRef, IdNameDto>();
+            CreateMap<MerchantRef, IdNameDto>();
         }
     }
 }

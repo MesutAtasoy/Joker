@@ -4,7 +4,7 @@ using Merchant.Application.Stores.Dto;
 
 namespace Merchant.Application.Stores.Commands.CreateStore
 {
-    public class CreateStoreCommand : IRequest<Guid>
+    public class CreateStoreCommand : IRequest<StoreListDto>
     {
         public Guid MerchantId { get; set; }
         public string Name { get; set; }

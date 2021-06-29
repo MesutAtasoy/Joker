@@ -1,9 +1,10 @@
 using System;
 using MediatR;
+using Merchant.Application.Merchants.Dto;
 
 namespace Merchant.Application.Merchants.Commands.CreateMerchant
 {
-    public class CreateMerchantCommand : IRequest<Guid>
+    public class CreateMerchantCommand : IRequest<MerchantDto>
     {
         public string Name { get; set; }
         public string Slogan { get; set; }

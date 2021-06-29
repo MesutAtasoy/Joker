@@ -4,6 +4,7 @@ using System.Linq;
 using Joker.Domain;
 using Joker.Domain.Entities;
 using Joker.Exceptions;
+using Merchant.Domain.Refs;
 using Merchant.Domain.StoreAggregate.Events;
 using Merchant.Domain.StoreAggregate.Rules;
 
@@ -18,7 +19,7 @@ namespace Merchant.Domain.StoreAggregate
         }
 
         public Guid Id { get; private set; }
-        public Guid MerchantId { get; private set; }
+        public MerchantRef Merchant { get; private set; }
         public string Name { get; private set; }
         public string Slogan { get; private set; }
         public string PhoneNumber { get; private set; }
@@ -41,7 +42,7 @@ namespace Merchant.Domain.StoreAggregate
         /// Creates a new store
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="merchantId"></param>
+        /// <param name="merchant"></param>
         /// <param name="name"></param>
         /// <param name="slogan"></param>
         /// <param name="phoneNumber"></param>
@@ -50,7 +51,7 @@ namespace Merchant.Domain.StoreAggregate
         /// <param name="location"></param>
         /// <returns></returns>
         public static Store Create(Guid id,
-            Guid merchantId,
+            MerchantRef merchant,
             string name,
             string slogan,
             string phoneNumber,
@@ -59,14 +60,14 @@ namespace Merchant.Domain.StoreAggregate
             StoreLocation location)
         {
             Check.NotEmpty(id, nameof(id));
-            Check.NotEmpty(merchantId, nameof(merchantId));
+            Check.NotNull(merchant, nameof(merchant));
             Check.NotNull(location, nameof(location));
             Check.NotNullOrEmpty(name, nameof(name));
 
             return new Store
             {
                 Id = id,
-                MerchantId = merchantId,
+                Merchant = merchant,
                 Name = name,
                 Slogan = slogan,
                 PhoneNumber = phoneNumber,
@@ -123,7 +124,6 @@ namespace Merchant.Domain.StoreAggregate
             EmailConfirmed = true;
             ModifiedDate = DateTime.UtcNow;
         }
-
 
         /// <summary>
         /// Updates store's location

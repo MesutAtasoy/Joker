@@ -1,8 +1,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using Joker.Exceptions;
 using MediatR;
+using Merchant.Application.Stores.Dto;
 using Merchant.Domain.MerchantAggregate.Repositories;
 using Merchant.Domain.Refs;
 using Merchant.Domain.StoreAggregate;
@@ -11,19 +13,22 @@ using Merchant.Infrastructure.Factories;
 
 namespace Merchant.Application.Stores.Commands.CreateStore
 {
-    public class CreateStoreCommandHandler : IRequestHandler<CreateStoreCommand, Guid>
+    public class CreateStoreCommandHandler : IRequestHandler<CreateStoreCommand, StoreListDto>
     {
         private readonly IMerchantRepository _merchantRepository;
         private readonly IStoreRepository _storeRepository;
+        private readonly IMapper _mapper;
 
         public CreateStoreCommandHandler(IMerchantRepository merchantRepository, 
-            IStoreRepository storeRepository)
+            IStoreRepository storeRepository, 
+            IMapper mapper)
         {
             _merchantRepository = merchantRepository;
             _storeRepository = storeRepository;
+            _mapper = mapper;
         }
 
-        public async Task<Guid> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
+        public async Task<StoreListDto> Handle(CreateStoreCommand request, CancellationToken cancellationToken)
         {
             var merchant = await _merchantRepository.GetByIdAsync(request.MerchantId);
 
@@ -32,9 +37,10 @@ namespace Merchant.Application.Stores.Commands.CreateStore
                 throw new NotFoundException("Merchant is not found");
             }
 
+            var merchantRef = MerchantRef.Create(merchant.Id, merchant.Name);
+
             var storeId = IdGenerationFactory.Create();
 
-            
             var storeLocation = new StoreLocation(
                 CountryRef.Create(request.Location.Country.RefId, request.Location.Country.Name),
                 CityRef.Create(request.Location.City.RefId, request.Location.City.Name),
@@ -44,7 +50,7 @@ namespace Merchant.Application.Stores.Commands.CreateStore
             );
             
             var store = Store.Create(storeId,
-                merchant.Id,
+                merchantRef,
                 request.Name,
                 request.Slogan,
                 request.PhoneNumber,
@@ -55,7 +61,7 @@ namespace Merchant.Application.Stores.Commands.CreateStore
 
             await _storeRepository.AddAsync(store);
             
-            return storeId;
+            return _mapper.Map<StoreListDto>(store);
         }
     }
 }

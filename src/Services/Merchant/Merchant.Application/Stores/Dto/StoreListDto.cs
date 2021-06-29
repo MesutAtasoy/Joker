@@ -1,11 +1,12 @@
 using System;
+using Merchant.Application.Shared.Dto;
 
 namespace Merchant.Application.Stores.Dto
 {
     public class StoreListDto
     {
         public Guid Id { get;  set; }
-        public Guid MerchantId { get;  set; }
+        public IdNameDto Merchant { get;  set; }
         public string Name { get;  set; }
         public string Slogan { get;  set; }
         public string PhoneNumber { get;  set; }
@@ -14,5 +15,6 @@ namespace Merchant.Application.Stores.Dto
         public string Description { get;  set; }
         public DateTime CreatedDate { get;  set; }
         public DateTime? ModifiedDate { get;  set; }
+        public StoreLocationDto Location { get; set; }
     }
 }

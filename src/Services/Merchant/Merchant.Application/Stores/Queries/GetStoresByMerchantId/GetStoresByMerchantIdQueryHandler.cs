@@ -24,7 +24,7 @@ namespace Merchant.Application.Stores.Queries.GetStoresByMerchantId
         public async Task<List<StoreListDto>> Handle(GetStoresByMerchantIdQuery request, CancellationToken cancellationToken)
         {
             var stores =  _storeRepository.Get()
-                .Where(x => !x.IsDeleted && x.MerchantId == request.MerchantId)
+                .Where(x => !x.IsDeleted && x.Merchant.RefId == request.MerchantId)
                 .ProjectTo<StoreListDto>(_mapper.ConfigurationProvider)
                 .ToList();
 
