@@ -7,6 +7,7 @@ namespace Search.Core.IndexModels
     public sealed class CampaignIndexModel : ElasticEntity<Guid>
     {
         public Guid StoreId { get; set; }
+        public string StoreName  { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }
         public string Title { get; set; }
@@ -16,8 +17,6 @@ namespace Search.Core.IndexModels
         public string PreviewImageUrl { get; set; }
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public bool IsPublished { get; set; }
-        public DateTime CreatedOnUtc { get; set; }
         public List<BadgeIndexModel> Badges { get; set; }
     }
 }

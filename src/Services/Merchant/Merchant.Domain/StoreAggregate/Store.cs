@@ -64,7 +64,7 @@ namespace Merchant.Domain.StoreAggregate
             Check.NotNull(location, nameof(location));
             Check.NotNullOrEmpty(name, nameof(name));
 
-            return new Store
+            var store = new Store
             {
                 Id = id,
                 Merchant = merchant,
@@ -78,6 +78,17 @@ namespace Merchant.Domain.StoreAggregate
                 IsDeleted = false,
                 CreatedDate = DateTime.UtcNow
             };
+
+            store.AddDomainEvent(new StoreCreatedEvent(id, 
+                merchant,
+                name,
+                slogan, 
+                phoneNumber,
+                email,
+                description,
+                location));
+
+            return store;
         }
 
 
@@ -102,7 +113,7 @@ namespace Merchant.Domain.StoreAggregate
             {
                 AddDomainEvent(new StoreNameUpdatedEvent(Id, Name, name));
             }
-            
+
             Name = name;
             Slogan = slogan;
             PhoneNumber = phoneNumber;
@@ -114,8 +125,17 @@ namespace Merchant.Domain.StoreAggregate
             }
 
             ModifiedDate = DateTime.UtcNow;
+
+            AddDomainEvent(new StoreUpdatedEvent(Id, 
+                Merchant, 
+                name,
+                slogan,
+                phoneNumber,
+                email,
+                description,
+                Location));
         }
-        
+
         /// <summary>
         /// Mark as confirmed mail 
         /// </summary>
@@ -133,6 +153,15 @@ namespace Merchant.Domain.StoreAggregate
         {
             Location = location;
             ModifiedDate = DateTime.UtcNow;
+            
+            AddDomainEvent(new StoreUpdatedEvent(Id, 
+                Merchant, 
+                Name,
+                Slogan,
+                PhoneNumber,
+                Email,
+                Description,
+                Location));
         }
 
         /// <summary>
@@ -166,7 +195,7 @@ namespace Merchant.Domain.StoreAggregate
         public void RemoveBusinessHour(StoreBusinessHour storeBusinessHour)
         {
             Check.NotNull(storeBusinessHour, nameof(storeBusinessHour));
-            
+
             RemoveBusinessHour(storeBusinessHour.DayOfWeek);
         }
 
@@ -193,10 +222,10 @@ namespace Merchant.Domain.StoreAggregate
         public void AddFAQ(StoreFAQ storeFaq)
         {
             Check.NotNull(storeFaq, nameof(storeFaq));
-            
+
             _storeFAQs.Add(storeFaq);
         }
-        
+
         /// <summary>
         /// Remove a faq
         /// </summary>
@@ -210,6 +239,5 @@ namespace Merchant.Domain.StoreAggregate
                 _storeFAQs.Remove(faq);
             }
         }
-
     }
 }

@@ -46,7 +46,8 @@ namespace Merchant.Application.Stores.Commands.CreateStore
                 CityRef.Create(request.Location.City.RefId, request.Location.City.Name),
                 NeighborhoodRef.Create(request.Location.Neighborhood.RefId, request.Location.Neighborhood.Name),
                 DistrictRef.Create(request.Location.District.RefId, request.Location.District.Name),
-                QuarterRef.Create(request.Location.Quarter.RefId, request.Location.Quarter.Name)
+                QuarterRef.Create(request.Location.Quarter.RefId, request.Location.Quarter.Name),
+                request.Location.Address
             );
             
             var store = Store.Create(storeId,

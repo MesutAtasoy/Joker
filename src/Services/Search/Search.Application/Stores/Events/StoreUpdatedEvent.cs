@@ -1,14 +1,15 @@
 using System;
-using Joker.ElasticSearch.Models;
+using Joker.EventBus;
 
-namespace Search.Core.IndexModels
+namespace Search.Application.Stores.Events
 {
-    public class StoreIndexModel : ElasticEntity<Guid>
+    public class StoreUpdatedEvent: IntegrationEvent
     {
+        public Guid Id { get; set; }
+        public Guid MerchantId { get; set; }
+        public string MerchantName { get; set; }
         public string Name { get; set; }
         public string Slogan { get; set; }
-        public string Slug { get; set; }
-        public string SlugKey { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }

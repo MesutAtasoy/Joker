@@ -9,5 +9,6 @@ namespace Merchant.Application.Stores.Dto
         public IdNameDto District { get; set; }
         public IdNameDto Quarter { get; set; }
         public IdNameDto Neighborhood { get; set; }
+        public string Address { get; set; }
     }
 }

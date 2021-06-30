@@ -4,11 +4,11 @@ using Joker.Domain.DomainEvent;
 
 namespace Campaign.Domain.CampaignAggregate.Events
 {
-    public class CampaignCreatedEvent : DomainEvent
+    public class CampaignUpdatedEvent : DomainEvent
     {
-        private CampaignCreatedEvent(){}
-      
-        public CampaignCreatedEvent(Guid id, 
+        private CampaignUpdatedEvent(){}
+        
+        public CampaignUpdatedEvent(Guid id,
             StoreRef store,
             BusinessDirectoryRef businessDirectory,
             string slug,

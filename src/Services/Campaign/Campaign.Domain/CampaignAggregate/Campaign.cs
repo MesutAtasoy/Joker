@@ -77,7 +77,7 @@ namespace Campaign.Domain.CampaignAggregate
             Check.NotNullOrEmpty(title, nameof(title));
 
             var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
-
+            var slug = $"{title.GenerateSlug()}-{slugKey}";
             var campaign = new Campaign
             {
                 Id = id,
@@ -91,7 +91,7 @@ namespace Campaign.Domain.CampaignAggregate
                 StartTime = startTime,
                 EndTime = endTime,
                 Channel = channel,
-                Slug = $"{title.GenerateSlug()}-{slugKey}",
+                Slug = slug,
                 SlugKey = slugKey,
                 IsDeleted = false,
                 CreatedDate = DateTime.UtcNow
@@ -102,7 +102,19 @@ namespace Campaign.Domain.CampaignAggregate
                 campaign.AddImages(galleries);
             }
             
-            campaign.AddDomainEvent(new CampaignCreatedEvent(campaign));
+            campaign.AddDomainEvent(new CampaignCreatedEvent(id,
+                store,
+                businessDirectory,
+                slug,
+                slugKey,
+                title,
+                code,
+                description,
+                condition,
+                previewImageUrl,
+                startTime,
+                endTime,
+                channel));
 
             return campaign;
         }
@@ -136,6 +148,21 @@ namespace Campaign.Domain.CampaignAggregate
             EndTime = endTime;
             Slug = $"{title.GenerateSlug()}-{SlugKey}";
             ModifiedDate = DateTime.UtcNow;
+            
+            
+            AddDomainEvent(new CampaignUpdatedEvent(Id,
+                Store,
+                BusinessDirectory,
+                Slug,
+                SlugKey,
+                Title,
+                Code,
+                Description,
+                Condition,
+                PreviewImageUrl,
+                StartTime,
+                EndTime,
+                Channel));
         }
 
         /// <summary>

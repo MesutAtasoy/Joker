@@ -23,6 +23,8 @@ namespace Merchant.Application.Stores.Commands.CreateStore
             
             RuleFor(x => x.Location.District.RefId).NotEmpty();
             RuleFor(x => x.Location.District.Name).NotEmpty();
+            
+            RuleFor(x => x.Location.Address).NotEmpty();
         }
     }
 }

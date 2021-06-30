@@ -4,9 +4,9 @@ using Merchant.Domain.Refs;
 
 namespace Merchant.Domain.StoreAggregate.Events
 {
-    public class StoreCreatedEvent : DomainEvent
+    public class StoreUpdatedEvent : DomainEvent
     {
-        public StoreCreatedEvent(Guid id,
+         public StoreUpdatedEvent(Guid id,
             MerchantRef merchant,
             string name,
             string slogan,

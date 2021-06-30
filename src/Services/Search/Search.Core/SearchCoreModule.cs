@@ -8,7 +8,7 @@ namespace Search.Core
 {
     public static class SearchCoreModule
     {
-        public static IServiceCollection AddSearchCoreModule(this IServiceCollection services)
+        public static IServiceCollection AddCoreModule(this IServiceCollection services)
         {
             services.AddTransient<IElasticSearchManager, ElasticIndexManager>();
             services.AddTransient<ICampaignIndexManager, CampaignIndexManager>();
