@@ -2,6 +2,7 @@ using Joker.CAP;
 using Joker.ElasticSearch;
 using Joker.ElasticSearch.Options;
 using Joker.Mvc;
+using Joker.Mvc.Initializers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -65,7 +66,9 @@ namespace Search.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IWebHostEnvironment env,
+            IStartupInitializer initializer)
         {
             if (env.IsDevelopment())
             {
@@ -77,6 +80,8 @@ namespace Search.Api
             app.UseErrorHandler();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            initializer.InitializeAsync().Wait();
         }
     }
 }
