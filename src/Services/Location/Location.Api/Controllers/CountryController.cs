@@ -22,7 +22,7 @@ namespace Location.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Countries([FromQuery] GetCountryQuery query)
-            => Ok(await _mediator.Send(query));
+        public async Task<IActionResult> Countries()
+            => Ok(await _mediator.Send(new GetCountryQuery()));
     }
 }
