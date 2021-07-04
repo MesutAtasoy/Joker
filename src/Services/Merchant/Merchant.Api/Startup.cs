@@ -1,4 +1,5 @@
 using Joker.CAP;
+using Joker.Consul;
 using Joker.Mongo;
 using Joker.Mongo.Domain;
 using Joker.Mvc;
@@ -55,6 +56,7 @@ namespace Merchant.Api
                 capOptions.FailedRetryCount = 3;
                 capOptions.FailedRetryInterval = 60;
             });
+            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

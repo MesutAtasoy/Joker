@@ -1,6 +1,12 @@
 version: '3.4'
 
 services:
+  consul:
+    image: consul
+    container_name: consul
+    ports:
+      - "8500:8500"
+        
   seq:
     container_name: "seq"
     environment:

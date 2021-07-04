@@ -1,3 +1,4 @@
+using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
 using Management.Application;
@@ -35,6 +36,7 @@ namespace Management.Api
             services.AddApplicationModule();
             services.AddJokerMediatr(typeof(ManagementApplicationModule));
             services.AddSwaggerGen();
+            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

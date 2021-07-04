@@ -91,6 +91,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Search.Application", "src\S
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EAA3E93D-C5A1-4D92-A76C-C12C5409F79E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joker.Consul", "src\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj", "{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -533,6 +535,18 @@ Global
 		{EAA3E93D-C5A1-4D92-A76C-C12C5409F79E}.Release|x64.Build.0 = Release|Any CPU
 		{EAA3E93D-C5A1-4D92-A76C-C12C5409F79E}.Release|x86.ActiveCfg = Release|Any CPU
 		{EAA3E93D-C5A1-4D92-A76C-C12C5409F79E}.Release|x86.Build.0 = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|x64.Build.0 = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Debug|x86.Build.0 = Debug|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|x64.ActiveCfg = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|x64.Build.0 = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|x86.ActiveCfg = Release|Any CPU
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -580,6 +594,7 @@ Global
 		{22D7128B-693C-4B86-921A-8A6BF3E19278} = {DC6558E2-048E-458A-9AD4-197B80D427CE}
 		{9AE8B72B-4CAD-4C5B-8B31-A6883C4A1C8D} = {DC6558E2-048E-458A-9AD4-197B80D427CE}
 		{E1AD2068-89F9-4A52-B51B-288E5414350E} = {DC6558E2-048E-458A-9AD4-197B80D427CE}
+		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50} = {718AF0D8-2CBD-41BD-BE8B-39A34ECA717F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F8E0F16-8053-401F-AC76-4568D8A282A5}

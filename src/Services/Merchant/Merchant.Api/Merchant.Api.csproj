@@ -21,6 +21,7 @@
     
     <ItemGroup>
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
       <ProjectReference Include="..\Merchant.Application\Merchant.Application.csproj" />
       <ProjectReference Include="..\Merchant.Infrastructure\Merchant.Infrastructure.csproj" />
     </ItemGroup>
