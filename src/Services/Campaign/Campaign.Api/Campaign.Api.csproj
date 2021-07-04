@@ -2,12 +2,17 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+        <UserSecretsId>085cfb9f-2e0d-4267-a07e-d4e63152626d</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..\..</DockerfileContext>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
         <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.0.1" />
         <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
         <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.1.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />

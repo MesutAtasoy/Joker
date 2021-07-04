@@ -1,0 +1,64 @@
+version: '3.4'
+
+services:
+     nosqldata:
+       image: mongo
+
+    postgres:
+      image: postgres
+      
+    seq:
+      image: datalust/seq:latest
+
+    rabbitmq:
+      image: rabbitmq:3-management-alpine
+
+    campaign.api:
+      image: ${DOCKER_REGISTRY-}campaignapi
+      build:
+        context: .
+        dockerfile: src/Services/Campaign/Campaign.Api/Dockerfile
+      depends_on:
+        - nosqldata
+        - seq
+        - rabbitmq        
+
+    location.api:
+      image: ${DOCKER_REGISTRY-}locationapi
+      build:
+        context: .
+        dockerfile: src/Services/Location/Location.Api/Dockerfile
+      depends_on:
+        - postgres
+        - seq
+        - rabbitmq
+          
+    management.api:
+      image: ${DOCKER_REGISTRY-}managementapi
+      build:
+        context: .
+        dockerfile: src/Services/Management/Management.Api/Dockerfile
+     depends_on:
+       - postgres
+       - seq
+       - rabbitmq
+      
+    merchant.api:
+      image: ${DOCKER_REGISTRY-}merchantapi
+      build:
+        context: .
+        dockerfile: src/Services/Merchant/Merchant.Api/Dockerfile
+      depends_on:
+        - nosqldata
+        - seq
+        - rabbitmq
+
+    search.api:
+      image: ${DOCKER_REGISTRY-}searchapi
+      build:
+        context: .
+        dockerfile: src/Services/Search/Search.Api/Dockerfile
+      depends_on:
+        - seq
+        - rabbitmq        
+

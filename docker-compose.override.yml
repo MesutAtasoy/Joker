@@ -1,0 +1,81 @@
+version: '3.4'
+
+services:
+  seq:
+    container_name: "seq"
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5341:80"
+    volumes:
+      - ${HOST_VOLUMES_PATH}/seq:/data
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  postgres:
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGDATA: /data/postgres
+    volumes:
+      - ${HOST_VOLUMES_PATH}/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  nosqldata:
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${HOST_VOLUMES_PATH}/mongo:/data/db
+
+  merchant.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5000:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      -
+  campaign.api:
+    container_name: "campaign.api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5001:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  management.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5002:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  location.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5003:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  search.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5004:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

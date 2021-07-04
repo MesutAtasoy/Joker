@@ -2,10 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+        <UserSecretsId>6ff7a686-e1ac-4211-897c-9a60e45630d0</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..\..</DockerfileContext>
     </PropertyGroup>
 
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     </ItemGroup>
