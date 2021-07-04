@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Management.Core.Entities
+﻿namespace Management.Core.Entities
 {
     public partial class BusinessDirectory : BaseEntityModel
     {

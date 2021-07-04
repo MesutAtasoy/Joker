@@ -1,3 +1,5 @@
+using AutoMapper;
+using Location.Application.Cities;
 using Location.Core.Repositories;
 using Location.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,8 @@ namespace Location.Application
             services.AddScoped<INeighborhoodRepository, NeighborhoodRepository>();
             services.AddScoped<IQuarterRepository, QuarterRepository>();
 
+            //Automapper
+            services.AddAutoMapper(typeof(CityMappingProfile));
             return services;
         }
     }

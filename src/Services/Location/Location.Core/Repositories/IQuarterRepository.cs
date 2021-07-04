@@ -8,12 +8,6 @@ namespace Location.Core.Repositories
 {
     public interface IQuarterRepository : IRepository<Quarter>
     {
-        Task<bool> ValidateAsync(Guid countryId,
-            Guid cityId,
-            Guid districtId,
-            Guid neighborhoodId,
-            Guid quarterId);
-
         Task<List<Quarter>> ByNeighborhoodIdAsync(Guid neighborhoodId);
     }
 }

@@ -1,9 +1,10 @@
 using System;
+using Location.Application.Quarters.Dto;
 using MediatR;
 
 namespace Location.Application.Quarters.Commands.Verification
 {
-    public class LocationVerificationCommand : IRequest<bool>
+    public class LocationVerificationCommand : IRequest<LocationDto>
     {
         public Guid CountryId { get; set; }
         public Guid CityId { get; set; }

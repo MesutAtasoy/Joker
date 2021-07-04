@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Location.Core.Entities;
+using Location.Application.Cities.Dto;
 using MediatR;
 
 namespace Location.Application.Cities.Queries.GetCity
 {
-    public class GetCityQuery : IRequest<List<City>>
+    public class GetCityQuery : IRequest<List<CityDto>>
     {
         public Guid CountryId { get; set; }
     }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Location.Core.Entities;
+using Location.Application.Neighborhoods.Dto;
 using MediatR;
 
 namespace Location.Application.Neighborhoods.Queries.GetNeighborhood
 {
-    public class GetNeighborhoodQuery : IRequest<List<Neighborhood>>
+    public class GetNeighborhoodQuery : IRequest<List<NeighborhoodDto>>
     {
         public Guid DistrictId { get; set; }
     }

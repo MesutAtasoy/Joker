@@ -1,24 +1,28 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Location.Core.Entities;
+using AutoMapper;
+using Location.Application.Countries.Dto;
 using Location.Core.Repositories;
 using MediatR;
 
 namespace Location.Application.Countries.Queries.GetCountry
 {
-    public class GetCountryQueryHandler : IRequestHandler<GetCountryQuery, Country>
+    public class GetCountryQueryHandler : IRequestHandler<GetCountryQuery, CountryDto>
     {
         private readonly ICountryRepository _countryRepository;
+        private readonly IMapper _mapper;
 
-        public GetCountryQueryHandler(ICountryRepository countryRepository)
+        public GetCountryQueryHandler(ICountryRepository countryRepository,
+            IMapper mapper)
         {
             _countryRepository = countryRepository;
+            _mapper = mapper;
         }
 
-        public async Task<Country> Handle(GetCountryQuery request, CancellationToken cancellationToken)
+        public async Task<CountryDto> Handle(GetCountryQuery request, CancellationToken cancellationToken)
         {
             var country = await _countryRepository.GetDefaultCountryAsync();
-            return country;
+            return _mapper.Map<CountryDto>(country);
         }
     }
 }

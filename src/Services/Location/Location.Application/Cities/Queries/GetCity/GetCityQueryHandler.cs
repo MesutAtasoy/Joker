@@ -1,24 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Location.Core.Entities;
+using AutoMapper;
+using Location.Application.Cities.Dto;
 using Location.Core.Repositories;
 using MediatR;
 
 namespace Location.Application.Cities.Queries.GetCity
 {
-    public class GetCityQueryHandler : IRequestHandler<GetCityQuery, List<City>>
+    public class GetCityQueryHandler : IRequestHandler<GetCityQuery, List<CityDto>>
     {
         private readonly ICityRepository _cityRepository;
+        private readonly IMapper _mapper;
 
-        public GetCityQueryHandler(ICityRepository cityRepository)
+        public GetCityQueryHandler(ICityRepository cityRepository, IMapper mapper)
         {
             _cityRepository = cityRepository;
+            _mapper = mapper;
         }
 
-        public async Task<List<City>> Handle(GetCityQuery request, CancellationToken cancellationToken)
+        public async Task<List<CityDto>> Handle(GetCityQuery request, CancellationToken cancellationToken)
         {
-            return await _cityRepository.ByCountryIdAsync(request.CountryId);
+            var cities =  await _cityRepository.ByCountryIdAsync(request.CountryId);
+            return _mapper.Map<List<CityDto>>(cities);
         }
     }
 }

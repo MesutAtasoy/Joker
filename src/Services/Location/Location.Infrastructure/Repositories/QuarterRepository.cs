@@ -15,16 +15,6 @@ namespace Location.Infrastructure.Repositories
         {
         }
 
-        public async Task<bool> ValidateAsync(Guid countryId, Guid cityId, Guid districtId, Guid neighborhoodId, Guid quarterId)
-        {
-            return await AnyAsync(c => c.CountryId == countryId &&
-                                       c.CityId == cityId &&
-                                       c.DistrictId == districtId &&
-                                       c.NeighborhoodId == neighborhoodId &&
-                                       c.Id == quarterId);
-            
-        }
-
         public async Task<List<Quarter>> ByNeighborhoodIdAsync(Guid neighborhoodId)
         {
             return await base.Get(x => !x.IsDeleted && x.NeighborhoodId == neighborhoodId)
