@@ -7,16 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /src
-COPY ["src/Services/Location/Location.Api/Location.Api.csproj", "src/Services/Location/Location.Api/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Mvc/Joker.Mvc.csproj", "src/Submodules/Joker.Packages/Joker.Mvc/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Exceptions/Joker.Exceptions.csproj", "src/Submodules/Joker.Packages/Joker.Exceptions/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Response/Joker.Response.csproj", "src/Submodules/Joker.Packages/Joker.Response/"]
-COPY ["src/Services/Location/Location.Application/Location.Application.csproj", "src/Services/Location/Location.Application/"]
-COPY ["src/Services/Location/Location.Core/Location.Core.csproj", "src/Services/Location/Location.Core/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Repositories/Joker.Repositories.csproj", "src/Submodules/Joker.Packages/Joker.Repositories/"]
-COPY ["src/Services/Location/Location.Infrastructure/Location.Infrastructure.csproj", "src/Services/Location/Location.Infrastructure/"]
-COPY ["src/Submodules/Joker.Packages/Joker.EntityFrameworkCore/Joker.EntityFrameworkCore.csproj", "src/Submodules/Joker.Packages/Joker.EntityFrameworkCore/"]
-COPY ["src/Submodules/Joker.Packages/Joker.EntityFrameworkCore.Migration/Joker.EntityFrameworkCore.Migration.csproj", "src/Submodules/Joker.Packages/Joker.EntityFrameworkCore.Migration/"]
+COPY . .
 RUN dotnet restore "src/Services/Location/Location.Api/Location.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Services/Location/Location.Api"

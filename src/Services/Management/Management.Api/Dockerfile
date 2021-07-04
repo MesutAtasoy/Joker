@@ -7,16 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /src
-COPY ["src/Services/Management/Management.Api/Management.Api.csproj", "src/Services/Management/Management.Api/"]
-COPY ["src/Services/Management/Management.Application/Management.Application.csproj", "src/Services/Management/Management.Application/"]
-COPY ["src/Services/Management/Management.Core/Management.Core.csproj", "src/Services/Management/Management.Core/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Repositories/Joker.Repositories.csproj", "src/Submodules/Joker.Packages/Joker.Repositories/"]
-COPY ["src/Services/Management/Management.Infrastructure/Management.Infrastructure.csproj", "src/Services/Management/Management.Infrastructure/"]
-COPY ["src/Submodules/Joker.Packages/Joker.EntityFrameworkCore/Joker.EntityFrameworkCore.csproj", "src/Submodules/Joker.Packages/Joker.EntityFrameworkCore/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Exceptions/Joker.Exceptions.csproj", "src/Submodules/Joker.Packages/Joker.Exceptions/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Mvc/Joker.Mvc.csproj", "src/Submodules/Joker.Packages/Joker.Mvc/"]
-COPY ["src/Submodules/Joker.Packages/Joker.Response/Joker.Response.csproj", "src/Submodules/Joker.Packages/Joker.Response/"]
-COPY ["src/Submodules/Joker.Packages/Joker.EntityFrameworkCore.Migration/Joker.EntityFrameworkCore.Migration.csproj", "src/Submodules/Joker.Packages/Joker.EntityFrameworkCore.Migration/"]
+COPY . .
 RUN dotnet restore "src/Services/Management/Management.Api/Management.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Services/Management/Management.Api"
