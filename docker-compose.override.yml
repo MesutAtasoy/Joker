@@ -40,9 +40,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5000:80"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-      -
+      
   campaign.api:
     container_name: "campaign.api"
     environment:
@@ -50,8 +48,6 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5001:80"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   management.api:
     environment:
@@ -59,23 +55,17 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5002:80"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   location.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
     ports:
-      - "5003:80"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5003:80"   
 
   search.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
     ports:
-      - "5004:80"
-    volumes:
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "5004:80"    
