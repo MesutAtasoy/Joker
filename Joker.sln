@@ -91,7 +91,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Search.Application", "src\S
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{EAA3E93D-C5A1-4D92-A76C-C12C5409F79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joker.Consul", "src\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj", "{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Joker.Consul", "src\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj", "{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aggregators", "Aggregators", "{4EEBC936-E5CE-46A5-A515-C3A7407F297B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -595,6 +597,7 @@ Global
 		{9AE8B72B-4CAD-4C5B-8B31-A6883C4A1C8D} = {DC6558E2-048E-458A-9AD4-197B80D427CE}
 		{E1AD2068-89F9-4A52-B51B-288E5414350E} = {DC6558E2-048E-458A-9AD4-197B80D427CE}
 		{DB7C056A-3CFF-4DB5-B6B6-EC64F34E5F50} = {718AF0D8-2CBD-41BD-BE8B-39A34ECA717F}
+		{4EEBC936-E5CE-46A5-A515-C3A7407F297B} = {A937B4F6-B384-4240-BB02-3924A0A55B7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F8E0F16-8053-401F-AC76-4568D8A282A5}

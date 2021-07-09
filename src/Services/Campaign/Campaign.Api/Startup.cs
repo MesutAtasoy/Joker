@@ -1,3 +1,4 @@
+using Campaign.Api.GrpcServices;
 using Campaign.Application;
 using Campaign.Infrastructure;
 using Joker.CAP;
@@ -29,6 +30,7 @@ namespace Campaign.Api
         {
             services.AddApiVersion();
             services.AddControllers();
+            services.AddGrpc();
             services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
             services.AddMongoContext<CampaignContext>();
             services.AddMongoDomainRepositories();
@@ -73,7 +75,12 @@ namespace Campaign.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Campaign.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
+                endpoints.MapGrpcService<CampaignGrpcService>();
+            });
         }
     }
 }
