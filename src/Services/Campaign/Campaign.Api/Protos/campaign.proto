@@ -1,15 +1,97 @@
 syntax = "proto3";
 
 option csharp_namespace = "Campaign.Api.Grpc";
+import "google/protobuf/timestamp.proto";
 
 service CampaignApiGrpcService {
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc CreateCampaign (CreateCampaignMessage) returns (CampaignListMessage);
+  rpc UpdateCampaign (UpdateCampaignMessage) returns (CampaignListMessage);
+  rpc DeleteCampaign (ByIdMessage) returns (DeleteCampaignMessage);
+  rpc GetById (ByIdMessage) returns (CampaignMessage);
 }
 
-message HelloRequest {
-  string name = 1;
+message CreateCampaignMessage {
+  IdName store = 1;
+  IdName businessDirectory = 2;
+  string title = 3;
+  string code = 4;
+  string description = 5;
+  string condition = 6;
+  string previewImageUrl = 7;
+  google.protobuf.Timestamp startTime = 8;
+  google.protobuf.Timestamp endTime = 9;
+  string channel = 10;
+  repeated CampaignGalleryMessage Galleries = 11;
 }
 
-message HelloReply {
-  string message = 1;
+
+message UpdateCampaignMessage {
+  string id = 1;
+  UpdateCampaignMessageItem campaign = 2;
+}
+
+
+message DeleteCampaignMessage {
+  bool succeed = 1;
+  string message = 2;
+}
+
+message UpdateCampaignMessageItem {
+  string title = 1;
+  string code = 2;
+  string description = 3;
+  string condition = 4;
+  string previewImageUrl = 5;
+  google.protobuf.Timestamp createdDate = 6;
+  google.protobuf.Timestamp modifiedDate = 7;
+}
+
+message CampaignGalleryMessage {
+  string imageUrl = 1;
+  int32 order = 2;
+}
+
+message IdName {
+  string id = 1;
+  string name = 2;
+}
+
+message ByIdMessage {
+  string  id = 1;
+}
+
+message CampaignListMessage {
+  string id = 1;
+  IdName store = 2;
+  string slug = 3;
+  string slugKey = 4;
+  string title = 5;
+  string code = 6;
+  string description = 7;
+  string condition = 8;
+  string previewImageUrl = 9;
+  google.protobuf.Timestamp startTime = 10;
+  google.protobuf.Timestamp endTime = 11;
+  string channel = 12;
+  google.protobuf.Timestamp createdDate = 13;
+  google.protobuf.Timestamp modifiedDate = 14;
+}
+
+
+message CampaignMessage {
+  string id = 1;
+  IdName store = 2;
+  string slug = 3;
+  string slugKey = 4;
+  string title = 5;
+  string code = 6;
+  string description = 7;
+  string condition = 8;
+  string previewImageUrl = 9;
+  google.protobuf.Timestamp startTime = 10;
+  google.protobuf.Timestamp endTime = 11;
+  string channel = 12;
+  google.protobuf.Timestamp createdDate = 13;
+  google.protobuf.Timestamp modifiedDate = 14;
+  repeated CampaignGalleryMessage campaignGalleries = 15;  
 }

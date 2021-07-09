@@ -8,27 +8,16 @@ namespace Campaign.Application.Campaigns.Command.DeleteCampaign
 {
     public class DeleteCampaignCommandHandler : IRequestHandler<DeleteCampaignCommand, bool>
     {
-        private readonly ICampaignRepository _campaignRepository;
+        private readonly CampaignManager _campaignManager;
 
-        public DeleteCampaignCommandHandler(ICampaignRepository campaignRepository)
+        public DeleteCampaignCommandHandler(CampaignManager campaignManager)
         {
-            _campaignRepository = campaignRepository;
+            _campaignManager = campaignManager;
         }
 
         public async Task<bool> Handle(DeleteCampaignCommand request, CancellationToken cancellationToken)
         {
-            var campaign = await _campaignRepository.GetByIdAsync(request.CampaignId);
-
-            if (campaign == null)
-            {
-                throw new NotFoundException("Campaign is not found");
-            }
-            
-            campaign.MarkAsDeleted();
-
-            await _campaignRepository.UpdateAsync(campaign.Id, campaign);
-            
-            return true;
+            return await _campaignManager.DeleteAsync(request);
         }
     }
 }

@@ -1,4 +1,5 @@
 using AutoMapper;
+using Campaign.Application.Campaigns;
 using Campaign.Application.Shared;
 using Campaign.Domain.CampaignAggregate.Repositories;
 using Campaign.Infrastructure;
@@ -21,6 +22,9 @@ namespace Campaign.Application
             
             //Automapper
             services.AddAutoMapper(typeof(SharedMappingProfile));
+            
+            //Application Services
+            services.AddScoped<CampaignManager>();
             
             CampaignContext.ApplyConfiguration();
             
