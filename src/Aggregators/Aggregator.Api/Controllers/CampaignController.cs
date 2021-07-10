@@ -1,18 +1,16 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Campaign;
-using Aggregator.Api.Models.Merchant;
 using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Store;
 using Joker.Extensions;
-using Management.Api.Grpc;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
-    [Route("api/Merchants")]
+    [Route("api/Campaigns")]
     public class CampaignController : ControllerBase
     {
         private readonly ICampaignService _campaignService;
