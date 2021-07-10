@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Campaign.Api.Grpc";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 
 service CampaignApiGrpcService {
   rpc CreateCampaign (CreateCampaignMessage) returns (CampaignListMessage);
@@ -48,7 +49,7 @@ message UpdateCampaignMessageItem {
 
 message CampaignGalleryMessage {
   string imageUrl = 1;
-  int32 order = 2;
+  google.protobuf.Int32Value order = 2;
 }
 
 message IdName {

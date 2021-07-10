@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "Location.Api.Grpc";
+
+service LocationApiGrpcService {
+  rpc ValidateLocation (ValidateLocationMessage) returns (ValidateLocationResponseMessage);
+}
+
+message ValidateLocationMessage {
+  string countryId = 1;
+  string cityId = 2;
+  string districtId = 3;
+  string neighborhoodId = 4;
+  string quarterId = 5;
+}
+
+message ValidateLocationResponseMessage {
+  IdName country = 1;
+  IdName city = 2;
+  IdName district = 3;
+  IdName neighborhood = 4;
+  IdName quarter = 5;
+  bool isValid = 6;
+}
+
+message IdName {
+  string id = 1;
+  string name = 2;
+}

@@ -1,41 +1,22 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
 using Merchant.Application.Merchants.Dto;
-using Merchant.Domain.MerchantAggregate.Repositories;
-using Merchant.Infrastructure.Factories;
 
 namespace Merchant.Application.Merchants.Commands.CreateMerchant
 {
     public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantCommand, MerchantDto>
     {
-        private readonly IMerchantRepository _merchantRepository;
-        private readonly IMapper _mapper;
+        private readonly MerchantManager _merchantManager;
 
-        public CreateMerchantCommandHandler(IMerchantRepository merchantRepository, 
-            IMapper mapper)
+        public CreateMerchantCommandHandler(MerchantManager merchantManager)
         {
-            _merchantRepository = merchantRepository;
-            _mapper = mapper;
+            _merchantManager = merchantManager;
         }
 
         public async Task<MerchantDto> Handle(CreateMerchantCommand request, CancellationToken cancellationToken)
         {
-            var merchantId = IdGenerationFactory.Create();
-
-            var merchant = Domain.MerchantAggregate.Merchant.Create(merchantId,
-                request.Name,
-                request.Slogan,
-                request.WebSiteUrl,
-                request.PhoneNumber,
-                request.TaxNumber,
-                request.Email,
-                request.Description);
-
-            await _merchantRepository.AddAsync(merchant);
-
-            return _mapper.Map<MerchantDto>(merchant);;
+            return await _merchantManager.CreateAsync(request);
         }
     }
 }

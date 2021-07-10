@@ -1,28 +1,22 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
 using Merchant.Application.Stores.Dto;
-using Merchant.Domain.StoreAggregate.Repositories;
 
 namespace Merchant.Application.Stores.Queries.GetStoreById
 {
     public class GetStoreByIdQueryHandler : IRequestHandler<GetStoreByIdQuery, StoreDto>
     {
-        private readonly IStoreRepository _storeRepository;
-        private readonly IMapper _mapper;
+        private readonly StoreManager _storeManager;
 
-        public GetStoreByIdQueryHandler(IStoreRepository storeRepository, 
-            IMapper mapper)
+        public GetStoreByIdQueryHandler(StoreManager storeManager)
         {
-            _storeRepository = storeRepository;
-            _mapper = mapper;
+            _storeManager = storeManager;
         }
 
         public async Task<StoreDto> Handle(GetStoreByIdQuery request, CancellationToken cancellationToken)
         {
-            var store = await _storeRepository.GetByIdAsync(request.Id);
-            return _mapper.Map<StoreDto>(store);
+            return await _storeManager.GetByIdAsync(request.Id);
         }
     }
 }

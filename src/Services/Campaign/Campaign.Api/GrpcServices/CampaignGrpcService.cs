@@ -152,7 +152,7 @@ namespace Campaign.Api.GrpcServices
 
             message.CampaignGalleries.AddRange(response.CampaignGalleries.Select(x => new CampaignGalleryMessage
             {
-                Order = x.Order ?? 0,
+                Order = x.Order,
                 ImageUrl = x.ImageUrl
             }).ToList());
             

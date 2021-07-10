@@ -17,6 +17,9 @@ namespace Location.Application
             services.AddScoped<INeighborhoodRepository, NeighborhoodRepository>();
             services.AddScoped<IQuarterRepository, QuarterRepository>();
 
+            //Application Services 
+            services.AddScoped<LocationManager>();
+            
             //Automapper
             services.AddAutoMapper(typeof(CityMappingProfile));
             return services;

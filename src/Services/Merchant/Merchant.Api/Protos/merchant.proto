@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+option csharp_namespace = "Merchant.Api.Grpc";
+import "google/protobuf/timestamp.proto";
+
+service MerchantApiGrpcService {
+  rpc CreateMerchant (CreateMerchantMessage) returns (MerchantMessage);
+  rpc UpdateMerchant (UpdateMerchantMessage) returns (MerchantMessage);
+  rpc DeleteMerchant (ByIdMessage) returns (DeleteMerchantResponseMessage);
+  rpc GetMerchantById (ByIdMessage) returns (MerchantMessage);
+  rpc CreateStore (CreateStoreMessage) returns (StoreMessage);
+  rpc UpdateStore (UpdateStoreMessage) returns (StoreMessage);
+  rpc DeleteStore (ByIdMessage) returns (DeleteStoreResponseMessage);
+  rpc GetStoreById (ByIdMessage) returns (StoreMessage);
+}
+
+message CreateStoreMessage {
+  string merchantId = 1;
+  string name = 2;
+  string slogan = 3;
+  string phoneNumber = 4;
+  string email = 5;
+  string description = 6;
+  StoreLocationMessage location = 7;
+}
+
+message UpdateStoreMessage {
+  string storeId = 1;
+  UpdateStoreItemMessage store = 2;
+}
+
+message UpdateStoreItemMessage {
+  string name = 1;
+  string slogan = 2;
+  string phoneNumber = 3;
+  string email = 4;
+  string description = 5;
+}
+
+message DeleteStoreResponseMessage {
+  bool isSucceed = 1;
+}
+
+message StoreLocationMessage {
+  IdName country = 1;
+  IdName city = 2;
+  IdName district = 3;
+  IdName neighborhood = 4;
+  IdName quarter = 5;
+  string address = 6;
+}
+
+message ByIdMessage {
+  string id = 1;
+}
+
+message IdName {
+  string id = 1;
+  string name = 2;
+}
+
+message StoreMessage {
+  string id = 1;
+  IdName merchant = 2;
+  string name = 3;
+  string slogan = 4;
+  string phoneNumber = 5;
+  string email = 6;
+  bool emailConfirmed = 7;
+  string description = 8;
+  google.protobuf.Timestamp createdDate = 9;
+  google.protobuf.Timestamp modifiedDate = 10;
+  StoreLocationMessage location = 11;
+}
+
+
+message CreateMerchantMessage {
+  string name = 1;
+  string slogan = 2;
+  string websiteUrl = 3;
+  string phoneNumber = 4;
+  string taxNumber = 5;
+  string email = 6;
+  string description = 7;
+}
+
+message UpdateMerchantMessage {
+  string merchantId = 1;
+  UpdateMerchantItemMessage Merchant = 2;
+}
+
+message UpdateMerchantItemMessage {
+  string name = 1;
+  string slogan = 2;
+  string websiteUrl = 3;
+  string phoneNumber = 4;
+  string taxNumber = 5;
+  string email = 6;
+  string description = 7;
+}
+
+message DeleteMerchantResponseMessage {
+  bool isSucceed = 1;
+}
+
+message MerchantMessage {
+  string id = 1;
+  string name = 2;
+  string slogan = 3;
+  string websiteUrl = 4;
+  string phoneNumber = 5;
+  string taxNumber = 6;
+  string email = 7;
+  string description = 8;
+  bool emailConfirmed = 9 ;
+  google.protobuf.Timestamp createdDate = 10;
+  google.protobuf.Timestamp modifiedDate = 11;
+}

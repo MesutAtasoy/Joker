@@ -5,7 +5,7 @@ using Merchant.Application.Stores.Dto.Request;
 
 namespace Merchant.Application.Stores.Commands.UpdateStore
 {
-    public class UpdateStoreCommand : IRequest<StoreListDto>
+    public class UpdateStoreCommand : IRequest<StoreDto>
     {
         public Guid Id { get; }
         public UpdateStoreDto Store { get; }

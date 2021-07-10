@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Joker.Domain;
 using Joker.Domain.Entities;
 using Joker.Exceptions;
 using Merchant.Domain.Refs;
 using Merchant.Domain.StoreAggregate.Events;
-using Merchant.Domain.StoreAggregate.Rules;
 
 namespace Merchant.Domain.StoreAggregate
 {
@@ -14,8 +11,7 @@ namespace Merchant.Domain.StoreAggregate
     {
         private Store()
         {
-            _storeFAQs = new List<StoreFAQ>();
-            _storeBusinessHours = new List<StoreBusinessHour>();
+          
         }
 
         public Guid Id { get; private set; }
@@ -30,12 +26,6 @@ namespace Merchant.Domain.StoreAggregate
         public DateTime CreatedDate { get; private set; }
         public DateTime? ModifiedDate { get; private set; }
         public bool IsDeleted { get; private set; }
-
-        private List<StoreFAQ> _storeFAQs;
-        public IReadOnlyList<StoreFAQ> StoreFAQs => _storeFAQs.AsReadOnly();
-
-        private List<StoreBusinessHour> _storeBusinessHours;
-        public IReadOnlyList<StoreBusinessHour> StoreBusinessHours => _storeBusinessHours.AsReadOnly();
 
 
         /// <summary>
@@ -172,72 +162,6 @@ namespace Merchant.Domain.StoreAggregate
         {
             IsDeleted = true;
             ModifiedDate = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Add a business hour to store
-        /// </summary>
-        /// <param name="storeBusinessHour"></param>
-        public void AddBusinessHour(StoreBusinessHour storeBusinessHour)
-        {
-            Check.NotNull(storeBusinessHour, nameof(storeBusinessHour));
-
-            if (!_storeBusinessHours.Any(x => x.DayOfWeek == storeBusinessHour.DayOfWeek))
-            {
-                _storeBusinessHours.Add(storeBusinessHour);
-            }
-        }
-
-        /// <summary>
-        /// Remove a business hour to store
-        /// </summary>
-        /// <param name="storeBusinessHour"></param>
-        public void RemoveBusinessHour(StoreBusinessHour storeBusinessHour)
-        {
-            Check.NotNull(storeBusinessHour, nameof(storeBusinessHour));
-
-            RemoveBusinessHour(storeBusinessHour.DayOfWeek);
-        }
-
-        /// <summary>
-        /// Remove a business hour to store
-        /// </summary>
-        /// <param name="dayOfWeek"></param>
-        public void RemoveBusinessHour(int dayOfWeek)
-        {
-            CheckRule(new DayOfWeekValidRule(dayOfWeek));
-
-            var businessHour = _storeBusinessHours.FirstOrDefault(x => x.DayOfWeek == dayOfWeek);
-
-            if (businessHour != null)
-            {
-                _storeBusinessHours.Remove(businessHour);
-            }
-        }
-
-        /// <summary>
-        /// Add a new faq
-        /// </summary>
-        /// <param name="storeFaq"></param>
-        public void AddFAQ(StoreFAQ storeFaq)
-        {
-            Check.NotNull(storeFaq, nameof(storeFaq));
-
-            _storeFAQs.Add(storeFaq);
-        }
-
-        /// <summary>
-        /// Remove a faq
-        /// </summary>
-        /// <param name="storeFaqId"></param>
-        public void RemoveFAQ(Guid storeFaqId)
-        {
-            var faq = _storeFAQs.FirstOrDefault(x => x.Id == storeFaqId);
-
-            if (faq != null)
-            {
-                _storeFAQs.Remove(faq);
-            }
         }
     }
 }

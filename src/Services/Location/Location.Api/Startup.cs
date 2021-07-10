@@ -1,6 +1,7 @@
 using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
+using Location.Api.GrpcServices;
 using Location.Application;
 using Location.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,7 @@ namespace Location.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
+            services.AddGrpc();
             services.AddControllers();
             services.AddJokerNpDbContext<LocationContext>(x =>
             {
@@ -53,7 +55,12 @@ namespace Location.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Location.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
+                endpoints.MapGrpcService<LocationGrpcService>();
+            });
         }
     }
 }

@@ -7,21 +7,33 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..\..\..</DockerfileContext>
     </PropertyGroup>
-
+    
+    <ItemGroup>
+        <None Remove="Protos\management.proto" />
+    </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.38.1" />
     </ItemGroup>
     
     <ItemGroup>
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
       <ProjectReference Include="..\Management.Application\Management.Application.csproj" />
       <ProjectReference Include="..\Management.Infrastructure\Management.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Protobuf Include="Protos\management.proto" GrpcServices="Server" />
+    </ItemGroup>
 </Project>

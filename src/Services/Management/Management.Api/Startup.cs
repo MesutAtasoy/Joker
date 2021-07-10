@@ -1,6 +1,8 @@
+using AutoMapper;
 using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
+using Management.Api.GrpcServices;
 using Management.Application;
 using Management.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +27,7 @@ namespace Management.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
+            services.AddGrpc();
             services.AddControllers();
             services.AddJokerNpDbContext<ManagementContext>(x =>
             {
@@ -34,6 +37,7 @@ namespace Management.Api
             });
             
             services.AddApplicationModule();
+            services.AddAutoMapper(typeof(ManagementGrpcMappingProfile));
             services.AddJokerMediatr(typeof(ManagementApplicationModule));
             services.AddSwaggerGen();
             services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
@@ -51,7 +55,12 @@ namespace Management.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Management.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
+                // endpoints.MapGrpcService<ManagementGrpcService>();
+            });
         }
     }
 }

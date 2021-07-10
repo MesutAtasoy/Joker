@@ -9,20 +9,16 @@ namespace Merchant.Application.Merchants.Queries.GetMerchantById
 {
     public class GetMerchantByIdQueryHandler : IRequestHandler<GetMerchantByIdQuery, MerchantDto>
     {
-        private readonly IMerchantRepository _merchantRepository;
-        private readonly IMapper _mapper;
+        private readonly MerchantManager _merchantManager;
 
-        public GetMerchantByIdQueryHandler(IMerchantRepository merchantRepository, 
-            IMapper mapper)
+        public GetMerchantByIdQueryHandler(MerchantManager merchantManager)
         {
-            _merchantRepository = merchantRepository;
-            _mapper = mapper;
+            _merchantManager = merchantManager;
         }
 
         public async Task<MerchantDto> Handle(GetMerchantByIdQuery request, CancellationToken cancellationToken)
         {
-            var merchant = await _merchantRepository.GetByIdAsync(request.Id);
-            return _mapper.Map<MerchantDto>(merchant);
+            return await _merchantManager.GetByIdAsync(request.Id);
         }
     }
 }

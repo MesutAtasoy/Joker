@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "Management.Api.Grpc";
+
+service ManagementApiGrpcService {
+  rpc GetBusinessDirectoryById (ByIdMessage) returns (IdName);
+  rpc GetCurrencyById (ByIdMessage) returns (IdName);
+  rpc GetLanguageById (ByIdMessage) returns (IdName);
+  rpc GetPaymentMethodById (ByIdMessage) returns (IdName);
+  rpc GetPricingPlanById (ByIdMessage) returns (IdName);
+}
+
+
+message ByIdMessage {
+  string id = 1;
+}
+
+message IdName {
+  string id = 1;
+  string name = 2;
+}

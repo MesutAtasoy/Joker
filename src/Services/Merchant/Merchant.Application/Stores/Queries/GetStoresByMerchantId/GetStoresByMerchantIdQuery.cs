@@ -5,7 +5,7 @@ using Merchant.Application.Stores.Dto;
 
 namespace Merchant.Application.Stores.Queries.GetStoresByMerchantId
 {
-    public class GetStoresByMerchantIdQuery : IRequest<List<StoreListDto>>
+    public class GetStoresByMerchantIdQuery : IRequest<List<StoreDto>>
     {
         public GetStoresByMerchantIdQuery(Guid merchantId)
         {

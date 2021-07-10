@@ -1,8 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Campaign.Application.Campaigns.Dto;
-using Campaign.Domain.CampaignAggregate.Repositories;
 using MediatR;
 
 namespace Campaign.Application.Campaigns.Queries.GetCampaignById

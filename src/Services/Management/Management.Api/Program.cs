@@ -91,5 +91,12 @@ namespace Management.Api
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
         }
+        
+        public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
+        {
+            var grpcPort = config.GetValue("GRPC_PORT", 5012);
+            var port = 80;
+            return (port, grpcPort);
+        }
     }
 }

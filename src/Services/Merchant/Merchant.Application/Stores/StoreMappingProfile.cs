@@ -8,10 +8,8 @@ namespace Merchant.Application.Stores
     {
         public StoreMappingProfile()
         {
-            CreateMap<Store, StoreListDto>();
             CreateMap<Store, StoreDto>();
-            CreateMap<StoreBusinessHour, StoreBusinessHourDto>();
-            CreateMap<StoreFAQ, StoreFAQDto>();
+            CreateMap<Store, StoreDto>();
             CreateMap<StoreLocation, StoreLocationDto>();
         }
     }

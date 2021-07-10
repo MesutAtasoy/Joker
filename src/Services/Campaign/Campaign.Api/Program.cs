@@ -25,7 +25,7 @@ namespace Campaign.Api
             {
                 Log.Information("Application starting up...");
 
-                CreateHostBuilder(args)
+                CreateHostBuilder(configuration,args)
                     .Build()
                     .Run();
             }
@@ -44,19 +44,21 @@ namespace Campaign.Api
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    var ports = GetDefinedPorts(configuration);
+                    
                     webBuilder.UseStartup<Startup>();
                     webBuilder.ConfigureKestrel(options =>
                     {
-                        options.Listen(IPAddress.Any, 5002, listenOptions =>
+                        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
                         });
 
-                        options.Listen(IPAddress.Any, 5003, listenOptions =>
+                        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
                         {
                             listenOptions.Protocols = HttpProtocols.Http2;
                         });
@@ -92,7 +94,7 @@ namespace Campaign.Api
         
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
         {
-            var grpcPort = config.GetValue("GRPC_PORT", 5001);
+            var grpcPort = config.GetValue("GRPC_PORT", 5011);
             var port = 80;
             return (port, grpcPort);
         }

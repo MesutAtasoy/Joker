@@ -3,6 +3,7 @@ using Joker.Consul;
 using Joker.Mongo;
 using Joker.Mongo.Domain;
 using Joker.Mvc;
+using Merchant.Api.GrpcServices;
 using Merchant.Application;
 using Merchant.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,7 @@ namespace Merchant.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
+            services.AddGrpc();
             services.AddControllers();
             services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
             services.AddMongoContext<MerchantContext>();
@@ -71,7 +73,12 @@ namespace Merchant.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Merchant.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
+                endpoints.MapGrpcService<MerchantGrpcService>();
+            });
         }
     }
 }

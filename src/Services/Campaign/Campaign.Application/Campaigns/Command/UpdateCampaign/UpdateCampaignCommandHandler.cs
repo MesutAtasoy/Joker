@@ -1,9 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Campaign.Application.Campaigns.Dto;
-using Campaign.Domain.CampaignAggregate.Repositories;
-using Joker.Exceptions;
 using MediatR;
 
 namespace Campaign.Application.Campaigns.Command.UpdateCampaign
