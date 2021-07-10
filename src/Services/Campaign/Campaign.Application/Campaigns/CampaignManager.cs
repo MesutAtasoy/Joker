@@ -27,19 +27,10 @@ namespace Campaign.Application.Campaigns
             _mapper = mapper;
         }
 
-        public async Task<CampaignListDto> CreateAsync(CreateCampaignCommand request)
+        public async Task<CampaignDto> CreateAsync(CreateCampaignCommand request)
         {
             var campaignId = IdGenerationFactory.Create();
-
-            var campaignGalleries = new List<CampaignGallery>();
-
-            if (request.Galleries != null && request.Galleries.Any())
-            {
-                campaignGalleries = request.Galleries
-                    .Select(x => new CampaignGallery(x.ImageUrl, x.Order))
-                    .ToList();
-            }
-
+            
             var businessDirectoryRef = BusinessDirectoryRef.Create(request.BusinessDirectory.RefId,
                 request.BusinessDirectory.Name);
 
@@ -56,15 +47,14 @@ namespace Campaign.Application.Campaigns
                 request.PreviewImageUrl,
                 request.StartTime,
                 request.EndTime,
-                request.Channel,
-                campaignGalleries);
+                request.Channel);
 
             await _campaignRepository.AddAsync(campaign);
             
-            return _mapper.Map<CampaignListDto>(campaign);
+            return _mapper.Map<CampaignDto>(campaign);
         }
 
-        public async Task<CampaignListDto> UpdateAsync(UpdateCampaignCommand request)
+        public async Task<CampaignDto> UpdateAsync(UpdateCampaignCommand request)
         {
             var campaign = await _campaignRepository.GetByIdAsync(request.CampaignId);
 
@@ -83,7 +73,7 @@ namespace Campaign.Application.Campaigns
 
             await _campaignRepository.UpdateAsync(campaign.Id, campaign);
 
-            return _mapper.Map<CampaignListDto>(campaign);
+            return _mapper.Map<CampaignDto>(campaign);
         }
 
         public async Task<bool> DeleteAsync(DeleteCampaignCommand request)

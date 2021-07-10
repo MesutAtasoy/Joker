@@ -9,9 +9,6 @@ namespace Campaign.Application.Campaigns
         public CampaignMappingProfile()
         {
             CreateMap<Domain.CampaignAggregate.Campaign, CampaignDto>();
-            CreateMap<Domain.CampaignAggregate.Campaign, CampaignListDto>();
-            CreateMap<CampaignBadge, CampaignBadgeDto>();
-            CreateMap<CampaignGallery, CampaignGalleryDto>();
         }
     }
 }

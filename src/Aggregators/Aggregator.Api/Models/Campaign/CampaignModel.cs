@@ -1,13 +1,13 @@
 using System;
-using Campaign.Application.Shared.Dto;
+using Aggregator.Api.Models.Shared;
 
-namespace Campaign.Application.Campaigns.Dto
+namespace Aggregator.Api.Models.Campaign
 {
-    public class CampaignDto
+    public class CampaignModel
     {
         public Guid Id { get; set; }
-        public IdNameDto Store { get; set; }
-        public IdNameDto BusinessDirectory { get; set; }
+        public IdName Store { get; set; }
+        public IdName BusinessDirectory { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }
         public string Title { get; set; }

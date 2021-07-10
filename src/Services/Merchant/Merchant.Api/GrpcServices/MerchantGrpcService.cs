@@ -13,6 +13,7 @@ using Merchant.Application.Shared.Dto;
 using Merchant.Application.Stores;
 using Merchant.Application.Stores.Commands.CreateStore;
 using Merchant.Application.Stores.Commands.DeleteStore;
+using Merchant.Application.Stores.Commands.UpdateLocation;
 using Merchant.Application.Stores.Commands.UpdateStore;
 using Merchant.Application.Stores.Dto;
 using Merchant.Application.Stores.Dto.Request;
@@ -143,6 +144,72 @@ namespace Merchant.Api.GrpcServices
                 await _storeManager.UpdateAsync(new UpdateStoreCommand(request.StoreId.ToGuid(), updateStoreModel));
 
             return As(response);
+        }
+
+        public override async Task<StoreLocationMessage> UpdateLocation(UpdateStoreLocationMessage request, ServerCallContext context)
+        {
+            var storeLocation = new StoreLocationDto
+            {
+                Country = new IdNameDto
+                {
+                    RefId = request.Location.Country.Id.ToGuid(),
+                    Name = request.Location.Country.Name
+                },
+                City = new IdNameDto
+                {
+                    RefId = request.Location.City.Id.ToGuid(),
+                    Name = request.Location.City.Name
+                },
+                District = new IdNameDto
+                {
+                    RefId = request.Location.District.Id.ToGuid(),
+                    Name = request.Location.District.Name
+                },
+                Neighborhood = new IdNameDto
+                {
+                    RefId = request.Location.Neighborhood.Id.ToGuid(),
+                    Name = request.Location.Neighborhood.Name
+                },
+                Quarter = new IdNameDto
+                {
+                    RefId = request.Location.Quarter.Id.ToGuid(),
+                    Name = request.Location.Quarter.Name
+                },
+                Address = request.Location.Address
+            };
+
+            var response = await _storeManager
+                .UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
+
+            return new StoreLocationMessage
+            {
+                Country = new IdName
+                {
+                    Id = request.Location.Country.Id,
+                    Name = request.Location.Country.Name
+                },
+                City = new IdName
+                {
+                    Id = request.Location.City.Id,
+                    Name = request.Location.City.Name
+                },
+                District = new IdName
+                {
+                    Id = request.Location.District.Id,
+                    Name = request.Location.District.Name
+                },
+                Neighborhood = new IdName
+                {
+                    Id = request.Location.Neighborhood.Id,
+                    Name = request.Location.Neighborhood.Name
+                },
+                Quarter = new IdName
+                {
+                    Id = request.Location.Quarter.Id,
+                    Name = request.Location.Quarter.Name
+                },
+                Address = request.Location.Address
+            };
         }
 
         public override async Task<DeleteStoreResponseMessage> DeleteStore(ByIdMessage request,

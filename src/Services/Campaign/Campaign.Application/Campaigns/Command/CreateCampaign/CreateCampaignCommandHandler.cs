@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Campaign.Application.Campaigns.Command.CreateCampaign
 {
-    public class CreateCampaignCommandHandler : IRequestHandler<CreateCampaignCommand, CampaignListDto>
+    public class CreateCampaignCommandHandler : IRequestHandler<CreateCampaignCommand, CampaignDto>
     {
         private readonly CampaignManager _campaignManager;
         
@@ -14,7 +14,7 @@ namespace Campaign.Application.Campaigns.Command.CreateCampaign
             _campaignManager = campaignManager;
         }
         
-        public async Task<CampaignListDto> Handle(CreateCampaignCommand request, CancellationToken cancellationToken)
+        public async Task<CampaignDto> Handle(CreateCampaignCommand request, CancellationToken cancellationToken)
         {
             return await _campaignManager.CreateAsync(request);
         }

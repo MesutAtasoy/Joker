@@ -5,16 +5,33 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
-      <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-      <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
-      <PackageReference Include="Grpc.Tools" Version="2.38.1"/>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.38.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+        <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <Protobuf Include="..\..\Services\Merchant\Merchant.Api\Protos\merchant.proto" GrpcServices="Client">
-        <Link>Protos\merchant.proto</Link>
-      </Protobuf>
+        <Protobuf Include="..\..\Services\Merchant\Merchant.Api\Protos\merchant.proto" GrpcServices="Client">
+            <Link>Protos\merchant.proto</Link>
+        </Protobuf>
+        <Protobuf Include="..\..\Services\Management\Management.Api\Protos\management.proto" GrpcServices="Client">
+            <Link>Protos\management.proto</Link>
+        </Protobuf>
+        <Protobuf Include="..\..\Services\Location\Location.Api\Protos\location.proto" GrpcServices="Client">
+            <Link>Protos\location.proto</Link>
+        </Protobuf>
+        <Protobuf Include="..\..\Services\Campaign\Campaign.Api\Protos\campaign.proto" GrpcServices="Client">
+            <Link>Protos\campaign.proto</Link>
+        </Protobuf>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
     </ItemGroup>
 
 </Project>

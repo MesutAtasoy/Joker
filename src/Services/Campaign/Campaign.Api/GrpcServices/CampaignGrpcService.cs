@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Campaign.Api.Grpc;
 using Campaign.Application.Campaigns;
 using Campaign.Application.Campaigns.Command.CreateCampaign;
@@ -23,7 +22,7 @@ namespace Campaign.Api.GrpcServices
             _campaignManager = campaignManager;
         }
 
-        public override async Task<CampaignListMessage> CreateCampaign(CreateCampaignMessage request,
+        public override async Task<CampaignMessage> CreateCampaign(CreateCampaignMessage request,
             ServerCallContext context)
         {
             var response = await _campaignManager.CreateAsync(new CreateCampaignCommand
@@ -45,38 +44,13 @@ namespace Campaign.Api.GrpcServices
                 },
                 EndTime = request.EndTime.ToDateTime(),
                 StartTime = request.StartTime.ToDateTime(),
-                PreviewImageUrl = request.PreviewImageUrl,
-                Galleries = request.Galleries.Select(x => new CampaignGalleryDto
-                {
-                    Order = x.Order,
-                    ImageUrl = x.ImageUrl
-                }).ToList()
+                PreviewImageUrl = request.PreviewImageUrl
             });
 
-            return new CampaignListMessage
-            {
-                Channel = response.Channel,
-                Code = response.Code,
-                Condition = response.Condition,
-                Description = response.Description,
-                Id = response.Id.ToString(),
-                Slug = response.Slug,
-                SlugKey = response.SlugKey,
-                Store = new IdName
-                {
-                    Id = response.Store.RefId.ToString(),
-                    Name = response.Store.Name
-                },
-                Title = response.Title,
-                CreatedDate = response.CreatedDate.ToTimestamp(),
-                EndTime = response.EndTime?.ToTimestamp(),
-                StartTime = response.StartTime?.ToTimestamp(),
-                ModifiedDate = response.ModifiedDate?.ToTimestamp(),
-                PreviewImageUrl = response.PreviewImageUrl
-            };
+            return As(response);
         }
 
-        public override async Task<CampaignListMessage> UpdateCampaign(UpdateCampaignMessage request,
+        public override async Task<CampaignMessage> UpdateCampaign(UpdateCampaignMessage request,
             ServerCallContext context)
         {
             var updateCampaignDto = new UpdateCampaignDto
@@ -88,30 +62,9 @@ namespace Campaign.Api.GrpcServices
                 PreviewImageUrl = request.Campaign.PreviewImageUrl,
             };
 
-            var response =
-                await _campaignManager.UpdateAsync(new UpdateCampaignCommand(request.Id.ToGuid(), updateCampaignDto));
+            var response = await _campaignManager.UpdateAsync(new UpdateCampaignCommand(request.Id.ToGuid(), updateCampaignDto));
 
-            return new CampaignListMessage
-            {
-                Channel = response.Channel,
-                Code = response.Code,
-                Condition = response.Condition,
-                Description = response.Description,
-                Id = response.Id.ToString(),
-                Slug = response.Slug,
-                SlugKey = response.SlugKey,
-                Store = new IdName
-                {
-                    Id = response.Store.RefId.ToString(),
-                    Name = response.Store.Name
-                },
-                Title = response.Title,
-                CreatedDate = response.CreatedDate.ToTimestamp(),
-                EndTime = response.EndTime?.ToTimestamp(),
-                StartTime = response.StartTime?.ToTimestamp(),
-                ModifiedDate = response.ModifiedDate?.ToTimestamp(),
-                PreviewImageUrl = response.PreviewImageUrl
-            };
+            return As(response);
         }
 
         public override async Task<DeleteCampaignMessage> DeleteCampaign(ByIdMessage request, ServerCallContext context)
@@ -127,36 +80,42 @@ namespace Campaign.Api.GrpcServices
         public override async Task<CampaignMessage> GetById(ByIdMessage request, ServerCallContext context)
         {
             var response = await _campaignManager.GetByIdAsync(request.Id.ToGuid());
+            
+            return As(response);
+        }
 
-            var message = new CampaignMessage
+        #region Converters
+
+        public CampaignMessage As(CampaignDto campaign)
+        {
+            return new ()
             {
-                Channel = response.Channel,
-                Code = response.Code,
-                Condition = response.Condition,
-                Description = response.Description,
-                Id = response.Id.ToString(),
-                Slug = response.Slug,
-                SlugKey = response.SlugKey,
+                Channel = campaign.Channel,
+                Code = campaign.Code,
+                Condition = campaign.Condition,
+                Description = campaign.Description,
+                Id = campaign.Id.ToString(),
+                Slug = campaign.Slug,
+                SlugKey = campaign.SlugKey,
                 Store = new IdName
                 {
-                    Id = response.Store.RefId.ToString(),
-                    Name = response.Store.Name
+                    Id = campaign.Store.RefId.ToString(),
+                    Name = campaign.Store.Name
                 },
-                Title = response.Title,
-                CreatedDate = response.CreatedDate.ToTimestamp(),
-                EndTime = response.EndTime?.ToTimestamp(),
-                StartTime = response.StartTime?.ToTimestamp(),
-                ModifiedDate = response.ModifiedDate?.ToTimestamp(),
-                PreviewImageUrl = response.PreviewImageUrl
+                BusinessDirectory = new IdName
+                {
+                    Id = campaign.BusinessDirectory.RefId.ToString(),
+                    Name = campaign.BusinessDirectory.Name
+                },
+                Title = campaign.Title,
+                CreatedDate = campaign.CreatedDate.ToTimestamp(),
+                EndTime = campaign.EndTime?.ToTimestamp(),
+                StartTime = campaign.StartTime?.ToTimestamp(),
+                ModifiedDate = campaign.ModifiedDate?.ToTimestamp(),
+                PreviewImageUrl = campaign.PreviewImageUrl
             };
-
-            message.CampaignGalleries.AddRange(response.CampaignGalleries.Select(x => new CampaignGalleryMessage
-            {
-                Order = x.Order,
-                ImageUrl = x.ImageUrl
-            }).ToList());
-            
-            return message;
         }
+
+        #endregion
     }
 }

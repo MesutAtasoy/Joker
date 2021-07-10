@@ -9,9 +9,6 @@ namespace Campaign.Infrastructure.Mappings
         {
             map.AutoMap();
             map.MapIdProperty(x => x.Id);
-            
-            map.MapField("_campaignBadges").SetElementName("CampaignBadges");
-            map.MapField("_campaignGalleries").SetElementName("CampaignGalleries");
         }
     }
 }

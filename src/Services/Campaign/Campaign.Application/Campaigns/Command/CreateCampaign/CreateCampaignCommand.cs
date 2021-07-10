@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Campaign.Application.Campaigns.Command.CreateCampaign
 {
-    public class CreateCampaignCommand : IRequest<CampaignListDto>
+    public class CreateCampaignCommand : IRequest<CampaignDto>
     {
         public IdNameDto Store { get; set; }
         public IdNameDto BusinessDirectory { get; set; }
@@ -18,6 +18,5 @@ namespace Campaign.Application.Campaigns.Command.CreateCampaign
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public string Channel { get; set; }
-        public List<CampaignGalleryDto> Galleries { get; set; }
     }
 }

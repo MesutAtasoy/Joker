@@ -1,14 +1,12 @@
 using System;
-using Campaign.Application.Shared.Dto;
+using Aggregator.Api.Models.Shared;
 
-namespace Campaign.Application.Campaigns.Dto
+namespace Aggregator.Api.Models.Campaign
 {
-    public class CampaignListDto
+    public class CreateCampaignModel
     {
-        public Guid Id { get; set; }
-        public IdNameDto Store { get; set; }
-        public string Slug { get; set; }
-        public string SlugKey { get; set; }
+        public IdName Store { get; set; }
+        public IdName BusinessDirectory { get; set; }
         public string Title { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
@@ -17,7 +15,5 @@ namespace Campaign.Application.Campaigns.Dto
         public DateTime? StartTime { get; set; }
         public DateTime? EndTime { get; set; }
         public string Channel { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? ModifiedDate { get; set; }
     }
 }

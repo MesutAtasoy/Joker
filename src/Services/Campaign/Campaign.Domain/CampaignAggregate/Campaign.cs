@@ -14,8 +14,7 @@ namespace Campaign.Domain.CampaignAggregate
     {
         private Campaign()
         {
-            _campaignBadges = new List<CampaignBadge>();
-            _campaignGalleries = new List<CampaignGallery>();
+
         }
 
         public Guid Id { get; private set; }
@@ -35,13 +34,6 @@ namespace Campaign.Domain.CampaignAggregate
         public DateTime CreatedDate { get; private set; }
         public DateTime? ModifiedDate { get; private set; }
 
-        private List<CampaignBadge> _campaignBadges;
-        public IReadOnlyList<CampaignBadge> CampaignBadges => _campaignBadges.AsReadOnly();
-
-        private List<CampaignGallery> _campaignGalleries;
-        public IReadOnlyList<CampaignGallery> CampaignGalleries => _campaignGalleries.AsReadOnly();
-
-
         /// <summary>
         /// Creates a new campaign
         /// </summary>
@@ -56,7 +48,6 @@ namespace Campaign.Domain.CampaignAggregate
         /// <param name="startTime"></param>
         /// <param name="endTime"></param>
         /// <param name="channel"></param>
-        /// <param name="galleries"></param>
         /// <returns></returns>
         public static Campaign Create(Guid id,
             StoreRef store,
@@ -68,8 +59,7 @@ namespace Campaign.Domain.CampaignAggregate
             string previewImageUrl,
             DateTime? startTime,
             DateTime? endTime,
-            string channel,
-            List<CampaignGallery> galleries)
+            string channel)
         {
             Check.NotEmpty(id, nameof(id));
             Check.NotNull(store, nameof(store));
@@ -96,11 +86,6 @@ namespace Campaign.Domain.CampaignAggregate
                 IsDeleted = false,
                 CreatedDate = DateTime.UtcNow
             };
-
-            if (galleries != null && galleries.Any())
-            {
-                campaign.AddImages(galleries);
-            }
             
             campaign.AddDomainEvent(new CampaignCreatedEvent(id,
                 store,
@@ -175,93 +160,6 @@ namespace Campaign.Domain.CampaignAggregate
             ModifiedDate = DateTime.UtcNow;
             
             AddDomainEvent(new CampaignDeletedEvent(Id, Title));
-        }
-
-        /// <summary>
-        /// Adds a new badge to campaign
-        /// </summary>
-        /// <param name="badge"></param>
-        internal void AddBadge(CampaignBadge badge)
-        {
-            if (_campaignBadges.Any(x => x.Badge.RefId == badge.Badge.RefId))
-            {
-                return;
-            }
-
-            _campaignBadges.Add(badge);
-            ModifiedDate = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Removes badge
-        /// </summary>
-        /// <param name="badge"></param>
-        internal void RemoveBadge(CampaignBadge badge)
-        {
-            RemoveBadge(badge.Badge.RefId);
-        }
-
-        /// <summary>
-        /// Removes badge
-        /// </summary>
-        /// <param name="badge"></param>
-        internal void RemoveBadge(BadgeRef badge)
-        {
-            RemoveBadge(badge.RefId);
-        }
-
-        /// <summary>
-        /// Removes badge
-        /// </summary>
-        /// <param name="badgeId"></param>
-        internal void RemoveBadge(Guid badgeId)
-        {
-            var campaignBadge = _campaignBadges.FirstOrDefault(x => x.Badge.RefId == badgeId);
-            if (campaignBadge == null)
-            {
-                return;
-            }
-
-            _campaignBadges.Remove(campaignBadge);
-            ModifiedDate = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Add an image to campaign
-        /// </summary>
-        /// <param name="image"></param>
-        /// <param name="order"></param>
-        public void AddImage(string image, int? order)
-        {
-            Check.NotNullOrEmpty(image, nameof(image));
-
-            var campaignGallery = new CampaignGallery(image, order);
-            AddImage(campaignGallery);
-        }
-
-        /// <summary>
-        /// Add an image to campaign
-        /// </summary>
-        /// <param name="gallery"></param>
-        public void AddImage(CampaignGallery gallery)
-        {
-            _campaignGalleries.Add(gallery);
-            ModifiedDate = DateTime.UtcNow;
-        }
-
-        /// <summary>
-        /// Add an image to campaign
-        /// </summary>
-        /// <param name="galleries"></param>
-        public void AddImages(List<CampaignGallery> galleries)
-        {
-            if (galleries == null || !galleries.Any())
-            {
-                return;
-            }
-
-            _campaignGalleries.AddRange(galleries);
-            ModifiedDate = DateTime.UtcNow;
         }
     }
 }

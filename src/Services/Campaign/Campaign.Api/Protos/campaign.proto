@@ -2,11 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "Campaign.Api.Grpc";
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 
 service CampaignApiGrpcService {
-  rpc CreateCampaign (CreateCampaignMessage) returns (CampaignListMessage);
-  rpc UpdateCampaign (UpdateCampaignMessage) returns (CampaignListMessage);
+  rpc CreateCampaign (CreateCampaignMessage) returns (CampaignMessage);
+  rpc UpdateCampaign (UpdateCampaignMessage) returns (CampaignMessage);
   rpc DeleteCampaign (ByIdMessage) returns (DeleteCampaignMessage);
   rpc GetById (ByIdMessage) returns (CampaignMessage);
 }
@@ -22,7 +21,6 @@ message CreateCampaignMessage {
   google.protobuf.Timestamp startTime = 8;
   google.protobuf.Timestamp endTime = 9;
   string channel = 10;
-  repeated CampaignGalleryMessage Galleries = 11;
 }
 
 
@@ -43,13 +41,6 @@ message UpdateCampaignMessageItem {
   string description = 3;
   string condition = 4;
   string previewImageUrl = 5;
-  google.protobuf.Timestamp createdDate = 6;
-  google.protobuf.Timestamp modifiedDate = 7;
-}
-
-message CampaignGalleryMessage {
-  string imageUrl = 1;
-  google.protobuf.Int32Value order = 2;
 }
 
 message IdName {
@@ -61,38 +52,20 @@ message ByIdMessage {
   string  id = 1;
 }
 
-message CampaignListMessage {
-  string id = 1;
-  IdName store = 2;
-  string slug = 3;
-  string slugKey = 4;
-  string title = 5;
-  string code = 6;
-  string description = 7;
-  string condition = 8;
-  string previewImageUrl = 9;
-  google.protobuf.Timestamp startTime = 10;
-  google.protobuf.Timestamp endTime = 11;
-  string channel = 12;
-  google.protobuf.Timestamp createdDate = 13;
-  google.protobuf.Timestamp modifiedDate = 14;
-}
-
-
 message CampaignMessage {
   string id = 1;
   IdName store = 2;
-  string slug = 3;
-  string slugKey = 4;
-  string title = 5;
-  string code = 6;
-  string description = 7;
-  string condition = 8;
-  string previewImageUrl = 9;
-  google.protobuf.Timestamp startTime = 10;
-  google.protobuf.Timestamp endTime = 11;
-  string channel = 12;
-  google.protobuf.Timestamp createdDate = 13;
-  google.protobuf.Timestamp modifiedDate = 14;
-  repeated CampaignGalleryMessage campaignGalleries = 15;  
+  IdName businessDirectory = 3;
+  string slug = 4;
+  string slugKey = 5;
+  string title = 6;
+  string code = 7;
+  string description = 8;
+  string condition = 9;
+  string previewImageUrl = 10;
+  google.protobuf.Timestamp startTime = 11;
+  google.protobuf.Timestamp endTime = 12;
+  string channel = 13;
+  google.protobuf.Timestamp createdDate = 14;
+  google.protobuf.Timestamp modifiedDate = 15;  
 }

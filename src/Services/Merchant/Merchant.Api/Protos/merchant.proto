@@ -10,6 +10,7 @@ service MerchantApiGrpcService {
   rpc GetMerchantById (ByIdMessage) returns (MerchantMessage);
   rpc CreateStore (CreateStoreMessage) returns (StoreMessage);
   rpc UpdateStore (UpdateStoreMessage) returns (StoreMessage);
+  rpc UpdateLocation (UpdateStoreLocationMessage) returns (StoreLocationMessage);
   rpc DeleteStore (ByIdMessage) returns (DeleteStoreResponseMessage);
   rpc GetStoreById (ByIdMessage) returns (StoreMessage);
 }
@@ -27,6 +28,11 @@ message CreateStoreMessage {
 message UpdateStoreMessage {
   string storeId = 1;
   UpdateStoreItemMessage store = 2;
+}
+
+message UpdateStoreLocationMessage {
+  string storeId = 1;
+  StoreLocationMessage location = 2;
 }
 
 message UpdateStoreItemMessage {

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Campaign.Application.Campaigns.Command.UpdateCampaign
 {
-    public class UpdateCampaignCommand : IRequest<CampaignListDto>
+    public class UpdateCampaignCommand : IRequest<CampaignDto>
     {
         public UpdateCampaignCommand(Guid campaignId, 
             UpdateCampaignDto campaign)
