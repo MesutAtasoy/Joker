@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Merchant.Api.Grpc";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
 
 service MerchantApiGrpcService {
   rpc CreateMerchant (CreateMerchantMessage) returns (MerchantMessage);
@@ -121,4 +122,10 @@ message MerchantMessage {
   bool emailConfirmed = 9 ;
   google.protobuf.Timestamp createdDate = 10;
   google.protobuf.Timestamp modifiedDate = 11;
+}
+
+message GrpcBaseMessage {
+  int32 status = 1;
+  string message = 2;
+  google.protobuf.Any payload = 3;
 }

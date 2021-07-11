@@ -34,29 +34,30 @@ namespace Aggregator.Api.Services.Store
                     },
                     City = new IdName
                     {
-                        Id = request.Location.Country.Id,
-                        Name = request.Location.Country.Name
+                        Id = request.Location.City.Id,
+                        Name = request.Location.City.Name
                     },
                     District = new IdName
                     {
-                        Id = request.Location.Country.Id,
-                        Name = request.Location.Country.Name
+                        Id = request.Location.District.Id,
+                        Name = request.Location.District.Name
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Country.Id,
-                        Name = request.Location.Country.Name
+                        Id = request.Location.Neighborhood.Id,
+                        Name = request.Location.Neighborhood.Name
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Country.Id,
-                        Name = request.Location.Country.Name
+                        Id = request.Location.Quarter.Id,
+                        Name = request.Location.Quarter.Name
                     },
                     Address = request.Location.Address
                 }
             });
 
-            return As(response);
+            // return As(response);
+            return new StoreModel();
         }
 
         public async Task<StoreModel> UpdateAsync(UpdateStoreModel request)
@@ -74,8 +75,7 @@ namespace Aggregator.Api.Services.Store
                 }
             });
             
-            return As(response);
-        }
+            return new StoreModel();        }
         
         public async Task<StoreLocationModel> UpdateLocationAsync(UpdateStoreLocationModel request)
         {
@@ -153,7 +153,7 @@ namespace Aggregator.Api.Services.Store
         public async Task<StoreModel> GetByIdAsync(Guid id)
         {
             var store =await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage {Id = id.ToString()});
-            return As(store);
+            return new StoreModel();
         }
 
         #region Model Converters
@@ -180,23 +180,23 @@ namespace Aggregator.Api.Services.Store
                     },
                     City = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Country.Id,
-                        Name = storeMessage.Location.Country.Name
+                        Id = storeMessage.Location.City.Id,
+                        Name = storeMessage.Location.City.Name
                     },
                     District = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Country.Id,
-                        Name = storeMessage.Location.Country.Name
+                        Id = storeMessage.Location.District.Id,
+                        Name = storeMessage.Location.District.Name
                     },
                     Neighborhood = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Country.Id,
-                        Name = storeMessage.Location.Country.Name
+                        Id = storeMessage.Location.Neighborhood.Id,
+                        Name = storeMessage.Location.Neighborhood.Name
                     },
                     Quarter = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Country.Id,
-                        Name = storeMessage.Location.Country.Name
+                        Id = storeMessage.Location.Quarter.Id,
+                        Name = storeMessage.Location.Quarter.Name
                     },
                     Address = storeMessage.Location.Address
                 }

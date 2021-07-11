@@ -178,8 +178,7 @@ namespace Merchant.Api.GrpcServices
                 Address = request.Location.Address
             };
 
-            var response = await _storeManager
-                .UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
+            var response = await _storeManager.UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
 
             return new StoreLocationMessage
             {

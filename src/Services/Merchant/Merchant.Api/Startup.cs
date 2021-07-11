@@ -4,6 +4,7 @@ using Joker.Mongo;
 using Joker.Mongo.Domain;
 using Joker.Mvc;
 using Merchant.Api.GrpcServices;
+using Merchant.Api.Interceptors;
 using Merchant.Application;
 using Merchant.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +29,8 @@ namespace Merchant.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddGrpc();
+            services.AddTransient<GrpcExceptionInterceptor>();
+            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddControllers();
             services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
             services.AddMongoContext<MerchantContext>();

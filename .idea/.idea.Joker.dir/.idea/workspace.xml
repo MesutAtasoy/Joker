@@ -2,56 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcc54e7b-d7d4-449d-839d-9282e61e0ba3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Controllers/CampaignController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Controllers/MerchantController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Controllers/StoreController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Extensions/ServiceCollectionExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Interceptors/GrpcExceptionInterceptor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Campaign/CampaignModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Campaign/CreateCampaignModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Campaign/UpdateCampaignModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Location/LocationModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Location/LocationVerificationModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Shared/IdName.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Store/CreateStoreModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Store/StoreLocationModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Store/StoreModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Store/UpdateStoreLocationModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Models/Store/UpdateStoreModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Campaign/CampaignService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Campaign/ICampaignService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Location/ILocationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Location/LocationService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Store/IStoreService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Store/StoreService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Aggregator.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Aggregator.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Merchant/MerchantService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Services/Merchant/MerchantService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Joker.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/appsettings.Development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aggregators/Aggregator.Api/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/Campaign.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/Campaign.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/GrpcServices/CampaignGrpcService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/GrpcServices/CampaignGrpcService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/Protos/campaign.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Api/Protos/campaign.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/CampaignManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/CampaignManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/CampaignMappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/CampaignMappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/CreateCampaign/CreateCampaignCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/CreateCampaign/CreateCampaignCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/CreateCampaign/CreateCampaignCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/CreateCampaign/CreateCampaignCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/UpdateCampaign/UpdateCampaignCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/UpdateCampaign/UpdateCampaignCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/UpdateCampaign/UpdateCampaignCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Command/UpdateCampaign/UpdateCampaignCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Dto/CampaignBadgeDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Dto/CampaignDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Dto/CampaignDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Dto/CampaignGalleryDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Application/Campaigns/Dto/CampaignListDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Domain/CampaignAggregate/Campaign.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Domain/CampaignAggregate/Campaign.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Domain/CampaignAggregate/CampaignBadge.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Domain/CampaignAggregate/CampaignGallery.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Infrastructure/Mappings/CampaignMapping.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Campaign/Campaign.Infrastructure/Mappings/CampaignMapping.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Merchant/Merchant.Api/GrpcServices/MerchantGrpcService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Merchant/Merchant.Api/GrpcServices/MerchantGrpcService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/Merchant/Merchant.Api/Protos/merchant.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/Merchant/Merchant.Api/Protos/merchant.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Submodules/Joker.Packages" beforeDir="false" afterPath="$PROJECT_DIR$/src/Submodules/Joker.Packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Submodules/Joker.Packages/Joker.AspNetCore/Extensions/ServiceCollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Submodules/Joker.Packages/Joker.AspNetCore/Extensions/ServiceCollectionExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Submodules/Joker.Packages/Joker.Extensions/QueryableExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Submodules/Joker.Packages/Joker.Extensions/QueryableExtensions.cs" afterDir="false" />
@@ -90,14 +45,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625910535238</updated>
-      <workItem from="1625910538438" duration="1212000" />
+      <workItem from="1625910538438" duration="1214000" />
+      <workItem from="1625989462723" duration="21000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -109,6 +65,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

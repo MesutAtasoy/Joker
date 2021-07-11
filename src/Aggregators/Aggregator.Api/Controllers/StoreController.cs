@@ -5,6 +5,7 @@ using Aggregator.Api.Models.Store;
 using Aggregator.Api.Services.Location;
 using Aggregator.Api.Services.Store;
 using Joker.Extensions;
+using Joker.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
@@ -37,7 +38,7 @@ namespace Aggregator.Api.Controllers
 
             if (!locationResponse.IsValid)
             {
-                return BadRequest("Invalid Location");
+                return BadRequest(new JokerBaseResponse<object>(null, 400, "Location is invalid"));
             }
 
             model.Location.Country.Name = locationResponse.Country.Name;
@@ -47,14 +48,14 @@ namespace Aggregator.Api.Controllers
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
             var store = await _storeService.CreateAsync(model);
-            return Ok(store);
+            return Ok(new JokerBaseResponse<StoreModel>(store));
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateStoreModel model)
         {
             var store = await _storeService.UpdateAsync(model);
-            return Ok(store);
+            return Ok(new JokerBaseResponse<StoreModel>(store));
         }
         
         [HttpPut("Location")]
@@ -71,7 +72,7 @@ namespace Aggregator.Api.Controllers
 
             if (!locationResponse.IsValid)
             {
-                return BadRequest("Invalid Location");
+                return BadRequest(new JokerBaseResponse<object>(null, 400, "Location is invalid"));
             }
 
             model.Location.Country.Name = locationResponse.Country.Name;
@@ -81,14 +82,14 @@ namespace Aggregator.Api.Controllers
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
             var store = await _storeService.UpdateLocationAsync(model);
-            return Ok(store);
+            return Ok(new JokerBaseResponse<StoreLocationModel>(store));
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _storeService.DeleteAsync(id);
-            return Ok(result);
+            return Ok(new JokerBaseResponse<bool>(result));
         }
     }
 }

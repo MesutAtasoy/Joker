@@ -1,6 +1,7 @@
 using AutoMapper;
 using Joker.CAP;
 using Merchant.Application.Merchants;
+using Merchant.Application.Stores;
 using Merchant.Domain.MerchantAggregate.Repositories;
 using Merchant.Domain.StoreAggregate.Repositories;
 using Merchant.Infrastructure;
@@ -23,6 +24,10 @@ namespace Merchant.Application
 
             //Automapper
             services.AddAutoMapper(typeof(MerchantMappingProfile));
+            
+            //Application Services 
+            services.AddScoped<MerchantManager>();
+            services.AddScoped<StoreManager>();
             
             MerchantContext.ApplyConfiguration();
             

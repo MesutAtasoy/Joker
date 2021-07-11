@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
 using Aggregator.Api.Services.Merchant;
+using Joker.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
@@ -21,21 +22,21 @@ namespace Aggregator.Api.Controllers
         public async Task<ActionResult> CreateAsync([FromBody]CreateMerchantModel model)
         {
             var merchant = await _merchantService.CreateAsync(model);
-            return Ok(merchant);
+            return Ok(new JokerBaseResponse<MerchantModel>(merchant));
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateMerchantModel model)
         {
             var merchant = await _merchantService.UpdateAsync(model);
-            return Ok(merchant);
+            return Ok(new JokerBaseResponse<MerchantModel>(merchant));
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _merchantService.DeleteAsync(id);
-            return Ok(result);
+            return Ok(new JokerBaseResponse<bool>(result));
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Core.Interceptors;
+using Joker.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace Aggregator.Api.Interceptors
@@ -33,8 +34,9 @@ namespace Aggregator.Api.Interceptors
             }
             catch (RpcException e)
             {
+                var metadata = e.Trailers;
                 _logger.LogError("Error calling via grpc: {Status} - {Message}", e.Status, e.Message);
-                return default;
+                throw new JokerException(metadata.GetValue("ErrorMessage"), 400);
             }
         }
     }

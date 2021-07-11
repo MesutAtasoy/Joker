@@ -10,9 +10,6 @@ namespace Merchant.Infrastructure.Mappings
         {
             map.AutoMap();
             map.MapIdProperty(x => x.Id);
-            
-            map.MapField("_storeFAQs").SetElementName("StoreFAQs");
-            map.MapField("_storeBusinessHours").SetElementName("StoreBusinessHours");
         }
     }
 }

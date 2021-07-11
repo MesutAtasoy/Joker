@@ -33,6 +33,8 @@ namespace Aggregator.Api.Services.Location
                 return locationModel;
             }
 
+            locationModel.IsValid = true;
+            
             locationModel.Country = new IdName
             {
                 Id = response.Country.Id,

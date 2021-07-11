@@ -79,7 +79,7 @@ namespace Aggregator.Api.Services.Merchant
                 EmailConfirmed = merchantMessage.EmailConfirmed,
                 WebSiteUrl = merchantMessage.WebsiteUrl,
                 CreatedDate = merchantMessage.CreatedDate.ToDateTime(),
-                ModifiedDate = merchantMessage.ModifiedDate.ToDateTime()
+                ModifiedDate = merchantMessage.ModifiedDate?.ToDateTime()
             };
         }
         #endregion

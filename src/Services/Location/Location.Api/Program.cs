@@ -113,7 +113,7 @@ namespace Location.Api
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
         {
             var grpcPort = config.GetValue("GRPC_PORT", 5013);
-            var port = 80;
+            var port = config.GetValue("PORT", 5003);
             return (port, grpcPort);
         }
     }

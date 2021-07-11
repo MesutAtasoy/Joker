@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Response\Joker.Response.csproj" />
       <ProjectReference Include="..\Location.Core\Location.Core.csproj" />
       <ProjectReference Include="..\Location.Infrastructure\Location.Infrastructure.csproj" />
     </ItemGroup>
