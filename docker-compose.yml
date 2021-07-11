@@ -63,5 +63,11 @@ services:
       dockerfile: src/Services/Search/Search.Api/Dockerfile
     depends_on:
       - seq
-      - rabbitmq        
-
+      - rabbitmq
+              
+  aggregator.api:
+    image: ${DOCKER_REGISTRY-}aggregatorapi
+    build:
+      context: .
+      dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
+    

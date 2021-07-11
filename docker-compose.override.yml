@@ -6,6 +6,8 @@ services:
     container_name: consul
     ports:
       - "8500:8500"
+    networks:
+      - joker-network      
         
   seq:
     container_name: "seq"
@@ -15,12 +17,16 @@ services:
       - "5341:80"
     volumes:
       - ${HOST_VOLUMES_PATH}/seq:/data
-
+    networks:
+      - joker-network      
+        
   rabbitmq:
     ports:
       - "5672:5672"
       - "15672:15672"
-
+    networks:
+      - joker-network      
+        
   postgres:
     container_name: postgres
     environment:
@@ -32,50 +38,90 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
-
+    networks:
+      - joker-network
+    
   nosqldata:
     container_name: "mongo"
     ports:
       - "27017:27017"
     volumes:
       - ${HOST_VOLUMES_PATH}/mongo:/data/db
-
+    networks:
+      - joker-network        
+        
   merchant.api:
     container_name: "merchant.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     ports:
       - "5000:80"
+    networks:
+      - joker-network        
       
   campaign.api:
     container_name: "campaign.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     ports:
       - "5001:80"
-
+    networks:
+      - joker-network      
+        
   management.api:
     container_name: "management.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     ports:
       - "5002:80"
-
+    networks:
+      - joker-network      
+        
   location.api:
     container_name: "location.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     ports:
       - "5003:80"   
-
+    networks:
+      - joker-network      
+        
   search.api:
     container_name: "search.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     ports:
-      - "5004:80"    
+      - "5004:80"
+    networks:
+      - joker-network      
+            
+  aggregator.api:
+    container_name: "aggregator.api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5006:80"
+    networks:
+      - joker-network
+      
+networks:
+  joker-network:
+    external: true        
