@@ -3,6 +3,7 @@ using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
 using Management.Api.GrpcServices;
+using Management.Api.Interceptors;
 using Management.Application;
 using Management.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +28,7 @@ namespace Management.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddGrpc();
+            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddControllers();
             services.AddJokerNpDbContext<ManagementContext>(x =>
             {

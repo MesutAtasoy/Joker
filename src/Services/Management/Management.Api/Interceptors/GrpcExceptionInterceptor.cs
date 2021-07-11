@@ -4,7 +4,7 @@ using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Logging;
 
-namespace Merchant.Api.Interceptors
+namespace Management.Api.Interceptors
 {
     public class GrpcExceptionInterceptor : Interceptor
     {

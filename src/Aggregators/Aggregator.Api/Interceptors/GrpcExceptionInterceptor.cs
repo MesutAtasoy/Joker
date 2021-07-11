@@ -36,7 +36,7 @@ namespace Aggregator.Api.Interceptors
             {
                 var metadata = e.Trailers;
                 _logger.LogError("Error calling via grpc: {Status} - {Message}", e.Status, e.Message);
-                throw new JokerException(metadata.GetValue("ErrorMessage"), 400);
+                throw new JokerException(metadata.GetValue("errormessage"), 400);
             }
         }
     }

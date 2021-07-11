@@ -56,8 +56,7 @@ namespace Aggregator.Api.Services.Store
                 }
             });
 
-            // return As(response);
-            return new StoreModel();
+            return As(response);
         }
 
         public async Task<StoreModel> UpdateAsync(UpdateStoreModel request)
@@ -75,7 +74,9 @@ namespace Aggregator.Api.Services.Store
                 }
             });
             
-            return new StoreModel();        }
+            return As(response);
+
+        }
         
         public async Task<StoreLocationModel> UpdateLocationAsync(UpdateStoreLocationModel request)
         {

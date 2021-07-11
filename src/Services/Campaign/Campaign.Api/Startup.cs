@@ -1,4 +1,5 @@
 using Campaign.Api.GrpcServices;
+using Campaign.Api.Interceptors;
 using Campaign.Application;
 using Campaign.Infrastructure;
 using Joker.CAP;
@@ -30,7 +31,7 @@ namespace Campaign.Api
         {
             services.AddApiVersion();
             services.AddControllers();
-            services.AddGrpc();
+            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
             services.AddMongoContext<CampaignContext>();
             services.AddMongoDomainRepositories();
