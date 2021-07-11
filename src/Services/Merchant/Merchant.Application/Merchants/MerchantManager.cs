@@ -80,6 +80,12 @@ namespace Merchant.Application.Merchants
         public async Task<MerchantDto> GetByIdAsync(Guid id)
         {
             var merchant =  await _merchantRepository.GetByIdAsync(id);
+            
+            if (merchant == null)
+            {
+                throw new NotFoundException("Merchant is not found");
+            }
+            
             return _mapper.Map<MerchantDto>(merchant);
         }
     }

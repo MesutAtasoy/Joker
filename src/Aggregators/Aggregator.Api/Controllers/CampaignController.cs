@@ -4,7 +4,7 @@ using Aggregator.Api.Models.Campaign;
 using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Store;
-using Joker.Extensions;
+using Joker.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
@@ -30,7 +30,7 @@ namespace Aggregator.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateAsync([FromBody] CreateCampaignModel model)
         {
-            var store = await _storeService.GetByIdAsync(model.Store.Id.ToGuid());
+            var store = await _storeService.GetByIdAsync(model.Store.Id);
 
             if (store == null)
             {
@@ -39,7 +39,7 @@ namespace Aggregator.Api.Controllers
 
             model.Store.Name = store.Name;
 
-            var businessDirectory = await _managementService.GetBusinessDirectoryByIdAsync(model.BusinessDirectory.Id.ToGuid());
+            var businessDirectory = await _managementService.GetBusinessDirectoryByIdAsync(model.BusinessDirectory.Id);
             if (businessDirectory == null)
             {
                 return BadRequest("Business directory is not found");
@@ -47,22 +47,22 @@ namespace Aggregator.Api.Controllers
 
             model.BusinessDirectory.Name = businessDirectory.Name;
             
-            var merchant = await _campaignService.CreateAsync(model);
-            return Ok(merchant);
+            var campaign = await _campaignService.CreateAsync(model);
+            return Ok(new JokerBaseResponse<CampaignModel>(campaign));
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateCampaignModel model)
         {
-            var merchant = await _campaignService.UpdateAsync(model);
-            return Ok(merchant);
+            var campaign = await _campaignService.UpdateAsync(model);
+            return Ok(new JokerBaseResponse<CampaignModel>(campaign));
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _campaignService.DeleteAsync(id);
-            return Ok(result);
+            return Ok(new JokerBaseResponse<bool>(result));
         }
     }
 }

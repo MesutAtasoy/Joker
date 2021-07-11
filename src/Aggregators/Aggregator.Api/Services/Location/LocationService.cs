@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Location;
+using Joker.Extensions;
 using Location.Api.Grpc;
 using IdName = Aggregator.Api.Models.Shared.IdName;
 
@@ -37,31 +38,31 @@ namespace Aggregator.Api.Services.Location
             
             locationModel.Country = new IdName
             {
-                Id = response.Country.Id,
+                Id = response.Country.Id.ToGuid(),
                 Name = response.Country.Name
             };
             
             locationModel.City = new IdName
             {
-                Id = response.City.Id,
+                Id = response.City.Id.ToGuid(),
                 Name = response.City.Name
             };
             
             locationModel.District = new IdName
             {
-                Id = response.District.Id,
+                Id = response.District.Id.ToGuid(),
                 Name = response.District.Name
             };
             
             locationModel.Neighborhood = new IdName
             {
-                Id = response.Neighborhood.Id,
+                Id = response.Neighborhood.Id.ToGuid(),
                 Name = response.Neighborhood.Name
             };
             
             locationModel.Quarter = new IdName
             {
-                Id = response.Quarter.Id,
+                Id = response.Quarter.Id.ToGuid(),
                 Name = response.Quarter.Name
             };
 

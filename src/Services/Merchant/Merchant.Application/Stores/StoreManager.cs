@@ -51,7 +51,7 @@ namespace Merchant.Application.Stores
                 QuarterRef.Create(request.Location.Quarter.RefId, request.Location.Quarter.Name),
                 request.Location.Address
             );
-            
+
             var store = Store.Create(storeId,
                 merchantRef,
                 request.Name,
@@ -63,7 +63,7 @@ namespace Merchant.Application.Stores
             );
 
             await _storeRepository.AddAsync(store);
-            
+
             return _mapper.Map<StoreDto>(store);
         }
 
@@ -75,7 +75,7 @@ namespace Merchant.Application.Stores
             {
                 throw new NotFoundException("Store is not found");
             }
-            
+
             store.Update(request.Store.Name,
                 request.Store.Slogan,
                 request.Store.PhoneNumber,
@@ -95,11 +95,11 @@ namespace Merchant.Application.Stores
             {
                 throw new NotFoundException("Store is not found");
             }
-            
+
             store.MarkAsDeleted();
 
             await _storeRepository.UpdateAsync(store.Id, store);
-            
+
             return true;
         }
 
@@ -110,8 +110,8 @@ namespace Merchant.Application.Stores
             if (store == null)
             {
                 throw new NotFoundException("Store is not found");
-            }  
-            
+            }
+
             var storeLocation = new StoreLocation(
                 CountryRef.Create(request.Location.Country.RefId, request.Location.Country.Name),
                 CityRef.Create(request.Location.City.RefId, request.Location.City.Name),
@@ -120,7 +120,7 @@ namespace Merchant.Application.Stores
                 QuarterRef.Create(request.Location.Quarter.RefId, request.Location.Quarter.Name),
                 request.Location.Address
             );
-            
+
             store.UpdateLocation(storeLocation);
 
             await _storeRepository.UpdateAsync(store.Id, store);
@@ -131,6 +131,11 @@ namespace Merchant.Application.Stores
         public async Task<StoreDto> GetByIdAsync(Guid id)
         {
             var store = await _storeRepository.GetByIdAsync(id);
+            if (store == null)
+            {
+                throw new NotFoundException("Store is not found");
+            }
+
             return _mapper.Map<StoreDto>(store);
         }
     }

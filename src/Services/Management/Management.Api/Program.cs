@@ -1,9 +1,11 @@
 using System;
 using System.IO;
+using System.Net;
 using Joker.EntityFrameworkCore.Migration;
 using Management.Infrastructure;
 using Management.Infrastructure.Seed;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +30,7 @@ namespace Management.Api
             {
                 Log.Information("Application starting up...");
 
-                var host = CreateHostBuilder(args)
+                var host = CreateHostBuilder(configuration, args)
                     .Build();
 
                 host.MigrateDbContext<ManagementContext>((context, services) =>
@@ -60,11 +62,29 @@ namespace Management.Api
         /// Creates Host Builder
         /// </summary>
         /// <param name="args"></param>
+        /// <param name="configuration"></param>
         /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    var ports = GetDefinedPorts(configuration);
+                    
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+                        {
+                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+                        });
+
+                        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+                        {
+                            listenOptions.Protocols = HttpProtocols.Http2;
+                        });
+                    });
+                })
+                .UseSerilog();
 
         /// <summary>
         /// Returns configuration with environment
@@ -94,8 +114,17 @@ namespace Management.Api
         
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
         {
-            var grpcPort = config.GetValue("GRPC_PORT", 5012);
-            var port = config.GetValue("PORT", 5002);
+            var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
+            if (!isValidGrpcPort || grpcPort <= 0)
+            {
+                grpcPort = 5012;
+            }
+            var isValidPort = int.TryParse(config["PORT"], out var port);
+            if (!isValidPort || port <= 0)
+            {
+                port = 5002;
+            }
+            
             return (port, grpcPort);
         }
     }

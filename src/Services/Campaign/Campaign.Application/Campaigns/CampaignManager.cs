@@ -1,13 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Campaign.Application.Campaigns.Command.CreateCampaign;
 using Campaign.Application.Campaigns.Command.DeleteCampaign;
 using Campaign.Application.Campaigns.Command.UpdateCampaign;
 using Campaign.Application.Campaigns.Dto;
-using Campaign.Domain.CampaignAggregate;
 using Campaign.Domain.CampaignAggregate.Repositories;
 using Campaign.Domain.Refs;
 using Campaign.Infrastructure.Factories;
@@ -94,6 +91,12 @@ namespace Campaign.Application.Campaigns
         public async Task<CampaignDto> GetByIdAsync(Guid id)
         {
             var campaign = await _campaignRepository.GetByIdAsync(id);
+            
+            if (campaign == null)
+            {
+                throw new NotFoundException("Campaign is not found");
+            }
+
             return _mapper.Map<CampaignDto>(campaign);
         }
     }

@@ -27,12 +27,12 @@ namespace Aggregator.Api.Services.Campaign
                 Description = request.Description,
                 Store = new IdName
                 {
-                    Id = request.Store.Id,
+                    Id = request.Store.Id.ToString(),
                     Name = request.Store.Name
                 },
                 BusinessDirectory = new IdName
                 {
-                    Id = request.BusinessDirectory.Id,
+                    Id = request.BusinessDirectory.Id.ToString(),
                     Name = request.BusinessDirectory.Name
                 },
                 EndTime = request.EndTime?.ToTimestamp(),
@@ -89,19 +89,21 @@ namespace Aggregator.Api.Services.Campaign
                 Description = campaignMessage.Description,
                 BusinessDirectory = new Models.Shared.IdName
                 {
-                    Id = campaignMessage.BusinessDirectory.Id,
+                    Id = campaignMessage.BusinessDirectory.Id.ToGuid(),
                     Name = campaignMessage.BusinessDirectory.Name
                 },
                 Store = new Models.Shared.IdName()
                 {
-                    Id = campaignMessage.Store.Id,
+                    Id = campaignMessage.Store.Id.ToGuid(),
                     Name = campaignMessage.Store.Name
                 },
-                EndTime = campaignMessage.EndTime.ToDateTime(),
-                StartTime = campaignMessage.StartTime.ToDateTime(),
+                EndTime = campaignMessage.EndTime?.ToDateTime(),
+                StartTime = campaignMessage.StartTime?.ToDateTime(),
                 PreviewImageUrl = campaignMessage.PreviewImageUrl,
                 CreatedDate = campaignMessage.CreatedDate.ToDateTime(),
-                ModifiedDate = campaignMessage.ModifiedDate.ToDateTime(),
+                ModifiedDate = campaignMessage.ModifiedDate?.ToDateTime(),
+                Slug = campaignMessage.Slug,
+                SlugKey = campaignMessage.SlugKey
             };
         }
 

@@ -29,11 +29,11 @@ namespace Aggregator.Api.Controllers
         {
             var locationResponse = await _locationService.ValidateAsync(new LocationVerificationModel
             {
-                CountryId = model.Location.Country.Id.ToGuid(),
-                CityId = model.Location.City.Id.ToGuid(),
-                DistrictId = model.Location.District.Id.ToGuid(),
-                NeighborhoodId = model.Location.Neighborhood.Id.ToGuid(),
-                QuarterId= model.Location.Quarter.Id.ToGuid(),
+                CountryId = model.Location.Country.Id,
+                CityId = model.Location.City.Id,
+                DistrictId = model.Location.District.Id,
+                NeighborhoodId = model.Location.Neighborhood.Id,
+                QuarterId= model.Location.Quarter.Id,
             });
 
             if (!locationResponse.IsValid)
@@ -63,11 +63,11 @@ namespace Aggregator.Api.Controllers
         {
             var locationResponse = await _locationService.ValidateAsync(new LocationVerificationModel
             {
-                CountryId = model.Location.Country.Id.ToGuid(),
-                CityId = model.Location.City.Id.ToGuid(),
-                DistrictId = model.Location.District.Id.ToGuid(),
-                NeighborhoodId = model.Location.Neighborhood.Id.ToGuid(),
-                QuarterId= model.Location.Quarter.Id.ToGuid(),
+                CountryId = model.Location.Country.Id,
+                CityId = model.Location.City.Id,
+                DistrictId = model.Location.District.Id,
+                NeighborhoodId = model.Location.Neighborhood.Id,
+                QuarterId= model.Location.Quarter.Id,
             });
 
             if (!locationResponse.IsValid)

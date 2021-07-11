@@ -29,27 +29,27 @@ namespace Aggregator.Api.Services.Store
                 {
                     Country = new IdName
                     {
-                        Id = request.Location.Country.Id,
+                        Id = request.Location.Country.Id.ToString(),
                         Name = request.Location.Country.Name
                     },
                     City = new IdName
                     {
-                        Id = request.Location.City.Id,
+                        Id = request.Location.City.Id.ToString(),
                         Name = request.Location.City.Name
                     },
                     District = new IdName
                     {
-                        Id = request.Location.District.Id,
+                        Id = request.Location.District.Id.ToString(),
                         Name = request.Location.District.Name
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Neighborhood.Id,
+                        Id = request.Location.Neighborhood.Id.ToString(),
                         Name = request.Location.Neighborhood.Name
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Quarter.Id,
+                        Id = request.Location.Quarter.Id.ToString(),
                         Name = request.Location.Quarter.Name
                     },
                     Address = request.Location.Address
@@ -87,27 +87,27 @@ namespace Aggregator.Api.Services.Store
                 {
                     Country = new IdName
                     {
-                        Id = request.Location.Country.Id,
+                        Id = request.Location.Country.Id.ToString(),
                         Name = request.Location.Country.Name
                     },
                     City = new IdName
                     {
-                        Id = request.Location.City.Id,
+                        Id = request.Location.City.Id.ToString(),
                         Name = request.Location.City.Name
                     },
                     District = new IdName
                     {
-                        Id = request.Location.District.Id,
+                        Id = request.Location.District.Id.ToString(),
                         Name = request.Location.District.Name
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Neighborhood.Id,
+                        Id = request.Location.Neighborhood.Id.ToString(),
                         Name = request.Location.Neighborhood.Name
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Quarter.Id,
+                        Id = request.Location.Quarter.Id.ToString(),
                         Name = request.Location.Quarter.Name
                     },
                     Address = request.Location.Address
@@ -154,7 +154,7 @@ namespace Aggregator.Api.Services.Store
         public async Task<StoreModel> GetByIdAsync(Guid id)
         {
             var store =await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage {Id = id.ToString()});
-            return new StoreModel();
+            return As(store);
         }
 
         #region Model Converters
@@ -169,34 +169,34 @@ namespace Aggregator.Api.Services.Store
                 Email = storeMessage.Email,
                 Merchant = new Models.Shared.IdName
                 {
-                    Id = storeMessage.Merchant.Id,
+                    Id = storeMessage.Merchant.Id.ToGuid(),
                     Name = storeMessage.Merchant.Name
                 },
                 Location = new StoreLocationModel
                 {
                     Country = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Country.Id,
+                        Id = storeMessage.Location.Country.Id.ToGuid(),
                         Name = storeMessage.Location.Country.Name
                     },
                     City = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.City.Id,
+                        Id = storeMessage.Location.City.Id.ToGuid(),
                         Name = storeMessage.Location.City.Name
                     },
                     District = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.District.Id,
+                        Id = storeMessage.Location.District.Id.ToGuid(),
                         Name = storeMessage.Location.District.Name
                     },
                     Neighborhood = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Neighborhood.Id,
+                        Id = storeMessage.Location.Neighborhood.Id.ToGuid(),
                         Name = storeMessage.Location.Neighborhood.Name
                     },
                     Quarter = new Models.Shared.IdName
                     {
-                        Id = storeMessage.Location.Quarter.Id,
+                        Id = storeMessage.Location.Quarter.Id.ToGuid(),
                         Name = storeMessage.Location.Quarter.Name
                     },
                     Address = storeMessage.Location.Address

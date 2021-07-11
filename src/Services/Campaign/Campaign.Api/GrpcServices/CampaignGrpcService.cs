@@ -42,8 +42,8 @@ namespace Campaign.Api.GrpcServices
                     RefId = request.BusinessDirectory.Id.ToGuid(),
                     Name = request.BusinessDirectory.Name
                 },
-                EndTime = request.EndTime.ToDateTime(),
-                StartTime = request.StartTime.ToDateTime(),
+                EndTime = request.EndTime?.ToDateTime(),
+                StartTime = request.StartTime?.ToDateTime(),
                 PreviewImageUrl = request.PreviewImageUrl
             });
 

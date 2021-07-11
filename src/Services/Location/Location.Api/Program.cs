@@ -112,8 +112,17 @@ namespace Location.Api
         
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
         {
-            var grpcPort = config.GetValue("GRPC_PORT", 5013);
-            var port = config.GetValue("PORT", 5003);
+            var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
+            if (!isValidGrpcPort || grpcPort <= 0)
+            {
+                grpcPort = 5013;
+            }
+            var isValidPort = int.TryParse(config["PORT"], out var port);
+            if (!isValidPort || port <= 0)
+            {
+                port = 5003;
+            }
+            
             return (port, grpcPort);
         }
     }

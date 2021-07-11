@@ -2,6 +2,7 @@ using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
 using Location.Api.GrpcServices;
+using Location.Api.Interceptors;
 using Location.Application;
 using Location.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -28,7 +29,8 @@ namespace Location.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddGrpc();
+            services.AddTransient<GrpcExceptionInterceptor>();
+            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddControllers();
             services.AddJokerNpDbContext<LocationContext>(x =>
             {

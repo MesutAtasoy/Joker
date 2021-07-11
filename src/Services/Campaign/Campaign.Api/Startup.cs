@@ -31,6 +31,7 @@ namespace Campaign.Api
         {
             services.AddApiVersion();
             services.AddControllers();
+            services.AddTransient<GrpcExceptionInterceptor>();
             services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
             services.AddMongoContext<CampaignContext>();

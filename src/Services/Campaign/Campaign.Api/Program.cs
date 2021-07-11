@@ -25,7 +25,7 @@ namespace Campaign.Api
             {
                 Log.Information("Application starting up...");
 
-                CreateHostBuilder(configuration,args)
+                CreateHostBuilder(configuration, args)
                     .Build()
                     .Run();
             }
@@ -42,6 +42,7 @@ namespace Campaign.Api
         /// <summary>
         /// Creates Host Builder
         /// </summary>
+        /// <param name="configuration"></param>
         /// <param name="args"></param>
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
@@ -49,19 +50,15 @@ namespace Campaign.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     var ports = GetDefinedPorts(configuration);
-                    
+
                     webBuilder.UseStartup<Startup>();
                     webBuilder.ConfigureKestrel(options =>
                     {
-                        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        });
+                        options.Listen(IPAddress.Any, ports.httpPort,
+                            listenOptions => { listenOptions.Protocols = HttpProtocols.Http1AndHttp2; });
 
-                        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http2;
-                        });
+                        options.Listen(IPAddress.Any, ports.grpcPort,
+                            listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
                     });
                 })
                 .UseSerilog();
@@ -83,7 +80,7 @@ namespace Campaign.Api
             return builder.Build();
         }
 
-        public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
+        private  static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
             return new LoggerConfiguration()
                 .Enrich.WithProperty("ApplicationContext", applicationName)
@@ -91,11 +88,20 @@ namespace Campaign.Api
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
         }
-        
-        public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
+
+        private static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
         {
-            var grpcPort = config.GetValue("GRPC_PORT", 5011);
-            var port = config.GetValue("PORT", 5001);
+            var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
+            if (!isValidGrpcPort || grpcPort <= 0)
+            {
+                grpcPort = 5011;
+            }
+            var isValidPort = int.TryParse(config["PORT"], out var port);
+            if (!isValidPort || port <= 0)
+            {
+                port = 5001;
+            }
+            
             return (port, grpcPort);
         }
     }

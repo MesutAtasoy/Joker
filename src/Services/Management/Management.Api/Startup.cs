@@ -28,6 +28,7 @@ namespace Management.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
+            services.AddTransient<GrpcExceptionInterceptor>();
             services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             services.AddControllers();
             services.AddJokerNpDbContext<ManagementContext>(x =>
@@ -60,7 +61,7 @@ namespace Management.Api
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
-                // endpoints.MapGrpcService<ManagementGrpcService>();
+                endpoints.MapGrpcService<ManagementGrpcService>();
             });
         }
     }
