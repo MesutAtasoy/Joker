@@ -1,0 +1,106 @@
+{
+  "Routes": [
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Merchant.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/merchant/api/{everything}",
+      "SwaggerKey": "merchant",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Management.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/management/api/{everything}",
+      "SwaggerKey": "management",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Location.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/location/api/{everything}",
+      "SwaggerKey": "location",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Campaign.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/campaign/api/{everything}",
+      "SwaggerKey": "campaign",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      }
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "merchant",
+      "Config": [
+        {
+          "Name": "Merchant API",
+          "Version": "v1",
+          "Url": "http://merchant.api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "campaign",
+      "Config": [
+        {
+          "Name": "Campaign API",
+          "Version": "v1",
+          "Url": "http://campaign.api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "management",
+      "Config": [
+        {
+          "Name": "Management API",
+          "Version": "v1",
+          "Url": "http://management.api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "location",
+      "Config": [
+        {
+          "Name": "Location API",
+          "Version": "v1",
+          "Url": "http://location.api/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "ServiceDiscoveryProvider": {
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

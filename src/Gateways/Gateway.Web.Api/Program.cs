@@ -1,13 +1,12 @@
 using System;
 using System.IO;
-using System.Net;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace Aggregator.Api
+
+namespace Gateway.Web.Api
 {
     public class Program
     {
@@ -18,13 +17,13 @@ namespace Aggregator.Api
         public static void Main(string[] args)
         {
             var configuration = GetConfiguration();
-            Log.Logger = CreateSerilogLogger(configuration, "Aggregator.Api");
+            Log.Logger = CreateSerilogLogger(configuration, "Gateway.Web.Api");
 
             try
             {
                 Log.Information("Application starting up...");
 
-                CreateHostBuilder(configuration, args)
+                CreateHostBuilder(args)
                     .Build()
                     .Run();
             }
@@ -41,28 +40,23 @@ namespace Aggregator.Api
         /// <summary>
         /// Creates Host Builder
         /// </summary>
-        /// <param name="args"></param>
         /// <param name="configuration"></param>
+        /// <param name="args"></param>
         /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    var ports = GetDefinedPorts(configuration);
-                    
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        });
-
-                        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http2;
-                        });
-                    });
+                })
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config
+                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                        .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json")
+                        .AddEnvironmentVariables();
                 })
                 .UseSerilog();
 
@@ -83,20 +77,13 @@ namespace Aggregator.Api
             return builder.Build();
         }
 
-        public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
+        private  static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
             return new LoggerConfiguration()
                 .Enrich.WithProperty("ApplicationContext", applicationName)
                 .Enrich.FromLogContext()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
-        }
-
-        public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
-        {
-            var grpcPort = config.GetValue("GRPC_PORT", 5016);
-            var port = config.GetValue("PORT", 5006);
-            return (port, grpcPort);
         }
     }
 }

@@ -70,4 +70,10 @@ services:
     build:
       context: .
       dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
+
+  gateway.web.api:
+    image: ${DOCKER_REGISTRY-}gatewaywebapi
+    build:
+      context: .
+      dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile      
     

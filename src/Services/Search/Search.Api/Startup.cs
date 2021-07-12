@@ -53,7 +53,7 @@ namespace Search.Api
                 capOptions.UseMongoDB(opt => // Persistence
                 {
                     opt.DatabaseConnection = Configuration["mongo:ConnectionString"];
-                    opt.DatabaseName = Configuration["mongo:DefaultDatabaseName"] + "EventHistories";
+                    opt.DatabaseName = Configuration["mongo:DefaultDatabaseName"] + "-eventHistories";
                     opt.PublishedCollection = "PublishedEvents";
                     opt.ReceivedCollection = "ReceivedEvents";
                 });
