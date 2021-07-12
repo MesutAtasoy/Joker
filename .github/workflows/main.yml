@@ -8,7 +8,10 @@ jobs:
  
     runs-on: ubuntu-latest
  
-    steps:
-    - uses: actions/checkout@v1
+     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: Docker Compose CI
       run: docker-compose build
