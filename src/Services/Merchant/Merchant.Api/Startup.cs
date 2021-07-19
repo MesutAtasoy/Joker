@@ -36,6 +36,7 @@ namespace Merchant.Api
             services.AddMongoContext<MerchantContext>();
             services.AddMongoDomainRepositories();
             services.AddApplicationModule();
+            services.AddHttpClient();
             services.AddJokerMediatr(typeof(MerchantApplicationModule));
             services.AddSwaggerGen();
             services.AddJokerCAP(capOptions =>

@@ -132,7 +132,22 @@ services:
       - "5009:80"
     networks:
       - joker-network        
-      
+        
+  merchant-integration-tests:
+    container_name: merchant-integration-tests
+    image: mcr.microsoft.com/dotnet/sdk:5.0   
+    working_dir: /src
+    volumes:
+      - .:/src
+    command:
+      [
+          "dotnet",
+          "test",
+          "src/Services/Merchant/Merchant.IntegrationTests/Merchant.IntegrationTests.csproj"
+      ]
+    networks:
+      - joker-network
+        
 networks:
   joker-network:
     external: true        
