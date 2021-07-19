@@ -16,6 +16,6 @@ jobs:
     - name: Docker Compose CI
       run: docker-compose build
     - name: Create Network
-      run: docker-compose build          
+      run: docker network create joker-network    
     - name: Integration Tests
       run: docker-compose up --exit-code-from merchant-integration-tests merchant-integration-tests   
