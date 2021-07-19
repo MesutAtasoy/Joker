@@ -15,5 +15,7 @@ jobs:
       run: git submodule update --init --recursive
     - name: Docker Compose CI
       run: docker-compose build
+    - name: Create Network
+      run: docker-compose build          
     - name: Integration Tests
       run: docker-compose up --exit-code-from merchant-integration-tests merchant-integration-tests   
