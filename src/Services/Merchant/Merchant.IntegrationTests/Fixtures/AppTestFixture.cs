@@ -1,3 +1,4 @@
+using System;
 using Merchant.Api;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -8,7 +9,7 @@ using Serilog;
 
 namespace Merchant.IntegrationTests.Fixtures
 {
-    public class AppTestFixture : WebApplicationFactory<Startup>
+    public class AppTestFixture : WebApplicationFactory<Startup> , IDisposable
     {
         protected override IHostBuilder CreateHostBuilder()
         {
