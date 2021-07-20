@@ -1,4 +1,5 @@
 using Joker.CAP;
+using Joker.Consul;
 using Joker.ElasticSearch;
 using Joker.ElasticSearch.Options;
 using Joker.Mvc;
@@ -62,7 +63,8 @@ namespace Search.Api
                 capOptions.FailedRetryCount = 3;
                 capOptions.FailedRetryInterval = 60;
             });
-
+            
+            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

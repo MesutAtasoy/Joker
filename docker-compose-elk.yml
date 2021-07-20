@@ -1,0 +1,39 @@
+version: '3.5'
+services:
+  elasticsearch01:
+    container_name: elasticsearch01
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+      - xpack.security.enabled=false
+      - "ELASTIC_USERNAME=elastic"
+      - "ELASTIC_PASSWORD=secret!"
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - joker-network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.0.1
+    container_name: kibana
+    environment:
+      - "ELASTICSEARCH_HOSTS=http://elasticsearch01:9200"
+      - "ELASTICSEARCH_USERNAME=elastic"
+      - "ELASTICSEARCH_PASSWORD=secret!"
+    depends_on:
+      - elasticsearch01
+    ports:
+      - "5601:5601"
+    networks:
+      - joker-network
+
+volumes:
+  esdata01:
+    driver: local
+
+networks:
+  joker-network:
+    external: true       

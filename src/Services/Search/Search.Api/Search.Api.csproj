@@ -20,8 +20,8 @@
     </ItemGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
-      <ProjectReference Include="..\..\Campaign\Campaign.Api\Campaign.Api.csproj" />
       <ProjectReference Include="..\Search.Application\Search.Application.csproj" />
       <ProjectReference Include="..\Search.Core\Search.Core.csproj" />
     </ItemGroup>
