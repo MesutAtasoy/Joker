@@ -19,7 +19,7 @@ namespace Merchant.IntegrationTests.Fixtures
                 })
                 .ConfigureAppConfiguration((context, builder) =>
                 {
-                    builder.AddJsonFile("appsettings.Docker.json", false, false);
+                    builder.AddJsonFile("appsettings.json", false, false);
                 })
                 .UseSerilog();
         }
