@@ -17,5 +17,7 @@ jobs:
       run: docker-compose build
     - name: Create Network
       run: docker network create joker-network    
+    - name: Running infrastructure
+      run: docker-compose up -d consul seq rabbitmq postgres nosqldata
     - name: Integration Tests
       run: docker-compose up --exit-code-from merchant-integration-tests merchant-integration-tests   
