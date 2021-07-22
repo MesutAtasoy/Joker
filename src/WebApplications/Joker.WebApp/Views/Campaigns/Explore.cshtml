@@ -1,0 +1,69 @@
+﻿@model Joker.WebApp.ViewModels.CampaignDetailViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center bg-light">
+    <h1 class="display-4">Best Campaigns which you may like!</h1>
+    <p>Explore them</p>
+</div>
+<hr>
+
+<div class="text-center bg-light">
+    <div class="card-body">
+        <h5 class="card-title">Campaign Details</h5>
+    </div>
+</div>
+<hr>
+
+@if (Model.Campaign != null)
+{
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Campaign.Title</h5>
+            <p class="card-text">@Model.Campaign.Description</p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Campaign Code</h5>
+            <p class="card-text">@Model.Campaign.Code</p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Condition</h5>
+            <p class="card-text">@Model.Campaign.Condition</p>
+        </div>
+    </div>
+}
+
+
+<div class="text-center bg-light">
+    <div class="card-body">
+        <h5 class="card-title">Store Details</h5>
+    </div>
+</div>
+<hr>
+
+@if (Model.Store != null)
+{
+    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Store.Name</h5>
+            <p class="card-text">@Model.Store.Description</p>
+            <p class="card-text">@Model.Store.Slogan</p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Location</h5>
+            <p class="card-text">
+                @Model.Store.Address ,
+                @Model.Store.QuarterName,
+                @Model.Store.NeighborhoodName,
+                @Model.Store.DistrictName,
+                @Model.Store.CityName,
+                @Model.Store.CountryName
+            </p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Contract</h5>
+            <p class="card-text">@Model.Store.Email</p>
+        </div>
+    </div>
+}

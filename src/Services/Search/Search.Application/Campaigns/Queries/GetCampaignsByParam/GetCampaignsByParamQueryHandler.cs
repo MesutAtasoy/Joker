@@ -48,13 +48,24 @@ namespace Search.Application.Campaigns.Queries.GetCampaignsByParam
                                 t.Field(ff => ff.StoreName.Suffix("keyword")).Value(request.StoreName));
                         }
 
+                        if (!string.IsNullOrEmpty(request.SlugKey))
+                        {
+                            queryContainer &= q.Term(t =>
+                                t.Field(ff => ff.SlugKey.Suffix("keyword")).Value(request.SlugKey));
+                        }
+
+                        if (!string.IsNullOrEmpty(request.Slug))
+                        {
+                            queryContainer &= q.Term(t =>
+                                t.Field(ff => ff.Slug.Suffix("keyword")).Value(request.Slug));
+                        }
+
                         return queryContainer;
                     }
                 )
-                .Index(IndexConstants.StoreIndex)
+                .Index(IndexConstants.CampaignIndex)
                 .Skip(request.Page * request.PageSize)
-                .Take(request.PageSize)
-            );
+                .Take(request.PageSize), cancellationToken);
 
             return new SearchBaseResponse<CampaignIndexModel>(searchResponse.Took, request.Page.Value,
                 request.PageSize.Value,

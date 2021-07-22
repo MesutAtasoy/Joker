@@ -1,11 +1,8 @@
 using System;
-using MediatR;
-using Search.Application.Shared.Dto.Request;
-using Search.Core.IndexModels;
 
-namespace Search.Application.Stores.Queries.GetStoresByParam
+namespace Joker.WebApp.ViewModels.Search.Request
 {
-    public class GetStoresByParamQuery : SearchBaseRequest, IRequest<SearchBaseResponse<StoreIndexModel>>
+    public class StoreSearchRequest : SearchBaseRequest
     {
         public Guid? StoreId { get; set; }
         public Guid? CountryId { get; set; }

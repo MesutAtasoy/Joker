@@ -9,8 +9,7 @@ using Search.Core.IndexModels;
 
 namespace Search.Application.Stores.Queries.GetStoresByParam
 {
-    public class
-        GetStoresByParamQueryHandler : IRequestHandler<GetStoresByParamQuery, SearchBaseResponse<StoreIndexModel>>
+    public class GetStoresByParamQueryHandler : IRequestHandler<GetStoresByParamQuery, SearchBaseResponse<StoreIndexModel>>
     {
         private readonly IElasticClient _elasticClient;
 
@@ -42,6 +41,11 @@ namespace Search.Application.Stores.Queries.GetStoresByParam
                                 .Operator(Operator.Or));
                         }
 
+                        if (request.StoreId.HasValue)
+                        {
+                            queryContainer &= q.Term(t =>
+                                t.Field(ff => ff.Id.Suffix("keyword")).Value(request.StoreId));
+                        }
 
                         if (request.CountryId.HasValue)
                         {

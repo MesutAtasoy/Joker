@@ -1,0 +1,31 @@
+﻿@model Joker.WebApp.ViewModels.Search.SearchBaseResponse<Joker.WebApp.ViewModels.Search.CampaignSearchResponse>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center bg-light">
+    <h1 class="display-5 text-muted">Best Campaigns which you may like, Explore them!</h1>
+    <hr>
+    <h3 class="display-5">Joker is platform which you explore all popular campaigns where you live!</h3>
+    <hr>
+    <h5 class="display-6 text-muted">Be the first to see the popular campaigns.</h5>
+</div>
+<hr>
+
+<p class="lead text-center text-muted">
+  Popular Campaigns 
+</p>
+<div class="card-group">
+    @foreach (var campaign in Model.Documents)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@campaign.Title</h5>
+                <p class="card-text">@campaign.Description</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-controller="Campaigns" asp-action="Explore" asp-route-id="@campaign.Slug">Go Details</a>
+            </div>
+        </div>
+    }
+</div>

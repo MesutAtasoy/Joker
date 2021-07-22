@@ -63,6 +63,22 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Search.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/search/api/{everything}",
+      "SwaggerKey": "search",
+      "UpstreamHttpMethod": ["GET"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
   ],
   "SwaggerEndPoints": [
@@ -103,6 +119,16 @@
           "Name": "Location API",
           "Version": "v1",
           "Url": "http://localhost:5003/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "search",
+      "Config": [
+        {
+          "Name": "Search API",
+          "Version": "v1",
+          "Url": "http://localhost:5004/swagger/v1/swagger.json"
         }
       ]
     }
