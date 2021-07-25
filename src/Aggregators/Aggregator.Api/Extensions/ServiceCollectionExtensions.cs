@@ -6,9 +6,12 @@ using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Merchant;
 using Aggregator.Api.Services.Store;
 using Campaign.Api.Grpc;
+using IdentityServer4.AccessTokenValidation;
+using Joker.Consul;
 using Location.Api.Grpc;
 using Management.Api.Grpc;
 using Merchant.Api.Grpc;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -42,6 +45,25 @@ namespace Aggregator.Api.Extensions
                     x.Address = new Uri(configuration["serviceUrls:location"]))
                 .AddInterceptor<GrpcExceptionInterceptor>();
             
+            return services;
+        }
+
+        public static IServiceCollection AddJokerAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = configuration["urls:identityapi"];
+                    options.ApiName = "aggregatorapi";
+                    options.ApiSecret = "apisecret";
+                });
+
+            return services;
+        }
+
+        public static IServiceCollection AddJokerConsul(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.RegisterConsulServices(x => configuration.GetSection("ServiceDiscovery").Bind(x));
             return services;
         }
     }

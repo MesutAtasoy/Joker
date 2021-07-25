@@ -1,0 +1,52 @@
+﻿@model Joker.Identity.ViewModels.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="text-center bg-light">
+    <h1 class="display-5 text-muted">Best Campaigns which you may like, Explore them!</h1>
+    <hr>
+    <h3 class="display-5">Joker is platform which you explore all popular campaigns where you live!</h3>
+    <hr>
+    <h5 class="display-6 text-muted">Be the first to see the popular campaigns.</h5>
+</div>
+<hr>
+
+
+<div class="login-page">
+    <partial name="_ValidationSummary"/>
+    <div class="row">
+        <div class="col-sm-6 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Register</h2>
+                </div>
+
+                <div class="card-body">
+                    <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input class="form-control" placeholder="Username" asp-for="Email" autofocus>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input type="password" class="form-control" placeholder="Confirm Password" asp-for="ConfirmPassword" autocomplete="off">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-brand">&nbsp;Register&nbsp;</button>
+                        <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text btn btn-primary btn-brand text-white">Login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

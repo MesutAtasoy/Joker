@@ -6,6 +6,7 @@ using Joker.WebApp.Services.Abstract;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -29,19 +30,21 @@ namespace Joker.WebApp.Extensions
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
                 {
                     options.AccessDeniedPath = "/Authorization/AccessDenied";
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 })
                 .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                 {
-                    options.RequireHttpsMetadata = false;
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.Authority = configuration["urls:Identity"];
                     options.ClientId = "joker.web.app";
                     options.ClientSecret = "secret";
                     options.ResponseType = OpenIdConnectResponseType.Code;
                     options.Scope.Add("roles");
+                    options.Scope.Add("offline_access");
                     options.Scope.Add("merchantapi");
                     options.Scope.Add("campaignapi");
-                    options.Scope.Add("offline_access");
+                    options.Scope.Add("aggregatorapi");
                     options.ClaimActions.DeleteClaim("sid");
                     options.ClaimActions.DeleteClaim("idp");
                     options.ClaimActions.DeleteClaim("s_hash");
@@ -54,6 +57,7 @@ namespace Joker.WebApp.Extensions
                         NameClaimType = JwtClaimTypes.GivenName,
                         RoleClaimType = JwtClaimTypes.Role
                     };
+                    options.RequireHttpsMetadata = false;
                 });
             return services;
         }
@@ -66,7 +70,7 @@ namespace Joker.WebApp.Extensions
                 client.BaseAddress = new Uri(configuration["urls:Gateway"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
-            });
+            }).AddHttpMessageHandler<BearerTokenHandler>();
 
             return services;
         }
@@ -79,7 +83,7 @@ namespace Joker.WebApp.Extensions
                 client.BaseAddress = new Uri(configuration["urls:Identity"]);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
-            }).AddHttpMessageHandler<BearerTokenHandler>();
+            });
 
             return services;
         }
@@ -89,6 +93,7 @@ namespace Joker.WebApp.Extensions
         {
             services.AddScoped<IManagementApiService, ManagementApiService>();
             services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IMerchantService, MerchantService>();
             return services;
         }
     }

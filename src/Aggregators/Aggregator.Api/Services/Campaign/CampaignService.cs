@@ -3,21 +3,29 @@ using System.Threading.Tasks;
 using Aggregator.Api.Models.Campaign;
 using Campaign.Api.Grpc;
 using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using Joker.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Aggregator.Api.Services.Campaign
 {
     public class CampaignService : ICampaignService
     {
         private readonly CampaignApiGrpcService.CampaignApiGrpcServiceClient _campaignApiGrpcServiceClient;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public CampaignService(CampaignApiGrpcService.CampaignApiGrpcServiceClient campaignApiGrpcServiceClient)
+        public CampaignService(CampaignApiGrpcService.CampaignApiGrpcServiceClient campaignApiGrpcServiceClient,
+            IHttpContextAccessor contextAccessor)
         {
             _campaignApiGrpcServiceClient = campaignApiGrpcServiceClient;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<CampaignModel> CreateAsync(CreateCampaignModel request)
         {
+            var headers = await GetHeaders();
             var response = await _campaignApiGrpcServiceClient.CreateCampaignAsync(new CreateCampaignMessage
             {
                 Title = request.Title,
@@ -38,13 +46,15 @@ namespace Aggregator.Api.Services.Campaign
                 EndTime = request.EndTime?.ToTimestamp(),
                 StartTime = request.StartTime?.ToTimestamp(),
                 PreviewImageUrl = request.PreviewImageUrl
-            });
-            
+            }, headers);
+
             return As(response);
         }
 
         public async Task<CampaignModel> UpdateAsync(UpdateCampaignModel request)
         {
+            var headers = await GetHeaders();
+
             var response = await _campaignApiGrpcServiceClient.UpdateCampaignAsync(new UpdateCampaignMessage
             {
                 Id = request.CampaignId.ToString(),
@@ -56,24 +66,39 @@ namespace Aggregator.Api.Services.Campaign
                     Description = request.Description,
                     PreviewImageUrl = request.PreviewImageUrl
                 }
-
-            });
+            }, headers);
 
             return As(response);
         }
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var response =  await _campaignApiGrpcServiceClient.DeleteCampaignAsync(new ByIdMessage {Id = id.ToString()});
-            return response.Succeed;        
+            var headers = await GetHeaders();
+
+            var response = await _campaignApiGrpcServiceClient.DeleteCampaignAsync(new ByIdMessage {Id = id.ToString()}, headers);
+            return response.Succeed;
         }
 
         public async Task<CampaignModel> GetByIdAsync(Guid id)
         {
-            var campaign = await _campaignApiGrpcServiceClient.GetByIdAsync(new ByIdMessage {Id = id.ToString()});
+            var headers = await GetHeaders();
+
+            var campaign = await _campaignApiGrpcServiceClient.GetByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return As(campaign);
         }
 
+        private async Task<Metadata> GetHeaders()
+        {
+            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+
+            var headers = new Metadata();
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                headers.Add("Authorization", $"Bearer {accessToken}");
+            }
+
+            return headers;
+        }
 
         #region Converters
 

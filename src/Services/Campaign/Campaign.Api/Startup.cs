@@ -1,3 +1,4 @@
+using Campaign.Api.Extensions;
 using Campaign.Api.GrpcServices;
 using Campaign.Api.Interceptors;
 using Campaign.Application;
@@ -31,38 +32,15 @@ namespace Campaign.Api
         {
             services.AddApiVersion();
             services.AddControllers();
-            services.AddTransient<GrpcExceptionInterceptor>();
-            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
-            services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
-            services.AddMongoContext<CampaignContext>();
-            services.AddMongoDomainRepositories();
+            services.AddJokerGrpc();
+            services.AddJokerMongo(Configuration);
             services.AddApplicationModule();
             services.AddJokerMediatr(typeof(CampaignApplicationModule));
             services.AddSwaggerGen();
-            services.AddJokerCAP(capOptions =>
-            {
-                capOptions.UseRabbitMQ(x =>
-                {
-                    x.Password = Configuration["rabbitMQSettings:password"];
-                    x.UserName = Configuration["rabbitMQSettings:username"];
-                    x.HostName = Configuration["rabbitMQSettings:host"];
-                    x.Port = int.Parse(Configuration["rabbitMQSettings:port"]);
-                });
-
-                capOptions.UseMongoDB(opt => // Persistence
-                {
-                    opt.DatabaseConnection = Configuration["mongo:ConnectionString"];
-                    opt.DatabaseName = Configuration["mongo:DefaultDatabaseName"] + "-eventHistories";
-                    opt.PublishedCollection = "PublishedEvents";
-                    opt.ReceivedCollection = "ReceivedEvents";
-                });
-
-                capOptions.UseDashboard();
-                capOptions.FailedRetryCount = 3;
-                capOptions.FailedRetryInterval = 60;
-            });
-
-            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddJokerEventBus(Configuration);
+            services.AddJokerConsul(Configuration);
+            services.AddAuthorization();
+            services.AddJokerAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +55,8 @@ namespace Campaign.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Campaign.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
+            app.UseAuthentication();    
+            app.UseAuthorization();       
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

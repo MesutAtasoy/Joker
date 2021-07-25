@@ -1,12 +1,7 @@
-using Joker.CAP;
-using Joker.Consul;
-using Joker.Mongo;
-using Joker.Mongo.Domain;
 using Joker.Mvc;
+using Merchant.Api.Extensions;
 using Merchant.Api.GrpcServices;
-using Merchant.Api.Interceptors;
 using Merchant.Application;
-using Merchant.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,39 +24,17 @@ namespace Merchant.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddTransient<GrpcExceptionInterceptor>();
-            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
+            services.AddJokerGrpc();
             services.AddControllers();
-            services.AddMongo(x => Configuration.GetSection("Mongo").Bind(x));
-            services.AddMongoContext<MerchantContext>();
-            services.AddMongoDomainRepositories();
+            services.AddJokerMongo(Configuration);
             services.AddApplicationModule();
             services.AddHttpClient();
             services.AddJokerMediatr(typeof(MerchantApplicationModule));
             services.AddSwaggerGen();
-            services.AddJokerCAP(capOptions =>
-            {
-                capOptions.UseRabbitMQ(x =>
-                {
-                    x.Password = Configuration["rabbitMQSettings:password"];
-                    x.UserName = Configuration["rabbitMQSettings:username"];
-                    x.HostName = Configuration["rabbitMQSettings:host"];
-                    x.Port = int.Parse(Configuration["rabbitMQSettings:port"]);
-                });
-
-                capOptions.UseMongoDB(opt => // Persistence
-                {
-                    opt.DatabaseConnection = Configuration["mongo:ConnectionString"];
-                    opt.DatabaseName = Configuration["mongo:DefaultDatabaseName"] + "-eventHistories";
-                    opt.PublishedCollection = "PublishedEvents";
-                    opt.ReceivedCollection = "ReceivedEvents";
-                });
-
-                capOptions.UseDashboard();
-                capOptions.FailedRetryCount = 3;
-                capOptions.FailedRetryInterval = 60;
-            });
-            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddJokerEventBus(Configuration);
+            services.AddJokerConsul(Configuration);
+            services.AddAuthorization();
+            services.AddJokerAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +49,8 @@ namespace Merchant.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Merchant.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
+            app.UseAuthentication();    
+            app.UseAuthorization();        
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

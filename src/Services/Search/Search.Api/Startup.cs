@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Search.Api.Extensions;
 using Search.Application;
 using Search.Core;
 
@@ -34,37 +35,9 @@ namespace Search.Api
             services.AddCoreModule();
             services.AddJokerMediatr(typeof(SearchApplicationModule));
             services.AddSwaggerGen();
-            services.AddJokerElasticService(x =>
-            {
-                x.ConnectionString = new ElasticSearchConnectionString
-                {
-                    HostUrl = Configuration["elasticSearch:host"]
-                };
-            });
-            services.AddJokerCAP(capOptions =>
-            {
-                capOptions.UseRabbitMQ(x =>
-                {
-                    x.Password = Configuration["rabbitMQSettings:password"];
-                    x.UserName = Configuration["rabbitMQSettings:username"];
-                    x.HostName = Configuration["rabbitMQSettings:host"];
-                    x.Port = int.Parse(Configuration["rabbitMQSettings:port"]);
-                });
-
-                capOptions.UseMongoDB(opt => // Persistence
-                {
-                    opt.DatabaseConnection = Configuration["mongo:ConnectionString"];
-                    opt.DatabaseName = Configuration["mongo:DefaultDatabaseName"] + "-eventHistories";
-                    opt.PublishedCollection = "PublishedEvents";
-                    opt.ReceivedCollection = "ReceivedEvents";
-                });
-
-                capOptions.UseDashboard();
-                capOptions.FailedRetryCount = 3;
-                capOptions.FailedRetryInterval = 60;
-            });
-            
-            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddElasticService(Configuration);
+            services.AddJokerEventBus(Configuration);
+            services.AddJokerConsul(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

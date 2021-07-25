@@ -110,7 +110,24 @@ services:
       - "5004:80"
     networks:
       - joker-network      
-            
+  
+  identity.api:
+    container_name: "identity.api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - GRPC_PORT=81
+      - PORT=80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=https-api
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/https-api.pfx
+    ports:
+      - "5008:443"
+      - "5018:80"
+    networks:
+      - joker-network
+    volumes:
+      - /home/mesut/.local/share/mkcert/:/https:ro      
+        
   aggregator.api:
     container_name: "aggregator.api"
     environment:
@@ -132,7 +149,22 @@ services:
       - "5009:80"
     networks:
       - joker-network        
-        
+
+  joker.webapp:
+    container_name: "joker.webapp"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=https-api
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/https-api.pfx
+    ports:
+      - "5030:443"
+      - "5130:80"
+    networks:
+      - joker-network
+    volumes:
+      - /home/mesut/.local/share/mkcert/:/https:ro
+
   merchant-integration-tests:
     container_name: merchant-integration-tests
     image: mcr.microsoft.com/dotnet/sdk:5.0   
@@ -140,11 +172,11 @@ services:
     volumes:
       - .:/src
     command:
-      [
-          "dotnet",
-          "test",
-          "src/Services/Merchant/Merchant.IntegrationTests/Merchant.IntegrationTests.csproj"
-      ]
+        [
+            "dotnet",
+            "test",
+            "src/Services/Merchant/Merchant.IntegrationTests/Merchant.IntegrationTests.csproj"
+        ]
     networks:
       - joker-network
         

@@ -4,14 +4,15 @@ using Aggregator.Api.Models.Location;
 using Aggregator.Api.Models.Store;
 using Aggregator.Api.Services.Location;
 using Aggregator.Api.Services.Store;
-using Joker.Extensions;
 using Joker.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Stores")]
+    [Authorize]
     public class StoreController : ControllerBase
     {
         private readonly IStoreService _storeService;

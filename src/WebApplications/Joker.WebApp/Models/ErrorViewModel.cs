@@ -1,5 +1,3 @@
-using System;
-
 namespace Joker.WebApp.Models
 {
     public class ErrorViewModel

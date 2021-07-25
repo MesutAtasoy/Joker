@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
 using Aggregator.Api.Services.Merchant;
 using Joker.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Merchants")]
+    [Authorize]
     public class MerchantController : ControllerBase
     {
         private readonly IMerchantService _merchantService;

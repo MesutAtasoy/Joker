@@ -64,16 +64,28 @@ services:
     depends_on:
       - seq
       - rabbitmq
+  
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Joker.Identity/Dockerfile
               
   aggregator.api:
     image: ${DOCKER_REGISTRY-}aggregatorapi
     build:
       context: .
       dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
-
+  
   gateway.web.api:
     image: ${DOCKER_REGISTRY-}gatewaywebapi
     build:
       context: .
-      dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile      
+      dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
+        
+  joker.webapp:
+    image: ${DOCKER_REGISTRY-}jokerwebapp
+    build:
+      context: .
+      dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
     

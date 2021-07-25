@@ -1,9 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using MediatR;
 using Merchant.Application.Merchants.Dto;
-using Merchant.Domain.MerchantAggregate.Repositories;
 
 namespace Merchant.Application.Merchants.Queries.GetMerchantById
 {

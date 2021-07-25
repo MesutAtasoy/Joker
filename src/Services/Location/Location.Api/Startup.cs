@@ -1,6 +1,7 @@
 using Joker.Consul;
 using Joker.EntityFrameworkCore;
 using Joker.Mvc;
+using Location.Api.Extensions;
 using Location.Api.GrpcServices;
 using Location.Api.Interceptors;
 using Location.Application;
@@ -29,20 +30,13 @@ namespace Location.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddTransient<GrpcExceptionInterceptor>();
-            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
+            services.AddJokerGrpc();
             services.AddControllers();
-            services.AddJokerNpDbContext<LocationContext>(x =>
-            {
-                x.ConnectionString = Configuration["connectionString"];
-                x.EnableMigration = true;
-                x.MaxRetryCount = 3;
-            });
-            
+            services.AddJokerContext(Configuration);
             services.AddApplicationModule();
             services.AddJokerMediatr(typeof(LocationApplicationModule));
             services.AddSwaggerGen();
-            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddJokerConsul(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

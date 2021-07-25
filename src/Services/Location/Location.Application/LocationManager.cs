@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using Joker.Response;
 using Location.Application.Cities.Dto;
 using Location.Application.Countries.Dto;
 using Location.Application.Districts.Dto;

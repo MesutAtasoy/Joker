@@ -11,6 +11,7 @@
         <PackageReference Include="Grpc.Tools" Version="2.38.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+        <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
     </ItemGroup>
 
     <ItemGroup>

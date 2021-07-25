@@ -109,6 +109,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplications", "WebAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joker.WebApp", "src\WebApplications\Joker.WebApp\Joker.WebApp.csproj", "{0E4A8DFA-0F5B-4A89-A7BF-118F4924CFFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joker.Identity", "src\Services\Identity\Joker.Identity\Joker.Identity.csproj", "{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -611,6 +613,18 @@ Global
 		{0E4A8DFA-0F5B-4A89-A7BF-118F4924CFFF}.Release|x64.Build.0 = Release|Any CPU
 		{0E4A8DFA-0F5B-4A89-A7BF-118F4924CFFF}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E4A8DFA-0F5B-4A89-A7BF-118F4924CFFF}.Release|x86.Build.0 = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|x64.Build.0 = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Debug|x86.Build.0 = Debug|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|x64.Build.0 = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|x86.ActiveCfg = Release|Any CPU
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -667,6 +681,7 @@ Global
 		{11FDCDEE-6840-4BBF-B3DB-1480353AE1CE} = {195AAEE8-9270-44CB-A59C-7932E3D5EF16}
 		{4C8DBB14-391D-40C6-9231-CB2110B063F2} = {A937B4F6-B384-4240-BB02-3924A0A55B7E}
 		{0E4A8DFA-0F5B-4A89-A7BF-118F4924CFFF} = {4C8DBB14-391D-40C6-9231-CB2110B063F2}
+		{C2235119-1455-4EB3-BA5C-B1CDE4CDAAD3} = {11FDCDEE-6840-4BBF-B3DB-1480353AE1CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F8E0F16-8053-401F-AC76-4568D8A282A5}

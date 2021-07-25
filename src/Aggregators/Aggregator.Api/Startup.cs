@@ -1,16 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Aggregator.Api.Extensions;
-using Aggregator.Api.Services.Campaign;
-using Aggregator.Api.Services.Merchant;
-using Aggregator.Api.Services.Store;
-using Joker.Consul;
 using Joker.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,10 +22,13 @@ namespace Aggregator.Api
         {
             services.AddGrpcServices(_configuration);
             services.AddApiVersion();
+            services.AddAuthorization();
+            services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddGrpc();
             services.AddSwaggerGen();
-            services.RegisterConsulServices(x => _configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddJokerAuthentication(_configuration);
+            services.AddJokerConsul(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +43,8 @@ namespace Aggregator.Api
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Aggregator.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
+            app.UseAuthentication();    
+            app.UseAuthorization();        
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

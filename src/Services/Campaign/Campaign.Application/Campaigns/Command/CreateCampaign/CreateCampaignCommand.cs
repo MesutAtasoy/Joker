@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Campaign.Application.Campaigns.Dto;
 using Campaign.Application.Shared.Dto;
 using MediatR;

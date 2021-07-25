@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["src/WebApplications/Joker.WebApp/Joker.WebApp.csproj", "Joker.WebApp/"]
+COPY . .
 RUN dotnet restore "src/WebApplications/Joker.WebApp/Joker.WebApp.csproj"
 COPY . .
-WORKDIR "/src/Joker.WebApp"
+WORKDIR "/src/src/WebApplications/Joker.WebApp"
 RUN dotnet build "Joker.WebApp.csproj" -c Release -o /app/build
 
 FROM build AS publish

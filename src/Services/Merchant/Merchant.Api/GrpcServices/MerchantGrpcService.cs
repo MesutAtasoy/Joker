@@ -17,9 +17,11 @@ using Merchant.Application.Stores.Commands.UpdateLocation;
 using Merchant.Application.Stores.Commands.UpdateStore;
 using Merchant.Application.Stores.Dto;
 using Merchant.Application.Stores.Dto.Request;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Merchant.Api.GrpcServices
 {
+    [Authorize]
     public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcServiceBase
     {
         private readonly StoreManager _storeManager;

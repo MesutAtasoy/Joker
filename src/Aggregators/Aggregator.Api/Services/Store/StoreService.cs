@@ -1,22 +1,30 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Store;
+using Grpc.Core;
 using Joker.Extensions;
 using Merchant.Api.Grpc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Aggregator.Api.Services.Store
 {
     public class StoreService : IStoreService
     {
         private readonly MerchantApiGrpcService.MerchantApiGrpcServiceClient _merchantApiGrpcServiceClient;
+        private readonly IHttpContextAccessor _contextAccessor;
         
-        public StoreService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient)
+        public StoreService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient, IHttpContextAccessor contextAccessor)
         {
             _merchantApiGrpcServiceClient = merchantApiGrpcServiceClient;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<StoreModel> CreateAsync(CreateStoreModel request)
         {
+            var headers = await GetHeaders();
+            
             var response = await _merchantApiGrpcServiceClient.CreateStoreAsync(new CreateStoreMessage
             {
                 Email = request.Email,
@@ -54,13 +62,16 @@ namespace Aggregator.Api.Services.Store
                     },
                     Address = request.Location.Address
                 }
-            });
+            }, headers);
 
             return As(response);
         }
 
         public async Task<StoreModel> UpdateAsync(UpdateStoreModel request)
         {
+            var headers = await GetHeaders();
+
+            
             var response = await _merchantApiGrpcServiceClient.UpdateStoreAsync(new UpdateStoreMessage
             {
                 StoreId = request.Id.ToString(),
@@ -72,7 +83,7 @@ namespace Aggregator.Api.Services.Store
                     Slogan = request.Slogan,
                     PhoneNumber = request.PhoneNumber
                 }
-            });
+            }, headers);
             
             return As(response);
 
@@ -80,6 +91,8 @@ namespace Aggregator.Api.Services.Store
         
         public async Task<StoreLocationModel> UpdateLocationAsync(UpdateStoreLocationModel request)
         {
+            var headers = await GetHeaders();
+
             var response = await _merchantApiGrpcServiceClient.UpdateLocationAsync(new UpdateStoreLocationMessage
             {
                 StoreId = request.Id.ToString(),
@@ -112,7 +125,7 @@ namespace Aggregator.Api.Services.Store
                     },
                     Address = request.Location.Address
                 }
-            });
+            }, headers);
 
             return new StoreLocationModel
             {
@@ -147,16 +160,32 @@ namespace Aggregator.Api.Services.Store
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var response =  await _merchantApiGrpcServiceClient.DeleteStoreAsync(new ByIdMessage {Id = id.ToString()});
+            var headers = await GetHeaders();
+
+            var response =  await _merchantApiGrpcServiceClient.DeleteStoreAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return response.IsSucceed;
         }
 
         public async Task<StoreModel> GetByIdAsync(Guid id)
         {
-            var store =await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage {Id = id.ToString()});
+            var headers = await GetHeaders();
+            var store =await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return As(store);
         }
 
+        private async Task<Metadata> GetHeaders()
+        {
+            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+
+            var headers = new Metadata();
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                headers.Add("Authorization", $"Bearer {accessToken}");
+            }
+
+            return headers;
+        }
+        
         #region Model Converters
 
         private StoreModel As(StoreMessage  storeMessage)

@@ -1,22 +1,30 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
+using Grpc.Core;
 using Joker.Extensions;
 using Merchant.Api.Grpc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Aggregator.Api.Services.Merchant
 {
     public class MerchantService : IMerchantService
     {
         private readonly MerchantApiGrpcService.MerchantApiGrpcServiceClient _merchantApiGrpcServiceClient;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-        public MerchantService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient)
+        public MerchantService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient,
+            IHttpContextAccessor contextAccessor)
         {
             _merchantApiGrpcServiceClient = merchantApiGrpcServiceClient;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<MerchantModel> CreateAsync(CreateMerchantModel request)
         {
+            var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
             {
                 Name = request.Name,
@@ -26,13 +34,14 @@ namespace Aggregator.Api.Services.Merchant
                 PhoneNumber = request.PhoneNumber,
                 TaxNumber = request.TaxNumber,
                 WebsiteUrl = request.WebSiteUrl
-            });
+            }, headers);
 
             return As(response);
         }
 
         public async Task<MerchantModel> UpdateAsync(UpdateMerchantModel createMerchantModel)
         {
+            var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.UpdateMerchantAsync(new UpdateMerchantMessage
             {
                 MerchantId = createMerchantModel.Id,
@@ -46,23 +55,39 @@ namespace Aggregator.Api.Services.Merchant
                     TaxNumber = createMerchantModel.TaxNumber,
                     WebsiteUrl = createMerchantModel.WebSiteUrl
                 }
-            });
+            } ,headers);
             
             return As(response);
         }
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var response =  await _merchantApiGrpcServiceClient.DeleteMerchantAsync(new ByIdMessage {Id = id.ToString()});
+            var headers = await GetHeaders();
+
+            var response =  await _merchantApiGrpcServiceClient.DeleteMerchantAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return response.IsSucceed;
         }
 
         public async Task<MerchantModel> GetById(Guid id)
         {
-            var merchant = await _merchantApiGrpcServiceClient.GetMerchantByIdAsync(new ByIdMessage {Id = id.ToString()});
+            var headers = await GetHeaders();
+            
+            var merchant = await _merchantApiGrpcServiceClient.GetMerchantByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return As(merchant);
         }
 
+        private async Task<Metadata> GetHeaders()
+        {
+            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+
+            var headers = new Metadata();
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                headers.Add("Authorization", $"Bearer {accessToken}");
+            }
+
+            return headers;
+        }
 
         #region Model Converters
         private MerchantModel As(MerchantMessage merchantMessage)

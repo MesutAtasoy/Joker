@@ -10,9 +10,11 @@ using Campaign.Application.Shared.Dto;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Joker.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Campaign.Api.GrpcServices
 {
+    [Authorize]
     public class CampaignGrpcService : CampaignApiGrpcService.CampaignApiGrpcServiceBase
     {
         private readonly CampaignManager _campaignManager;

@@ -1,19 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityModel;
 using Joker.WebApp.Extensions;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Joker.WebApp
 {
@@ -29,7 +19,8 @@ namespace Joker.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
             services.AddAuthorization();
             services.AddHttpClient();
             services.AddHttpContextAccessor();
@@ -37,6 +28,7 @@ namespace Joker.WebApp
             services.AddJokerIdentityApiClient(Configuration);
             services.AddJokerAuthentication(Configuration);
             services.AddApiServices();
+            services.AddDataProtection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,13 +44,13 @@ namespace Joker.WebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
-            app.UseHttpsRedirection();            
-
 
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseHttpsRedirection();
+            app.UseForwardedHeaders();
+            
             app.UseAuthentication();
             app.UseAuthorization();
 

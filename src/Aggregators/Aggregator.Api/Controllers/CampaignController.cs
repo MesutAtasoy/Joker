@@ -5,12 +5,14 @@ using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Store;
 using Joker.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Campaigns")]
+    [Authorize]
     public class CampaignController : ControllerBase
     {
         private readonly ICampaignService _campaignService;
