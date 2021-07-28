@@ -1,6 +1,8 @@
 using Joker.WebApp.Extensions;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +31,7 @@ namespace Joker.WebApp
             services.AddJokerAuthentication(Configuration);
             services.AddApiServices();
             services.AddDataProtection();
+         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,11 +49,9 @@ namespace Joker.WebApp
             }
 
             app.UseStaticFiles();
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
             app.UseRouting();
-
-            app.UseHttpsRedirection();
             app.UseForwardedHeaders();
-            
             app.UseAuthentication();
             app.UseAuthorization();
 

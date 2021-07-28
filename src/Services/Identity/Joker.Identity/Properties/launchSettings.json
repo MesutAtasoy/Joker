@@ -12,11 +12,9 @@
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5008",
+      "applicationUrl": "http://localhost:5008",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "Kestrel__Certificates__Default__Path" : "/home/mesut/.local/share/mkcert/https-api.pfx",
-        "Kestrel__Certificates__Default__Password" : "https-api"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }

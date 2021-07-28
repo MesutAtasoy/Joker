@@ -71,13 +71,13 @@ namespace Joker.Identity.Constants
                     RequirePkce = true,
                     RedirectUris = new List<string>()
                     {
-                        "https://localhost:5030/signin-oidc",
-                        "https://joker.webapp/signin-oidc"
+                        "http://localhost:5030/signin-oidc",
+                        "http://joker.webapp/signin-oidc"
                     },
                     PostLogoutRedirectUris = new List<string>()
                     {
-                        "https://localhost:5030/signout-callback-oidc",
-                        "https://joker.webapp/signout-callback-oidc"
+                        "http://localhost:5030/signout-callback-oidc",
+                        "http://joker.webapp/signout-callback-oidc"
                     },
                     AllowedScopes =
                     {

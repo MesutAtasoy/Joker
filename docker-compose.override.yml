@@ -115,14 +115,11 @@ services:
     container_name: "identity.api"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=https-api
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/https-api.pfx
     ports:
-      - "5008:443"
-      - "5018:80"
+      - "5008:80"
     networks:
       - joker-network
     volumes:
@@ -154,12 +151,9 @@ services:
     container_name: "joker.webapp"
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=https-api
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/https-api.pfx
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "5030:443"
-      - "5130:80"
+      - "5030:80"
     networks:
       - joker-network
     volumes:
