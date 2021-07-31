@@ -117,13 +117,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
-      - PORT=80
+      - PORT=80      
     ports:
       - "5008:80"
     networks:
       - joker-network
-    volumes:
-      - /home/mesut/.local/share/mkcert/:/https:ro      
         
   aggregator.api:
     container_name: "aggregator.api"
@@ -152,12 +150,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=${ENV}
       - ASPNETCORE_URLS=http://+:80
+      - GatewayUrl=http://gateway.web.api
     ports:
       - "5030:80"
     networks:
       - joker-network
-    volumes:
-      - /home/mesut/.local/share/mkcert/:/https:ro
 
   merchant-integration-tests:
     container_name: merchant-integration-tests

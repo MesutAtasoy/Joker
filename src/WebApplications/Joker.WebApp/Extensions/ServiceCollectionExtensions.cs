@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using IdentityModel;
 using Joker.WebApp.HttpHandlers;
 using Joker.WebApp.Services;
@@ -32,8 +33,9 @@ namespace Joker.WebApp.Extensions
                 })
                 .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                 {
+                    options.Authority = configuration.GetValue<string>("IdentityUrl");
+                    options.MetadataAddress = $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.Authority = configuration["urls:Identity"];
                     options.ClientId = "joker.web.app";
                     options.ClientSecret = "secret";
                     options.ResponseType = OpenIdConnectResponseType.Code;
@@ -54,6 +56,20 @@ namespace Joker.WebApp.Extensions
                         NameClaimType = JwtClaimTypes.GivenName,
                         RoleClaimType = JwtClaimTypes.Role
                     };
+                    options.Events.OnRedirectToIdentityProvider = context =>
+                    {
+                        // Intercept the redirection so the browser navigates to the right URL in your host
+                        context.ProtocolMessage.IssuerAddress = $"{configuration.GetValue<string>("IdentityUrl")}/connect/authorize";
+                        return Task.CompletedTask;
+                    };
+                    
+                    options.Events.OnRedirectToIdentityProviderForSignOut = context =>
+                    {
+                        // Intercept the redirection so the browser navigates to the right URL in your host
+                        context.ProtocolMessage.IssuerAddress = $"{configuration.GetValue<string>("IdentityUrl")}/connect/endsession";
+                        return Task.CompletedTask;
+                    };
+                    // options.Events.OnRedirectToIdentityProviderForSignOut 
                     options.RequireHttpsMetadata = false;
                 });
             return services;
@@ -64,7 +80,7 @@ namespace Joker.WebApp.Extensions
         {
             services.AddHttpClient("GatewayApi", client =>
             {
-                client.BaseAddress = new Uri(configuration["urls:Gateway"]);
+                client.BaseAddress = new Uri(configuration.GetValue<string>("GatewayUrl"));
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
             }).AddHttpMessageHandler<BearerTokenHandler>();
@@ -77,7 +93,7 @@ namespace Joker.WebApp.Extensions
         {
             services.AddHttpClient("IdentityApi", client =>
             {
-                client.BaseAddress = new Uri(configuration["urls:Identity"]);
+                client.BaseAddress = new Uri(configuration.GetValue<string>("IdentityInternalUrl"));
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
             });

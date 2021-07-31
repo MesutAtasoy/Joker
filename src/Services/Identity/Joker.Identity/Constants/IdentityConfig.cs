@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using IdentityServer4;
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Joker.Identity.Constants
 {
@@ -55,8 +56,10 @@ namespace Joker.Identity.Constants
                 }
             };
 
-        public static IEnumerable<Client> Clients =>
-            new Client[]
+        public static IEnumerable<Client> Clients(IConfiguration configuration)
+        {
+            var jokerWebAppUrl = configuration.GetValue<string>("JokerWebAppUrl");
+            return new Client[]
             {
                 new ()
                 {
@@ -71,13 +74,11 @@ namespace Joker.Identity.Constants
                     RequirePkce = true,
                     RedirectUris = new List<string>()
                     {
-                        "http://localhost:5030/signin-oidc",
-                        "http://joker.webapp/signin-oidc"
+                        $"{jokerWebAppUrl}/signin-oidc",
                     },
                     PostLogoutRedirectUris = new List<string>()
                     {
-                        "http://localhost:5030/signout-callback-oidc",
-                        "http://joker.webapp/signout-callback-oidc"
+                        $"{jokerWebAppUrl}/signout-callback-oidc"
                     },
                     AllowedScopes =
                     {
@@ -98,5 +99,6 @@ namespace Joker.Identity.Constants
                     }
                 }
             };
+        }
     }
 }

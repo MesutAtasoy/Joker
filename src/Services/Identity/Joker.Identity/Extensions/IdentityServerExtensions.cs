@@ -19,7 +19,7 @@ namespace Joker.Identity.Extensions
                 .AddInMemoryIdentityResources(IdentityConfig.Ids)
                 .AddInMemoryApiResources(IdentityConfig.ApiResources)
                 .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
-                .AddInMemoryClients(IdentityConfig.Clients)
+                .AddInMemoryClients(IdentityConfig.Clients(configuration))
                 .AddAspNetIdentity<ApplicationUser>();
 
             builder.AddDeveloperSigningCredential();
