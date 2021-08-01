@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Management.Core.Entities;
 using Management.Core.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Management.Application.PricingPlans.Queries.GetPricingPlans
 {
@@ -19,7 +20,11 @@ namespace Management.Application.PricingPlans.Queries.GetPricingPlans
 
         public async Task<List<PricingPlan>> Handle(GetPricingPlansQuery request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_pricingPlanRepository.Get(x=>!x.IsDeleted).ToList());
+            var pricingPlans = await _pricingPlanRepository.Get().Where(x => !x.IsDeleted)
+                .Include(x => x.Currency)
+                .ToListAsync(cancellationToken);
+
+            return pricingPlans;
         }
     }
 }

@@ -1,0 +1,18 @@
+﻿@model List<Joker.WebApp.ViewModels.Management.PricingPlanViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="card-group">
+    @foreach (var pricingPlan in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@pricingPlan.Name</h5>
+                <p class="card-text">@pricingPlan.Description</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" asp-controller="Campaigns" asp-action="Explore" asp-route-id="@pricingPlan.Slug">Subscribe</a>
+            </div>
+        </div>
+    }
+</div>

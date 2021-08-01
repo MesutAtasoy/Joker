@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Joker.WebApp.Models;
 using Joker.WebApp.Services.Abstract;
+using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Search.Request;
 using Microsoft.AspNetCore.Authorization;
 
@@ -24,7 +25,7 @@ namespace Joker.WebApp.Controllers
                 PageSize = 5,
                 Page = 1
             });
-            return View(campaigns);
+            return View(new HomeIndexViewModel {Campaigns = campaigns});
         }
 
         [Authorize]

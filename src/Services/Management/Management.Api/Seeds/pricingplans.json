@@ -3,8 +3,16 @@
     "Id": "c2f348aa-8408-43d9-a231-b9114e583a9d",
     "Name": "Free Plan",
     "Slug": "free-plan",
-    "Description" : "Description for free plan",
+    "Description" : "It's free plan description, It's limited to share campaigns, create stores.",
     "Price": 0.0,
+    "CurrencyId": "C27360CA-7FE5-4F64-B6CA-F695072D7681"
+  },
+  {
+    "Id": "5615337F-5A90-42FD-AC9D-6FCA79CCE4D2",
+    "Name": "Premium Plan",
+    "Slug": "premium-plan",
+    "Description" : "It's premium plan description, It's unlimited to share campaigns, create stores.",
+    "Price": 15.0,
     "CurrencyId": "C27360CA-7FE5-4F64-B6CA-F695072D7681"
   }
 ]

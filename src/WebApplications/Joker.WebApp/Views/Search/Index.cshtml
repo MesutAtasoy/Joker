@@ -1,0 +1,27 @@
+﻿@model Joker.WebApp.ViewModels.SearchIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-controller="Search" asp-action="Index" method="get">
+    <p>
+        Title: <input type="text" asp-for="q" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<div>
+    Search Result : @Model.Campaigns.TotalDocumentCount
+</div>
+
+@foreach (var campaign in Model.Campaigns.Documents)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@campaign.Title</h5>
+            <p class="card-text">@campaign.Description</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-primary" asp-controller="Campaigns" asp-action="Explore" asp-route-id="@campaign.Slug">Go Details</a>
+        </div>
+    </div>
+}

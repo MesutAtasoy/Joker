@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="IdentityModel" Version="4.4.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7"/>
+        <PackageReference Include="IdentityModel" Version="4.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj"/>
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
     </ItemGroup>
 
 </Project>

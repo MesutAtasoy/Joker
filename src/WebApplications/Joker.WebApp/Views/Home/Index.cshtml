@@ -1,4 +1,4 @@
-﻿@model Joker.WebApp.ViewModels.Search.SearchBaseResponse<Joker.WebApp.ViewModels.Search.CampaignSearchResponse>
+﻿@model Joker.WebApp.ViewModels.HomeIndexViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,12 +11,23 @@
     <h5 class="display-6 text-muted">Be the first to see the popular campaigns.</h5>
 </div>
 <hr>
+<form asp-controller="Search" asp-action="Index" method="get">
+    <div class="row mx-auto text-center">
+        <div class="col col-lg-8 text-center">
+            <input class="form-control form-control-lg" type="text" placeholder="Search Campaign which you like!" aria-label=".form-control-lg example" asp-for="q"/>
+        </div>
+        <div class="col col-lg-4 text-center">
+            <input type="submit"  class="btn btn-primary btn-lg" value="Filter"/>
+        </div>
+    </div>
 
+
+</form>
 <p class="lead text-center text-muted">
-  Popular Campaigns 
+    Popular Campaigns
 </p>
 <div class="card-group">
-    @foreach (var campaign in Model.Documents)
+    @foreach (var campaign in Model.Campaigns.Documents)
     {
         <div class="card">
             <div class="card-body">

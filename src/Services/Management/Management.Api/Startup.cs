@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using AutoMapper;
 using Joker.Consul;
 using Joker.EntityFrameworkCore;
@@ -30,7 +31,10 @@ namespace Management.Api
             services.AddApiVersion();
             services.AddTransient<GrpcExceptionInterceptor>();
             services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+            
             services.AddJokerNpDbContext<ManagementContext>(x =>
             {
                 x.ConnectionString = Configuration["connectionString"];
