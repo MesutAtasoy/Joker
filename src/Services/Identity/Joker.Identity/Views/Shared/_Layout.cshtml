@@ -7,24 +7,33 @@
 
     <title>Joker - Identity </title>
 
-    <link rel="icon" type="image/x-icon" href="~/favicon.ico"/>
-    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico"/>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <!-- Icons -->
+    <link href="~/theme/css/nucleo-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <!-- Theme CSS -->
+    <link type="text/css" href="~/theme/css/soft-design-system.min.css" rel="stylesheet">
+    
 </head>
 <body>
 <partial name="_Nav"/>
 
-<div class="container">
+<div>
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 </div>
+<script src="~/theme/js/core/popper.min.js" type="text/javascript"></script>
+<script src="~/theme/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/theme/js/plugins/perfect-scrollbar.min.js" type="text/javascript"></script>
+<script src="~/theme/js/plugins/moment.min.js"></script>
+<script src="~/theme/js/soft-design-system.min.js" type="text/javascript"></script>
 
-<script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-@RenderSection("scripts", required: false)
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
