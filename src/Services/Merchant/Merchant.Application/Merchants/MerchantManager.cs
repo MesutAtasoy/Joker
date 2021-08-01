@@ -33,7 +33,9 @@ namespace Merchant.Application.Merchants
                 request.PhoneNumber,
                 request.TaxNumber,
                 request.Email,
-                request.Description);
+                request.Description,
+                request.PricingPlan.RefId,
+                request.PricingPlan.Name);
 
             await _merchantRepository.AddAsync(merchant);
 
@@ -69,23 +71,23 @@ namespace Merchant.Application.Merchants
             {
                 throw new NotFoundException("Merchant is not found");
             }
-            
+
             merchant.MarkAsDeleted();
 
             await _merchantRepository.UpdateAsync(merchant.Id, merchant);
-            
+
             return true;
         }
 
         public async Task<MerchantDto> GetByIdAsync(Guid id)
         {
-            var merchant =  await _merchantRepository.GetByIdAsync(id);
-            
+            var merchant = await _merchantRepository.GetByIdAsync(id);
+
             if (merchant == null)
             {
                 throw new NotFoundException("Merchant is not found");
             }
-            
+
             return _mapper.Map<MerchantDto>(merchant);
         }
     }

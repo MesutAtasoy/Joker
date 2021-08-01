@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
+using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Merchant;
 using Joker.Response;
 using Microsoft.AspNetCore.Authorization;
@@ -14,16 +15,25 @@ namespace Aggregator.Api.Controllers
     public class MerchantController : ControllerBase
     {
         private readonly IMerchantService _merchantService;
-        
-        public MerchantController(IMerchantService merchantService)
+        private readonly IManagementService _managementService;
+
+        public MerchantController(IMerchantService merchantService,
+            IManagementService managementService)
         {
             _merchantService = merchantService;
+            _managementService = managementService;
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync([FromBody]CreateMerchantModel model)
+        public async Task<ActionResult> CreateAsync([FromBody] CreateMerchantModel model)
         {
-            var merchant = await _merchantService.CreateAsync(model);
+            var pricingPlan = await _managementService.GetPricingPlanByIdAsync(model.PricingPlanId);
+            if (pricingPlan == null)
+            {
+                return BadRequest("Pricing plan is not found");
+            }
+
+            var merchant = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
             return Ok(new JokerBaseResponse<MerchantModel>(merchant));
         }
 

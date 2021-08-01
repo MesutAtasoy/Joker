@@ -1,5 +1,6 @@
 using MediatR;
 using Merchant.Application.Merchants.Dto;
+using Merchant.Application.Shared.Dto;
 
 namespace Merchant.Application.Merchants.Commands.CreateMerchant
 {
@@ -12,5 +13,6 @@ namespace Merchant.Application.Merchants.Commands.CreateMerchant
         public string TaxNumber { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        public IdNameDto PricingPlan { get; set; }
     }
 }

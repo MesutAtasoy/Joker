@@ -1,3 +1,5 @@
+using System;
+
 namespace Aggregator.Api.Models.Merchant
 {
     public class CreateMerchantModel
@@ -9,5 +11,6 @@ namespace Aggregator.Api.Models.Merchant
         public string TaxNumber { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        public Guid PricingPlanId { get; set; }
     }
 }

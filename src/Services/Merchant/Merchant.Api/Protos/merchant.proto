@@ -89,6 +89,7 @@ message CreateMerchantMessage {
   string taxNumber = 5;
   string email = 6;
   string description = 7;
+  IdName pricingPlan = 8;
 }
 
 message UpdateMerchantMessage {

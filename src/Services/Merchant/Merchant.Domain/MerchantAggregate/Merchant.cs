@@ -39,6 +39,8 @@ namespace Merchant.Domain.MerchantAggregate
         /// <param name="taxNumber"></param>
         /// <param name="email"></param>
         /// <param name="description"></param>
+        /// <param name="pricingPlanId"></param>
+        /// <param name="pricingPlanName"></param>
         /// <returns></returns>
         public static Merchant Create(Guid id,
             string name,
@@ -47,15 +49,19 @@ namespace Merchant.Domain.MerchantAggregate
             string phoneNumber,
             string taxNumber,
             string email,
-            string description)
+            string description,
+            Guid pricingPlanId,
+            string pricingPlanName)
         {
             Check.NotEmpty(id, nameof(id));
+            Check.NotEmpty(pricingPlanId, nameof(pricingPlanId));
             Check.NotNullOrEmpty(name, nameof(name));
             Check.NotNullOrEmpty(slogan, nameof(slogan));
+            Check.NotNullOrEmpty(pricingPlanName, nameof(pricingPlanName));
 
             var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
-            
-            return new Merchant
+
+            var merchant = new Merchant
             {
                 Id = id,
                 Name = name,
@@ -71,6 +77,11 @@ namespace Merchant.Domain.MerchantAggregate
                 CreatedDate = DateTime.UtcNow,
                 IsDeleted = false
             };
+
+
+            merchant.AddDomainEvent(new MerchantCreatedEvent(id, name, pricingPlanId, pricingPlanName));
+            
+            return merchant;
         }
 
 
@@ -99,7 +110,7 @@ namespace Merchant.Domain.MerchantAggregate
             {
                 AddDomainEvent(new MerchantNameUpdatedEvent(Id, Name, name));
             }
-            
+
             Name = name;
             Slug = $"{name.GenerateSlug()}-{SlugKey}";
             Slogan = slogan;
@@ -112,6 +123,7 @@ namespace Merchant.Domain.MerchantAggregate
             {
                 EmailConfirmed = false;
             }
+
             Email = email;
         }
 

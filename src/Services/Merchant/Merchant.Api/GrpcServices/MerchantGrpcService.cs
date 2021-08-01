@@ -45,7 +45,12 @@ namespace Merchant.Api.GrpcServices
                 Slogan = request.Slogan,
                 PhoneNumber = request.PhoneNumber,
                 TaxNumber = request.TaxNumber,
-                WebSiteUrl = request.WebsiteUrl
+                WebSiteUrl = request.WebsiteUrl,
+                PricingPlan = new IdNameDto
+                {
+                    Name = request.PricingPlan.Name,
+                    RefId = request.PricingPlan.Id.ToGuid()
+                }
             });
 
             return As(response);

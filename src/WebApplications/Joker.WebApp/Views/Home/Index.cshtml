@@ -1,41 +1,66 @@
 ﻿@model Joker.WebApp.ViewModels.HomeIndexViewModel
 @{
     ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
 }
-
-<div class="text-center bg-light">
-    <h1 class="display-5 text-muted">Best Campaigns which you may like, Explore them!</h1>
-    <hr>
-    <h3 class="display-5">Joker is platform which you explore all popular campaigns where you live!</h3>
-    <hr>
-    <h5 class="display-6 text-muted">Be the first to see the popular campaigns.</h5>
-</div>
-<hr>
-<form asp-controller="Search" asp-action="Index" method="get">
-    <div class="row mx-auto text-center">
-        <div class="col col-lg-8 text-center">
-            <input class="form-control form-control-lg" type="text" placeholder="Search Campaign which you like!" aria-label=".form-control-lg example" asp-for="q"/>
+<header>
+    <div class="page-header min-vh-25">
+        <div class="oblique position-absolute top-0 h-100 d-md-block d-none">
+            <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"></div>
         </div>
-        <div class="col col-lg-4 text-center">
-            <input type="submit"  class="btn btn-primary btn-lg" value="Filter"/>
+        <div class="container">
+            <div class="row">
+                <div class="d-flex justify-content-center flex-column">
+                    <h1 class="text-gradient text-primary">Joker</h1>
+                    <h1 class="mb-4">Best Campaigns which you may like, Explore them!</h1>
+                    <p class="lead pe-5 me-5">Joker is platform which you explore all popular campaigns where you live!</p>
+                    <p class="lead pe-5 me-5">Be the first to see the popular campaigns.</p>
+                </div>
+            </div>
         </div>
     </div>
+</header>
 
-
+<form asp-controller="Search" asp-action="Index" method="get">
+    <div class="d-flex justify-content-center mb-3 bg-gradient-faded-light-vertical rounded-3">
+        <div class="p-2">
+            <input class="form-control form-control-lg" type="text" placeholder="Search Campaign which you like!" aria-label=".form-control-lg example" asp-for="q"/>
+        </div>
+        <div class="p-2">
+            <input type="submit" class="btn btn-info btn-lg" value="Search"/>
+        </div>
+    </div>
 </form>
-<p class="lead text-center text-muted">
-    Popular Campaigns
-</p>
+
+<div class="text-center mb-4 mt-4">
+    <h1 class="text-gradient text-primary"> Popular Campaigns</h1>
+</div>
+
+
 <div class="card-group">
     @foreach (var campaign in Model.Campaigns.Documents)
     {
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">@campaign.Title</h5>
-                <p class="card-text">@campaign.Description</p>
+            <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
+                <a href="javascript:;" class="d-block">
+                    <img src="~/theme/img/anastasia.jpg" class="img-fluid border-radius-lg">
+                </a>
             </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" asp-controller="Campaigns" asp-action="Explore" asp-route-id="@campaign.Slug">Go Details</a>
+
+            <div class="card-body pt-2">
+                <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Joker</span>
+                <a href="javascript:;" class="card-title h5 d-block text-darker">
+                    @campaign.Title
+                </a>
+                <p class="card-description mb-4">
+                    @campaign.Description
+                </p>
+                <div class="author align-items-center">
+                    <img src="~/theme/img/team-2.jpg" alt="..." class="avatar shadow">
+                    <div class="name ps-3">
+                        <span>@campaign.StoreName</span>
+                    </div>
+                </div>
             </div>
         </div>
     }

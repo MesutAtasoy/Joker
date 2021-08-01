@@ -24,5 +24,15 @@ namespace Aggregator.Api.Services.Management
                 Name = response.Name
             };
         }
+
+        public async Task<IdName> GetPricingPlanByIdAsync(Guid id)
+        {
+            var response = await _managementApiGrpcServiceClient.GetPricingPlanByIdAsync(new ByIdMessage {Id = id.ToString()});
+            return new IdName
+            {
+                Id = response.Id,
+                Name = response.Name
+            };
+        }
     }
 }

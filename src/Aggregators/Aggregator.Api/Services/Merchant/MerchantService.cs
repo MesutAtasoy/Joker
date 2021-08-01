@@ -22,7 +22,7 @@ namespace Aggregator.Api.Services.Merchant
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<MerchantModel> CreateAsync(CreateMerchantModel request)
+        public async Task<MerchantModel> CreateAsync(CreateMerchantModel request,  string pricingPlanId, string pricingPlanName)
         {
             var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
@@ -33,7 +33,12 @@ namespace Aggregator.Api.Services.Merchant
                 Slogan = request.Slogan,
                 PhoneNumber = request.PhoneNumber,
                 TaxNumber = request.TaxNumber,
-                WebsiteUrl = request.WebSiteUrl
+                WebsiteUrl = request.WebSiteUrl,
+                PricingPlan = new IdName
+                {
+                    Id = pricingPlanId,
+                    Name = pricingPlanName
+                }
             }, headers);
 
             return As(response);
