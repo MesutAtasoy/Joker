@@ -1,4 +1,3 @@
-using Joker.AspNetCore.Extensions;
 using Joker.Identity.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

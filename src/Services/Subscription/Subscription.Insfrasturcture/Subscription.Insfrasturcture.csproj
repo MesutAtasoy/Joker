@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <AssemblyName>Subscription.Infrastructure</AssemblyName>
+        <RootNamespace>Subscription.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mongo.Domain\Joker.Mongo.Domain.csproj" />
+      <ProjectReference Include="..\Subscription.Domain\Subscription.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

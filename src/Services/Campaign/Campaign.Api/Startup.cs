@@ -1,12 +1,6 @@
 using Campaign.Api.Extensions;
 using Campaign.Api.GrpcServices;
-using Campaign.Api.Interceptors;
 using Campaign.Application;
-using Campaign.Infrastructure;
-using Joker.CAP;
-using Joker.Consul;
-using Joker.Mongo;
-using Joker.Mongo.Domain;
 using Joker.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

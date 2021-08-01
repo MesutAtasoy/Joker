@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
-using Campaign.Api.Grpc;
 
 namespace Aggregator.Api.Services.Merchant
 {

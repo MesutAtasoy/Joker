@@ -24,7 +24,8 @@ services:
     depends_on:
       - nosqldata
       - seq
-      - rabbitmq        
+      - rabbitmq     
+      - consul
 
   location.api:
     image: ${DOCKER_REGISTRY-}locationapi
@@ -35,6 +36,7 @@ services:
       - postgres
       - seq
       - rabbitmq
+      - consul
           
   management.api:
     image: ${DOCKER_REGISTRY-}managementapi
@@ -45,6 +47,7 @@ services:
       - postgres
       - seq
       - rabbitmq
+      - consul
       
   merchant.api:
     image: ${DOCKER_REGISTRY-}merchantapi
@@ -55,7 +58,8 @@ services:
       - nosqldata
       - seq
       - rabbitmq
-
+      - consul
+        
   search.api:
     image: ${DOCKER_REGISTRY-}searchapi
     build:
@@ -64,28 +68,55 @@ services:
     depends_on:
       - seq
       - rabbitmq
+      - consul
   
   identity.api:
     image: ${DOCKER_REGISTRY-}identityapi
     build:
       context: .
       dockerfile: src/Services/Identity/Joker.Identity/Dockerfile
-              
+    depends_on:
+      - postgres
+      - seq
+      - rabbitmq      
+  
+  subscription.api:
+    image: ${DOCKER_REGISTRY-}subscriptionapi
+    build:
+      context: .
+      dockerfile: src/Services/Subscription/Subscription.Api/Dockerfile
+    depends_on:
+      - nosqldata
+      - seq
+      - rabbitmq
+      - consul
+    
   aggregator.api:
     image: ${DOCKER_REGISTRY-}aggregatorapi
     build:
       context: .
       dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
+    depends_on:
+      - identity.api
+      - search.api
+      - merchant.api
+      - management.api
+      - subscription.api
+      - location.api
+      - campaign.api
   
   gateway.web.api:
     image: ${DOCKER_REGISTRY-}gatewaywebapi
     build:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
+    depends_on:
+      - aggregator.api
         
   joker.webapp:
     image: ${DOCKER_REGISTRY-}jokerwebapp
     build:
       context: .
       dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
-    
+    depends_on:
+      - gateway.web.api

@@ -6,6 +6,7 @@ using Merchant.Application.Merchants.Commands.CreateMerchant;
 using Merchant.Application.Merchants.Commands.DeleteMerchant;
 using Merchant.Application.Merchants.Commands.UpdateMerchant;
 using Merchant.Application.Merchants.Dto;
+using Merchant.Application.Services;
 using Merchant.Domain.MerchantAggregate.Repositories;
 using Merchant.Infrastructure.Factories;
 
@@ -14,12 +15,14 @@ namespace Merchant.Application.Merchants
     public class MerchantManager
     {
         private readonly IMerchantRepository _merchantRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public MerchantManager(IMerchantRepository merchantRepository, IMapper mapper)
+        public MerchantManager(IMerchantRepository merchantRepository, IMapper mapper, IUserService userService)
         {
             _merchantRepository = merchantRepository;
             _mapper = mapper;
+            _userService = userService;
         }
 
         public async Task<MerchantDto> CreateAsync(CreateMerchantCommand request)
@@ -35,7 +38,8 @@ namespace Merchant.Application.Merchants
                 request.Email,
                 request.Description,
                 request.PricingPlan.RefId,
-                request.PricingPlan.Name);
+                request.PricingPlan.Name,
+                _userService.GetUserId());
 
             await _merchantRepository.AddAsync(merchant);
 

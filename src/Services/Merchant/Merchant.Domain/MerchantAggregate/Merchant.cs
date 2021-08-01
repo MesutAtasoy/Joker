@@ -25,6 +25,7 @@ namespace Merchant.Domain.MerchantAggregate
         public string Description { get; private set; }
         public bool EmailConfirmed { get; private set; }
         public bool IsDeleted { get; private set; }
+        public Guid CreatedBy { get; private set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime? ModifiedDate { get; private set; }
 
@@ -41,6 +42,7 @@ namespace Merchant.Domain.MerchantAggregate
         /// <param name="description"></param>
         /// <param name="pricingPlanId"></param>
         /// <param name="pricingPlanName"></param>
+        /// <param name="userId"></param>
         /// <returns></returns>
         public static Merchant Create(Guid id,
             string name,
@@ -51,10 +53,12 @@ namespace Merchant.Domain.MerchantAggregate
             string email,
             string description,
             Guid pricingPlanId,
-            string pricingPlanName)
+            string pricingPlanName,
+            Guid userId)
         {
             Check.NotEmpty(id, nameof(id));
             Check.NotEmpty(pricingPlanId, nameof(pricingPlanId));
+            Check.NotEmpty(userId, nameof(userId));
             Check.NotNullOrEmpty(name, nameof(name));
             Check.NotNullOrEmpty(slogan, nameof(slogan));
             Check.NotNullOrEmpty(pricingPlanName, nameof(pricingPlanName));
@@ -74,12 +78,13 @@ namespace Merchant.Domain.MerchantAggregate
                 Email = email,
                 Description = description,
                 EmailConfirmed = false,
+                CreatedBy = userId,
                 CreatedDate = DateTime.UtcNow,
                 IsDeleted = false
             };
 
 
-            merchant.AddDomainEvent(new MerchantCreatedEvent(id, name, pricingPlanId, pricingPlanName));
+            merchant.AddDomainEvent(new MerchantCreatedEvent(id, name, pricingPlanId, pricingPlanName, userId));
             
             return merchant;
         }

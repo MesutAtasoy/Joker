@@ -1,7 +1,3 @@
-using Joker.CAP;
-using Joker.Consul;
-using Joker.ElasticSearch;
-using Joker.ElasticSearch.Options;
 using Joker.Mvc;
 using Joker.Mvc.Initializers;
 using Microsoft.AspNetCore.Builder;
