@@ -3,15 +3,17 @@ using System;
 using Joker.Identity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Joker.Identity.Migrations
 {
     [DbContext(typeof(JokerIdentityDbContext))]
-    partial class JokerIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210802181032_DbInit")]
+    partial class DbInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

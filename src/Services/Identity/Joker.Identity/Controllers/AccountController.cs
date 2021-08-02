@@ -375,6 +375,8 @@ namespace Joker.Identity.Controllers
                     // If we got this far, something failed, redisplay form
                     return View(model);
                 }
+                
+                await _userManager.AddToRoleAsync(user, "FreeUser");
             }
 
             if (returnUrl != null)

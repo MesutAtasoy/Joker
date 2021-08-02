@@ -2,9 +2,12 @@ using System;
 using System.IO;
 using Joker.EntityFrameworkCore.Migration;
 using Joker.Identity.Models;
+using Joker.Identity.Models.Seeders;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -30,7 +33,16 @@ namespace Joker.Identity
                 var host = CreateHostBuilder(args)
                     .Build();
 
-                host.MigrateDbContext<JokerIdentityDbContext>((_, _) => { });
+                host.MigrateDbContext<JokerIdentityDbContext>((context, services) =>
+                {
+                    new JokerIdentityDbContextSeeder().SeedAsync(x =>
+                    {
+                        var logger = services.GetService<ILogger<JokerIdentityDbContext>>();
+                        x.Context = context;
+                        x.Logger = logger;
+                        x.RetryCount = 5;
+                    }, services).Wait();
+                });
 
                 host.Run();
             }
