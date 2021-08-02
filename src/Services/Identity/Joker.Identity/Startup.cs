@@ -27,6 +27,13 @@ namespace Joker.Identity
             services.AddJokerIdentityServer(_configuration);
             services.AddAuthentication();
             services.AddDataProtection();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +49,7 @@ namespace Joker.Identity
             app.UseForwardedHeaders();
             app.UseIdentityServer();
             app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
+            app.UseCors("CorsPolicy");
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });

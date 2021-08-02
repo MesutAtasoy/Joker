@@ -30,22 +30,14 @@ namespace Joker.WebApp.HttpHandlers
             HttpRequestMessage request, 
             CancellationToken cancellationToken)
         {
-            try
-            {
-                var accessToken = await GetAccessTokenAsync();
+            var accessToken = await GetAccessTokenAsync();
 
-                if (!string.IsNullOrWhiteSpace(accessToken))
-                {
-                    request.SetBearerToken(accessToken);
-                }
-
-                return await base.SendAsync(request, cancellationToken);
-            }
-            catch (Exception e)
+            if (!string.IsNullOrWhiteSpace(accessToken))
             {
-                Console.WriteLine(e);
-                throw;
+                request.SetBearerToken(accessToken);
             }
+
+            return await base.SendAsync(request, cancellationToken);
         }
 
         public async Task<string> GetAccessTokenAsync()

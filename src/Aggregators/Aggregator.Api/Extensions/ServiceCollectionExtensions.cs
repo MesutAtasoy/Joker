@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Aggregator.Api.Interceptors;
 using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Location;
@@ -56,8 +57,10 @@ namespace Aggregator.Api.Extensions
                     options.Authority = configuration["urls:identityapi"];
                     options.ApiName = "aggregatorapi";
                     options.ApiSecret = "apisecret";
+                    options.SupportedTokens = SupportedTokens.Reference;
+                    options.RequireHttpsMetadata = false;
                 });
-
+            
             return services;
         }
 

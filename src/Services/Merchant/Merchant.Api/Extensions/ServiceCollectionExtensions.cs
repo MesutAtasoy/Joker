@@ -69,6 +69,8 @@ namespace Merchant.Api.Extensions
                     options.Authority = configuration["urls:identityapi"];
                     options.ApiName = "merchantapi";
                     options.ApiSecret = "apisecret";
+                    options.SupportedTokens = SupportedTokens.Reference;
+                    options.RequireHttpsMetadata = false;
                 });
 
             return services;

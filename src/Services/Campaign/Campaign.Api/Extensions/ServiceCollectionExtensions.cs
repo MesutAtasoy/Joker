@@ -71,6 +71,8 @@ namespace Campaign.Api.Extensions
                     options.Authority = configuration["urls:identityapi"];
                     options.ApiName = "campaignapi";
                     options.ApiSecret = "apisecret";
+                    options.SupportedTokens = SupportedTokens.Reference;
+                    options.RequireHttpsMetadata = false;
                 });
 
             return services;
