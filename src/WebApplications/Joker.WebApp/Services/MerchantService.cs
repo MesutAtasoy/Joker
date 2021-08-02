@@ -21,9 +21,10 @@ namespace Joker.WebApp.Services
         {   
             var client = _clientFactory.CreateClient("GatewayApi");
 
-            var responseMessage = await client.PostAsJsonAsync("merchant/api/Merchants", createMerchantViewModel);
+            var responseMessage = await client.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
             if (!responseMessage.IsSuccessStatusCode)
             {
+                var sss = responseMessage.Content.ReadAsStringAsync(); 
                 throw new ArgumentException("Merchant Service can not respond success response");
             }
             

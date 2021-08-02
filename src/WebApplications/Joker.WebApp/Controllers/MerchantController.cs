@@ -8,10 +8,13 @@ namespace Joker.WebApp.Controllers
     public class MerchantController : Controller
     {
         private readonly IManagementApiService _managementApiService;
+        private readonly IMerchantService _merchantService;
 
-        public MerchantController(IManagementApiService managementApiService)
+        public MerchantController(IManagementApiService managementApiService,
+         IMerchantService merchantService)
         {
             _managementApiService = managementApiService;
+            _merchantService = merchantService;
         }
 
         public async Task<ActionResult> New(string id)
@@ -25,7 +28,13 @@ namespace Joker.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> New(CreateMerchantViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var merchant = await _merchantService.CreateAsync(model);
+                return RedirectToAction("Index", "Home");
+            }
+            
+            return View(model);
         }
     }
 }

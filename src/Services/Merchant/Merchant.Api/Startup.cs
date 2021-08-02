@@ -26,6 +26,7 @@ namespace Merchant.Api
             services.AddApiVersion();
             services.AddJokerGrpc();
             services.AddControllers();
+            services.AddHttpContextAccessor();
             services.AddJokerMongo(Configuration);
             services.AddApplicationModule();
             services.AddHttpClient();

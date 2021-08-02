@@ -31,7 +31,7 @@ namespace Merchant.Application
             services.AddScoped<StoreManager>();
             
             //Internal Services
-            services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<IUserService, UserService>();
             
             MerchantContext.ApplyConfiguration();
             

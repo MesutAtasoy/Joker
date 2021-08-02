@@ -96,12 +96,12 @@ namespace Subscription.Api
             var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
             if (!isValidGrpcPort || grpcPort <= 0)
             {
-                grpcPort = 5010;
+                grpcPort = 5017;
             }
             var isValidPort = int.TryParse(config["PORT"], out var port);
             if (!isValidPort || port <= 0)
             {
-                port = 5000;
+                port = 5007;
             }
             
             return (port, grpcPort);
