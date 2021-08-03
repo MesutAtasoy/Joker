@@ -3,6 +3,7 @@ using Joker.Identity.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Joker.Identity.Extensions
 {
     public static class IdentityServerExtensions

@@ -2,6 +2,7 @@ using Joker.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Joker.Identity.Extensions
 {
     public static class IdentityExtensions

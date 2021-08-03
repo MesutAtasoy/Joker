@@ -8,7 +8,7 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore "src/Services/Subscription/Subscription.Api/Subscription.Api.csproj"
 COPY . .
-WORKDIR "/src/Subscription.Api"
+WORKDIR "/src/src/Services/Subscription/Subscription.Api"
 RUN dotnet build "Subscription.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish

@@ -27,13 +27,9 @@ namespace Joker.Identity
             services.AddJokerIdentityServer(_configuration);
             services.AddAuthentication();
             services.AddDataProtection();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-            });
+            services.AddJokerCors();
+            services.AddJokerEvents();
+            services.AddJokerEventBus(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

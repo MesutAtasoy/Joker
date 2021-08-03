@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Joker.Identity.Migrations
 {
     [DbContext(typeof(JokerIdentityDbContext))]
-    [Migration("20210802181032_DbInit")]
+    [Migration("20210803180119_DbInit")]
     partial class DbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

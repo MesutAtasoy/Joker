@@ -6,11 +6,14 @@
         <UserSecretsId>7e73673c-10e4-4078-bee2-22db535dfbf4</UserSecretsId>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
         <PackageReference Include="IdentityServer4" Version="4.1.2" />
         <PackageReference Include="IdentityServer4.AspNetIdentity" Version="4.1.2" />
         <PackageReference Include="IdentityServer4.EntityFramework" Version="4.1.2" />
-        <PackageReference Include="IdentityServer4.Storage" Version="4.1.2" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+        <PackageReference Include="IdentityServer4.Storage" Version="4.1.2" />        
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.7" />
@@ -27,9 +30,9 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Migrations" />
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EventBus\Joker.EventBus.csproj" />
     </ItemGroup>
 </Project>
