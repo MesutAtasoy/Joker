@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using DotNetCore.CAP;
 using Joker.CAP.IntegrationEvent;
@@ -10,10 +11,13 @@ namespace Joker.Identity.EventHandlers
     public class SubscribedEventHandler : CAPIntegrationEventHandler<SubscribedEvent>
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly JokerIdentityDbContext _dbContext;
 
-        public SubscribedEventHandler(UserManager<ApplicationUser> userManager)
+        public SubscribedEventHandler(UserManager<ApplicationUser> userManager,
+            JokerIdentityDbContext dbContext)
         {
             _userManager = userManager;
+            _dbContext = dbContext;
         }
         
         [CapSubscribe(nameof(SubscribedEvent))]
@@ -29,6 +33,16 @@ namespace Joker.Identity.EventHandlers
             if (!isInRole)
             {
                 await _userManager.AddToRoleAsync(user, "PaidUser");
+
+                await _dbContext.OrganizationUsers.AddAsync(new OrganizationUser
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = user.Id,
+                    OrganizationId = @event.Merchant.RefId,
+                    OrganizationName = @event.Merchant.Name
+                });
+
+                await _dbContext.SaveChangesAsync();
             }
         }
     }

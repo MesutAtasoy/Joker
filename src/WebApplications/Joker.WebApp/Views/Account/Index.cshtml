@@ -2,3 +2,12 @@
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
 }
+
+<div class="row mt-5">
+    <div class="col-lg-4">
+       @await Html.PartialAsync("_AccountNav", "Dashboard");
+    </div>
+    <div class="col-lg-8">
+
+    </div>
+</div>

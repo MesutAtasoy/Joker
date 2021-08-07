@@ -83,6 +83,28 @@ namespace Joker.Identity.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Joker.Identity.Models.OrganizationUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("OrganizationId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("OrganizationName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("OrganizationUsers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -213,6 +235,15 @@ namespace Joker.Identity.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Joker.Identity.Models.OrganizationUser", b =>
+                {
+                    b.HasOne("Joker.Identity.Models.ApplicationUser", "User")
+                        .WithMany("OrganizationUsers")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -262,6 +293,11 @@ namespace Joker.Identity.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Joker.Identity.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("OrganizationUsers");
                 });
 #pragma warning restore 612, 618
         }

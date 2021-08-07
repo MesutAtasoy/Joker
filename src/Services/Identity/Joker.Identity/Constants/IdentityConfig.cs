@@ -13,7 +13,8 @@ namespace Joker.Identity.Constants
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Address(),
-                new ("roles", "Your role(s)", new List<string>() {"role"})
+                new ("roles", "Your role(s)", new List<string>() {"role"}),
+                new ("organization", "Your Organization Info(s)", new List<string>() {"organizationId", "organizationName"})
             };
 
         public static IEnumerable<ApiScope> ApiScopes => new[]
@@ -27,12 +28,12 @@ namespace Joker.Identity.Constants
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
             {
-                new ("merchantapi", "Merchant API", new[] {"role"})
+                new ("merchantapi", "Merchant API", new[] {"role" ,"organizationId","organizationName"})
                 {
                     Scopes = { "merchantapi"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
-                new ("campaignapi", "Campaign API", new[] {"role"})
+                new ("campaignapi", "Campaign API", new[] {"role", "organizationId","organizationName"})
                 {
                     Scopes = { "campaignapi"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
@@ -86,6 +87,7 @@ namespace Joker.Identity.Constants
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
+                        "organization",
                         "merchantapi",
                         "campaignapi",
                         "managementapi",

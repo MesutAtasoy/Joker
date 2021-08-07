@@ -44,11 +44,14 @@ namespace Joker.WebApp.Extensions
                     options.Scope.Add("merchantapi");
                     options.Scope.Add("campaignapi");
                     options.Scope.Add("aggregatorapi");
+                    options.Scope.Add("organization");
                     options.ClaimActions.DeleteClaim("sid");
                     options.ClaimActions.DeleteClaim("idp");
                     options.ClaimActions.DeleteClaim("s_hash");
                     options.ClaimActions.DeleteClaim("auth_time");
                     options.ClaimActions.MapUniqueJsonKey("role", "role");
+                    options.ClaimActions.MapUniqueJsonKey("organizationId", "organizationId");
+                    options.ClaimActions.MapUniqueJsonKey("organizationName", "organizationName");
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
                     options.TokenValidationParameters = new TokenValidationParameters

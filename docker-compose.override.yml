@@ -17,7 +17,7 @@ services:
     ports:
       - "5341:80"
     volumes:
-      - ${HOST_VOLUMES_PATH}/seq:/data  
+      - ./data/volumes/seq:/data  
     networks:
       - joker-network      
         
@@ -31,11 +31,11 @@ services:
   postgres:
     container_name: postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       PGDATA: /data/postgres
     volumes:
-      - ${HOST_VOLUMES_PATH}/postgres:/data/postgres
+      - ./data/volumes/postgres:/data/postgres
     ports:
       - "5432:5432"
     restart: unless-stopped
@@ -47,14 +47,14 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ${HOST_VOLUMES_PATH}/mongo:/data/db
+      - ./data/volumes/mongo:/data/db
     networks:
       - joker-network        
         
   merchant.api:
     container_name: "merchant.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -66,7 +66,7 @@ services:
   campaign.api:
     container_name: "campaign.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -78,7 +78,7 @@ services:
   management.api:
     container_name: "management.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -90,7 +90,7 @@ services:
   location.api:
     container_name: "location.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -102,7 +102,7 @@ services:
   search.api:
     container_name: "search.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -114,7 +114,7 @@ services:
   identity.api:
     container_name: "identity.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80      
@@ -126,7 +126,7 @@ services:
   subscription.api:
     container_name: "subscription.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -138,7 +138,7 @@ services:
   aggregator.api:
     container_name: "aggregator.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
@@ -150,7 +150,7 @@ services:
   gateway.web.api:
     container_name: "gateway.web.api"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "5009:80"
@@ -160,7 +160,7 @@ services:
   joker.webapp:
     container_name: "joker.webapp"
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ENV}
+      - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
       - GatewayUrl=http://gateway.web.api
     ports:

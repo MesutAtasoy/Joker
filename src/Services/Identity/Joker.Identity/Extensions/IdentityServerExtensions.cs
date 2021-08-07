@@ -1,5 +1,6 @@
 using Joker.Identity.Constants;
 using Joker.Identity.Models;
+using Joker.Identity.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,8 +22,9 @@ namespace Joker.Identity.Extensions
                 .AddInMemoryApiResources(IdentityConfig.ApiResources)
                 .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
                 .AddInMemoryClients(IdentityConfig.Clients(configuration))
-                .AddAspNetIdentity<ApplicationUser>();
-
+                .AddAspNetIdentity<ApplicationUser>()
+                .AddProfileService<ProfileService>();
+            
             builder.AddDeveloperSigningCredential();
 
             return services;

@@ -15,6 +15,11 @@ namespace Joker.WebApp.Extensions
             if (!context.User.RootElement.TryGetProperty(JwtClaimTypes.Role, out var jsonRole))
                 return Task.CompletedTask;
 
+            var id = context.Principal.Identity as ClaimsIdentity;
+
+            // var roleClaim = id?.Claims.FirstOrDefault(x => x.Type == "role");
+            // id?.RemoveClaim(roleClaim);
+
             var role = jsonRole.ToString();
 
             var claims = new List<Claim>();
@@ -42,7 +47,6 @@ namespace Joker.WebApp.Extensions
                 return Task.CompletedTask;
             }
 
-            var id = context.Principal.Identity as ClaimsIdentity;
             id?.AddClaims(claims);
 
             return Task.CompletedTask;
