@@ -14,9 +14,13 @@ namespace Joker.WebApp.Controllers
         {
             _managementApiService = managementApiService;
         }
-        // GET
+        
         public async Task<IActionResult> Index()
         {
+            if (User.IsInRole("PaidUser"))
+            {
+                return RedirectToAction("Index", "Account");
+            }
             var pricingPlans = await _managementApiService.GetPricingPlansAsync();
             return View(pricingPlans);
         }

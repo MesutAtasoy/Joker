@@ -18,6 +18,11 @@ namespace Joker.WebApp.Controllers
             
             return new SignOutResult(OpenIdConnectDefaults.AuthenticationScheme, new AuthenticationProperties { RedirectUri = homeUrl });
         }
+
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
         
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using IdentityModel;
 using Joker.WebApp.HttpHandlers;
 using Joker.WebApp.Services;
@@ -34,7 +33,8 @@ namespace Joker.WebApp.Extensions
                 .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                 {
                     options.Authority = configuration.GetValue<string>("IdentityUrl");
-                    options.MetadataAddress = $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
+                    options.MetadataAddress =
+                        $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
                     options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     options.ClientId = "joker.web.app";
                     options.ClientSecret = "secret";
@@ -56,20 +56,12 @@ namespace Joker.WebApp.Extensions
                         NameClaimType = JwtClaimTypes.GivenName,
                         RoleClaimType = JwtClaimTypes.Role
                     };
-                    options.Events.OnRedirectToIdentityProvider = context =>
-                    {
-                        // Intercept the redirection so the browser navigates to the right URL in your host
-                        context.ProtocolMessage.IssuerAddress = $"{configuration.GetValue<string>("IdentityUrl")}/connect/authorize";
-                        return Task.CompletedTask;
-                    };
-                    
-                    options.Events.OnRedirectToIdentityProviderForSignOut = context =>
-                    {
-                        // Intercept the redirection so the browser navigates to the right URL in your host
-                        context.ProtocolMessage.IssuerAddress = $"{configuration.GetValue<string>("IdentityUrl")}/connect/endsession";
-                        return Task.CompletedTask;
-                    };
-                    // options.Events.OnRedirectToIdentityProviderForSignOut 
+                    options.Events.OnRedirectToIdentityProvider = context => 
+                        context.RedirectToIdentityProvider(configuration.GetValue<string>("IdentityUrl"));
+                    options.Events.OnRedirectToIdentityProviderForSignOut = context => 
+                        context.RedirectToIdentityProviderForSignOut(configuration.GetValue<string>("IdentityUrl"));
+                    options.Events.OnUserInformationReceived = context => 
+                        context.MapRoles(); 
                     options.RequireHttpsMetadata = false;
                 });
             return services;
@@ -100,7 +92,6 @@ namespace Joker.WebApp.Extensions
 
             return services;
         }
-
 
         public static IServiceCollection AddApiServices(this IServiceCollection services)
         {
