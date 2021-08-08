@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Joker.WebApp.ViewModels
+namespace Joker.WebApp.ViewModels.Shared
 {
     public class PagedListViewModel<T>
     {

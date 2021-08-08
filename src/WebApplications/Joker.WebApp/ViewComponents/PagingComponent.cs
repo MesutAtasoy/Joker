@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Joker.WebApp.ViewModels;
+using Joker.WebApp.ViewModels.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Joker.WebApp.ViewComponents

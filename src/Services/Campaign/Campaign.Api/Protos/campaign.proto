@@ -2,25 +2,25 @@ syntax = "proto3";
 
 option csharp_namespace = "Campaign.Api.Grpc";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
 
 service CampaignApiGrpcService {
-  rpc CreateCampaign (CreateCampaignMessage) returns (CampaignMessage);
-  rpc UpdateCampaign (UpdateCampaignMessage) returns (CampaignMessage);
-  rpc DeleteCampaign (ByIdMessage) returns (DeleteCampaignMessage);
+  rpc CreateCampaign (CreateCampaignMessage) returns (CampaignBaseGrpcResponse);
+  rpc UpdateCampaign (UpdateCampaignMessage) returns (CampaignBaseGrpcResponse);
+  rpc DeleteCampaign (ByIdMessage) returns (CampaignBaseGrpcResponse);
   rpc GetById (ByIdMessage) returns (CampaignMessage);
 }
 
 message CreateCampaignMessage {
   IdName store = 1;
-  IdName businessDirectory = 2;
-  string title = 3;
-  string code = 4;
-  string description = 5;
-  string condition = 6;
-  string previewImageUrl = 7;
+  IdName merchant = 2;
+  IdName businessDirectory = 3;
+  string title = 4;
+  string code = 5;
+  string description = 6;
+  string condition = 7;
   google.protobuf.Timestamp startTime = 8;
   google.protobuf.Timestamp endTime = 9;
-  string channel = 10;
 }
 
 
@@ -40,7 +40,8 @@ message UpdateCampaignMessageItem {
   string code = 2;
   string description = 3;
   string condition = 4;
-  string previewImageUrl = 5;
+  google.protobuf.Timestamp startTime = 5;
+  google.protobuf.Timestamp endTime = 6;
 }
 
 message IdName {
@@ -52,20 +53,27 @@ message ByIdMessage {
   string  id = 1;
 }
 
+message CampaignBaseGrpcResponse {
+  int32 status = 1;
+  string  message = 2;
+  google.protobuf.Any data = 3;
+}
+
 message CampaignMessage {
   string id = 1;
   IdName store = 2;
-  IdName businessDirectory = 3;
-  string slug = 4;
-  string slugKey = 5;
-  string title = 6;
-  string code = 7;
-  string description = 8;
-  string condition = 9;
-  string previewImageUrl = 10;
-  google.protobuf.Timestamp startTime = 11;
-  google.protobuf.Timestamp endTime = 12;
-  string channel = 13;
-  google.protobuf.Timestamp createdDate = 14;
-  google.protobuf.Timestamp modifiedDate = 15;  
+  IdName merchant = 3;
+  IdName businessDirectory = 4;
+  string slug = 5;
+  string slugKey = 6;
+  string title = 7;
+  string code = 8;
+  string description = 9;
+  string condition = 10;
+  string previewImageUrl = 11;
+  google.protobuf.Timestamp startTime = 12;
+  google.protobuf.Timestamp endTime = 13;
+  string channel = 14;
+  google.protobuf.Timestamp createdDate = 15;
+  google.protobuf.Timestamp modifiedDate = 16;  
 }

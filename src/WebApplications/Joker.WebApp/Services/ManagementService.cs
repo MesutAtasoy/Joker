@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
 using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Management;
+using Joker.WebApp.ViewModels.Shared;
 
 namespace Joker.WebApp.Services
 {
@@ -31,6 +32,19 @@ namespace Joker.WebApp.Services
             var pricingPlans = await responseMessage.Content.ReadFromJsonAsync<List<PricingPlanViewModel>>();
 
             return pricingPlans;
+        }
+
+        public async Task<List<BusinessDirectoryViewModel>> GetBusinessDirectoriesAsync()
+        {
+            var responseMessage = await _httpClient.GetAsync("management/api/BusinessDirectories");
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new ArgumentException("Management Service can not respond success response");
+            }
+
+            var businessDirectories = await responseMessage.Content.ReadFromJsonAsync<List<BusinessDirectoryViewModel>>();
+
+            return businessDirectories;
         }
 
         public async Task<PricingPlanViewModel> GetPricingPlanAsync(string slug)

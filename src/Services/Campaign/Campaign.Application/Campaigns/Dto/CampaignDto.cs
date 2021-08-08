@@ -7,6 +7,7 @@ namespace Campaign.Application.Campaigns.Dto
     {
         public Guid Id { get; set; }
         public IdNameDto Store { get; set; }
+        public IdNameDto Merchant { get; set; }
         public IdNameDto BusinessDirectory { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }

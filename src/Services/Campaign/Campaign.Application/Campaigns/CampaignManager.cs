@@ -33,9 +33,13 @@ namespace Campaign.Application.Campaigns
 
             var storeRef = StoreRef.Create(request.Store.RefId, 
                 request.Store.Name);
+
+            var merchantRef = MerchantRef.Create(request.Merchant.RefId,
+                request.Merchant.Name);
             
             var campaign = Domain.CampaignAggregate.Campaign.Create(campaignId,
                 storeRef,
+                merchantRef,
                 businessDirectoryRef,
                 request.Title,
                 request.Code,

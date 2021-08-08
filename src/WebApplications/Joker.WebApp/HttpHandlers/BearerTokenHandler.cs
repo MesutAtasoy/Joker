@@ -61,12 +61,19 @@ namespace Joker.WebApp.HttpHandlers
 
             var idpClient = _httpClientFactory.CreateClient("IdentityApi");
 
+            
             // get the discovery document
             var discoveryResponse = await idpClient.GetDiscoveryDocumentAsync();
 
+            
             // refresh the tokens
             var refreshToken = await _httpContextAccessor
                        .HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
+
+            if (string.IsNullOrEmpty(refreshToken))
+            {
+                return null;
+            }
 
             var refreshResponse = await idpClient.RequestRefreshTokenAsync(
                 new RefreshTokenRequest

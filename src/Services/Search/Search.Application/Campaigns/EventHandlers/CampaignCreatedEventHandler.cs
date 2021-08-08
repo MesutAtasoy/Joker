@@ -32,6 +32,8 @@ namespace Search.Application.Campaigns.EventHandlers
                 EndTime = @event.EndTime,
                 StoreId = @event.StoreId,
                 StoreName = @event.StoreName,
+                MerchantId = @event.MerchantId,
+                MerchantName = @event.MerchantName,
                 PreviewImageUrl = @event.PreviewImageUrl
             };
 

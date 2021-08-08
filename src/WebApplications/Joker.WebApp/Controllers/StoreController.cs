@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
-using Joker.WebApp.ViewModels;
+using Joker.WebApp.ViewModels.Shared;
 using Joker.WebApp.ViewModels.Store.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

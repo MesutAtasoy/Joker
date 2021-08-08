@@ -48,15 +48,15 @@ namespace Aggregator.Api.Controllers
             model.Location.Neighborhood.Name = locationResponse.Neighborhood.Name;
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
-            var store = await _storeService.CreateAsync(model);
-            return Ok(new JokerBaseResponse<StoreModel>(store));
+            var response = await _storeService.CreateAsync(model);
+            return Ok(response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateStoreModel model)
         {
-            var store = await _storeService.UpdateAsync(model);
-            return Ok(new JokerBaseResponse<StoreModel>(store));
+            var response = await _storeService.UpdateAsync(model);
+            return Ok(response);
         }
         
         [HttpPut("Location")]
@@ -82,15 +82,15 @@ namespace Aggregator.Api.Controllers
             model.Location.Neighborhood.Name = locationResponse.Neighborhood.Name;
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
-            var store = await _storeService.UpdateLocationAsync(model);
-            return Ok(new JokerBaseResponse<StoreLocationModel>(store));
+            var response = await _storeService.UpdateLocationAsync(model);
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _storeService.DeleteAsync(id);
-            return Ok(new JokerBaseResponse<bool>(result));
+            return Ok(result);
         }
     }
 }

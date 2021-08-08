@@ -5,6 +5,8 @@ using Campaign.Application.Campaigns.Command.DeleteCampaign;
 using Campaign.Application.Campaigns.Command.UpdateCampaign;
 using Campaign.Application.Campaigns.Dto.Request;
 using Campaign.Application.Campaigns.Queries.GetCampaignById;
+using Campaign.Application.Campaigns.Queries.GetCampaignsByMerchantId;
+using Joker.Extensions.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +21,12 @@ namespace Campaign.Api.Controllers
         public CampaignController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+        
+        [HttpGet("Merchants/{id}")]
+        public async Task<ActionResult> GetByMerchantIdAsync(Guid id, [FromQuery] PaginationFilter filter)
+        {
+            return Ok(await _mediator.Send(new GetCampaignsByMerchantIdQuery(id, filter)));
         }
 
         [HttpGet("{id}")]

@@ -1,6 +1,6 @@
 using System;
 
-namespace Joker.WebApp.ViewModels
+namespace Joker.WebApp.ViewModels.Management
 {
     public class CurrencyViewModel
     {

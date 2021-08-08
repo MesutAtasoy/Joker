@@ -5,6 +5,7 @@ using Campaign.Api.Grpc;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Joker.Extensions;
+using Joker.Response;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
@@ -23,20 +24,25 @@ namespace Aggregator.Api.Services.Campaign
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<CampaignModel> CreateAsync(CreateCampaignModel request)
+        public async Task<JokerBaseResponse<CampaignModel>> CreateAsync(CreateCampaignModel request)
         {
             var headers = await GetHeaders();
+            
             var response = await _campaignApiGrpcServiceClient.CreateCampaignAsync(new CreateCampaignMessage
             {
-                Title = request.Title,
-                Condition = request.Condition,
-                Channel = request.Channel,
-                Code = request.Code,
-                Description = request.Description,
+                Title = request.Title ?? " ",
+                Condition = request.Condition ?? " ",
+                Code = request.Code ?? " ",
+                Description = request.Description ?? " ",
                 Store = new IdName
                 {
                     Id = request.Store.Id.ToString(),
                     Name = request.Store.Name
+                },
+                Merchant = new IdName
+                {
+                    Id = request.Merchant.Id.ToString(),
+                    Name = request.Merchant.Name
                 },
                 BusinessDirectory = new IdName
                 {
@@ -44,14 +50,19 @@ namespace Aggregator.Api.Services.Campaign
                     Name = request.BusinessDirectory.Name
                 },
                 EndTime = request.EndTime?.ToTimestamp(),
-                StartTime = request.StartTime?.ToTimestamp(),
-                PreviewImageUrl = request.PreviewImageUrl
+                StartTime = request.StartTime?.ToTimestamp()
             }, headers);
 
-            return As(response);
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<CampaignModel>(null, response.Status, response.Message);
+            }
+            
+            var campaign = response.Data.Unpack<CampaignMessage>();
+            return new JokerBaseResponse<CampaignModel>(As(campaign), 200);
         }
 
-        public async Task<CampaignModel> UpdateAsync(UpdateCampaignModel request)
+        public async Task<JokerBaseResponse<CampaignModel>> UpdateAsync(UpdateCampaignModel request)
         {
             var headers = await GetHeaders();
 
@@ -64,26 +75,43 @@ namespace Aggregator.Api.Services.Campaign
                     Condition = request.Condition,
                     Code = request.Code,
                     Description = request.Description,
-                    PreviewImageUrl = request.PreviewImageUrl
+                    EndTime = request.EndTime?.ToTimestamp(),
+                    StartTime = request.StartTime?.ToTimestamp()
                 }
             }, headers);
-
-            return As(response);
+            
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<CampaignModel>(null, response.Status, response.Message);
+            }
+            
+            var campaign = response.Data.Unpack<CampaignMessage>();
+            return new JokerBaseResponse<CampaignModel>(As(campaign), 200);
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
+        public async Task<JokerBaseResponse<bool>> DeleteAsync(Guid id)
         {
             var headers = await GetHeaders();
 
-            var response = await _campaignApiGrpcServiceClient.DeleteCampaignAsync(new ByIdMessage {Id = id.ToString()}, headers);
-            return response.Succeed;
+            var response = await _campaignApiGrpcServiceClient.DeleteCampaignAsync(new ByIdMessage { Id = id.ToString() },
+                    headers);
+            
+               
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<bool>(false, response.Status, response.Message);
+            }
+            
+            var deleteCampaignMessage = response.Data.Unpack<DeleteCampaignMessage>();
+            return new JokerBaseResponse<bool>(deleteCampaignMessage.Succeed, 200);
         }
 
         public async Task<CampaignModel> GetByIdAsync(Guid id)
         {
             var headers = await GetHeaders();
 
-            var campaign = await _campaignApiGrpcServiceClient.GetByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
+            var campaign =
+                await _campaignApiGrpcServiceClient.GetByIdAsync(new ByIdMessage { Id = id.ToString() }, headers);
             return As(campaign);
         }
 
@@ -121,6 +149,11 @@ namespace Aggregator.Api.Services.Campaign
                 {
                     Id = campaignMessage.Store.Id.ToGuid(),
                     Name = campaignMessage.Store.Name
+                },
+                Merchant = new Models.Shared.IdName
+                {
+                    Id = campaignMessage.Merchant.Id.ToGuid(),
+                    Name = campaignMessage.Merchant.Name
                 },
                 EndTime = campaignMessage.EndTime?.ToDateTime(),
                 StartTime = campaignMessage.StartTime?.ToDateTime(),

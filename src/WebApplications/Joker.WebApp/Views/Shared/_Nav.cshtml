@@ -28,8 +28,17 @@
                     }
 
                 </ul>
+                
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav d-lg-block d-none">
+                        <li class="nav-item">
+                            <a class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" asp-action="Login" asp-controller="Account" role="button">Login/Register</a>
+                        </li>
+                    </ul>
+                }
 
-                @if (User != null && !User.IsInRole("PaidUser"))
+                @if (!User.Identity.IsAuthenticated || !User.IsInRole("PaidUser"))
                 {
                     <ul class="navbar-nav d-lg-block d-none">
                         <li class="nav-item">
@@ -39,11 +48,11 @@
                         </li>
                     </ul>
                 }
-                else
+                else if(User.IsInRole("PaidUser"))
                 {
                     <ul class="navbar-nav d-lg-block d-none">
                         <li class="nav-item">
-                            <a class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" role="button">Publish a Campaign</a>
+                            <a class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" asp-action="New" asp-controller="Campaign" role="button">Publish a Campaign</a>
                         </li>
                     </ul>
                 }

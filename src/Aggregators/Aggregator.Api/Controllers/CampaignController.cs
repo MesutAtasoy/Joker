@@ -36,35 +36,36 @@ namespace Aggregator.Api.Controllers
 
             if (store == null)
             {
-                return BadRequest("Store is not found");
+                return BadRequest(new JokerBaseResponse<object>(null, 400, "Store is not found"));
             }
 
             model.Store.Name = store.Name;
-
+            model.Merchant.Name = store.Merchant.Name;
+            
             var businessDirectory = await _managementService.GetBusinessDirectoryByIdAsync(model.BusinessDirectory.Id);
             if (businessDirectory == null)
             {
-                return BadRequest("Business directory is not found");
+                return BadRequest(new JokerBaseResponse<object>(null, 400, "Business directory is not found"));
             }
 
             model.BusinessDirectory.Name = businessDirectory.Name;
             
-            var campaign = await _campaignService.CreateAsync(model);
-            return Ok(new JokerBaseResponse<CampaignModel>(campaign));
+            var response = await _campaignService.CreateAsync(model);
+            return Ok(response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateCampaignModel model)
         {
-            var campaign = await _campaignService.UpdateAsync(model);
-            return Ok(new JokerBaseResponse<CampaignModel>(campaign));
+            var response = await _campaignService.UpdateAsync(model);
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
-            var result = await _campaignService.DeleteAsync(id);
-            return Ok(new JokerBaseResponse<bool>(result));
+            var response = await _campaignService.DeleteAsync(id);
+            return Ok(response);
         }
     }
 }

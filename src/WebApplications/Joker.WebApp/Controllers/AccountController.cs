@@ -1,25 +1,28 @@
-using System;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
-using Joker.WebApp.ViewModels.Merchant;
 using Joker.WebApp.ViewModels.Merchant.Request;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Joker.WebApp.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly IMerchantService _merchantService;
+        private readonly ICampaignService _campaignService;
         private readonly IUserService _userService;
 
         public AccountController(IMerchantService merchantService,
-            IUserService userService)
+            IUserService userService, 
+            ICampaignService campaignService)
         {
             _merchantService = merchantService;
             _userService = userService;
+            _campaignService = campaignService;
         }
 
         public async Task<IActionResult> Logout()
@@ -32,11 +35,17 @@ namespace Joker.WebApp.Controllers
             return new SignOutResult(OpenIdConnectDefaults.AuthenticationScheme, new AuthenticationProperties { RedirectUri = homeUrl });
         }
 
+        public ActionResult Login()
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
         public async Task<IActionResult> Index()
         {
             return View();
         }
         
+        [Authorize(Roles = "PaidUser")]
         public async Task<IActionResult> MyMerchant()
         {
             var merchantId = _userService.GetOrganizationId();
@@ -57,6 +66,7 @@ namespace Joker.WebApp.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "PaidUser")]
         public async Task<IActionResult> MyMerchant(UpdateMerchantViewModel model)
         {
             if (ModelState.IsValid)
@@ -68,12 +78,20 @@ namespace Joker.WebApp.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "PaidUser")]
         public async Task<IActionResult> MyStores(int page = 1)
         {
             var merchantId = _userService.GetOrganizationId();
             var stores = await _merchantService.GetStoresAsync(merchantId, page);
             return View(stores);
+        }
+        
+        [Authorize(Roles = "PaidUser")]
+        public async Task<IActionResult> MyCampaigns(int page = 1)
+        {
+            var merchantId = _userService.GetOrganizationId();
+            var campaigns = await _campaignService.GetCampaigns(merchantId, page);
+            return View(campaigns);
         }
     }
 }

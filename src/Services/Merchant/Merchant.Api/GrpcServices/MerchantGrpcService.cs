@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -34,53 +35,109 @@ namespace Merchant.Api.GrpcServices
             _merchantManager = merchantManager;
         }
 
-        public override async Task<MerchantMessage> CreateMerchant(CreateMerchantMessage request,
+        public override async Task<MerchantBaseGrpcResponse> CreateMerchant(CreateMerchantMessage request,
             ServerCallContext context)
         {
-            var response = await _merchantManager.CreateAsync(new CreateMerchantCommand
+            try
             {
-                Description = request.Description,
-                Email = request.Email,
-                Name = request.Name,
-                Slogan = request.Slogan,
-                PhoneNumber = request.PhoneNumber,
-                TaxNumber = request.TaxNumber,
-                WebSiteUrl = request.WebsiteUrl,
-                PricingPlan = new IdNameDto
+                var response = await _merchantManager.CreateAsync(new CreateMerchantCommand
                 {
-                    Name = request.PricingPlan.Name,
-                    RefId = request.PricingPlan.Id.ToGuid()
-                }
-            });
+                    Description = request.Description,
+                    Email = request.Email,
+                    Name = request.Name,
+                    Slogan = request.Slogan,
+                    PhoneNumber = request.PhoneNumber,
+                    TaxNumber = request.TaxNumber,
+                    WebSiteUrl = request.WebsiteUrl,
+                    PricingPlan = new IdNameDto
+                    {
+                        Name = request.PricingPlan.Name,
+                        RefId = request.PricingPlan.Id.ToGuid()
+                    }
+                });
 
-            return As(response);
-        }
-
-        public override async Task<MerchantMessage> UpdateMerchant(UpdateMerchantMessage request,
-            ServerCallContext context)
-        {
-            var updateMerchantModel = new UpdateMerchantDto
+                var merchantMessage = As(response);
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(merchantMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
             {
-                Description = request.Merchant.Description,
-                Email = request.Merchant.Email,
-                Name = request.Merchant.Name,
-                Slogan = request.Merchant.Slogan,
-                PhoneNumber = request.Merchant.PhoneNumber,
-                TaxNumber = request.Merchant.TaxNumber,
-                WebSiteUrl = request.Merchant.WebsiteUrl
-            };
-
-            var response = await _merchantManager.UpdateAsync(new UpdateMerchantCommand(request.MerchantId.ToGuid(),
-                updateMerchantModel));
-
-            return As(response);
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
+        
         }
 
-        public override async Task<DeleteMerchantResponseMessage> DeleteMerchant(ByIdMessage request,
+        public override async Task<MerchantBaseGrpcResponse> UpdateMerchant(UpdateMerchantMessage request,
             ServerCallContext context)
         {
-            var isSucceed = await _merchantManager.DeleteAsync(new DeleteMerchantCommand(request.Id.ToGuid()));
-            return new DeleteMerchantResponseMessage {IsSucceed = isSucceed};
+            try
+            {
+                var updateMerchantModel = new UpdateMerchantDto
+                {
+                    Description = request.Merchant.Description,
+                    Email = request.Merchant.Email,
+                    Name = request.Merchant.Name,
+                    Slogan = request.Merchant.Slogan,
+                    PhoneNumber = request.Merchant.PhoneNumber,
+                    TaxNumber = request.Merchant.TaxNumber,
+                    WebSiteUrl = request.Merchant.WebsiteUrl
+                };
+
+                var response = await _merchantManager.UpdateAsync(new UpdateMerchantCommand(request.MerchantId.ToGuid(),
+                    updateMerchantModel));
+
+                var merchantMessage = As(response);
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(merchantMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
+          
+        }
+
+        public override async Task<MerchantBaseGrpcResponse> DeleteMerchant(ByIdMessage request,
+            ServerCallContext context)
+        {
+            try
+            {
+                var isSucceed = await _merchantManager.DeleteAsync(new DeleteMerchantCommand(request.Id.ToGuid()));
+                var deleteMerchantResponseMessage = new DeleteMerchantResponseMessage { IsSucceed = isSucceed };
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(deleteMerchantResponseMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
         public override async Task<MerchantMessage> GetMerchantById(ByIdMessage request,
@@ -90,70 +147,107 @@ namespace Merchant.Api.GrpcServices
             return As(response);
         }
 
-        public override async Task<StoreMessage> CreateStore(CreateStoreMessage request,
+        public override async Task<MerchantBaseGrpcResponse> CreateStore(CreateStoreMessage request,
             ServerCallContext context)
         {
-            var response = await _storeManager.CreateAsync(new CreateStoreCommand
+            try
             {
-                Name = request.Name,
-                Description = request.Description,
-                Email = request.Email,
-                Slogan = request.Slogan,
-                MerchantId = request.MerchantId.ToGuid(),
-                PhoneNumber = request.PhoneNumber,
-                Location = new StoreLocationDto
+                var response = await _storeManager.CreateAsync(new CreateStoreCommand
                 {
-                    Address = request.Location.Address,
-                    Country = new IdNameDto
+                    Name = request.Name,
+                    Description = request.Description,
+                    Email = request.Email,
+                    Slogan = request.Slogan,
+                    MerchantId = request.MerchantId.ToGuid(),
+                    PhoneNumber = request.PhoneNumber,
+                    Location = new StoreLocationDto
                     {
-                        RefId = request.Location.Country.Id.ToGuid(),
-                        Name = request.Location.Country.Name
-                    },
-                    City = new IdNameDto
-                    {
-                        RefId = request.Location.City.Id.ToGuid(),
-                        Name = request.Location.City.Name
-                    },
-                    District = new IdNameDto
-                    {
-                        RefId = request.Location.District.Id.ToGuid(),
-                        Name = request.Location.District.Name
-                    },
-                    Neighborhood = new IdNameDto
-                    {
-                        RefId = request.Location.Neighborhood.Id.ToGuid(),
-                        Name = request.Location.Neighborhood.Name
-                    },
-                    Quarter = new IdNameDto
-                    {
-                        RefId = request.Location.Quarter.Id.ToGuid(),
-                        Name = request.Location.Quarter.Name
+                        Address = request.Location.Address,
+                        Country = new IdNameDto
+                        {
+                            RefId = request.Location.Country.Id.ToGuid(),
+                            Name = request.Location.Country.Name
+                        },
+                        City = new IdNameDto
+                        {
+                            RefId = request.Location.City.Id.ToGuid(),
+                            Name = request.Location.City.Name
+                        },
+                        District = new IdNameDto
+                        {
+                            RefId = request.Location.District.Id.ToGuid(),
+                            Name = request.Location.District.Name
+                        },
+                        Neighborhood = new IdNameDto
+                        {
+                            RefId = request.Location.Neighborhood.Id.ToGuid(),
+                            Name = request.Location.Neighborhood.Name
+                        },
+                        Quarter = new IdNameDto
+                        {
+                            RefId = request.Location.Quarter.Id.ToGuid(),
+                            Name = request.Location.Quarter.Name
+                        }
                     }
-                }
-            });
+                });
 
-            return As(response);
+                var storeMessage = As(response);
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(storeMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
+            
         }
 
-        public override async Task<StoreMessage> UpdateStore(UpdateStoreMessage request,
+        public override async Task<MerchantBaseGrpcResponse> UpdateStore(UpdateStoreMessage request,
             ServerCallContext context)
         {
-            var updateStoreModel = new UpdateStoreDto
+            try
             {
-                Name = request.Store.Name,
-                Description = request.Store.Description,
-                Email = request.Store.Email,
-                Slogan = request.Store.Slogan,
-                PhoneNumber = request.Store.PhoneNumber,
-            };
+                var updateStoreModel = new UpdateStoreDto
+                {
+                    Name = request.Store.Name,
+                    Description = request.Store.Description,
+                    Email = request.Store.Email,
+                    Slogan = request.Store.Slogan,
+                    PhoneNumber = request.Store.PhoneNumber,
+                };
 
-            var response =
-                await _storeManager.UpdateAsync(new UpdateStoreCommand(request.StoreId.ToGuid(), updateStoreModel));
+                var response = await _storeManager.UpdateAsync(new UpdateStoreCommand(request.StoreId.ToGuid(), updateStoreModel));
 
-            return As(response);
+                var storeMessage = As(response);
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(storeMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
+           
         }
 
-        public override async Task<StoreLocationMessage> UpdateLocation(UpdateStoreLocationMessage request, ServerCallContext context)
+        public override async Task<MerchantBaseGrpcResponse> UpdateLocation(UpdateStoreLocationMessage request, ServerCallContext context)
         {
             var storeLocation = new StoreLocationDto
             {
@@ -184,45 +278,82 @@ namespace Merchant.Api.GrpcServices
                 },
                 Address = request.Location.Address
             };
-
-            var response = await _storeManager.UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
-
-            return new StoreLocationMessage
+            try
             {
-                Country = new IdName
+                var response = await _storeManager.UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
+
+                var storeLocationMessage = new StoreLocationMessage
                 {
-                    Id = request.Location.Country.Id,
-                    Name = request.Location.Country.Name
-                },
-                City = new IdName
+                    Country = new IdName
+                    {
+                        Id = request.Location.Country.Id,
+                        Name = request.Location.Country.Name
+                    },
+                    City = new IdName
+                    {
+                        Id = request.Location.City.Id,
+                        Name = request.Location.City.Name
+                    },
+                    District = new IdName
+                    {
+                        Id = request.Location.District.Id,
+                        Name = request.Location.District.Name
+                    },
+                    Neighborhood = new IdName
+                    {
+                        Id = request.Location.Neighborhood.Id,
+                        Name = request.Location.Neighborhood.Name
+                    },
+                    Quarter = new IdName
+                    {
+                        Id = request.Location.Quarter.Id,
+                        Name = request.Location.Quarter.Name
+                    },
+                    Address = request.Location.Address
+                };
+                
+                return new MerchantBaseGrpcResponse
                 {
-                    Id = request.Location.City.Id,
-                    Name = request.Location.City.Name
-                },
-                District = new IdName
+                    Data = Any.Pack(storeLocationMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
                 {
-                    Id = request.Location.District.Id,
-                    Name = request.Location.District.Name
-                },
-                Neighborhood = new IdName
-                {
-                    Id = request.Location.Neighborhood.Id,
-                    Name = request.Location.Neighborhood.Name
-                },
-                Quarter = new IdName
-                {
-                    Id = request.Location.Quarter.Id,
-                    Name = request.Location.Quarter.Name
-                },
-                Address = request.Location.Address
-            };
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
-        public override async Task<DeleteStoreResponseMessage> DeleteStore(ByIdMessage request,
+        public override async Task<MerchantBaseGrpcResponse> DeleteStore(ByIdMessage request,
             ServerCallContext context)
         {
-            var isSucceed = await _storeManager.DeleteAsync(new DeleteStoreCommand(request.Id.ToGuid()));
-            return new DeleteStoreResponseMessage {IsSucceed = isSucceed};
+            try
+            {
+                var isSucceed = await _storeManager.DeleteAsync(new DeleteStoreCommand(request.Id.ToGuid()));
+            
+                var deleteStoreResponseMessage = new DeleteStoreResponseMessage{ IsSucceed = isSucceed };
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = Any.Pack(deleteStoreResponseMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new MerchantBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
         public override async Task<StoreMessage> GetStoreById(ByIdMessage request,

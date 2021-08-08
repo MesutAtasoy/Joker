@@ -1,6 +1,6 @@
 using System;
 
-namespace Joker.WebApp.ViewModels
+namespace Joker.WebApp.ViewModels.Shared
 {
     public class IdNameViewModel
     {

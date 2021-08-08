@@ -10,6 +10,7 @@ namespace Campaign.Application.Shared
         {
             CreateMap<BadgeRef, IdNameDto>();
             CreateMap<StoreRef, IdNameDto>();
+            CreateMap<MerchantRef, IdNameDto>();
             CreateMap<BusinessDirectoryRef, IdNameDto>();
         }
     }

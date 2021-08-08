@@ -6,6 +6,7 @@ using Joker.WebApp.Services.Abstract;
 using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Merchant;
 using Joker.WebApp.ViewModels.Merchant.Request;
+using Joker.WebApp.ViewModels.Shared;
 using Joker.WebApp.ViewModels.Store;
 using Joker.WebApp.ViewModels.Store.Request;
 

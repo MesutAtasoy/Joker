@@ -7,6 +7,7 @@ namespace Aggregator.Api.Models.Campaign
     {
         public Guid Id { get; set; }
         public IdName Store { get; set; }
+        public IdName Merchant { get; set; }
         public IdName BusinessDirectory { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }

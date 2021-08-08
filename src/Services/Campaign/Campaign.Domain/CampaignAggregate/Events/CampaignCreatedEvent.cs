@@ -10,6 +10,7 @@ namespace Campaign.Domain.CampaignAggregate.Events
       
         public CampaignCreatedEvent(Guid id, 
             StoreRef store,
+            MerchantRef merchant,
             BusinessDirectoryRef businessDirectory,
             string slug,
             string slugKey,
@@ -25,6 +26,8 @@ namespace Campaign.Domain.CampaignAggregate.Events
             Id = id;
             StoreId = store.RefId;
             StoreName = store.Name;
+            MerchantId = merchant.RefId;
+            MerchantName = merchant.Name;
             BusinessDirectoryId = businessDirectory.RefId;
             BusinessDirectoryName = businessDirectory.Name;
             Slug = slug;
@@ -42,6 +45,8 @@ namespace Campaign.Domain.CampaignAggregate.Events
         public Guid Id { get; private set; }
         public Guid StoreId { get; private set; }
         public string StoreName { get; private set; }
+        public Guid MerchantId { get; private set; }
+        public string MerchantName { get; private set; }
         public Guid BusinessDirectoryId { get; private set; }
         public string BusinessDirectoryName { get; private set; }
         public string Slug { get; private set; }

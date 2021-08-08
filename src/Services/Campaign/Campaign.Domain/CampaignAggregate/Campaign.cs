@@ -1,5 +1,6 @@
 using System;
 using Campaign.Domain.CampaignAggregate.Events;
+using Campaign.Domain.CampaignAggregate.Rules;
 using Campaign.Domain.Refs;
 using Joker.Domain;
 using Joker.Domain.Entities;
@@ -17,6 +18,7 @@ namespace Campaign.Domain.CampaignAggregate
 
         public Guid Id { get; private set; }
         public StoreRef Store { get; private set; }
+        public MerchantRef Merchant { get; private set; }
         public BusinessDirectoryRef BusinessDirectory { get; private set; }
         public string Slug { get; private set; }
         public string SlugKey { get; private set; }
@@ -37,6 +39,7 @@ namespace Campaign.Domain.CampaignAggregate
         /// </summary>
         /// <param name="id"></param>
         /// <param name="store"></param>
+        /// <param name="merchant"></param>
         /// <param name="businessDirectory"></param>
         /// <param name="title"></param>
         /// <param name="code"></param>
@@ -49,6 +52,7 @@ namespace Campaign.Domain.CampaignAggregate
         /// <returns></returns>
         public static Campaign Create(Guid id,
             StoreRef store,
+            MerchantRef merchant,
             BusinessDirectoryRef businessDirectory,
             string title,
             string code,
@@ -61,8 +65,9 @@ namespace Campaign.Domain.CampaignAggregate
         {
             Check.NotEmpty(id, nameof(id));
             Check.NotNull(store, nameof(store));
+            Check.NotNull(merchant, nameof(merchant));
             Check.NotNull(businessDirectory, nameof(businessDirectory));
-            Check.NotNullOrEmpty(title, nameof(title));
+            CheckRule(new TitleValidRule(title));
 
             var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
             var slug = $"{title.GenerateSlug()}-{slugKey}";
@@ -70,6 +75,7 @@ namespace Campaign.Domain.CampaignAggregate
             {
                 Id = id,
                 Store = store,
+                Merchant = merchant,
                 BusinessDirectory = businessDirectory,
                 Title = title,
                 Code = code,
@@ -87,6 +93,7 @@ namespace Campaign.Domain.CampaignAggregate
             
             campaign.AddDomainEvent(new CampaignCreatedEvent(id,
                 store,
+                merchant,
                 businessDirectory,
                 slug,
                 slugKey,

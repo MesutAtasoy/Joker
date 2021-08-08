@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Aggregator.Api.Models.Store;
 using Grpc.Core;
 using Joker.Extensions;
+using Joker.Response;
 using Merchant.Api.Grpc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -21,7 +22,7 @@ namespace Aggregator.Api.Services.Store
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<StoreModel> CreateAsync(CreateStoreModel request)
+        public async Task<JokerBaseResponse<StoreModel>> CreateAsync(CreateStoreModel request)
         {
             var headers = await GetHeaders();
             
@@ -63,11 +64,17 @@ namespace Aggregator.Api.Services.Store
                     Address = request.Location.Address
                 }
             }, headers);
-
-            return As(response);
+            
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<StoreModel>(null, response.Status, response.Message);
+            }
+            
+            var store = response.Data.Unpack<StoreMessage>();
+            return new JokerBaseResponse<StoreModel>(As(store), 200);
         }
 
-        public async Task<StoreModel> UpdateAsync(UpdateStoreModel request)
+        public async Task<JokerBaseResponse<StoreModel>> UpdateAsync(UpdateStoreModel request)
         {
             var headers = await GetHeaders();
 
@@ -85,11 +92,16 @@ namespace Aggregator.Api.Services.Store
                 }
             }, headers);
             
-            return As(response);
-
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<StoreModel>(null, response.Status, response.Message);
+            }
+            
+            var store = response.Data.Unpack<StoreMessage>();
+            return new JokerBaseResponse<StoreModel>(As(store), 200);
         }
         
-        public async Task<StoreLocationModel> UpdateLocationAsync(UpdateStoreLocationModel request)
+        public async Task<JokerBaseResponse<StoreLocationModel>> UpdateLocationAsync(UpdateStoreLocationModel request)
         {
             var headers = await GetHeaders();
 
@@ -127,7 +139,12 @@ namespace Aggregator.Api.Services.Store
                 }
             }, headers);
 
-            return new StoreLocationModel
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<StoreLocationModel>(null, response.Status, response.Message);
+            }
+            
+            var storeLocationModel =  new StoreLocationModel
             {
                 Country = new Models.Shared.IdName()
                 {
@@ -156,14 +173,24 @@ namespace Aggregator.Api.Services.Store
                 },
                 Address = request.Location.Address
             };
+            
+            var storeLocation = response.Data.Unpack<StoreLocationMessage>();
+            return new JokerBaseResponse<StoreLocationModel>(storeLocationModel, 200);
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
+        public async Task<JokerBaseResponse<bool>> DeleteAsync(Guid id)
         {
             var headers = await GetHeaders();
 
             var response =  await _merchantApiGrpcServiceClient.DeleteStoreAsync(new ByIdMessage {Id = id.ToString()}, headers);
-            return response.IsSucceed;
+            
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<bool>(false, response.Status, response.Message);
+            }
+            
+            var deleteCampaignMessage = response.Data.Unpack<DeleteStoreResponseMessage>();
+            return new JokerBaseResponse<bool>(deleteCampaignMessage.IsSucceed, 200);
         }
 
         public async Task<StoreModel> GetByIdAsync(Guid id)

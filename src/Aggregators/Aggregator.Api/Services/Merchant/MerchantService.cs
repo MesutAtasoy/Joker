@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Aggregator.Api.Models.Merchant;
 using Grpc.Core;
 using Joker.Extensions;
+using Joker.Response;
 using Merchant.Api.Grpc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +23,7 @@ namespace Aggregator.Api.Services.Merchant
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<MerchantModel> CreateAsync(CreateMerchantModel request,  string pricingPlanId, string pricingPlanName)
+        public async Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel request,  string pricingPlanId, string pricingPlanName)
         {
             var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
@@ -40,11 +41,17 @@ namespace Aggregator.Api.Services.Merchant
                     Name = pricingPlanName
                 }
             }, headers);
-
-            return As(response);
+            
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
+            }
+            
+            var merchant = response.Data.Unpack<MerchantMessage>();
+            return new JokerBaseResponse<MerchantModel>(As(merchant), 200);
         }
 
-        public async Task<MerchantModel> UpdateAsync(UpdateMerchantModel createMerchantModel)
+        public async Task<JokerBaseResponse<MerchantModel>> UpdateAsync(UpdateMerchantModel createMerchantModel)
         {
             var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.UpdateMerchantAsync(new UpdateMerchantMessage
@@ -62,15 +69,28 @@ namespace Aggregator.Api.Services.Merchant
                 }
             } ,headers);
             
-            return As(response);
+              
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
+            }
+            
+            var merchant = response.Data.Unpack<MerchantMessage>();
+            return new JokerBaseResponse<MerchantModel>(As(merchant), 200);
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
+        public async Task<JokerBaseResponse<bool>> DeleteAsync(Guid id)
         {
             var headers = await GetHeaders();
 
             var response =  await _merchantApiGrpcServiceClient.DeleteMerchantAsync(new ByIdMessage {Id = id.ToString()}, headers);
-            return response.IsSucceed;
+            if (response.Status != 200)
+            {
+                return new JokerBaseResponse<bool>(false, response.Status, response.Message);
+            }
+            
+            var deleteCampaignMessage = response.Data.Unpack<DeleteMerchantResponseMessage>();
+            return new JokerBaseResponse<bool>(deleteCampaignMessage.IsSucceed, 200);
         }
 
         public async Task<MerchantModel> GetById(Guid id)

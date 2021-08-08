@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Campaign.Api.Grpc;
 using Campaign.Application.Campaigns;
 using Campaign.Application.Campaigns.Command.CreateCampaign;
@@ -24,35 +25,56 @@ namespace Campaign.Api.GrpcServices
             _campaignManager = campaignManager;
         }
 
-        public override async Task<CampaignMessage> CreateCampaign(CreateCampaignMessage request,
+        public override async Task<CampaignBaseGrpcResponse> CreateCampaign(CreateCampaignMessage request,
             ServerCallContext context)
         {
-            var response = await _campaignManager.CreateAsync(new CreateCampaignCommand
+            try
             {
-                Title = request.Title,
-                Description = request.Description,
-                Condition = request.Condition,
-                Code = request.Code,
-                Store = new IdNameDto
+                var response = await _campaignManager.CreateAsync(new CreateCampaignCommand
                 {
-                    RefId = request.Store.Id.ToGuid(),
-                    Name = request.Store.Name
-                },
-                Channel = request.Channel,
-                BusinessDirectory = new IdNameDto
-                {
-                    RefId = request.BusinessDirectory.Id.ToGuid(),
-                    Name = request.BusinessDirectory.Name
-                },
-                EndTime = request.EndTime?.ToDateTime(),
-                StartTime = request.StartTime?.ToDateTime(),
-                PreviewImageUrl = request.PreviewImageUrl
-            });
+                    Title = request.Title,
+                    Description = request.Description,
+                    Condition = request.Condition,
+                    Code = request.Code,
+                    Merchant = new IdNameDto
+                    {
+                        RefId = request.Merchant.Id.ToGuid(),
+                        Name = request.Merchant.Name
+                    },
+                    Store = new IdNameDto
+                    {
+                        RefId = request.Store.Id.ToGuid(),
+                        Name = request.Store.Name
+                    },
+                    BusinessDirectory = new IdNameDto
+                    {
+                        RefId = request.BusinessDirectory.Id.ToGuid(),
+                        Name = request.BusinessDirectory.Name
+                    },
+                    EndTime = request.EndTime?.ToDateTime(),
+                    StartTime = request.StartTime?.ToDateTime()
+                });
 
-            return As(response);
+                var campaignMessage = As(response);
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = Any.Pack(campaignMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
-        public override async Task<CampaignMessage> UpdateCampaign(UpdateCampaignMessage request,
+        public override async Task<CampaignBaseGrpcResponse> UpdateCampaign(UpdateCampaignMessage request,
             ServerCallContext context)
         {
             var updateCampaignDto = new UpdateCampaignDto
@@ -61,28 +83,64 @@ namespace Campaign.Api.GrpcServices
                 Description = request.Campaign.Description,
                 Condition = request.Campaign.Condition,
                 Code = request.Campaign.Code,
-                PreviewImageUrl = request.Campaign.PreviewImageUrl,
+                EndTime = request.Campaign.EndTime?.ToDateTime(),
+                StartTime = request.Campaign.StartTime?.ToDateTime()
             };
 
-            var response = await _campaignManager.UpdateAsync(new UpdateCampaignCommand(request.Id.ToGuid(), updateCampaignDto));
-
-            return As(response);
+            try
+            {
+                var response =
+                    await _campaignManager.UpdateAsync(
+                        new UpdateCampaignCommand(request.Id.ToGuid(), updateCampaignDto));
+                var campaignMessage = As(response);
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = Any.Pack(campaignMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
-        public override async Task<DeleteCampaignMessage> DeleteCampaign(ByIdMessage request, ServerCallContext context)
+        public override async Task<CampaignBaseGrpcResponse> DeleteCampaign(ByIdMessage request,
+            ServerCallContext context)
         {
-            var response = await _campaignManager.DeleteAsync(new DeleteCampaignCommand(request.Id.ToGuid()));
-
-            return new DeleteCampaignMessage
+            try
             {
-                Succeed = response
-            };
+                var response = await _campaignManager.DeleteAsync(new DeleteCampaignCommand(request.Id.ToGuid()));
+
+                var deleteCampaignMessage = new DeleteCampaignMessage { Succeed = response };
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = Any.Pack(deleteCampaignMessage),
+                    Message = " ",
+                    Status = 200
+                };
+            }
+            catch (Exception e)
+            {
+                return new CampaignBaseGrpcResponse
+                {
+                    Data = null,
+                    Message = e.Message,
+                    Status = 400
+                };
+            }
         }
 
         public override async Task<CampaignMessage> GetById(ByIdMessage request, ServerCallContext context)
         {
             var response = await _campaignManager.GetByIdAsync(request.Id.ToGuid());
-            
+
             return As(response);
         }
 
@@ -90,12 +148,12 @@ namespace Campaign.Api.GrpcServices
 
         public CampaignMessage As(CampaignDto campaign)
         {
-            return new ()
+            return new()
             {
-                Channel = campaign.Channel,
-                Code = campaign.Code,
-                Condition = campaign.Condition,
-                Description = campaign.Description,
+                Channel = campaign.Channel ?? " ",
+                Code = campaign.Code ?? " ",
+                Condition = campaign.Condition ?? " ",
+                Description = campaign.Description ?? " ",
                 Id = campaign.Id.ToString(),
                 Slug = campaign.Slug,
                 SlugKey = campaign.SlugKey,
@@ -103,6 +161,11 @@ namespace Campaign.Api.GrpcServices
                 {
                     Id = campaign.Store.RefId.ToString(),
                     Name = campaign.Store.Name
+                },
+                Merchant = new IdName
+                {
+                    Id = campaign.Merchant.RefId.ToString(),
+                    Name = campaign.Merchant.Name
                 },
                 BusinessDirectory = new IdName
                 {
@@ -114,7 +177,7 @@ namespace Campaign.Api.GrpcServices
                 EndTime = campaign.EndTime?.ToTimestamp(),
                 StartTime = campaign.StartTime?.ToTimestamp(),
                 ModifiedDate = campaign.ModifiedDate?.ToTimestamp(),
-                PreviewImageUrl = campaign.PreviewImageUrl
+                PreviewImageUrl = campaign.PreviewImageUrl ?? " "
             };
         }
 

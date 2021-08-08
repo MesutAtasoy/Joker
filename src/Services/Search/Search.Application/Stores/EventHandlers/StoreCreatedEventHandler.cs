@@ -37,7 +37,9 @@ namespace Search.Application.Stores.EventHandlers
                 QuarterId = @event.QuarterId,
                 QuarterName = @event.QuarterName,
                 Address = @event.Address,
-                PhoneNumber = @event.PhoneNumber
+                PhoneNumber = @event.PhoneNumber,
+                MerchantId = @event.MerchantId,
+                MerchantName = @event.MerchantName
             };
 
             await _storeIndexManager.AddOrUpdateAsync(storeIndexModel);

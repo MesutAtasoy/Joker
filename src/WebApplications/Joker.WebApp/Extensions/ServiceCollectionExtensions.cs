@@ -29,6 +29,7 @@ namespace Joker.WebApp.Extensions
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
                 {
                     options.AccessDeniedPath = "/Authorization/AccessDenied";
+                    options.LoginPath = "/Account/Login";
                 })
                 .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
                 {
@@ -101,6 +102,7 @@ namespace Joker.WebApp.Extensions
             services.AddScoped<IManagementApiService, ManagementApiService>();
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IMerchantService, MerchantService>();
+            services.AddScoped<ICampaignService, CampaignService>();
             return services;
         }
 

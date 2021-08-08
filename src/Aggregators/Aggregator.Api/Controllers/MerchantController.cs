@@ -33,22 +33,22 @@ namespace Aggregator.Api.Controllers
                 return BadRequest("Pricing plan is not found");
             }
 
-            var merchant = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
-            return Ok(new JokerBaseResponse<MerchantModel>(merchant));
+            var response = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
+            return Ok(response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateMerchantModel model)
         {
-            var merchant = await _merchantService.UpdateAsync(model);
-            return Ok(new JokerBaseResponse<MerchantModel>(merchant));
+            var response = await _merchantService.UpdateAsync(model);
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _merchantService.DeleteAsync(id);
-            return Ok(new JokerBaseResponse<bool>(result));
+            return Ok(result);
         }
     }
 }

@@ -1,0 +1,75 @@
+﻿@model Joker.WebApp.ViewModels.Campaign.Request.CreateCampaignViewModel
+@{
+    ViewData["Title"] = "Campaign";
+    Layout = "_Layout";
+}
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center flex-column">
+                <div class="card d-flex blur justify-content-center p-4 shadow-lg">
+                    <div class="text-center">
+                        <h3 class="text-gradient text-primary">Campaign Information</h3>
+                    </div>
+                    <form asp-controller="Campaign" asp-action="New" autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@Model.Merchant.Id" asp-for="Merchant.Id">
+                        <input type="hidden" value="@Model.Channel" asp-for="Channel">
+                        <div class="card-body pb-2">
+                            <div class="row">
+                                <partial name="_ValidationSummary"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Title</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" placeholder="Campaign Title" aria-label="Campaign Title" type="text" asp-for="Title">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Code</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" placeholder="Campaign's Code" aria-label="Campaign Code" type="text" asp-for="Code">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-md-0 mt-4">
+                                <label>Description</label>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Condition" asp-for="Description"></textarea>
+                            </div>
+                            <div class="form-group mb-0 mt-md-0 mt-4">
+                                <label>Condition</label>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Condition" asp-for="Condition"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Business Directory</label>
+                                    <div class="input-group mb-4">
+                                        <select asp-for="BusinessDirectory.Id" class="form-control"
+                                                asp-items="@(new SelectList(@ViewBag.BusinessDirectories, "Id", "DisplayName"))">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Store</label>
+                                    <div class="input-group mb-4">
+                                        <select asp-for="Store.Id" class="form-control"
+                                                asp-items="@(new SelectList(@ViewBag.Stores, "Id", "Name"))">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <input type="submit" value="Save" class="btn bg-success mt-3 mb-0"/>
+                                    <input type="submit" value="Cancel" class="btn bg-danger mt-3 mb-0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

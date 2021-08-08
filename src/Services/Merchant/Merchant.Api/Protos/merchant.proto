@@ -5,14 +5,14 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
 service MerchantApiGrpcService {
-  rpc CreateMerchant (CreateMerchantMessage) returns (MerchantMessage);
-  rpc UpdateMerchant (UpdateMerchantMessage) returns (MerchantMessage);
-  rpc DeleteMerchant (ByIdMessage) returns (DeleteMerchantResponseMessage);
+  rpc CreateMerchant (CreateMerchantMessage) returns (MerchantBaseGrpcResponse);
+  rpc UpdateMerchant (UpdateMerchantMessage) returns (MerchantBaseGrpcResponse);
+  rpc DeleteMerchant (ByIdMessage) returns (MerchantBaseGrpcResponse);
   rpc GetMerchantById (ByIdMessage) returns (MerchantMessage);
-  rpc CreateStore (CreateStoreMessage) returns (StoreMessage);
-  rpc UpdateStore (UpdateStoreMessage) returns (StoreMessage);
-  rpc UpdateLocation (UpdateStoreLocationMessage) returns (StoreLocationMessage);
-  rpc DeleteStore (ByIdMessage) returns (DeleteStoreResponseMessage);
+  rpc CreateStore (CreateStoreMessage) returns (MerchantBaseGrpcResponse);
+  rpc UpdateStore (UpdateStoreMessage) returns (MerchantBaseGrpcResponse);
+  rpc UpdateLocation (UpdateStoreLocationMessage) returns (MerchantBaseGrpcResponse);
+  rpc DeleteStore (ByIdMessage) returns (MerchantBaseGrpcResponse);
   rpc GetStoreById (ByIdMessage) returns (StoreMessage);
 }
 
@@ -125,8 +125,8 @@ message MerchantMessage {
   google.protobuf.Timestamp modifiedDate = 11;
 }
 
-message GrpcBaseMessage {
+message MerchantBaseGrpcResponse {
   int32 status = 1;
-  string message = 2;
-  google.protobuf.Any payload = 3;
+  string  message = 2;
+  google.protobuf.Any data = 3;
 }

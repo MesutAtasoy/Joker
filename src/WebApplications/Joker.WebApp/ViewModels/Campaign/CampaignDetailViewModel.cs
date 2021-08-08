@@ -1,6 +1,6 @@
 using Joker.WebApp.ViewModels.Search;
 
-namespace Joker.WebApp.ViewModels
+namespace Joker.WebApp.ViewModels.Campaign
 {
     public class CampaignDetailViewModel
     {
