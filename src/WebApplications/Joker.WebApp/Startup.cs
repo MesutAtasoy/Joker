@@ -29,8 +29,8 @@ namespace Joker.WebApp
             services.AddJokerIdentityApiClient(Configuration);
             services.AddJokerAuthentication(Configuration);
             services.AddApiServices();
+            services.AddUserServices();
             services.AddDataProtection();
-         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

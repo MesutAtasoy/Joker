@@ -11,25 +11,50 @@ namespace Joker.WebApp.Services
     public class MerchantService : IMerchantService
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _httpClient;
         
         public MerchantService(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
-            
+            _httpClient = _clientFactory.CreateClient("GatewayApi");
         }
+        
         public async Task<MerchantViewModel> CreateAsync(CreateMerchantViewModel createMerchantViewModel)
         {   
-            var client = _clientFactory.CreateClient("GatewayApi");
-
-            var responseMessage = await client.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
+            var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
             if (!responseMessage.IsSuccessStatusCode)
             {
-                var sss = responseMessage.Content.ReadAsStringAsync(); 
                 throw new ArgumentException("Merchant Service can not respond success response");
             }
             
             var merchant = await responseMessage.Content.ReadFromJsonAsync<MerchantViewModel>();
 
+            return merchant;
+        }
+
+        public async Task<MerchantViewModel> UpdateAsync(UpdateMerchantViewModel updateMerchantViewModel)
+        {
+            var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Merchants", updateMerchantViewModel);
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new ArgumentException("Merchant Service can not respond success response");
+            }
+            
+            var merchant = await responseMessage.Content.ReadFromJsonAsync<MerchantViewModel>();
+
+            return merchant;        
+        }
+
+        public async Task<MerchantViewModel> GetByIdAsync(Guid id)
+        {
+            var responseMessage = await _httpClient.GetAsync($"merchant/api/Merchants/{id}");
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new ArgumentException("Merchant Service can not respond success response");
+            }
+            
+            var merchant = await responseMessage.Content.ReadFromJsonAsync<MerchantViewModel>();
+            
             return merchant;
         }
     }

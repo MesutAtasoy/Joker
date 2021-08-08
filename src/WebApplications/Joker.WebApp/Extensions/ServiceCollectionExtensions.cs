@@ -103,5 +103,10 @@ namespace Joker.WebApp.Extensions
             services.AddScoped<IMerchantService, MerchantService>();
             return services;
         }
+
+        public static IServiceCollection AddUserServices(this IServiceCollection services)
+        {
+            return services.AddTransient<IUserService, UserService>();
+        }
     }
 }

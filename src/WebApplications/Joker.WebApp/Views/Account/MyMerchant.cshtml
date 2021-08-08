@@ -1,0 +1,80 @@
+﻿@model Joker.WebApp.ViewModels.Merchant.Request.UpdateMerchantViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div class="row mt-5">
+    <div class="col-lg-4">
+        @await Html.PartialAsync("_AccountNav");
+    </div>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center flex-column">
+                <div class="card d-flex blur justify-content-center p-4 shadow-lg">
+                    <div class="text-center">
+                        <h3 class="text-gradient text-primary">Merchant Information</h3>
+                    </div>
+                    <form asp-controller="Account" asp-action="MyMerchant" autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@Model.Id" asp-for="Id">
+                        <div class="card-body pb-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" placeholder="Merchant Name" aria-label="Merchant Name" type="text" asp-for="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ps-md-2">
+                                    <label>Website url</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Web site url" asp-for="WebSiteUrl">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Slogan</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" placeholder="Merchant's slogan" aria-label="Merchant's slogan" type="text" asp-for="Slogan">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ps-md-2">
+                                    <label>Tax Number</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Tax Number" asp-for="TaxNumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                    <div class="input-group mb-4">
+                                        <input class="form-control" placeholder="Email" aria-label="Email" type="email" asp-for="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ps-md-2">
+                                    <label>Phone Number</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Phone Number" asp-for="PhoneNumber">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 mt-md-0 mt-4">
+                                <label>Description</label>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <input type="submit" value="Save Change(s)" class="btn bg-success mt-3 mb-0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

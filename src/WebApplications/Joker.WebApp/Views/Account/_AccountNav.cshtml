@@ -1,37 +1,29 @@
-@model string
-@{
-    var isDashboard = Model == "Dashboard" ? "active" : "";
-    var isMyMerchant = Model == "MyMerchant" ? "active" : "";
-    var isMyStores = Model == "MyStores" ? "active" : "";
-    var isMyCampaigns = Model == "MyCampaigns" ? "active" : "";
-    var isSubscriptionPlans = Model == "SubscriptionPlans" ? "active" : "";
-}
 <div class="nav-wrapper position-relative end-0">
     <ul class="nav nav-pills nav-fill flex-column p-1" role="tablist">
         <li class="nav-item">
-            <a class="nav-link mb-0 px-0 py-1 @isDashboard" data-bs-toggle="tab" href="#dashboard-tabs-vertical" role="tab" aria-controls="code">
+            <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="Index">
                 Dashboard
             </a>
         </li>
         @if (User.IsInRole("PaidUser"))
         {
             <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1 @isMyMerchant" data-bs-toggle="tab" href="#mymerchant-tabs-vertical" role="tab" aria-controls="code">
+                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyMerchant">
                     My Merchant
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1 @isMyStores" data-bs-toggle="tab" href="#mystores-tabs-vertical" role="tab" aria-controls="code">
+                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyStores">
                     My Stores
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1 @isMyCampaigns" data-bs-toggle="tab" href="#mycampaigns-tabs-vertical" role="tab" aria-controls="code">
+                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyCampaigns">
                     My Campaigns
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1" @isSubscriptionPlans data-bs-toggle="tab" href="#subscriptionplan-tabs-vertical" role="tab" aria-controls="code">
+                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MySubscriptionPlan">
                     Subscription Plans
                 </a>
             </li>
