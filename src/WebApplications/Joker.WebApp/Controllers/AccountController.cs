@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
 using Joker.WebApp.ViewModels.Merchant;
@@ -60,12 +61,19 @@ namespace Joker.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var merchant = await _merchantService.UpdateAsync(model);
+                await _merchantService.UpdateAsync(model);
                 return RedirectToAction("Index", "Account");
             }
             
             return View(model);
         }
-        
+
+
+        public async Task<IActionResult> MyStores(int page = 1)
+        {
+            var merchantId = _userService.GetOrganizationId();
+            var stores = await _merchantService.GetStoresAsync(merchantId, page);
+            return View(stores);
+        }
     }
 }

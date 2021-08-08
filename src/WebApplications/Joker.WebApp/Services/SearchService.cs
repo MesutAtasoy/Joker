@@ -12,22 +12,23 @@ namespace Joker.WebApp.Services
     public class SearchService : ISearchService
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _httpClient;
 
         public SearchService(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
+            _httpClient = _clientFactory.CreateClient("GatewayApi");
         }
 
         public async Task<SearchBaseResponse<CampaignSearchResponse>> SearchCampaignAsync(CampaignSearchRequest request)
         {
-            var client = _clientFactory.CreateClient("GatewayApi");
             var queryString = UrlExtensions.GetUrlQueryString(request);
 
             var requestUri = string.IsNullOrEmpty(queryString)
                 ? "search/api/campaigns"
                 : $"search/api/campaigns?{queryString}";
             
-            var responseMessage = await client.GetAsync(requestUri);
+            var responseMessage = await _httpClient.GetAsync(requestUri);
             
             if (!responseMessage.IsSuccessStatusCode)
             {
@@ -42,14 +43,13 @@ namespace Joker.WebApp.Services
 
         public async Task<SearchBaseResponse<StoreSearchResponse>> SearchStoreAsync(StoreSearchRequest request)
         {
-            var client = _clientFactory.CreateClient("GatewayApi");
             var queryString = UrlExtensions.GetUrlQueryString(request);
             
             var requestUri = string.IsNullOrEmpty(queryString)
                 ? "search/api/stores"
                 : $"search/api/stores?{queryString}";
             
-            var responseMessage = await client.GetAsync(requestUri);
+            var responseMessage = await _httpClient.GetAsync(requestUri);
             if (!responseMessage.IsSuccessStatusCode)
             {
                 throw new ArgumentException("Search Service can not respond success response");

@@ -1,7 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Merchant;
 using Joker.WebApp.ViewModels.Merchant.Request;
+using Joker.WebApp.ViewModels.Store;
+using Joker.WebApp.ViewModels.Store.Request;
 
 namespace Joker.WebApp.Services.Abstract
 {
@@ -10,5 +13,9 @@ namespace Joker.WebApp.Services.Abstract
         Task<MerchantViewModel> CreateAsync(CreateMerchantViewModel createMerchantViewModel);
         Task<MerchantViewModel> UpdateAsync(UpdateMerchantViewModel updateMerchantViewModel);
         Task<MerchantViewModel> GetByIdAsync(Guid id);
+        Task<PagedListViewModel<StoreViewModel>> GetStoresAsync(Guid merchantId, int page = 1, int pageSize = 20);
+        Task<StoreViewModel> CreateStoreAsync(CreateStoreViewModel createStoreViewModel);
+        Task<StoreViewModel> UpdateStoreAsync(UpdateStoreViewModel updateStoreViewModel);
+        Task<StoreViewModel> GetStoreByIdAsync(Guid id);
     }
 }
