@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Joker.Extensions.Models;
 using MediatR;
 using Merchant.Application.Merchants.Commands.CreateMerchant;
 using Merchant.Application.Merchants.Commands.DeleteMerchant;
@@ -33,17 +34,18 @@ namespace Merchant.Api.Controllers
         {
             return Ok(await _mediator.Send(new GetMerchantByIdQuery(id)));
         }
-        
-        
+
+
         /// <summary>
         /// Returns stores
         /// </summary>
         /// <param name="id"></param>
+        /// <param name="filter"></param>
         /// <returns></returns>
         [HttpGet("{id}/Stores")]
-        public async Task<ActionResult> GetStoresAsync(Guid id)
+        public async Task<ActionResult> GetStoresAsync(Guid id, PaginationFilter filter)
         {
-            return Ok(await _mediator.Send(new GetStoresByMerchantIdQuery(id)));
+            return Ok(await _mediator.Send(new GetStoresByMerchantIdQuery(id, filter)));
         }
         
         
