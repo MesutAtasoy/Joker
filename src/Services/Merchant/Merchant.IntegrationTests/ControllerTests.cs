@@ -143,8 +143,7 @@ namespace Merchant.IntegrationTests
             Assert.Equal(createStoreCommand.Email, store?.Email);
             Assert.Equal(createStoreCommand.Description, store?.Description);
             Assert.Equal(createStoreCommand.PhoneNumber, store?.PhoneNumber);
-            Assert.Equal(createStoreCommand.MerchantId, store?.Merchant.RefId);
-            ;
+            Assert.Equal(createStoreCommand.MerchantId, store?.Merchant.RefId); ;
             Assert.Equal(createStoreCommand.Slogan, store?.Slogan);
             Assert.Equal(createStoreCommand.Location.Address, store?.Location.Address);
             Assert.NotNull(store?.Id);

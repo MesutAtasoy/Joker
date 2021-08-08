@@ -20,10 +20,8 @@ namespace Merchant.Infrastructure
             BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
 #pragma warning restore 618
 
-            var sss = BsonSerializer.SerializerRegistry.GetSerializer<GuidSerializer>();
-            
-            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
-            
+            // BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
             BsonClassMappingConfiguration.ApplyConfigurationsFromAssembly(typeof(MerchantContext).Assembly);
         }
     }
