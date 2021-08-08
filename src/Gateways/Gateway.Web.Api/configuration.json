@@ -95,6 +95,22 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Subscription.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/subscription/api/{everything}",
+      "SwaggerKey": "subscription",
+      "UpstreamHttpMethod": ["GET"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
   ],
   "SwaggerEndPoints": [
@@ -155,6 +171,16 @@
           "Name": "Aggregator API",
           "Version": "v1",
           "Url": "http://localhost:5006/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "subscription",
+      "Config": [
+        {
+          "Name": "Subscription API",
+          "Version": "v1",
+          "Url": "http://localhost:5007/swagger/v1/swagger.json"
         }
       ]
     }

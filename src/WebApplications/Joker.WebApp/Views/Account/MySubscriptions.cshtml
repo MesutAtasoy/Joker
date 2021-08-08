@@ -1,0 +1,56 @@
+﻿@model List<Joker.WebApp.ViewModels.Subscription.SubscriptionViewModel>
+@{
+    ViewData["Title"] = "My Subscription Plans";
+    Layout = "_Layout";
+}
+
+<div class="row mt-5">
+    <div class="col-lg-4">
+        @await Html.PartialAsync("_AccountNav");
+    </div>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mb-4 mt-4">
+                    <h6 class="text-gradient text-primary">My Subscription Plans</h6>
+                </div>
+            </div>
+        </div>
+        @if (Model.Any())
+        {
+            @foreach (var subscription in Model)
+            {
+                <div class="card">
+                    <div class="card-body pt-2">
+                        <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2"></span>
+                        <a href="javascript:;" class="card-title h5 d-block text-darker">
+                            @subscription.PricingPlan.Name
+                        </a>
+                        <div class="card-description mb-4">
+                            <ul>
+                                <li>
+                                    Merchant Name : @subscription.Merchant.Name
+                                </li>
+                                <li>
+                                    Validity Date : @subscription.ValidityDate.ToShortDateString()
+                                </li>
+                                <li>
+                                    Activation Date: @subscription.ActivationDate.ToShortDateString()
+                                </li>
+                                <li>
+                                    Activation Code: @subscription.ActivationCode
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="text-center bg-light p-5">
+                There is no subscription.
+            </div>
+        }
+    </div>
+</div>

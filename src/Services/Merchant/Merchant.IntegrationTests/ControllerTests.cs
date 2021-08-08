@@ -46,7 +46,12 @@ namespace Merchant.IntegrationTests
                 PhoneNumber = faker.Person.Phone,
                 Slogan = faker.Lorem.Sentences(1),
                 TaxNumber = faker.Finance.Account(),
-                WebSiteUrl = faker.Person.Website
+                WebSiteUrl = faker.Person.Website,
+                PricingPlan = new IdNameDto
+                {
+                    Name = faker.Lorem.Word(),
+                    RefId = faker.Random.Guid()
+                }
             };
 
             var response = await _client.PostAsJsonAsync("api/Merchants", createMerchantCommand);

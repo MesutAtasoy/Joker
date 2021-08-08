@@ -14,15 +14,18 @@ namespace Joker.WebApp.Controllers
     {
         private readonly IMerchantService _merchantService;
         private readonly ICampaignService _campaignService;
+        private readonly ISubscriptionService _subscriptionService;
         private readonly IUserService _userService;
 
         public AccountController(IMerchantService merchantService,
             IUserService userService, 
-            ICampaignService campaignService)
+            ICampaignService campaignService, 
+            ISubscriptionService subscriptionService)
         {
             _merchantService = merchantService;
             _userService = userService;
             _campaignService = campaignService;
+            _subscriptionService = subscriptionService;
         }
 
         public async Task<IActionResult> Logout()
@@ -92,6 +95,14 @@ namespace Joker.WebApp.Controllers
             var merchantId = _userService.GetOrganizationId();
             var campaigns = await _campaignService.GetCampaigns(merchantId, page);
             return View(campaigns);
+        }
+        
+        [Authorize(Roles = "PaidUser")]
+        public async Task<IActionResult> MySubscriptions()
+        {
+            var merchantId = _userService.GetOrganizationId();
+            var subscriptions = await _subscriptionService.GetSubscriptions(merchantId);
+            return View(subscriptions);
         }
     }
 }
