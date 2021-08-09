@@ -24,14 +24,14 @@
     {
         <div class="card col-lg-3 m-3">
             <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
-                <a href="javascript:;" class="d-block">
+                <a asp-controller="Campaign" asp-action="Explore" asp-route-id="@campaign.Slug" class="d-block">
                     <img src="~/theme/img/anastasia.jpg" class="img-fluid border-radius-lg">
                 </a>
             </div>
 
             <div class="card-body pt-2">
                 <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Joker</span>
-                <a href="javascript:;" class="card-title h5 d-block text-darker">
+                <a asp-controller="Campaign" asp-action="Explore" asp-route-id="@campaign.Slug" class="card-title h5 d-block text-darker">
                     @campaign.Title
                 </a>
                 <p class="card-description mb-4">

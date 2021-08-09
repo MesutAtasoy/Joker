@@ -4,67 +4,41 @@
     Layout = "_Layout";
 }
 
-<div class="text-center bg-light">
-    <h1 class="display-4">Best Campaigns which you may like!</h1>
-    <p>Explore them</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col col-lg-8">
+            @if (Model.Campaign != null)
+            {
+                <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="card-header">
+                        <h5 class="card-title bg-gradient-light p-3">@Model.Campaign.Title</h5>
+                        <p class="card-text">@Model.Campaign.Description</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title bg-gradient-light p-3">Campaign Code</h5>
+                        <p class="card-text">@Model.Campaign.Code</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title bg-gradient-light p-3">Condition</h5>
+                        <p class="card-text">@Model.Campaign.Condition</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col col-lg-4">
+            @if (Model.Store != null)
+            {
+                <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="card-header">
+                        <h5 class="card-title bg-gradient-light p-3">Store Details</h5>
+                        <p class="card-text">@Model.Store.Name</p>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title bg-gradient-light p-3">Store Location</h5>
+                        <p class="card-text">@Model.Store.Address, @Model.Store.DistrictName, @Model.Store.CityName </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
-<hr>
-
-<div class="text-center bg-light">
-    <div class="card-body">
-        <h5 class="card-title">Campaign Details</h5>
-    </div>
-</div>
-<hr>
-
-@if (Model.Campaign != null)
-{
-    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Campaign.Title</h5>
-            <p class="card-text">@Model.Campaign.Description</p>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Campaign Code</h5>
-            <p class="card-text">@Model.Campaign.Code</p>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Condition</h5>
-            <p class="card-text">@Model.Campaign.Condition</p>
-        </div>
-    </div>
-}
-
-
-<div class="text-center bg-light">
-    <div class="card-body">
-        <h5 class="card-title">Store Details</h5>
-    </div>
-</div>
-<hr>
-
-@if (Model.Store != null)
-{
-    <div class="card shadow-lg p-3 mb-5 bg-body rounded">
-        <div class="card-body">
-            <h5 class="card-title">@Model.Store.Name</h5>
-            <p class="card-text">@Model.Store.Description</p>
-            <p class="card-text">@Model.Store.Slogan</p>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Location</h5>
-            <p class="card-text">
-                @Model.Store.Address ,
-                @Model.Store.QuarterName,
-                @Model.Store.NeighborhoodName,
-                @Model.Store.DistrictName,
-                @Model.Store.CityName,
-                @Model.Store.CountryName
-            </p>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Contract</h5>
-            <p class="card-text">@Model.Store.Email</p>
-        </div>
-    </div>
-}

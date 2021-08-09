@@ -104,6 +104,7 @@ namespace Joker.WebApp.Extensions
             services.AddScoped<IMerchantService, MerchantService>();
             services.AddScoped<ICampaignService, CampaignService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<ILocationService, LocationService>();
             return services;
         }
 

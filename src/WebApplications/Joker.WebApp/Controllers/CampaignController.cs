@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
-using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Campaign;
 using Joker.WebApp.ViewModels.Campaign.Request;
 using Joker.WebApp.ViewModels.Search.Request;
@@ -120,8 +119,7 @@ namespace Joker.WebApp.Controllers
             return View(model);
         }
 
-
-        // GET
+        
         public async Task<IActionResult> Explore(string id)
         {
             var campaignViewModel = new CampaignDetailViewModel();

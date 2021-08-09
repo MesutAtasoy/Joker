@@ -12,10 +12,5 @@ namespace Joker.WebApp.Services.Abstract
         Task<List<PricingPlanViewModel>> GetPricingPlansAsync();
         Task<List<BusinessDirectoryViewModel>> GetBusinessDirectoriesAsync();
         Task<PricingPlanViewModel> GetPricingPlanAsync(string slug);
-        Task<IdNameViewModel> GetCountryAsync();
-        Task<List<IdNameViewModel>> GetCitiesAsync(Guid countryId);
-        Task<List<IdNameViewModel>> GetDistrictsAsync(Guid cityId);
-        Task<List<IdNameViewModel>> GetNeighborhoodsAsync(Guid districtId);
-        Task<List<IdNameViewModel>> GetQuartersAsync(Guid neighborhoodId);
     }
 }

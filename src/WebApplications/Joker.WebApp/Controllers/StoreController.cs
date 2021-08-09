@@ -14,22 +14,25 @@ namespace Joker.WebApp.Controllers
         private readonly IUserService _userService;
         private readonly IManagementApiService _managementApiService;
         private readonly IMerchantService _merchantService;
+        private readonly ILocationService _locationService;
         
 
         public StoreController(IUserService userService, 
             IManagementApiService managementApiService, 
-            IMerchantService merchantService)
+            IMerchantService merchantService, 
+            ILocationService locationService)
         {
             _userService = userService;
             _managementApiService = managementApiService;
             _merchantService = merchantService;
+            _locationService = locationService;
         }
 
         // GET
         [Authorize(Roles = "PaidUser")]
         public async Task<IActionResult> New()
         {
-            var country  = await _managementApiService.GetCountryAsync();
+            var country  = await _locationService.GetCountryAsync();
             
             ViewBag.Countries = new List<IdNameViewModel>
             {
@@ -55,7 +58,7 @@ namespace Joker.WebApp.Controllers
                 return RedirectToAction("MyStores", "Account");
             }
             
-            var country  = await _managementApiService.GetCountryAsync();
+            var country  = await _locationService.GetCountryAsync();
             
             ViewBag.Countries = new List<IdNameViewModel>
             {
@@ -120,7 +123,7 @@ namespace Joker.WebApp.Controllers
             {
                 return Json(models);
             }
-            var cities =  await _managementApiService.GetCitiesAsync(countryId);
+            var cities =  await _locationService.GetCitiesAsync(countryId);
             models.AddRange(cities);
             return Json(models);
         }
@@ -138,7 +141,7 @@ namespace Joker.WebApp.Controllers
                 return Json(models);
             }
             
-            var districts =  await _managementApiService.GetDistrictsAsync(cityId);
+            var districts =  await _locationService.GetDistrictsAsync(cityId);
             models.AddRange(districts);
             return Json(models);
         }
@@ -155,7 +158,7 @@ namespace Joker.WebApp.Controllers
                 return Json(models);
             }
             
-            var neighborhoods =  await _managementApiService.GetNeighborhoodsAsync(districtId);
+            var neighborhoods =  await _locationService.GetNeighborhoodsAsync(districtId);
             models.AddRange(neighborhoods);
             return Json(models);
 
@@ -173,7 +176,7 @@ namespace Joker.WebApp.Controllers
                 return Json(models);
             }
             
-            var quarters =  await _managementApiService.GetQuartersAsync(neighborhoodId);
+            var quarters =  await _locationService.GetQuartersAsync(neighborhoodId);
             models.AddRange(quarters);
             return Json(models);
         }
