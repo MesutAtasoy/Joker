@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Campaign.Api.GrpcServices
 {
-    [Authorize]
+    [Authorize(Policy = "ScopePolicy")]
     public class CampaignGrpcService : CampaignApiGrpcService.CampaignApiGrpcServiceBase
     {
         private readonly CampaignManager _campaignManager;

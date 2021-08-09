@@ -3,6 +3,7 @@ using Joker.CAP;
 using Joker.Consul;
 using Joker.Mongo;
 using Joker.Mongo.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -63,9 +64,24 @@ namespace Subscription.Api.Extensions
                     options.Authority = configuration["urls:identityapi"];
                     options.ApiName = "subscriptionapi";
                     options.ApiSecret = "apisecret";
+                    options.RequireHttpsMetadata = false;
                 });
 
             return services;
         }
+        
+        public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ScopePolicy", builder =>
+                {
+                    builder.RequireAuthenticatedUser();
+                    builder.RequireRole("PaidUser");
+                });   
+            });
+
+            return services;
+        }    
     }
 }

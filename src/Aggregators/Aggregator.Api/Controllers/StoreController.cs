@@ -12,7 +12,7 @@ namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Stores")]
-    [Authorize]
+    [Authorize(Policy = "ScopePolicy")]
     public class StoreController : ControllerBase
     {
         private readonly IStoreService _storeService;

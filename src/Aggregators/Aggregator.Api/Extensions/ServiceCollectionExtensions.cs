@@ -12,6 +12,7 @@ using Joker.Consul;
 using Location.Api.Grpc;
 using Management.Api.Grpc;
 using Merchant.Api.Grpc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -69,5 +70,20 @@ namespace Aggregator.Api.Extensions
             services.RegisterConsulServices(x => configuration.GetSection("ServiceDiscovery").Bind(x));
             return services;
         }
+        
+        public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ScopePolicy", builder =>
+                {
+                    builder.RequireAuthenticatedUser();
+                    builder.RequireScope("campaign", "merchant");
+                    builder.RequireRole("FreeUser","PaidUser");
+                });   
+            });
+
+            return services;
+        }    
     }
 }

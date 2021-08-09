@@ -22,7 +22,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Merchant.Api.GrpcServices
 {
-    [Authorize]
+    [Authorize(Policy = "ScopePolicy")]
     public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcServiceBase
     {
         private readonly StoreManager _storeManager;

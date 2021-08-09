@@ -11,7 +11,7 @@ namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Merchants")]
-    [Authorize]
+    [Authorize(Policy = "ScopePolicy")]
     public class MerchantController : ControllerBase
     {
         private readonly IMerchantService _merchantService;

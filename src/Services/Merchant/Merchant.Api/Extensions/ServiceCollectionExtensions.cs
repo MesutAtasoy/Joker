@@ -84,7 +84,7 @@ namespace Merchant.Api.Extensions
                 options.AddPolicy("ScopePolicy", builder =>
                 {
                     builder.RequireAuthenticatedUser();
-                    builder.RequireScope("merchantapi");
+                    builder.RequireScope("merchant");
                     builder.RequireRole("FreeUser","PaidUser");
                 });   
             });

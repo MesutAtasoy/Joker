@@ -42,9 +42,9 @@ namespace Joker.WebApp.Extensions
                     options.ResponseType = OpenIdConnectResponseType.Code;
                     options.Scope.Add("roles");
                     options.Scope.Add("offline_access");
-                    options.Scope.Add("merchantapi");
-                    options.Scope.Add("campaignapi");
-                    options.Scope.Add("aggregatorapi");
+                    options.Scope.Add("merchant");
+                    options.Scope.Add("campaign");
+                    options.Scope.Add("subscription");
                     options.Scope.Add("organization");
                     options.ClaimActions.DeleteClaim("sid");
                     options.ClaimActions.DeleteClaim("idp");

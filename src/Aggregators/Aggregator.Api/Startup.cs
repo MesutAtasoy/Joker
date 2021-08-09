@@ -22,12 +22,12 @@ namespace Aggregator.Api
         {
             services.AddGrpcServices(_configuration);
             services.AddApiVersion();
-            services.AddAuthorization();
             services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddGrpc();
             services.AddSwaggerGen();
             services.AddJokerAuthentication(_configuration);
+            services.AddJokerAuthorization();
             services.AddJokerConsul(_configuration);
         }
 

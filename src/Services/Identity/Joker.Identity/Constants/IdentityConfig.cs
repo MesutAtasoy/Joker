@@ -19,10 +19,9 @@ namespace Joker.Identity.Constants
 
         public static IEnumerable<ApiScope> ApiScopes => new[]
         {
-            new ApiScope("campaignapi", "Campaign Api"),
-            new ApiScope("merchantapi", "Merchant Api"),
-            new ApiScope("aggregatorapi", "Aggregator Api"),
-            
+            new ApiScope("campaign", "Campaign Management"),
+            new ApiScope("merchant", "Merchant Management"),
+            new ApiScope("subscription", "Subscription Management"),
         };
         
         public static IEnumerable<ApiResource> ApiResources =>
@@ -30,12 +29,12 @@ namespace Joker.Identity.Constants
             {
                 new ("merchantapi", "Merchant API", new[] {"role" ,"organizationId","organizationName"})
                 {
-                    Scopes = { "merchantapi"},
+                    Scopes = { "merchant"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
                 new ("campaignapi", "Campaign API", new[] {"role", "organizationId","organizationName"})
                 {
-                    Scopes = { "campaignapi"},
+                    Scopes = { "campaign"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
                 new ("managementapi", "Management API")
@@ -50,9 +49,14 @@ namespace Joker.Identity.Constants
                 {
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
+                new ("subscriptionapi", "Subscription API")
+                {
+                    Scopes = {"subscription"},
+                    ApiSecrets = {new Secret("apisecret".Sha256())}
+                },
                 new ("aggregatorapi", "Aggregator API")
                 {
-                    Scopes = { "aggregatorapi"},
+                    Scopes = { "campaign", "merchant"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 }
             };
@@ -88,11 +92,15 @@ namespace Joker.Identity.Constants
                         IdentityServerConstants.StandardScopes.Address,
                         "roles",
                         "organization",
+                        "merchant",
+                        "campaign",
+                        "subscription",
                         "merchantapi",
                         "campaignapi",
                         "managementapi",
                         "locationapi",
                         "searchapi",
+                        "subscriptionapi",
                         "aggregatorapi"
                     },
                     ClientSecrets =

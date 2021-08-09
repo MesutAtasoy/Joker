@@ -86,7 +86,7 @@ namespace Campaign.Api.Extensions
                 options.AddPolicy("ScopePolicy", builder =>
                 {
                     builder.RequireAuthenticatedUser();
-                    builder.RequireScope("campaignapi");
+                    builder.RequireScope("campaign");
                     builder.RequireRole("FreeUser","PaidUser");
                 });   
             });

@@ -12,7 +12,7 @@ namespace Aggregator.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Campaigns")]
-    [Authorize]
+    [Authorize(Policy = "ScopePolicy")]
     public class CampaignController : ControllerBase
     {
         private readonly ICampaignService _campaignService;
