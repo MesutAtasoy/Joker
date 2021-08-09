@@ -34,7 +34,9 @@ namespace Search.Application.Campaigns.EventHandlers
                 StoreName = @event.StoreName,
                 MerchantId = @event.MerchantId,
                 MerchantName = @event.MerchantName,
-                PreviewImageUrl = @event.PreviewImageUrl
+                PreviewImageUrl = @event.PreviewImageUrl,
+                BusinessDirectoryId = @event.BusinessDirectoryId,
+                BusinessDirectoryName = @event.BusinessDirectoryName
             };
 
             await _campaignIndexManager.AddOrUpdateAsync(campaignIndexModel);

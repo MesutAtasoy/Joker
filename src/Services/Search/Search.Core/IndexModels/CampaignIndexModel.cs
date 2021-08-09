@@ -10,6 +10,8 @@ namespace Search.Core.IndexModels
         public string StoreName { get; set; }
         public Guid MerchantId { get; set; }
         public string MerchantName { get; set; }
+        public Guid BusinessDirectoryId { get;  set; }
+        public string BusinessDirectoryName { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }
         public string Title { get; set; }
