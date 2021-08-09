@@ -5,6 +5,7 @@ using Joker.Mongo;
 using Joker.Mongo.Domain;
 using Merchant.Api.Interceptors;
 using Merchant.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -72,6 +73,21 @@ namespace Merchant.Api.Extensions
                     options.SupportedTokens = SupportedTokens.Reference;
                     options.RequireHttpsMetadata = false;
                 });
+
+            return services;
+        }
+
+        public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ScopePolicy", builder =>
+                {
+                    builder.RequireAuthenticatedUser();
+                    builder.RequireScope("merchantapi");
+                    builder.RequireRole("FreeUser","PaidUser");
+                });   
+            });
 
             return services;
         }

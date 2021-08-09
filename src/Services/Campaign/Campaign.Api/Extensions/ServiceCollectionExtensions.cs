@@ -5,6 +5,7 @@ using Joker.CAP;
 using Joker.Consul;
 using Joker.Mongo;
 using Joker.Mongo.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -77,5 +78,20 @@ namespace Campaign.Api.Extensions
 
             return services;
         }
+        
+        public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
+        {
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ScopePolicy", builder =>
+                {
+                    builder.RequireAuthenticatedUser();
+                    builder.RequireScope("campaignapi");
+                    builder.RequireRole("FreeUser","PaidUser");
+                });   
+            });
+
+            return services;
+        }    
     }
 }

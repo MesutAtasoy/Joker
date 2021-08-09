@@ -8,12 +8,14 @@ using Merchant.Application.Merchants.Commands.UpdateMerchant;
 using Merchant.Application.Merchants.Dto.Requests;
 using Merchant.Application.Merchants.Queries.GetMerchantById;
 using Merchant.Application.Stores.Queries.GetStoresByMerchantId;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Merchant.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Merchants")]
+    [Authorize(Policy = "ScopePolicy")]
     public class MerchantController : ControllerBase
     {
         private readonly IMediator _mediator;

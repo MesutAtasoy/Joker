@@ -33,7 +33,7 @@ namespace Campaign.Api
             services.AddSwaggerGen();
             services.AddJokerEventBus(Configuration);
             services.AddJokerConsul(Configuration);
-            services.AddAuthorization();
+            services.AddJokerAuthorization();
             services.AddJokerAuthentication(Configuration);
         }
 

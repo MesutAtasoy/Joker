@@ -8,12 +8,14 @@ using Campaign.Application.Campaigns.Queries.GetCampaignById;
 using Campaign.Application.Campaigns.Queries.GetCampaignsByMerchantId;
 using Joker.Extensions.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Campaign.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Campaigns")]
+    [Authorize(Policy = "ScopePolicy")]
     public class CampaignController : ControllerBase
     {
         private readonly IMediator _mediator;
