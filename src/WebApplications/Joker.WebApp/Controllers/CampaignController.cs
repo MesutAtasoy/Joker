@@ -114,6 +114,8 @@ namespace Joker.WebApp.Controllers
                 {
                     return RedirectToAction("MyCampaigns", "Account");
                 }
+                
+                ModelState.AddModelError("", result.Message);
             }
 
             return View(model);

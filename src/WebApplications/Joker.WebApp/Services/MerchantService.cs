@@ -12,7 +12,7 @@ using Joker.WebApp.ViewModels.Store.Request;
 
 namespace Joker.WebApp.Services
 {
-    public class MerchantService : IMerchantService
+    public class MerchantService : BaseService, IMerchantService
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly HttpClient _httpClient;
@@ -23,32 +23,16 @@ namespace Joker.WebApp.Services
             _httpClient = _clientFactory.CreateClient("GatewayApi");
         }
 
-        public async Task<MerchantViewModel> CreateAsync(CreateMerchantViewModel createMerchantViewModel)
+        public async Task<JokerBaseResponseViewModel<MerchantViewModel>> CreateAsync(CreateMerchantViewModel createMerchantViewModel)
         {
-            var responseMessage =
-                await _httpClient.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Merchant Service can not respond success response");
-            }
-
-            var merchant = await responseMessage.Content.ReadFromJsonAsync<MerchantViewModel>();
-
-            return merchant;
+            var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
+            return await HandleRequestAsync<JokerBaseResponseViewModel<MerchantViewModel>>(responseMessage);
         }
 
-        public async Task<MerchantViewModel> UpdateAsync(UpdateMerchantViewModel updateMerchantViewModel)
+        public async Task<JokerBaseResponseViewModel<MerchantViewModel>> UpdateAsync(UpdateMerchantViewModel updateMerchantViewModel)
         {
-            var responseMessage =
-                await _httpClient.PutAsJsonAsync($"aggregator/api/Merchants", updateMerchantViewModel);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Merchant Service can not respond success response");
-            }
-
-            var merchant = await responseMessage.Content.ReadFromJsonAsync<MerchantViewModel>();
-
-            return merchant;
+            var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Merchants", updateMerchantViewModel);
+            return await HandleRequestAsync<JokerBaseResponseViewModel<MerchantViewModel>>(responseMessage);
         }
 
         public async Task<MerchantViewModel> GetByIdAsync(Guid id)
@@ -77,33 +61,16 @@ namespace Joker.WebApp.Services
             return stores;
         }
 
-        public async Task<StoreViewModel> CreateStoreAsync(CreateStoreViewModel createStoreViewModel)
+        public async Task<JokerBaseResponseViewModel<StoreViewModel>> CreateStoreAsync(CreateStoreViewModel createStoreViewModel)
         {
-            var responseMessage =
-                await _httpClient.PostAsJsonAsync("aggregator/api/Stores", createStoreViewModel);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Merchant Service can not respond success response");
-            }
-
-            var merchant = await responseMessage.Content.ReadFromJsonAsync<StoreViewModel>();
-
-            return merchant;
+            var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Stores", createStoreViewModel);
+            return await HandleRequestAsync<JokerBaseResponseViewModel<StoreViewModel>>(responseMessage);
         }
 
-        public async Task<StoreViewModel> UpdateStoreAsync(UpdateStoreViewModel updateStoreViewModel)
+        public async Task<JokerBaseResponseViewModel<StoreViewModel>> UpdateStoreAsync(UpdateStoreViewModel updateStoreViewModel)
         {
-            var responseMessage =
-                await _httpClient.PutAsJsonAsync($"aggregator/api/Stores", updateStoreViewModel);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Merchant Service can not respond success response");
-            }
-
-            var store = await responseMessage.Content.ReadFromJsonAsync<StoreViewModel>();
-
-            return store;
-            
+            var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Stores", updateStoreViewModel);
+            return await HandleRequestAsync<JokerBaseResponseViewModel<StoreViewModel>>(responseMessage);
         }
 
         public async Task<StoreViewModel> GetStoreByIdAsync(Guid id)

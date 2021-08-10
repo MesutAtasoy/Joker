@@ -12,18 +12,15 @@ namespace Joker.WebApp.Controllers
     public class StoreController : Controller
     {
         private readonly IUserService _userService;
-        private readonly IManagementApiService _managementApiService;
         private readonly IMerchantService _merchantService;
         private readonly ILocationService _locationService;
         
 
         public StoreController(IUserService userService, 
-            IManagementApiService managementApiService, 
             IMerchantService merchantService, 
             ILocationService locationService)
         {
             _userService = userService;
-            _managementApiService = managementApiService;
             _merchantService = merchantService;
             _locationService = locationService;
         }
@@ -54,15 +51,20 @@ namespace Joker.WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                await _merchantService.CreateStoreAsync(model);
-                return RedirectToAction("MyStores", "Account");
+                var result = await _merchantService.CreateStoreAsync(model);
+                if (result.StatusCode == 200)
+                {
+                    return RedirectToAction("MyStores", "Account");
+                }
+                
+                ModelState.AddModelError("", result.Message);
             }
             
             var country  = await _locationService.GetCountryAsync();
             
             ViewBag.Countries = new List<IdNameViewModel>
             {
-                new IdNameViewModel { Id = Guid.Empty, Name = ""},
+                new () { Id = Guid.Empty, Name = ""},
                 country
             };
             
@@ -103,8 +105,12 @@ namespace Joker.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _merchantService.UpdateStoreAsync(viewModel);
-                return RedirectToAction("MyStores", "Account");
+                var result = await _merchantService.UpdateStoreAsync(viewModel);
+                if (result.StatusCode == 200)
+                {
+                    return RedirectToAction("MyStores", "Account");
+                }
+                ModelState.AddModelError("", result.Message);
             }
 
             return View(viewModel);

@@ -49,14 +49,14 @@ namespace Aggregator.Api.Controllers
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
             var response = await _storeService.CreateAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateStoreModel model)
         {
             var response = await _storeService.UpdateAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
         
         [HttpPut("Location")]
@@ -83,7 +83,7 @@ namespace Aggregator.Api.Controllers
             model.Location.Quarter.Name = locationResponse.Quarter.Name;
             
             var response = await _storeService.UpdateLocationAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpDelete("{id}")]

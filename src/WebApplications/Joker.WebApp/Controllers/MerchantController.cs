@@ -30,8 +30,13 @@ namespace Joker.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var merchant = await _merchantService.CreateAsync(model);
-                return RedirectToAction("Index", "Home");
+                var response = await _merchantService.CreateAsync(model);
+                if (response.StatusCode == 200)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", response.Message);
             }
             
             return View(model);

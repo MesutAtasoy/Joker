@@ -20,6 +20,7 @@ namespace Aggregator.Api.Services.Store
         {
             _merchantApiGrpcServiceClient = merchantApiGrpcServiceClient;
             _contextAccessor = contextAccessor;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<JokerBaseResponse<StoreModel>> CreateAsync(CreateStoreModel request)
@@ -28,12 +29,12 @@ namespace Aggregator.Api.Services.Store
             
             var response = await _merchantApiGrpcServiceClient.CreateStoreAsync(new CreateStoreMessage
             {
-                Email = request.Email,
-                Description = request.Description,
-                Name = request.Name,
-                Slogan = request.Slogan,
+                Email = request.Email ?? "",
+                Description = request.Description?? "",
+                Name = request.Name?? "",
+                Slogan = request.Slogan?? "",
                 MerchantId = request.MerchantId.ToString(),
-                PhoneNumber = request.PhoneNumber,
+                PhoneNumber = request.PhoneNumber?? "",
                 Location = new StoreLocationMessage
                 {
                     Country = new IdName
@@ -61,7 +62,7 @@ namespace Aggregator.Api.Services.Store
                         Id = request.Location.Quarter.Id.ToString(),
                         Name = request.Location.Quarter.Name
                     },
-                    Address = request.Location.Address
+                    Address = request.Location.Address?? ""
                 }
             }, headers);
             

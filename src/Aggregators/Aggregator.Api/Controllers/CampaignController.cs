@@ -51,21 +51,21 @@ namespace Aggregator.Api.Controllers
             model.BusinessDirectory.Name = businessDirectory.Name;
             
             var response = await _campaignService.CreateAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateCampaignModel model)
         {
             var response = await _campaignService.UpdateAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var response = await _campaignService.DeleteAsync(id);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
     }
 }

@@ -17,6 +17,9 @@
                         <input type="hidden" value="@Model.MerchantId" asp-for="MerchantId">
                         <div class="card-body pb-2">
                             <div class="row">
+                                <partial name="_ValidationSummary"/>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <label>Name</label>
                                     <div class="input-group mb-4">
@@ -48,7 +51,7 @@
                                 <div class="col-md-6">
                                     <label>Country</label>
                                     <div class="input-group mb-4">
-                                        <select asp-for="Location.Country.Id" class="form-control" id="countryId" 
+                                        <select asp-for="Location.Country.Id" class="form-control" id="countryId"
                                                 asp-items="@(new SelectList(@ViewBag.Countries, "Id", "Name"))">
                                         </select>
                                     </div>

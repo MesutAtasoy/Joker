@@ -9,7 +9,7 @@ using Joker.WebApp.ViewModels.Shared;
 
 namespace Joker.WebApp.Services
 {
-    public class CampaignService : ICampaignService
+    public class CampaignService : BaseService, ICampaignService
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly HttpClient _httpClient;
@@ -37,30 +37,13 @@ namespace Joker.WebApp.Services
         public async Task<JokerBaseResponseViewModel<CampaignViewModel>> CreateAsync(CreateCampaignViewModel viewModel)
         {
             var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Campaigns", viewModel);
-            try
-            {
-                var responseViewModel = await responseMessage.Content.ReadFromJsonAsync<JokerBaseResponseViewModel<CampaignViewModel>>();
-                return responseViewModel;
-            }
-            catch (Exception e)
-            {
-                throw new ArgumentException("Campaign Service can not respond success response", e);
-            }
+            return await HandleRequestAsync<JokerBaseResponseViewModel<CampaignViewModel>>(responseMessage);
         }
 
         public async Task<JokerBaseResponseViewModel<CampaignViewModel>> UpdateAsync(UpdateCampaignViewModel viewModel)
         {
             var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Campaigns", viewModel);
-
-            try
-            {
-                var responseViewModel = await responseMessage.Content.ReadFromJsonAsync<JokerBaseResponseViewModel<CampaignViewModel>>();
-                return responseViewModel;
-            }
-            catch (Exception e)
-            {
-                throw new ArgumentException("Campaign Service can not respond success response", e);
-            }
+            return await HandleRequestAsync<JokerBaseResponseViewModel<CampaignViewModel>>(responseMessage);
         }
 
         public async Task<CampaignViewModel> GetByIdAsync(Guid id)

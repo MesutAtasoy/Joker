@@ -34,21 +34,21 @@ namespace Aggregator.Api.Controllers
             }
 
             var response = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpPut]
         public async Task<ActionResult> UpdateAsync([FromBody] UpdateMerchantModel model)
         {
             var response = await _merchantService.UpdateAsync(model);
-            return Ok(response);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)
         {
             var result = await _merchantService.DeleteAsync(id);
-            return Ok(result);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }
