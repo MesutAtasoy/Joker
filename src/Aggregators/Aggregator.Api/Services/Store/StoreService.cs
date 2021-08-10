@@ -15,8 +15,9 @@ namespace Aggregator.Api.Services.Store
     {
         private readonly MerchantApiGrpcService.MerchantApiGrpcServiceClient _merchantApiGrpcServiceClient;
         private readonly IHttpContextAccessor _contextAccessor;
-        
-        public StoreService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient, IHttpContextAccessor contextAccessor)
+
+        public StoreService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient,
+            IHttpContextAccessor contextAccessor)
         {
             _merchantApiGrpcServiceClient = merchantApiGrpcServiceClient;
             _contextAccessor = contextAccessor;
@@ -26,51 +27,51 @@ namespace Aggregator.Api.Services.Store
         public async Task<JokerBaseResponse<StoreModel>> CreateAsync(CreateStoreModel request)
         {
             var headers = await GetHeaders();
-            
+
             var response = await _merchantApiGrpcServiceClient.CreateStoreAsync(new CreateStoreMessage
             {
                 Email = request.Email ?? "",
-                Description = request.Description?? "",
-                Name = request.Name?? "",
-                Slogan = request.Slogan?? "",
+                Description = request.Description ?? "",
+                Name = request.Name ?? "",
+                Slogan = request.Slogan ?? "",
                 MerchantId = request.MerchantId.ToString(),
-                PhoneNumber = request.PhoneNumber?? "",
+                PhoneNumber = request.PhoneNumber ?? "",
                 Location = new StoreLocationMessage
                 {
                     Country = new IdName
                     {
-                        Id = request.Location.Country.Id.ToString(),
-                        Name = request.Location.Country.Name
+                        Id = request.Location?.Country?.Id.ToString() ?? "",
+                        Name = request.Location?.Country?.Name ?? ""
                     },
                     City = new IdName
                     {
-                        Id = request.Location.City.Id.ToString(),
-                        Name = request.Location.City.Name
+                        Id = request.Location?.City?.Id.ToString() ?? "",
+                        Name = request.Location?.City?.Name ?? ""
                     },
                     District = new IdName
                     {
-                        Id = request.Location.District.Id.ToString(),
-                        Name = request.Location.District.Name
+                        Id = request.Location?.District?.Id.ToString() ?? "",
+                        Name = request.Location?.District?.Name ?? ""
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Neighborhood.Id.ToString(),
-                        Name = request.Location.Neighborhood.Name
+                        Id = request.Location?.Neighborhood?.Id.ToString() ?? "",
+                        Name = request.Location?.Neighborhood?.Name ?? ""
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Quarter.Id.ToString(),
-                        Name = request.Location.Quarter.Name
+                        Id = request.Location?.Quarter?.Id.ToString() ?? "",
+                        Name = request.Location?.Quarter?.Name ?? ""
                     },
-                    Address = request.Location.Address?? ""
+                    Address = request.Location?.Address ?? ""
                 }
             }, headers);
-            
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<StoreModel>(null, response.Status, response.Message);
             }
-            
+
             var store = response.Data.Unpack<StoreMessage>();
             return new JokerBaseResponse<StoreModel>(As(store), 200);
         }
@@ -79,29 +80,29 @@ namespace Aggregator.Api.Services.Store
         {
             var headers = await GetHeaders();
 
-            
+
             var response = await _merchantApiGrpcServiceClient.UpdateStoreAsync(new UpdateStoreMessage
             {
                 StoreId = request.Id.ToString(),
                 Store = new UpdateStoreItemMessage
                 {
-                    Email = request.Email,
-                    Description = request.Description,
-                    Name = request.Name,
-                    Slogan = request.Slogan,
-                    PhoneNumber = request.PhoneNumber
+                    Email = request.Email ?? "",
+                    Description = request.Description ?? "",
+                    Name = request.Name ?? "",
+                    Slogan = request.Slogan ?? "",
+                    PhoneNumber = request.PhoneNumber ?? ""
                 }
             }, headers);
-            
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<StoreModel>(null, response.Status, response.Message);
             }
-            
+
             var store = response.Data.Unpack<StoreMessage>();
             return new JokerBaseResponse<StoreModel>(As(store), 200);
         }
-        
+
         public async Task<JokerBaseResponse<StoreLocationModel>> UpdateLocationAsync(UpdateStoreLocationModel request)
         {
             var headers = await GetHeaders();
@@ -113,30 +114,30 @@ namespace Aggregator.Api.Services.Store
                 {
                     Country = new IdName
                     {
-                        Id = request.Location.Country.Id.ToString(),
-                        Name = request.Location.Country.Name
+                        Id = request.Location?.Country?.Id.ToString() ?? "",
+                        Name = request.Location?.Country?.Name ?? ""
                     },
                     City = new IdName
                     {
-                        Id = request.Location.City.Id.ToString(),
-                        Name = request.Location.City.Name
+                        Id = request.Location?.City?.Id.ToString() ?? "",
+                        Name = request.Location?.City?.Name ?? ""
                     },
                     District = new IdName
                     {
-                        Id = request.Location.District.Id.ToString(),
-                        Name = request.Location.District.Name
+                        Id = request.Location?.District?.Id.ToString() ?? "",
+                        Name = request.Location?.District?.Name ?? ""
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Neighborhood.Id.ToString(),
-                        Name = request.Location.Neighborhood.Name
+                        Id = request.Location?.Neighborhood?.Id.ToString() ?? "",
+                        Name = request.Location?.Neighborhood?.Name ?? ""
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Quarter.Id.ToString(),
-                        Name = request.Location.Quarter.Name
+                        Id = request.Location?.Quarter?.Id.ToString() ?? "",
+                        Name = request.Location?.Quarter?.Name ?? ""
                     },
-                    Address = request.Location.Address
+                    Address = request.Location?.Address ?? ""
                 }
             }, headers);
 
@@ -144,37 +145,39 @@ namespace Aggregator.Api.Services.Store
             {
                 return new JokerBaseResponse<StoreLocationModel>(null, response.Status, response.Message);
             }
+
+            var storeLocationMessage = response.Data.Unpack<StoreLocationMessage>();
             
-            var storeLocationModel =  new StoreLocationModel
+            var storeLocationModel = new StoreLocationModel
             {
                 Country = new Models.Shared.IdName()
                 {
-                    Id = request.Location.Country.Id,
-                    Name = request.Location.Country.Name
+                    Id = storeLocationMessage.Country.Id.ToGuid(),
+                    Name = storeLocationMessage.Country.Name
                 },
                 City = new Models.Shared.IdName
                 {
-                    Id = request.Location.City.Id,
-                    Name = request.Location.City.Name
+                    Id = storeLocationMessage.City.Id.ToGuid(),
+                    Name = storeLocationMessage.City.Name
                 },
                 District = new Models.Shared.IdName
                 {
-                    Id = request.Location.District.Id,
-                    Name = request.Location.District.Name
+                    Id = storeLocationMessage.District.Id.ToGuid(),
+                    Name = storeLocationMessage.District.Name
                 },
                 Neighborhood = new Models.Shared.IdName
                 {
-                    Id = request.Location.Neighborhood.Id,
-                    Name = request.Location.Neighborhood.Name
+                    Id = storeLocationMessage.Neighborhood.Id.ToGuid(),
+                    Name = storeLocationMessage.Neighborhood.Name
                 },
                 Quarter = new Models.Shared.IdName
                 {
-                    Id = request.Location.Quarter.Id,
-                    Name = request.Location.Quarter.Name
+                    Id = storeLocationMessage.Quarter.Id.ToGuid(),
+                    Name = storeLocationMessage.Quarter.Name
                 },
-                Address = request.Location.Address
+                Address = storeLocationMessage.Address
             };
-            
+
             var storeLocation = response.Data.Unpack<StoreLocationMessage>();
             return new JokerBaseResponse<StoreLocationModel>(storeLocationModel, 200);
         }
@@ -183,13 +186,14 @@ namespace Aggregator.Api.Services.Store
         {
             var headers = await GetHeaders();
 
-            var response =  await _merchantApiGrpcServiceClient.DeleteStoreAsync(new ByIdMessage {Id = id.ToString()}, headers);
-            
+            var response =
+                await _merchantApiGrpcServiceClient.DeleteStoreAsync(new ByIdMessage { Id = id.ToString() }, headers);
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<bool>(false, response.Status, response.Message);
             }
-            
+
             var deleteCampaignMessage = response.Data.Unpack<DeleteStoreResponseMessage>();
             return new JokerBaseResponse<bool>(deleteCampaignMessage.IsSucceed, 200);
         }
@@ -197,13 +201,15 @@ namespace Aggregator.Api.Services.Store
         public async Task<StoreModel> GetByIdAsync(Guid id)
         {
             var headers = await GetHeaders();
-            var store =await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
+            var store = await _merchantApiGrpcServiceClient.GetStoreByIdAsync(new ByIdMessage { Id = id.ToString() },
+                headers);
             return As(store);
         }
 
         private async Task<Metadata> GetHeaders()
         {
-            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+            var accessToken =
+                await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
 
             var headers = new Metadata();
             if (!string.IsNullOrEmpty(accessToken))
@@ -213,10 +219,10 @@ namespace Aggregator.Api.Services.Store
 
             return headers;
         }
-        
+
         #region Model Converters
 
-        private StoreModel As(StoreMessage  storeMessage)
+        private StoreModel As(StoreMessage storeMessage)
         {
             return new()
             {

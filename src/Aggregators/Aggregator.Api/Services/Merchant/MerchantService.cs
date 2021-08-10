@@ -23,30 +23,31 @@ namespace Aggregator.Api.Services.Merchant
             _contextAccessor = contextAccessor;
         }
 
-        public async Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel request,  string pricingPlanId, string pricingPlanName)
+        public async Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel request,
+            string pricingPlanId, string pricingPlanName)
         {
             var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
             {
-                Name = request.Name,
-                Description = request.Description,
-                Email = request.Email,
-                Slogan = request.Slogan,
-                PhoneNumber = request.PhoneNumber,
-                TaxNumber = request.TaxNumber,
-                WebsiteUrl = request.WebSiteUrl,
+                Name = request.Name ?? "",
+                Description = request.Description ?? "",
+                Email = request.Email ?? "",
+                Slogan = request.Slogan ?? "",
+                PhoneNumber = request.PhoneNumber ?? "",
+                TaxNumber = request.TaxNumber ?? "",
+                WebsiteUrl = request.WebSiteUrl ?? "",
                 PricingPlan = new IdName
                 {
                     Id = pricingPlanId,
                     Name = pricingPlanName
                 }
             }, headers);
-            
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
             }
-            
+
             var merchant = response.Data.Unpack<MerchantMessage>();
             return new JokerBaseResponse<MerchantModel>(As(merchant), 200);
         }
@@ -59,22 +60,22 @@ namespace Aggregator.Api.Services.Merchant
                 MerchantId = createMerchantModel.Id,
                 Merchant = new UpdateMerchantItemMessage
                 {
-                    Name = createMerchantModel.Name,
-                    Description = createMerchantModel.Description,
-                    Email = createMerchantModel.Email,
-                    Slogan = createMerchantModel.Slogan,
-                    PhoneNumber = createMerchantModel.PhoneNumber,
-                    TaxNumber = createMerchantModel.TaxNumber,
-                    WebsiteUrl = createMerchantModel.WebSiteUrl
+                    Name = createMerchantModel.Name ?? "",
+                    Description = createMerchantModel.Description ?? "",
+                    Email = createMerchantModel.Email ?? "",
+                    Slogan = createMerchantModel.Slogan ?? "",
+                    PhoneNumber = createMerchantModel.PhoneNumber ?? "",
+                    TaxNumber = createMerchantModel.TaxNumber ?? "",
+                    WebsiteUrl = createMerchantModel.WebSiteUrl ?? ""
                 }
-            } ,headers);
-            
-              
+            }, headers);
+
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
             }
-            
+
             var merchant = response.Data.Unpack<MerchantMessage>();
             return new JokerBaseResponse<MerchantModel>(As(merchant), 200);
         }
@@ -83,12 +84,14 @@ namespace Aggregator.Api.Services.Merchant
         {
             var headers = await GetHeaders();
 
-            var response =  await _merchantApiGrpcServiceClient.DeleteMerchantAsync(new ByIdMessage {Id = id.ToString()}, headers);
+            var response =
+                await _merchantApiGrpcServiceClient.DeleteMerchantAsync(new ByIdMessage { Id = id.ToString() },
+                    headers);
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<bool>(false, response.Status, response.Message);
             }
-            
+
             var deleteCampaignMessage = response.Data.Unpack<DeleteMerchantResponseMessage>();
             return new JokerBaseResponse<bool>(deleteCampaignMessage.IsSucceed, 200);
         }
@@ -96,14 +99,18 @@ namespace Aggregator.Api.Services.Merchant
         public async Task<MerchantModel> GetById(Guid id)
         {
             var headers = await GetHeaders();
+
+            var merchant =
+                await _merchantApiGrpcServiceClient.GetMerchantByIdAsync(new ByIdMessage { Id = id.ToString() },
+                    headers);
             
-            var merchant = await _merchantApiGrpcServiceClient.GetMerchantByIdAsync(new ByIdMessage {Id = id.ToString()}, headers);
             return As(merchant);
         }
 
         private async Task<Metadata> GetHeaders()
         {
-            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+            var accessToken =
+                await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
 
             var headers = new Metadata();
             if (!string.IsNullOrEmpty(accessToken))
@@ -115,6 +122,7 @@ namespace Aggregator.Api.Services.Merchant
         }
 
         #region Model Converters
+
         private MerchantModel As(MerchantMessage merchantMessage)
         {
             return new()
@@ -132,6 +140,7 @@ namespace Aggregator.Api.Services.Merchant
                 ModifiedDate = merchantMessage.ModifiedDate?.ToDateTime()
             };
         }
+
         #endregion
     }
 }

@@ -30,24 +30,24 @@ namespace Aggregator.Api.Services.Campaign
             
             var response = await _campaignApiGrpcServiceClient.CreateCampaignAsync(new CreateCampaignMessage
             {
-                Title = request.Title ?? " ",
-                Condition = request.Condition ?? " ",
-                Code = request.Code ?? " ",
-                Description = request.Description ?? " ",
+                Title = request.Title ?? "",
+                Condition = request.Condition ?? "",
+                Code = request.Code ?? "",
+                Description = request.Description ?? "",
                 Store = new IdName
                 {
-                    Id = request.Store.Id.ToString(),
-                    Name = request.Store.Name
+                    Id = request.Store?.Id.ToString() ?? "",
+                    Name = request.Store?.Name ?? ""
                 },
                 Merchant = new IdName
                 {
-                    Id = request.Merchant.Id.ToString(),
-                    Name = request.Merchant.Name
+                    Id = request.Merchant?.Id.ToString() ?? "",
+                    Name = request.Merchant?.Name ?? ""
                 },
                 BusinessDirectory = new IdName
                 {
-                    Id = request.BusinessDirectory.Id.ToString(),
-                    Name = request.BusinessDirectory.Name
+                    Id = request.BusinessDirectory?.Id.ToString() ?? "", 
+                    Name = request.BusinessDirectory?.Name ?? ""
                 },
                 EndTime = request.EndTime?.ToTimestamp(),
                 StartTime = request.StartTime?.ToTimestamp()
@@ -71,10 +71,10 @@ namespace Aggregator.Api.Services.Campaign
                 Id = request.CampaignId.ToString(),
                 Campaign = new UpdateCampaignMessageItem
                 {
-                    Title = request.Title,
-                    Condition = request.Condition,
-                    Code = request.Code,
-                    Description = request.Description,
+                    Title = request.Title ?? "",
+                    Condition = request.Condition ?? "",
+                    Code = request.Code ?? "",
+                    Description = request.Description ?? "",
                     EndTime = request.EndTime?.ToTimestamp(),
                     StartTime = request.StartTime?.ToTimestamp()
                 }

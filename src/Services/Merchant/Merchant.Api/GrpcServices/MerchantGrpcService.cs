@@ -286,30 +286,30 @@ namespace Merchant.Api.GrpcServices
                 {
                     Country = new IdName
                     {
-                        Id = request.Location.Country.Id,
-                        Name = request.Location.Country.Name
+                        Id = response.Country.RefId.ToString(),
+                        Name = response.Country.Name
                     },
                     City = new IdName
                     {
-                        Id = request.Location.City.Id,
-                        Name = request.Location.City.Name
+                        Id = response.City.RefId.ToString(),
+                        Name = response.City.Name
                     },
                     District = new IdName
                     {
-                        Id = request.Location.District.Id,
-                        Name = request.Location.District.Name
+                        Id = response.District.RefId.ToString(),
+                        Name = response.District.Name
                     },
                     Neighborhood = new IdName
                     {
-                        Id = request.Location.Neighborhood.Id,
-                        Name = request.Location.Neighborhood.Name
+                        Id = response.Neighborhood.RefId.ToString(),
+                        Name = response.Neighborhood.Name
                     },
                     Quarter = new IdName
                     {
-                        Id = request.Location.Quarter.Id,
-                        Name = request.Location.Quarter.Name
+                        Id = response.Quarter.RefId.ToString(),
+                        Name = response.Quarter.Name
                     },
-                    Address = request.Location.Address
+                    Address = response.Address
                 };
                 
                 return new MerchantBaseGrpcResponse
