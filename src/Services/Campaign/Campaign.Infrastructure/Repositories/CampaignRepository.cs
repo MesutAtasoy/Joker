@@ -31,5 +31,12 @@ namespace Campaign.Infrastructure.Repositories
             var update = Builders<Domain.CampaignAggregate.Campaign>.Update.Set(x=>x.Merchant, MerchantRef.Create(merchantId, merchantName));
             await _collection.UpdateManyAsync(filter, update);
         }
+
+        public async Task UpdateStoreNameAsync(Guid storeId, string storeName)
+        {
+            var filter = Builders<Domain.CampaignAggregate.Campaign>.Filter.Eq(x => x.Store.RefId, storeId);
+            var update = Builders<Domain.CampaignAggregate.Campaign>.Update.Set(x=>x.Store, StoreRef.Create(storeId, storeName));
+            await _collection.UpdateManyAsync(filter, update);
+        }
     }
 }

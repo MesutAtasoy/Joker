@@ -8,5 +8,6 @@ namespace Campaign.Domain.CampaignAggregate.Repositories
     {
         Task<Campaign> GetByIdAsync(Guid id);
         Task UpdateMerchantNameAsync(Guid merchantId, string merchantName);
+        Task UpdateStoreNameAsync(Guid storeId, string storeName);
     }
 }
