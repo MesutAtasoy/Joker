@@ -33,7 +33,7 @@ namespace Search.Application.Stores.EventHandlers
                         return queryContainer;
                     }
                 )
-                .Index(IndexConstants.CampaignIndex));
+                .Index(IndexConstants.StoreIndex));
 
             if (searchResponse.Documents.Any())
             {
