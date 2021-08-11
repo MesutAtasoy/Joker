@@ -2,6 +2,7 @@ using Joker.Mvc;
 using Merchant.Api.Extensions;
 using Merchant.Api.GrpcServices;
 using Merchant.Application;
+using Merchant.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,7 @@ namespace Merchant.Api
             services.AddHttpContextAccessor();
             services.AddJokerMongo(Configuration);
             services.AddApplicationModule();
+            services.AddDomainModule();
             services.AddHttpClient();
             services.AddJokerMediatr(typeof(MerchantApplicationModule));
             services.AddSwaggerGen();

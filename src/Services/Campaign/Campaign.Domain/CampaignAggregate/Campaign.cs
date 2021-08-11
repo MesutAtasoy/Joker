@@ -67,7 +67,7 @@ namespace Campaign.Domain.CampaignAggregate
             Check.NotNull(store, nameof(store));
             Check.NotNull(merchant, nameof(merchant));
             Check.NotNull(businessDirectory, nameof(businessDirectory));
-            CheckRule(new TitleValidRule(title));
+            Check.NotNullOrEmpty(title, nameof(title));
 
             var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
             var slug = $"{title.GenerateSlug()}-{slugKey}";

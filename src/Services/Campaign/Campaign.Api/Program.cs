@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
 namespace Campaign.Api
 {
@@ -47,6 +46,7 @@ namespace Campaign.Api
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     var ports = GetDefinedPorts(configuration);
@@ -60,8 +60,7 @@ namespace Campaign.Api
                         options.Listen(IPAddress.Any, ports.grpcPort,
                             listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
                     });
-                })
-                .UseSerilog();
+                });
 
         /// <summary>
         /// Returns configuration with environment

@@ -1,0 +1,470 @@
+apiVersion: v1
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: aggregator-api
+      name: aggregator-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: aggregator-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: aggregator-api
+        spec:
+          containers:
+            - image: aggregatorapi
+              name: aggregator-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: campaign-api
+      name: campaign-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: campaign-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: campaign-api
+        spec:
+          containers:
+            - image: campaignapi
+              name: campaign-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: consul
+      name: consul
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: consul
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: consul
+        spec:
+          containers:
+            - image: consul
+              name: consul
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: gateway-web-api
+      name: gateway-web-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: gateway-web-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: gateway-web-api
+        spec:
+          containers:
+            - image: gatewaywebapi
+              name: gateway-web-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: identity-api
+      name: identity-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: identity-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: identity-api
+        spec:
+          containers:
+            - image: identityapi
+              name: identity-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: joker-webapp
+      name: joker-webapp
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: joker-webapp
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: joker-webapp
+        spec:
+          containers:
+            - image: jokerwebapp
+              name: joker-webapp
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: location-api
+      name: location-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: location-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: location-api
+        spec:
+          containers:
+            - image: locationapi
+              name: location-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: management-api
+      name: management-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: management-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: management-api
+        spec:
+          containers:
+            - image: managementapi
+              name: management-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: merchant-api
+      name: merchant-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: merchant-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: merchant-api
+        spec:
+          containers:
+            - image: merchantapi
+              name: merchant-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: nosqldata
+      name: nosqldata
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: nosqldata
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: nosqldata
+        spec:
+          containers:
+            - image: mongo
+              name: nosqldata
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: postgres
+      name: postgres
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: postgres
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: postgres
+        spec:
+          containers:
+            - image: postgres
+              name: postgres
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: rabbitmq
+      name: rabbitmq
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: rabbitmq
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: rabbitmq
+        spec:
+          containers:
+            - image: rabbitmq:3-management-alpine
+              name: rabbitmq
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: search-api
+      name: search-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: search-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: search-api
+        spec:
+          containers:
+            - image: searchapi
+              name: search-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: seq
+      name: seq
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: seq
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: seq
+        spec:
+          containers:
+            - image: datalust/seq:latest
+              name: seq
+              resources: {}
+          restartPolicy: Always
+    status: {}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: subscription-api
+      name: subscription-api
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          io.kompose.service: subscription-api
+      strategy: {}
+      template:
+        metadata:
+          annotations:
+            kompose.cmd: kompose convert -f docker-compose.yml -o kubemanifests.yaml
+            kompose.version: 1.23.0 (bc7d9f4f)
+          creationTimestamp: null
+          labels:
+            io.kompose.service: subscription-api
+        spec:
+          containers:
+            - image: subscriptionapi
+              name: subscription-api
+              resources: {}
+          restartPolicy: Always
+    status: {}
+kind: List
+metadata: {}
+

@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Domain\Joker.Domain.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Repositories\Joker.Repositories.csproj" />
