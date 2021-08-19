@@ -42,5 +42,11 @@ namespace Subscription.Domain.SubscriptionAggregate
             
             AddDomainEvent(new SubscribedEvent(Id, PricingPlan, Merchant, ActivationCode, ActivationDate, CreatedBy));
         }
+
+        public void UpdateMerchant(MerchantRef merchant)
+        {
+            Check.NotNull(merchant, nameof(merchant));
+            Merchant = merchant;
+        }
     }
 }
