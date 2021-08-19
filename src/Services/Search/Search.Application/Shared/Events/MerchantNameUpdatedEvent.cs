@@ -1,7 +1,7 @@
 using System;
 using Joker.EventBus;
 
-namespace Search.Application.Stores.Events
+namespace Search.Application.Shared.Events
 {
     public class MerchantNameUpdatedEvent : IntegrationEvent
     {
