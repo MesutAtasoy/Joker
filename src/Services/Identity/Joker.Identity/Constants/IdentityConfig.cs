@@ -69,7 +69,7 @@ namespace Joker.Identity.Constants
                 new ()
                 {
                     AccessTokenType = AccessTokenType.Reference,
-                    AccessTokenLifetime = 120,
+                    AccessTokenLifetime = 3600,
                     AllowOfflineAccess = true,
                     UpdateAccessTokenClaimsOnRefresh = true,
                     ClientName = "Joker Web Application",
