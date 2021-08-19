@@ -51,8 +51,8 @@ services:
     networks:
       - joker-network        
         
-  merchant.api:
-    container_name: "merchant.api"
+  merchant-api:
+    container_name: "merchant-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -63,8 +63,8 @@ services:
     networks:
       - joker-network        
       
-  campaign.api:
-    container_name: "campaign.api"
+  campaign-api:
+    container_name: "campaign-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -75,8 +75,8 @@ services:
     networks:
       - joker-network      
         
-  management.api:
-    container_name: "management.api"
+  management-api:
+    container_name: "management-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -87,8 +87,8 @@ services:
     networks:
       - joker-network      
         
-  location.api:
-    container_name: "location.api"
+  location-api:
+    container_name: "location-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -99,8 +99,8 @@ services:
     networks:
       - joker-network      
         
-  search.api:
-    container_name: "search.api"
+  search-api:
+    container_name: "search-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -111,8 +111,8 @@ services:
     networks:
       - joker-network      
   
-  identity.api:
-    container_name: "identity.api"
+  identity-api:
+    container_name: "identity-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -123,8 +123,8 @@ services:
     networks:
       - joker-network
       
-  subscription.api:
-    container_name: "subscription.api"
+  subscription-api:
+    container_name: "subscription-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -135,8 +135,8 @@ services:
     networks:
       - joker-network      
         
-  aggregator.api:
-    container_name: "aggregator.api"
+  aggregator-api:
+    container_name: "aggregator-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -147,8 +147,8 @@ services:
     networks:
       - joker-network
         
-  gateway.web.api:
-    container_name: "gateway.web.api"
+  gateway-web-api:
+    container_name: "gateway-web-api"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
@@ -157,12 +157,12 @@ services:
     networks:
       - joker-network        
 
-  joker.webapp:
-    container_name: "joker.webapp"
+  joker-webapp:
+    container_name: "joker-webapp"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-      - GatewayUrl=http://gateway.web.api
+      - GatewayUrl=http://gateway-web-api
     ports:
       - "5030:80"
     networks:

@@ -16,7 +16,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     
-  campaign.api:
+  campaign-api:
     image: ${DOCKER_REGISTRY-}campaignapi
     build:
       context: .
@@ -27,7 +27,7 @@ services:
       - rabbitmq     
       - consul
 
-  location.api:
+  location-api:
     image: ${DOCKER_REGISTRY-}locationapi
     build:
       context: .
@@ -38,7 +38,7 @@ services:
       - rabbitmq
       - consul
           
-  management.api:
+  management-api:
     image: ${DOCKER_REGISTRY-}managementapi
     build:
       context: .
@@ -49,7 +49,7 @@ services:
       - rabbitmq
       - consul
       
-  merchant.api:
+  merchant-api:
     image: ${DOCKER_REGISTRY-}merchantapi
     build:
       context: .
@@ -60,7 +60,7 @@ services:
       - rabbitmq
       - consul
         
-  search.api:
+  search-api:
     image: ${DOCKER_REGISTRY-}searchapi
     build:
       context: .
@@ -70,7 +70,7 @@ services:
       - rabbitmq
       - consul
   
-  identity.api:
+  identity-api:
     image: ${DOCKER_REGISTRY-}identityapi
     build:
       context: .
@@ -80,7 +80,7 @@ services:
       - seq
       - rabbitmq      
   
-  subscription.api:
+  subscription-api:
     image: ${DOCKER_REGISTRY-}subscriptionapi
     build:
       context: .
@@ -91,32 +91,32 @@ services:
       - rabbitmq
       - consul
     
-  aggregator.api:
+  aggregator-api:
     image: ${DOCKER_REGISTRY-}aggregatorapi
     build:
       context: .
       dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
     depends_on:
-      - identity.api
-      - search.api
-      - merchant.api
-      - management.api
-      - subscription.api
-      - location.api
-      - campaign.api
+      - identity-api
+      - search-api
+      - merchant-api
+      - management-api
+      - subscription-api
+      - location-api
+      - campaign-api
   
-  gateway.web.api:
+  gateway-web-api:
     image: ${DOCKER_REGISTRY-}gatewaywebapi
     build:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
     depends_on:
-      - aggregator.api
+      - aggregator-api
         
-  joker.webapp:
+  joker-webapp:
     image: ${DOCKER_REGISTRY-}jokerwebapp
     build:
       context: .
       dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
     depends_on:
-      - gateway.web.api
+      - gateway-web-api
