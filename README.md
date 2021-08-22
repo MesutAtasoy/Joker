@@ -1,6 +1,7 @@
 # Joker
 
-Microservices Example!
+Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/actions/workflows/main.yml/badge.svg)
+
 
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/joker-web-ui-image.png)
 
