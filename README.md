@@ -51,3 +51,6 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
  ## Template
 Joker Web Application Template -> https://github.com/creativetimofficial/soft-ui-design-system
 
+ ## Contributing
+This project welcomes contributions and suggestions. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
