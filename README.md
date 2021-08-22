@@ -43,5 +43,11 @@ Joker platform is location based campaign marketplace. An example of microservic
 
 `docker-compose up -d` 
 
+ ## License
+ 
+This project is licensed under the MIT License - see the LICENSE.md file for details.
 
+
+ ## Template
+Joker Web Application Template -> https://github.com/creativetimofficial/soft-ui-design-system
 
