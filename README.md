@@ -5,7 +5,7 @@ Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/ac
 
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/joker-web-ui-image.png)
 
-Joker is location based campaign marketplace. Merchants publish campaigns, the users search campaign which they like.
+Joker is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
 
 ## Architecture Diagram
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/Diagram.jpg)
