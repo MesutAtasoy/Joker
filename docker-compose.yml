@@ -104,6 +104,7 @@ services:
       - subscription-api
       - location-api
       - campaign-api
+      - consul
   
   gateway-web-api:
     image: ${DOCKER_REGISTRY-}gatewaywebapi
@@ -111,7 +112,7 @@ services:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
     depends_on:
-      - aggregator-api
+      - aggregator-api      
         
   joker-webapp:
     image: ${DOCKER_REGISTRY-}jokerwebapp
