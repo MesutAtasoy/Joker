@@ -19,7 +19,6 @@ namespace Aggregator.Api.Controllers
         private readonly IStoreService _storeService;
         private readonly IManagementService _managementService;
 
-
         public CampaignController(ICampaignService campaignService,
             IStoreService storeService, 
             IManagementService managementService)
@@ -36,7 +35,7 @@ namespace Aggregator.Api.Controllers
 
             if (store == null)
             {
-                return BadRequest(new JokerBaseResponse<object>(null, 400, "Store is not found"));
+                return NotFound(new JokerBaseResponse<object>(null, 404, "Store is not found"));
             }
 
             model.Store.Name = store.Name;
@@ -45,7 +44,7 @@ namespace Aggregator.Api.Controllers
             var businessDirectory = await _managementService.GetBusinessDirectoryByIdAsync(model.BusinessDirectory.Id);
             if (businessDirectory == null)
             {
-                return BadRequest(new JokerBaseResponse<object>(null, 400, "Business directory is not found"));
+                return NotFound(new JokerBaseResponse<object>(null, 404, "Business directory is not found"));
             }
 
             model.BusinessDirectory.Name = businessDirectory.Name;

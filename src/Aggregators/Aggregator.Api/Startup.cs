@@ -50,10 +50,6 @@ namespace Aggregator.Api
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
             });
-            
         }
-   
     }
-    
-    
 }

@@ -30,7 +30,7 @@ namespace Aggregator.Api.Controllers
             var pricingPlan = await _managementService.GetPricingPlanByIdAsync(model.PricingPlanId);
             if (pricingPlan == null)
             {
-                return BadRequest("Pricing plan is not found");
+                return NotFound(new JokerBaseResponse<object>(null, 404, "Pricing plan is not found"));
             }
 
             var response = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
