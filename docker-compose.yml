@@ -17,7 +17,7 @@ services:
     image: rabbitmq:3-management-alpine
     
   campaign-api:
-    image: ${DOCKER_REGISTRY-}campaignapi
+    image: joker/campaignapi
     build:
       context: .
       dockerfile: src/Services/Campaign/Campaign.Api/Dockerfile
@@ -28,7 +28,7 @@ services:
       - consul
 
   location-api:
-    image: ${DOCKER_REGISTRY-}locationapi
+    image: joker/locationapi
     build:
       context: .
       dockerfile: src/Services/Location/Location.Api/Dockerfile
@@ -39,7 +39,7 @@ services:
       - consul
           
   management-api:
-    image: ${DOCKER_REGISTRY-}managementapi
+    image: joker/managementapi
     build:
       context: .
       dockerfile: src/Services/Management/Management.Api/Dockerfile
@@ -50,7 +50,7 @@ services:
       - consul
       
   merchant-api:
-    image: ${DOCKER_REGISTRY-}merchantapi
+    image: joker/merchantapi
     build:
       context: .
       dockerfile: src/Services/Merchant/Merchant.Api/Dockerfile
@@ -61,7 +61,7 @@ services:
       - consul
         
   search-api:
-    image: ${DOCKER_REGISTRY-}searchapi
+    image: joker/searchapi
     build:
       context: .
       dockerfile: src/Services/Search/Search.Api/Dockerfile
@@ -71,7 +71,7 @@ services:
       - consul
   
   identity-api:
-    image: ${DOCKER_REGISTRY-}identityapi
+    image: joker/identityapi
     build:
       context: .
       dockerfile: src/Services/Identity/Joker.Identity/Dockerfile
@@ -81,7 +81,7 @@ services:
       - rabbitmq      
   
   subscription-api:
-    image: ${DOCKER_REGISTRY-}subscriptionapi
+    image: joker/subscriptionapi
     build:
       context: .
       dockerfile: src/Services/Subscription/Subscription.Api/Dockerfile
@@ -92,7 +92,7 @@ services:
       - consul
     
   aggregator-api:
-    image: ${DOCKER_REGISTRY-}aggregatorapi
+    image: joker/aggregatorapi
     build:
       context: .
       dockerfile: src/Aggregators/Aggregator.Api/Dockerfile
@@ -107,7 +107,7 @@ services:
       - consul
   
   gateway-web-api:
-    image: ${DOCKER_REGISTRY-}gatewaywebapi
+    image: joker/gatewaywebapi
     build:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
@@ -115,7 +115,7 @@ services:
       - aggregator-api      
         
   joker-webapp:
-    image: ${DOCKER_REGISTRY-}jokerwebapp
+    image: joker/jokerwebapp
     build:
       context: .
       dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
