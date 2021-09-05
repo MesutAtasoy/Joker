@@ -1,5 +1,7 @@
 using AutoMapper;
+using Favorite.Application.Campaigns;
 using Favorite.Application.Shared;
+using Favorite.Application.Stores;
 using Favorite.Core.Repositories;
 using Favorite.Infrastructure.Repositories;
 using Joker.CAP;
@@ -17,6 +19,10 @@ namespace Favorite.Application
 
             //Automapper
             services.AddAutoMapper(typeof(SharedMappingProfile));
+
+            //Managers
+            services.AddTransient<FavoriteCampaignManager>();
+            services.AddTransient<FavoriteStoreManager>();
             
             services.AddTransient<IFavoriteCampaignRepository, FavoriteCampaignRepository>();
             services.AddTransient<IFavoriteStoreRepository, FavoriteStoreRepository>();

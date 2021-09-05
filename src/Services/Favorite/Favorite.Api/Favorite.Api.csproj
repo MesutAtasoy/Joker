@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <None Remove="Protos\favorite.proto" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
         <PackageReference Include="Serilog" Version="2.9.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
@@ -14,12 +18,22 @@
         <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
         <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.17.3" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.38.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
       <ProjectReference Include="..\Favorite.Application\Favorite.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Protobuf Include="Protos\favorite.proto">
+        <Generator>MSBuild:Compile</Generator>
+      </Protobuf>
     </ItemGroup>
 
 </Project>

@@ -25,6 +25,7 @@ namespace Favorite.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddJokerGrpc();
             services.AddHttpContextAccessor();
             services.AddApplicationModule();
             services.AddHttpClient();

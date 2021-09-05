@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option csharp_namespace = "Favorite.Api.Grpc";
+import "google/protobuf/any.proto";
+
+service FavoriteApiGrpcService {
+  rpc AddFavoriteCampaign (CreateFavoriteCampaignMessage) returns (CampaignBaseGrpcResponse);
+  rpc AddFavoriteStore (CreateFavoriteStoreMessage) returns (CampaignBaseGrpcResponse);
+  rpc GetFavoriteCampaignsByCampaignId (ByIdMessage) returns (CampaignBaseGrpcResponse);
+  rpc GetFavoriteCampaignsByUserId (ByIdMessage) returns (CampaignBaseGrpcResponse);
+  rpc GetFavoriteStoresByStoreId (ByIdMessage) returns (CampaignBaseGrpcResponse);
+  rpc GetFavoriteStoresByUserId (ByIdMessage) returns (CampaignBaseGrpcResponse);
+}
+
+message CreateFavoriteCampaignMessage {
+  IdName campaign = 1;
+}
+
+message CreateFavoriteStoreMessage {
+  IdName store = 1;
+}
+
+message IdName {
+  string id = 1;
+  string name = 2;
+}
+
+message ByIdMessage {
+  string  id = 1;
+}
+
+message UserMessage {
+  string  id = 1;
+  string  userName = 2;
+}
+
+message CampaignBaseGrpcResponse {
+  int32 status = 1;
+  string message = 2;
+  google.protobuf.Any data = 3;
+}
+
+message FavoriteCampaignMessage {
+    IdName campaign = 1;
+    UserMessage user = 2;
+}
+
+message FavoriteStoreMessage {
+  IdName store = 1;
+  UserMessage user = 2;
+}
+
+message FavoriteStoreMessageList {
+  repeated  FavoriteStoreMessage Stores = 1;
+}
+
+message FavoriteCampaignMessageList {
+  repeated  FavoriteCampaignMessage Campaigns = 1;
+}

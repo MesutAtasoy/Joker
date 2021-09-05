@@ -1,29 +1,23 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using Favorite.Application.Campaigns.Dto;
-using Favorite.Core.Repositories;
 using MediatR;
 
 namespace Favorite.Application.Campaigns.Queries.GetCampaignsByCampaignId
 {
     public class GetCampaignsByCampaignIdQueryHandler :  IRequestHandler<GetCampaignsByCampaignIdQuery, List<FavoriteCampaignDto>>
     {
-        private readonly IFavoriteCampaignRepository _repository;
-        private readonly IMapper _mapper;
+        private readonly FavoriteCampaignManager _manager;
         
-        public GetCampaignsByCampaignIdQueryHandler(IFavoriteCampaignRepository repository,
-            IMapper mapper)
+        public GetCampaignsByCampaignIdQueryHandler(FavoriteCampaignManager manager)
         {
-            _repository = repository;
-            _mapper = mapper;
+            _manager = manager;
         }
+        
         public async Task<List<FavoriteCampaignDto>> Handle(GetCampaignsByCampaignIdQuery request, CancellationToken cancellationToken)
         {
-            var campaigns = await _repository.GetCampaignsByCampaignIdAsync(request.CampaignId.ToString());
-
-            return _mapper.Map<List<FavoriteCampaignDto>>(campaigns);
+            return await _manager.GetCampaignsByCampaignIdAsync(request.CampaignId.ToString());
         }
     }
 }

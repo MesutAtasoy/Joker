@@ -1,5 +1,6 @@
 using Couchbase.Extensions.DependencyInjection;
 using Couchbase.Linq;
+using Favorite.Api.Interceptors;
 using Favorite.Infrastructure.Initializers;
 using IdentityServer4.AccessTokenValidation;
 using Joker.CAP;
@@ -13,6 +14,12 @@ namespace Favorite.Api.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddJokerGrpc(this IServiceCollection services)
+        {
+            services.AddTransient<GrpcExceptionInterceptor>();
+            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
+            return services;
+        }
       
         public static IServiceCollection AddJokerConsul(this IServiceCollection services, IConfiguration configuration)
         {
