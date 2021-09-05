@@ -4,27 +4,23 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Favorite.Application.Campaigns.Dto;
 using Favorite.Application.Campaigns.Queries.GetCampaignsByCampaignId;
+using Favorite.Application.Stores.Dto;
 using Favorite.Core.Repositories;
 using MediatR;
 
 namespace Favorite.Application.Stores.Queries.GetStoresByStoreId
 {
-    public class GetCampaignsByCampaignIdQueryHandler :  IRequestHandler<GetCampaignsByCampaignIdQuery, List<FavoriteCampaignDto>>
+    public class GetStoresByStoreIdQueryHandler :  IRequestHandler<GetStoresByStoreIdQuery, List<FavoriteStoreDto>>
     {
-        private readonly IFavoriteCampaignRepository _repository;
-        private readonly IMapper _mapper;
+        private readonly FavoriteStoreManager _storeManager;
         
-        public GetCampaignsByCampaignIdQueryHandler(IFavoriteCampaignRepository repository,
-            IMapper mapper)
+        public GetStoresByStoreIdQueryHandler(FavoriteStoreManager storeManager)
         {
-            _repository = repository;
-            _mapper = mapper;
+            _storeManager = storeManager;
         }
-        public async Task<List<FavoriteCampaignDto>> Handle(GetCampaignsByCampaignIdQuery request, CancellationToken cancellationToken)
+        public async Task<List<FavoriteStoreDto>> Handle(GetStoresByStoreIdQuery request, CancellationToken cancellationToken)
         {
-            var campaigns = await _repository.GetCampaignsByCampaignIdAsync(request.CampaignId.ToString());
-
-            return _mapper.Map<List<FavoriteCampaignDto>>(campaigns);
+            return await _storeManager.GetStoresByStoreIdAsync(request.StoreId.ToString());
         }
     }
 }
