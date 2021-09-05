@@ -49,8 +49,18 @@ services:
     volumes:
       - ./data/volumes/mongo:/data/db
     networks:
-      - joker-network        
-        
+      - joker-network 
+      
+  couchbase:
+     image: couchbase
+     container_name: "couchbase"
+     ports:
+       - "8091:8091"
+       - "8093:8093"
+       - "11210:11210"
+     networks:
+       - joker-network
+
   merchant-api:
     container_name: "merchant-api"
     environment:
@@ -110,7 +120,20 @@ services:
       - "5004:80"
     networks:
       - joker-network      
-  
+
+  favorite-api:
+    container_name: "favorite-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
+    ports:
+      - "5005:80"
+    networks:
+      - joker-network
+
+
   identity-api:
     container_name: "identity-api"
     environment:

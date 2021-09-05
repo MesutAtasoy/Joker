@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.0" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+      <PackageReference Include="FluentValidation" Version="10.2.3" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
+      <ProjectReference Include="..\Favorite.Core\Favorite.Core.csproj" />
+      <ProjectReference Include="..\Favorite.Infrastructure\Favorite.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

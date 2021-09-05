@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Couchbase.Extensions.DependencyInjection" Version="3.2.0" />
+      <PackageReference Include="CouchbaseNetClient" Version="3.2.0" />
+      <PackageReference Include="Linq2Couchbase" Version="2.0.0-beta.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
+      <ProjectReference Include="..\Favorite.Core\Favorite.Core.csproj" />
+    </ItemGroup>
+
+</Project>
