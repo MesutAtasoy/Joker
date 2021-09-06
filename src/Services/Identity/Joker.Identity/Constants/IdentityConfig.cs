@@ -45,6 +45,10 @@ namespace Joker.Identity.Constants
                 {
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
+                new ("favoriteapi", "Favorite API")
+                {
+                    ApiSecrets = {new Secret("apisecret".Sha256())}
+                },
                 new ("searchapi", "Search API")
                 {
                     ApiSecrets = {new Secret("apisecret".Sha256())}
@@ -99,6 +103,7 @@ namespace Joker.Identity.Constants
                         "campaignapi",
                         "managementapi",
                         "locationapi",
+                        "favoriteapi",
                         "searchapi",
                         "subscriptionapi",
                         "aggregatorapi"
