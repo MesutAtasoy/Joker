@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Favorite.Api.Grpc";
 import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
 
 service FavoriteApiGrpcService {
   rpc AddFavoriteCampaign (CreateFavoriteCampaignMessage) returns (CampaignBaseGrpcResponse);
@@ -43,11 +44,13 @@ message CampaignBaseGrpcResponse {
 message FavoriteCampaignMessage {
     IdName campaign = 1;
     UserMessage user = 2;
+    google.protobuf.Timestamp createdDate = 3;
 }
 
 message FavoriteStoreMessage {
   IdName store = 1;
   UserMessage user = 2;
+  google.protobuf.Timestamp createdDate = 3;
 }
 
 message FavoriteStoreMessageList {

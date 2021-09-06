@@ -47,7 +47,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = response?.UserInfo?.Id ?? " ",
                     UserName = response?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = response?.CreatedDate.ToTimestamp()
             };
             
             return new CampaignBaseGrpcResponse
@@ -80,7 +81,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = response?.UserInfo?.Id ?? " ",
                     UserName = response?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = response?.CreatedDate.ToTimestamp()
             };
             
             return new CampaignBaseGrpcResponse
@@ -106,7 +108,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = x?.UserInfo?.Id ?? " ",
                     UserName = x?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = x?.CreatedDate.ToTimestamp()
             }).ToList();
 
             var favoriteStoreMessageList = new FavoriteStoreMessageList
@@ -138,7 +141,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = x?.UserInfo?.Id ?? " ",
                     UserName = x?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = x?.CreatedDate.ToTimestamp()
             }).ToList();
 
             var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
@@ -169,7 +173,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = x?.UserInfo?.Id ?? " ",
                     UserName = x?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = x?.CreatedDate.ToTimestamp()
             }).ToList();
 
             var favoriteStoreMessageList = new FavoriteStoreMessageList
@@ -200,7 +205,8 @@ namespace Favorite.Api.GrpcServices
                 {
                     Id = x?.UserInfo?.Id ?? " ",
                     UserName = x?.UserInfo?.Username ?? " "
-                }
+                },
+                CreatedDate = x?.CreatedDate.ToTimestamp()
             }).ToList();
 
             var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
