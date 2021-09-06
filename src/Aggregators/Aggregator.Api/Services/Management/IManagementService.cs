@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using Campaign.Api.Grpc;
+using Management.Api.Grpc;
 
 namespace Aggregator.Api.Services.Management
 {
     public interface IManagementService
     {
-        Task<IdName> GetBusinessDirectoryByIdAsync(Guid id);
-        Task<IdName> GetPricingPlanByIdAsync(Guid id);
+        Task<IdNameMessage> GetBusinessDirectoryByIdAsync(Guid id);
+        Task<IdNameMessage> GetPricingPlanByIdAsync(Guid id);
     }
 }

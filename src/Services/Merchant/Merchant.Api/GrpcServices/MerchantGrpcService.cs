@@ -284,27 +284,27 @@ namespace Merchant.Api.GrpcServices
 
                 var storeLocationMessage = new StoreLocationMessage
                 {
-                    Country = new IdName
+                    Country = new IdNameMessage
                     {
                         Id = response.Country.RefId.ToString(),
                         Name = response.Country.Name
                     },
-                    City = new IdName
+                    City = new IdNameMessage
                     {
                         Id = response.City.RefId.ToString(),
                         Name = response.City.Name
                     },
-                    District = new IdName
+                    District = new IdNameMessage
                     {
                         Id = response.District.RefId.ToString(),
                         Name = response.District.Name
                     },
-                    Neighborhood = new IdName
+                    Neighborhood = new IdNameMessage
                     {
                         Id = response.Neighborhood.RefId.ToString(),
                         Name = response.Neighborhood.Name
                     },
-                    Quarter = new IdName
+                    Quarter = new IdNameMessage
                     {
                         Id = response.Quarter.RefId.ToString(),
                         Name = response.Quarter.Name
@@ -372,7 +372,7 @@ namespace Merchant.Api.GrpcServices
                 Id = store.Id.ToString(),
                 Description = store.Description,
                 Email = store.Email,
-                Merchant = new IdName
+                Merchant = new IdNameMessage
                 {
                     Id = store.Merchant.RefId.ToString(),
                     Name = store.Merchant.Name
@@ -386,27 +386,27 @@ namespace Merchant.Api.GrpcServices
                 Location = new StoreLocationMessage
                 {
                     Address = store.Location.Address,
-                    Country = new IdName
+                    Country = new IdNameMessage
                     {
                         Id = store.Location.Country.RefId.ToString(),
                         Name = store.Location.Country.Name,
                     },
-                    City = new IdName
+                    City = new IdNameMessage
                     {
                         Id = store.Location.City.RefId.ToString(),
                         Name = store.Location.City.Name,
                     },
-                    District = new IdName
+                    District = new IdNameMessage
                     {
                         Id = store.Location.District.RefId.ToString(),
                         Name = store.Location.District.Name,
                     },
-                    Neighborhood = new IdName
+                    Neighborhood = new IdNameMessage
                     {
                         Id = store.Location.Neighborhood.RefId.ToString(),
                         Name = store.Location.Neighborhood.Name,
                     },
-                    Quarter = new IdName
+                    Quarter = new IdNameMessage
                     {
                         Id = store.Location.Quarter.RefId.ToString(),
                         Name = store.Location.Quarter.Name,

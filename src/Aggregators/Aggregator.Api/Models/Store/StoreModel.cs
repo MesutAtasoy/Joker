@@ -6,7 +6,7 @@ namespace Aggregator.Api.Models.Store
     public class StoreModel
     {
         public Guid Id { get;  set; }
-        public IdName Merchant { get;  set; }
+        public IdNameModel Merchant { get;  set; }
         public string Name { get;  set; }
         public string Slogan { get;  set; }
         public string PhoneNumber { get;  set; }

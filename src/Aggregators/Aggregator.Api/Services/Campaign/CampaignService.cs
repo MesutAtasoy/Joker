@@ -27,26 +27,26 @@ namespace Aggregator.Api.Services.Campaign
         public async Task<JokerBaseResponse<CampaignModel>> CreateAsync(CreateCampaignModel request)
         {
             var headers = await GetHeaders();
-            
+
             var response = await _campaignApiGrpcServiceClient.CreateCampaignAsync(new CreateCampaignMessage
             {
                 Title = request.Title ?? "",
                 Condition = request.Condition ?? "",
                 Code = request.Code ?? "",
                 Description = request.Description ?? "",
-                Store = new IdName
+                Store = new IdNameMessage
                 {
                     Id = request.Store?.Id.ToString() ?? "",
                     Name = request.Store?.Name ?? ""
                 },
-                Merchant = new IdName
+                Merchant = new IdNameMessage
                 {
                     Id = request.Merchant?.Id.ToString() ?? "",
                     Name = request.Merchant?.Name ?? ""
                 },
-                BusinessDirectory = new IdName
+                BusinessDirectory = new IdNameMessage
                 {
-                    Id = request.BusinessDirectory?.Id.ToString() ?? "", 
+                    Id = request.BusinessDirectory?.Id.ToString() ?? "",
                     Name = request.BusinessDirectory?.Name ?? ""
                 },
                 EndTime = request.EndTime?.ToTimestamp(),
@@ -57,7 +57,7 @@ namespace Aggregator.Api.Services.Campaign
             {
                 return new JokerBaseResponse<CampaignModel>(null, response.Status, response.Message);
             }
-            
+
             var campaign = response.Data.Unpack<CampaignMessage>();
             return new JokerBaseResponse<CampaignModel>(As(campaign), 200);
         }
@@ -79,12 +79,12 @@ namespace Aggregator.Api.Services.Campaign
                     StartTime = request.StartTime?.ToTimestamp()
                 }
             }, headers);
-            
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<CampaignModel>(null, response.Status, response.Message);
             }
-            
+
             var campaign = response.Data.Unpack<CampaignMessage>();
             return new JokerBaseResponse<CampaignModel>(As(campaign), 200);
         }
@@ -93,15 +93,16 @@ namespace Aggregator.Api.Services.Campaign
         {
             var headers = await GetHeaders();
 
-            var response = await _campaignApiGrpcServiceClient.DeleteCampaignAsync(new ByIdMessage { Id = id.ToString() },
-                    headers);
-            
-               
+            var response = await _campaignApiGrpcServiceClient.DeleteCampaignAsync(
+                new ByIdMessage { Id = id.ToString() },
+                headers);
+
+
             if (response.Status != 200)
             {
                 return new JokerBaseResponse<bool>(false, response.Status, response.Message);
             }
-            
+
             var deleteCampaignMessage = response.Data.Unpack<DeleteCampaignMessage>();
             return new JokerBaseResponse<bool>(deleteCampaignMessage.Succeed, 200);
         }
@@ -117,7 +118,8 @@ namespace Aggregator.Api.Services.Campaign
 
         private async Task<Metadata> GetHeaders()
         {
-            var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+            var accessToken =
+                await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
 
             var headers = new Metadata();
             if (!string.IsNullOrEmpty(accessToken))
@@ -132,7 +134,7 @@ namespace Aggregator.Api.Services.Campaign
 
         private CampaignModel As(CampaignMessage campaignMessage)
         {
-            return new()
+            return new ()
             {
                 Id = campaignMessage.Id.ToGuid(),
                 Title = campaignMessage.Title,
@@ -140,20 +142,20 @@ namespace Aggregator.Api.Services.Campaign
                 Channel = campaignMessage.Channel,
                 Code = campaignMessage.Code,
                 Description = campaignMessage.Description,
-                BusinessDirectory = new Models.Shared.IdName
+                BusinessDirectory = new Models.Shared.IdNameModel
                 {
-                    Id = campaignMessage.BusinessDirectory.Id.ToGuid(),
-                    Name = campaignMessage.BusinessDirectory.Name
+                    Id = campaignMessage.BusinessDirectory?.Id.ToGuid() ?? Guid.Empty,
+                    Name = campaignMessage.BusinessDirectory?.Name
                 },
-                Store = new Models.Shared.IdName()
+                Store = new Models.Shared.IdNameModel()
                 {
-                    Id = campaignMessage.Store.Id.ToGuid(),
-                    Name = campaignMessage.Store.Name
+                    Id = campaignMessage.Store?.Id.ToGuid() ?? Guid.Empty,
+                    Name = campaignMessage.Store?.Name
                 },
-                Merchant = new Models.Shared.IdName
+                Merchant = new Models.Shared.IdNameModel
                 {
-                    Id = campaignMessage.Merchant.Id.ToGuid(),
-                    Name = campaignMessage.Merchant.Name
+                    Id = campaignMessage.Merchant?.Id.ToGuid() ?? Guid.Empty,
+                    Name = campaignMessage.Merchant?.Name
                 },
                 EndTime = campaignMessage.EndTime?.ToDateTime(),
                 StartTime = campaignMessage.StartTime?.ToDateTime(),

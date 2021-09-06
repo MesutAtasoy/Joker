@@ -49,11 +49,11 @@ message DeleteStoreResponseMessage {
 }
 
 message StoreLocationMessage {
-  IdName country = 1;
-  IdName city = 2;
-  IdName district = 3;
-  IdName neighborhood = 4;
-  IdName quarter = 5;
+  IdNameMessage country = 1;
+  IdNameMessage city = 2;
+  IdNameMessage district = 3;
+  IdNameMessage neighborhood = 4;
+  IdNameMessage quarter = 5;
   string address = 6;
 }
 
@@ -61,14 +61,14 @@ message ByIdMessage {
   string id = 1;
 }
 
-message IdName {
+message IdNameMessage {
   string id = 1;
   string name = 2;
 }
 
 message StoreMessage {
   string id = 1;
-  IdName merchant = 2;
+  IdNameMessage merchant = 2;
   string name = 3;
   string slogan = 4;
   string phoneNumber = 5;
@@ -89,7 +89,7 @@ message CreateMerchantMessage {
   string taxNumber = 5;
   string email = 6;
   string description = 7;
-  IdName pricingPlan = 8;
+  IdNameMessage pricingPlan = 8;
 }
 
 message UpdateMerchantMessage {

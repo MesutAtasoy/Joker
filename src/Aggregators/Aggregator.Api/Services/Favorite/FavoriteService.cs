@@ -8,7 +8,6 @@ using Joker.Response;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using IdName = Favorite.Api.Grpc.IdName;
 
 namespace Aggregator.Api.Services.Favorite
 {
@@ -29,11 +28,11 @@ namespace Aggregator.Api.Services.Favorite
 
             var response = await _favoriteApiGrpcServiceClient.AddFavoriteCampaignAsync(new CreateFavoriteCampaignMessage
             {
-                Campaign = new IdName
+                Campaign = new IdNameMessage
                 {
                     Id = model?.Campaign?.Id.ToString() ?? "",
                     Name = model?.Campaign?.Name ?? ""
-                }
+                },
             }, headers);
             
             if (response.Status != 200)
@@ -51,7 +50,7 @@ namespace Aggregator.Api.Services.Favorite
 
             var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(new CreateFavoriteStoreMessage
             {
-                Store = new IdName
+                Store = new IdNameMessage
                 {
                     Id = model?.Store?.Id.ToString() ?? "",
                     Name = model?.Store?.Name ?? ""
@@ -84,7 +83,7 @@ namespace Aggregator.Api.Services.Favorite
         {
             return new FavoriteCampaignModel
             {
-                Campaign = new Models.Shared.IdName
+                Campaign = new Models.Shared.IdNameModel
                 {
                     Id = message.Campaign.Id.ToGuid(),
                     Name = message.Campaign.Name
@@ -93,7 +92,8 @@ namespace Aggregator.Api.Services.Favorite
                 {
                     Id = message.User.Id,
                     Username = message.User.UserName
-                }
+                },
+                CreatedDate = message.CreatedDate.ToDateTime()
             };
         }
         
@@ -101,7 +101,7 @@ namespace Aggregator.Api.Services.Favorite
         {
             return new FavoriteStoreModel
             {
-                Store = new Models.Shared.IdName
+                Store = new Models.Shared.IdNameModel
                 {
                     Id = message.Store.Id.ToGuid(),
                     Name = message.Store.Name
@@ -110,7 +110,8 @@ namespace Aggregator.Api.Services.Favorite
                 {
                     Id = message.User.Id,
                     Username = message.User.UserName
-                }
+                },
+                CreatedDate = message.CreatedDate.ToDateTime()
             };
         }
     }

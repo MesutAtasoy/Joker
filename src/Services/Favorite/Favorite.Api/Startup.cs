@@ -1,5 +1,6 @@
 using Couchbase.Extensions.DependencyInjection;
 using Favorite.Api.Extensions;
+using Favorite.Api.GrpcServices;
 using Favorite.Application;
 using Favorite.Infrastructure.Initializers;
 using Joker.Mvc;
@@ -57,6 +58,7 @@ namespace Favorite.Api
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
+                endpoints.MapGrpcService<FavoriteGrpcService>();
             });
 
             initializer.InitializeAsync().Wait();

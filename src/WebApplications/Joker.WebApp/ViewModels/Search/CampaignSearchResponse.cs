@@ -4,6 +4,7 @@ namespace Joker.WebApp.ViewModels.Search
 {
     public class CampaignSearchResponse
     {
+        public Guid Id { get; set; }
         public Guid StoreId { get; set; }
         public string StoreName  { get; set; }
         public Guid BusinessDirectoryId { get;  set; }

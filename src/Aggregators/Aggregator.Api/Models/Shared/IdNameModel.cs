@@ -2,7 +2,7 @@ using System;
 
 namespace Aggregator.Api.Models.Shared
 {
-    public class IdName
+    public class IdNameModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

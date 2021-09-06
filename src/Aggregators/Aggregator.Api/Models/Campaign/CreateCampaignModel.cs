@@ -5,9 +5,9 @@ namespace Aggregator.Api.Models.Campaign
 {
     public class CreateCampaignModel
     {
-        public IdName Store { get; set; }
-        public IdName Merchant { get; set; }
-        public IdName BusinessDirectory { get; set; }
+        public IdNameModel Store { get; set; }
+        public IdNameModel Merchant { get; set; }
+        public IdNameModel BusinessDirectory { get; set; }
         public string Title { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }

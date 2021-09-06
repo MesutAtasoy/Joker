@@ -32,7 +32,7 @@ namespace Management.Api.GrpcServices
             _mapper = mapper;
         }
 
-        public override async Task<IdName> GetCurrencyById(ByIdMessage request, ServerCallContext context)
+        public override async Task<IdNameMessage> GetCurrencyById(ByIdMessage request, ServerCallContext context)
         {
             var currency = await _currencyRepository.FirstOrDefaultAsync(x => x.Id == request.Id.ToGuid() && !x.IsDeleted);
             
@@ -41,10 +41,10 @@ namespace Management.Api.GrpcServices
                 throw new NotFoundException("Currency is not found");
             }
 
-            return _mapper.Map<IdName>(currency);
+            return _mapper.Map<IdNameMessage>(currency);
         }
 
-        public override async Task<IdName> GetLanguageById(ByIdMessage request, ServerCallContext context)
+        public override async Task<IdNameMessage> GetLanguageById(ByIdMessage request, ServerCallContext context)
         {
             var language = await _languageRepository.FirstOrDefaultAsync(x => x.Id == request.Id.ToGuid() && !x.IsDeleted);
             
@@ -53,10 +53,10 @@ namespace Management.Api.GrpcServices
                 throw new NotFoundException("Language is not found");
             }
             
-            return _mapper.Map<IdName>(language);
+            return _mapper.Map<IdNameMessage>(language);
         }
 
-        public override async Task<IdName> GetBusinessDirectoryById(ByIdMessage request, ServerCallContext context)
+        public override async Task<IdNameMessage> GetBusinessDirectoryById(ByIdMessage request, ServerCallContext context)
         {
             var businessDirectory = await _directoryRepository.FirstOrDefaultAsync(x => x.Id == request.Id.ToGuid() && !x.IsDeleted);
 
@@ -65,10 +65,10 @@ namespace Management.Api.GrpcServices
                 throw new NotFoundException("Business Directory is not found");
             }
             
-            return _mapper.Map<IdName>(businessDirectory);
+            return _mapper.Map<IdNameMessage>(businessDirectory);
         }
 
-        public override async Task<IdName> GetPricingPlanById(ByIdMessage request, ServerCallContext context)
+        public override async Task<IdNameMessage> GetPricingPlanById(ByIdMessage request, ServerCallContext context)
         {
             var pricingPlan = await _planRepository.FirstOrDefaultAsync(x => x.Id == request.Id.ToGuid() && !x.IsDeleted);
             
@@ -77,10 +77,10 @@ namespace Management.Api.GrpcServices
                 throw new NotFoundException("Pricing Plan is not found");
             }
             
-            return _mapper.Map<IdName>(pricingPlan);
+            return _mapper.Map<IdNameMessage>(pricingPlan);
         }
 
-        public override async Task<IdName> GetPaymentMethodById(ByIdMessage request, ServerCallContext context)
+        public override async Task<IdNameMessage> GetPaymentMethodById(ByIdMessage request, ServerCallContext context)
         {
             var paymentMethod = await _paymentMethodRepository.FirstOrDefaultAsync(x => x.Id == request.Id.ToGuid() && !x.IsDeleted);
 
@@ -89,7 +89,7 @@ namespace Management.Api.GrpcServices
                 throw new NotFoundException("Payment Method is not found");
             }
             
-            return _mapper.Map<IdName>(paymentMethod);
+            return _mapper.Map<IdNameMessage>(paymentMethod);
         }
     }
 }

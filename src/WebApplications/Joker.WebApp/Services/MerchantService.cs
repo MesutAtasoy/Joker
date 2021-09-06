@@ -26,13 +26,13 @@ namespace Joker.WebApp.Services
         public async Task<JokerBaseResponseViewModel<MerchantViewModel>> CreateAsync(CreateMerchantViewModel createMerchantViewModel)
         {
             var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Merchants", createMerchantViewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<MerchantViewModel>>(responseMessage);
+            return await HandleRequestAsync<MerchantViewModel>(responseMessage);
         }
 
         public async Task<JokerBaseResponseViewModel<MerchantViewModel>> UpdateAsync(UpdateMerchantViewModel updateMerchantViewModel)
         {
             var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Merchants", updateMerchantViewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<MerchantViewModel>>(responseMessage);
+            return await HandleRequestAsync<MerchantViewModel>(responseMessage);
         }
 
         public async Task<MerchantViewModel> GetByIdAsync(Guid id)
@@ -64,13 +64,13 @@ namespace Joker.WebApp.Services
         public async Task<JokerBaseResponseViewModel<StoreViewModel>> CreateStoreAsync(CreateStoreViewModel createStoreViewModel)
         {
             var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Stores", createStoreViewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<StoreViewModel>>(responseMessage);
+            return await HandleRequestAsync<StoreViewModel>(responseMessage);
         }
 
         public async Task<JokerBaseResponseViewModel<StoreViewModel>> UpdateStoreAsync(UpdateStoreViewModel updateStoreViewModel)
         {
             var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Stores", updateStoreViewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<StoreViewModel>>(responseMessage);
+            return await HandleRequestAsync<StoreViewModel>(responseMessage);
         }
 
         public async Task<StoreViewModel> GetStoreByIdAsync(Guid id)

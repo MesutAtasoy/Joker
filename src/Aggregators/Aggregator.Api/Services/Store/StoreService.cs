@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Aggregator.Api.Extensions;
 using Aggregator.Api.Models.Store;
 using Grpc.Core;
 using Joker.Extensions;
@@ -30,40 +31,40 @@ namespace Aggregator.Api.Services.Store
 
             var response = await _merchantApiGrpcServiceClient.CreateStoreAsync(new CreateStoreMessage
             {
-                Email = request.Email ?? "",
-                Description = request.Description ?? "",
-                Name = request.Name ?? "",
-                Slogan = request.Slogan ?? "",
+                Email = request.Email?? "",
+                Description = request.Description?? "",
+                Name = request.Name?? "",
+                Slogan = request.Slogan?? "",
                 MerchantId = request.MerchantId.ToString(),
-                PhoneNumber = request.PhoneNumber ?? "",
+                PhoneNumber = request.PhoneNumber?? "",
                 Location = new StoreLocationMessage
                 {
-                    Country = new IdName
+                    Country = new IdNameMessage
                     {
-                        Id = request.Location?.Country?.Id.ToString() ?? "",
-                        Name = request.Location?.Country?.Name ?? ""
+                        Id = request.Location?.Country?.Id.ToString()?? "",
+                        Name = request.Location?.Country?.Name?? ""
                     },
-                    City = new IdName
+                    City = new IdNameMessage
                     {
-                        Id = request.Location?.City?.Id.ToString() ?? "",
-                        Name = request.Location?.City?.Name ?? ""
+                        Id = request.Location?.City?.Id.ToString()?? "",
+                        Name = request.Location?.City?.Name?? ""
                     },
-                    District = new IdName
+                    District = new IdNameMessage
                     {
-                        Id = request.Location?.District?.Id.ToString() ?? "",
-                        Name = request.Location?.District?.Name ?? ""
+                        Id = request.Location?.District?.Id.ToString()?? "",
+                        Name = request.Location?.District?.Name?? ""
                     },
-                    Neighborhood = new IdName
+                    Neighborhood = new IdNameMessage
                     {
-                        Id = request.Location?.Neighborhood?.Id.ToString() ?? "",
-                        Name = request.Location?.Neighborhood?.Name ?? ""
+                        Id = request.Location?.Neighborhood?.Id.ToString()?? "",
+                        Name = request.Location?.Neighborhood?.Name?? ""
                     },
-                    Quarter = new IdName
+                    Quarter = new IdNameMessage
                     {
-                        Id = request.Location?.Quarter?.Id.ToString() ?? "",
-                        Name = request.Location?.Quarter?.Name ?? ""
+                        Id = request.Location?.Quarter?.Id.ToString()?? "",
+                        Name = request.Location?.Quarter?.Name?? ""
                     },
-                    Address = request.Location?.Address ?? ""
+                    Address = request.Location?.Address?? ""
                 }
             }, headers);
 
@@ -86,11 +87,11 @@ namespace Aggregator.Api.Services.Store
                 StoreId = request.Id.ToString(),
                 Store = new UpdateStoreItemMessage
                 {
-                    Email = request.Email ?? "",
-                    Description = request.Description ?? "",
-                    Name = request.Name ?? "",
-                    Slogan = request.Slogan ?? "",
-                    PhoneNumber = request.PhoneNumber ?? ""
+                    Email = request.Email?? "",
+                    Description = request.Description?? "",
+                    Name = request.Name?? "",
+                    Slogan = request.Slogan?? "",
+                    PhoneNumber = request.PhoneNumber?? ""
                 }
             }, headers);
 
@@ -112,32 +113,32 @@ namespace Aggregator.Api.Services.Store
                 StoreId = request.Id.ToString(),
                 Location = new StoreLocationMessage
                 {
-                    Country = new IdName
+                    Country = new IdNameMessage
                     {
-                        Id = request.Location?.Country?.Id.ToString() ?? "",
-                        Name = request.Location?.Country?.Name ?? ""
+                        Id = request.Location?.Country?.Id.ToString()?? "",
+                        Name = request.Location?.Country?.Name?? ""
                     },
-                    City = new IdName
+                    City = new IdNameMessage
                     {
-                        Id = request.Location?.City?.Id.ToString() ?? "",
-                        Name = request.Location?.City?.Name ?? ""
+                        Id = request.Location?.City?.Id.ToString()?? "",
+                        Name = request.Location?.City?.Name?? ""
                     },
-                    District = new IdName
+                    District = new IdNameMessage
                     {
-                        Id = request.Location?.District?.Id.ToString() ?? "",
-                        Name = request.Location?.District?.Name ?? ""
+                        Id = request.Location?.District?.Id.ToString()?? "",
+                        Name = request.Location?.District?.Name?? ""
                     },
-                    Neighborhood = new IdName
+                    Neighborhood = new IdNameMessage
                     {
-                        Id = request.Location?.Neighborhood?.Id.ToString() ?? "",
-                        Name = request.Location?.Neighborhood?.Name ?? ""
+                        Id = request.Location?.Neighborhood?.Id.ToString()?? "",
+                        Name = request.Location?.Neighborhood?.Name?? ""
                     },
-                    Quarter = new IdName
+                    Quarter = new IdNameMessage
                     {
-                        Id = request.Location?.Quarter?.Id.ToString() ?? "",
-                        Name = request.Location?.Quarter?.Name ?? ""
+                        Id = request.Location?.Quarter?.Id.ToString()?? "",
+                        Name = request.Location?.Quarter?.Name?? ""
                     },
-                    Address = request.Location?.Address ?? ""
+                    Address = request.Location?.Address?? ""
                 }
             }, headers);
 
@@ -150,27 +151,27 @@ namespace Aggregator.Api.Services.Store
             
             var storeLocationModel = new StoreLocationModel
             {
-                Country = new Models.Shared.IdName()
+                Country = new Models.Shared.IdNameModel()
                 {
                     Id = storeLocationMessage.Country.Id.ToGuid(),
                     Name = storeLocationMessage.Country.Name
                 },
-                City = new Models.Shared.IdName
+                City = new Models.Shared.IdNameModel
                 {
                     Id = storeLocationMessage.City.Id.ToGuid(),
                     Name = storeLocationMessage.City.Name
                 },
-                District = new Models.Shared.IdName
+                District = new Models.Shared.IdNameModel
                 {
                     Id = storeLocationMessage.District.Id.ToGuid(),
                     Name = storeLocationMessage.District.Name
                 },
-                Neighborhood = new Models.Shared.IdName
+                Neighborhood = new Models.Shared.IdNameModel
                 {
                     Id = storeLocationMessage.Neighborhood.Id.ToGuid(),
                     Name = storeLocationMessage.Neighborhood.Name
                 },
-                Quarter = new Models.Shared.IdName
+                Quarter = new Models.Shared.IdNameModel
                 {
                     Id = storeLocationMessage.Quarter.Id.ToGuid(),
                     Name = storeLocationMessage.Quarter.Name
@@ -230,34 +231,34 @@ namespace Aggregator.Api.Services.Store
                 Name = storeMessage.Name,
                 Description = storeMessage.Description,
                 Email = storeMessage.Email,
-                Merchant = new Models.Shared.IdName
+                Merchant = new Models.Shared.IdNameModel
                 {
                     Id = storeMessage.Merchant.Id.ToGuid(),
                     Name = storeMessage.Merchant.Name
                 },
                 Location = new StoreLocationModel
                 {
-                    Country = new Models.Shared.IdName
+                    Country = new Models.Shared.IdNameModel
                     {
                         Id = storeMessage.Location.Country.Id.ToGuid(),
                         Name = storeMessage.Location.Country.Name
                     },
-                    City = new Models.Shared.IdName
+                    City = new Models.Shared.IdNameModel
                     {
                         Id = storeMessage.Location.City.Id.ToGuid(),
                         Name = storeMessage.Location.City.Name
                     },
-                    District = new Models.Shared.IdName
+                    District = new Models.Shared.IdNameModel
                     {
                         Id = storeMessage.Location.District.Id.ToGuid(),
                         Name = storeMessage.Location.District.Name
                     },
-                    Neighborhood = new Models.Shared.IdName
+                    Neighborhood = new Models.Shared.IdNameModel
                     {
                         Id = storeMessage.Location.Neighborhood.Id.ToGuid(),
                         Name = storeMessage.Location.Neighborhood.Name
                     },
-                    Quarter = new Models.Shared.IdName
+                    Quarter = new Models.Shared.IdNameModel
                     {
                         Id = storeMessage.Location.Quarter.Id.ToGuid(),
                         Name = storeMessage.Location.Quarter.Name

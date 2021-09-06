@@ -4,6 +4,6 @@ namespace Aggregator.Api.Models.Favorite
 {
     public class AddStoreModel
     {
-        public IdName Store { get; set; }
+        public IdNameModel Store { get; set; }
     }
 }

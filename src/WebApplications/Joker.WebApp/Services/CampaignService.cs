@@ -37,13 +37,13 @@ namespace Joker.WebApp.Services
         public async Task<JokerBaseResponseViewModel<CampaignViewModel>> CreateAsync(CreateCampaignViewModel viewModel)
         {
             var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Campaigns", viewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<CampaignViewModel>>(responseMessage);
+            return await HandleRequestAsync<CampaignViewModel>(responseMessage);
         }
 
         public async Task<JokerBaseResponseViewModel<CampaignViewModel>> UpdateAsync(UpdateCampaignViewModel viewModel)
         {
             var responseMessage = await _httpClient.PutAsJsonAsync($"aggregator/api/Campaigns", viewModel);
-            return await HandleRequestAsync<JokerBaseResponseViewModel<CampaignViewModel>>(responseMessage);
+            return await HandleRequestAsync<CampaignViewModel>(responseMessage);
         }
 
         public async Task<CampaignViewModel> GetByIdAsync(Guid id)

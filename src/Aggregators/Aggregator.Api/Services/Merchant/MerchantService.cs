@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Aggregator.Api.Extensions;
 using Aggregator.Api.Models.Merchant;
 using Grpc.Core;
 using Joker.Extensions;
@@ -29,14 +30,14 @@ namespace Aggregator.Api.Services.Merchant
             var headers = await GetHeaders();
             var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
             {
-                Name = request.Name ?? "",
-                Description = request.Description ?? "",
-                Email = request.Email ?? "",
-                Slogan = request.Slogan ?? "",
-                PhoneNumber = request.PhoneNumber ?? "",
-                TaxNumber = request.TaxNumber ?? "",
-                WebsiteUrl = request.WebSiteUrl ?? "",
-                PricingPlan = new IdName
+                Name = request.Name?? "",
+                Description = request.Description?? "",
+                Email = request.Email?? "",
+                Slogan = request.Slogan?? "",
+                PhoneNumber = request.PhoneNumber?? "",
+                TaxNumber = request.TaxNumber?? "",
+                WebsiteUrl = request.WebSiteUrl?? "",
+                PricingPlan = new IdNameMessage
                 {
                     Id = pricingPlanId,
                     Name = pricingPlanName
@@ -60,13 +61,13 @@ namespace Aggregator.Api.Services.Merchant
                 MerchantId = createMerchantModel.Id,
                 Merchant = new UpdateMerchantItemMessage
                 {
-                    Name = createMerchantModel.Name ?? "",
-                    Description = createMerchantModel.Description ?? "",
-                    Email = createMerchantModel.Email ?? "",
-                    Slogan = createMerchantModel.Slogan ?? "",
-                    PhoneNumber = createMerchantModel.PhoneNumber ?? "",
-                    TaxNumber = createMerchantModel.TaxNumber ?? "",
-                    WebsiteUrl = createMerchantModel.WebSiteUrl ?? ""
+                    Name = createMerchantModel.Name?? "",
+                    Description = createMerchantModel.Description?? "",
+                    Email = createMerchantModel.Email?? "",
+                    Slogan = createMerchantModel.Slogan?? "",
+                    PhoneNumber = createMerchantModel.PhoneNumber?? "",
+                    TaxNumber = createMerchantModel.TaxNumber?? "",
+                    WebsiteUrl = createMerchantModel.WebSiteUrl?? ""
                 }
             }, headers);
 

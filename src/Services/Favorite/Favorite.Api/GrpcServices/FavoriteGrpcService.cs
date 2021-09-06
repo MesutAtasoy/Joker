@@ -38,7 +38,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessage = new FavoriteStoreMessage
             {
-                Store = new IdName
+                Store = new IdNameMessage
                 {
                     Id = response?.Store?.Id.ToString() ?? " ",
                     Name = response?.Store?.Name ?? " "
@@ -72,7 +72,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessage = new FavoriteCampaignMessage
             {
-                Campaign = new IdName
+                Campaign = new IdNameMessage
                 {
                     Id = response?.Campaign?.Id.ToString() ?? " ",
                     Name = response?.Campaign?.Name ?? " "
@@ -99,7 +99,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
             {
-                Store = new IdName
+                Store = new IdNameMessage
                 {
                     Id = x?.Store?.Id.ToString() ?? " ",
                     Name = x?.Store?.Name ?? " "
@@ -132,7 +132,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
             {
-                Campaign = new IdName
+                Campaign = new IdNameMessage
                 {
                     Id = x?.Campaign?.Id.ToString() ?? " ",
                     Name = x?.Campaign?.Name ?? " "
@@ -164,7 +164,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
             {
-                Store = new IdName
+                Store = new IdNameMessage
                 {
                     Id = x?.Store?.Id.ToString() ?? " ",
                     Name = x?.Store?.Name ?? " "
@@ -196,7 +196,7 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
             {
-                Campaign = new IdName
+                Campaign = new IdNameMessage
                 {
                     Id = x?.Campaign?.Id.ToString() ?? " ",
                     Name = x?.Campaign?.Name ?? " "

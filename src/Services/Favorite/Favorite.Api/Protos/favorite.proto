@@ -14,14 +14,14 @@ service FavoriteApiGrpcService {
 }
 
 message CreateFavoriteCampaignMessage {
-  IdName campaign = 1;
+  IdNameMessage campaign = 1;
 }
 
 message CreateFavoriteStoreMessage {
-  IdName store = 1;
+  IdNameMessage store = 1;
 }
 
-message IdName {
+message IdNameMessage {
   string id = 1;
   string name = 2;
 }
@@ -42,13 +42,13 @@ message CampaignBaseGrpcResponse {
 }
 
 message FavoriteCampaignMessage {
-    IdName campaign = 1;
+  IdNameMessage campaign = 1;
     UserMessage user = 2;
     google.protobuf.Timestamp createdDate = 3;
 }
 
 message FavoriteStoreMessage {
-  IdName store = 1;
+  IdNameMessage store = 1;
   UserMessage user = 2;
   google.protobuf.Timestamp createdDate = 3;
 }

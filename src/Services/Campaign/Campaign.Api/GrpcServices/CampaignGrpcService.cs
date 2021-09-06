@@ -157,22 +157,22 @@ namespace Campaign.Api.GrpcServices
                 Id = campaign.Id.ToString(),
                 Slug = campaign.Slug,
                 SlugKey = campaign.SlugKey,
-                Store = new IdName
+                Store = new IdNameMessage
                 {
-                    Id = campaign.Store.RefId.ToString(),
-                    Name = campaign.Store.Name
+                    Id = campaign?.Store?.RefId.ToString() ?? "",
+                    Name = campaign.Store?.Name
                 },
-                Merchant = new IdName
+                Merchant = new IdNameMessage
                 {
-                    Id = campaign.Merchant.RefId.ToString(),
-                    Name = campaign.Merchant.Name
+                    Id = campaign.Merchant?.RefId.ToString() ?? "",
+                    Name = campaign.Merchant?.Name ?? ""
                 },
-                BusinessDirectory = new IdName
+                BusinessDirectory = new IdNameMessage
                 {
-                    Id = campaign.BusinessDirectory.RefId.ToString(),
-                    Name = campaign.BusinessDirectory.Name
+                    Id = campaign.BusinessDirectory?.RefId.ToString() ?? "",
+                    Name = campaign.BusinessDirectory?.Name ?? ""
                 },
-                Title = campaign.Title,
+                Title = campaign.Title ?? "",
                 CreatedDate = campaign.CreatedDate.ToTimestamp(),
                 EndTime = campaign.EndTime?.ToTimestamp(),
                 StartTime = campaign.StartTime?.ToTimestamp(),

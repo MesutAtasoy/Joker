@@ -8,31 +8,31 @@ namespace Management.Api.GrpcServices
     {
         public ManagementGrpcMappingProfile()
         {
-            CreateMap<Currency, IdName>()
+            CreateMap<Currency, IdNameMessage>()
                 .ForMember(x => x.Id, opt =>
                     opt.MapFrom(x => x.Id.ToString()))
                 .ForMember(x => x.Name, opt =>
                 opt.MapFrom(x => x.Name));
             
-            CreateMap<BusinessDirectory, IdName>()
+            CreateMap<BusinessDirectory, IdNameMessage>()
                 .ForMember(x => x.Id, opt =>
                     opt.MapFrom(x => x.Id.ToString()))
                 .ForMember(x => x.Name, opt =>
                     opt.MapFrom(x => x.Name));
             
-            CreateMap<Language, IdName>()
+            CreateMap<Language, IdNameMessage>()
                 .ForMember(x => x.Id, opt =>
                     opt.MapFrom(x => x.Id.ToString()))
                 .ForMember(x => x.Name, opt =>
                     opt.MapFrom(x => x.Name));
             
-            CreateMap<PricingPlan, IdName>()
+            CreateMap<PricingPlan, IdNameMessage>()
                 .ForMember(x => x.Id, opt =>
                     opt.MapFrom(x => x.Id.ToString()))
                 .ForMember(x => x.Name, opt =>
                     opt.MapFrom(x => x.Name));
             
-            CreateMap<PaymentMethod, IdName>()
+            CreateMap<PaymentMethod, IdNameMessage>()
                 .ForMember(x => x.Id, opt =>
                     opt.MapFrom(x => x.Id.ToString()))
                 .ForMember(x => x.Name, opt =>

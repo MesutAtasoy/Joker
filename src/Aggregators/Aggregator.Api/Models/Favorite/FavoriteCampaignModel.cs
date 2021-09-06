@@ -5,7 +5,7 @@ namespace Aggregator.Api.Models.Favorite
 {
     public class FavoriteCampaignModel
     {
-        public IdName Campaign { get; set; }
+        public IdNameModel Campaign { get; set; }
         public UserModel UserInfo { get; set; }
         public DateTime CreatedDate { get; set; }
     }

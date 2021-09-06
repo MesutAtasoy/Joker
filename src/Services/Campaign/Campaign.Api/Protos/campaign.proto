@@ -12,9 +12,9 @@ service CampaignApiGrpcService {
 }
 
 message CreateCampaignMessage {
-  IdName store = 1;
-  IdName merchant = 2;
-  IdName businessDirectory = 3;
+  IdNameMessage store = 1;
+  IdNameMessage merchant = 2;
+  IdNameMessage businessDirectory = 3;
   string title = 4;
   string code = 5;
   string description = 6;
@@ -44,7 +44,7 @@ message UpdateCampaignMessageItem {
   google.protobuf.Timestamp endTime = 6;
 }
 
-message IdName {
+message IdNameMessage {
   string id = 1;
   string name = 2;
 }
@@ -61,9 +61,9 @@ message CampaignBaseGrpcResponse {
 
 message CampaignMessage {
   string id = 1;
-  IdName store = 2;
-  IdName merchant = 3;
-  IdName businessDirectory = 4;
+  IdNameMessage store = 2;
+  IdNameMessage merchant = 3;
+  IdNameMessage businessDirectory = 4;
   string slug = 5;
   string slugKey = 6;
   string title = 7;

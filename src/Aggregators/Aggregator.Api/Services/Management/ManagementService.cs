@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Management.Api.Grpc;
-using IdName = Campaign.Api.Grpc.IdName;
 
 namespace Aggregator.Api.Services.Management
 {
@@ -14,25 +13,14 @@ namespace Aggregator.Api.Services.Management
             _managementApiGrpcServiceClient = managementApiGrpcServiceClient;
         }
         
-        public async Task<IdName> GetBusinessDirectoryByIdAsync(Guid id)
+        public async Task<IdNameMessage> GetBusinessDirectoryByIdAsync(Guid id)
         {
-            var response = await _managementApiGrpcServiceClient.GetBusinessDirectoryByIdAsync(new ByIdMessage {Id = id.ToString()});
-            
-            return new IdName
-            {
-                Id = response.Id,
-                Name = response.Name
-            };
+            return await _managementApiGrpcServiceClient.GetBusinessDirectoryByIdAsync(new ByIdMessage {Id = id.ToString()});
         }
 
-        public async Task<IdName> GetPricingPlanByIdAsync(Guid id)
+        public async Task<IdNameMessage> GetPricingPlanByIdAsync(Guid id)
         {
-            var response = await _managementApiGrpcServiceClient.GetPricingPlanByIdAsync(new ByIdMessage {Id = id.ToString()});
-            return new IdName
-            {
-                Id = response.Id,
-                Name = response.Name
-            };
+            return await _managementApiGrpcServiceClient.GetPricingPlanByIdAsync(new ByIdMessage {Id = id.ToString()});
         }
     }
 }
