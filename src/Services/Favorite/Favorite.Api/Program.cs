@@ -29,6 +29,9 @@ namespace Favorite.Api
                 CreateHostBuilder(configuration, args)
                     .Build()
                     .Run();
+
+
+                    
             }
             catch (Exception ex)
             {
