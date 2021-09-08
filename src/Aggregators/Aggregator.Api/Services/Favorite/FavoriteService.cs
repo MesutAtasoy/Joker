@@ -28,10 +28,12 @@ namespace Aggregator.Api.Services.Favorite
 
             var response = await _favoriteApiGrpcServiceClient.AddFavoriteCampaignAsync(new CreateFavoriteCampaignMessage
             {
-                Campaign = new IdNameMessage
+                Campaign = new CampaignMessage
                 {
-                    Id = model?.Campaign?.Id.ToString() ?? "",
-                    Name = model?.Campaign?.Name ?? ""
+                    Id = model?.Id.ToString() ?? "",
+                    Title = model?.Title ?? "",
+                    Slug = model?.Slug ?? "",
+                    SlugKey = model?.SlugKey ?? ""
                 },
             }, headers);
             
@@ -50,10 +52,12 @@ namespace Aggregator.Api.Services.Favorite
 
             var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(new CreateFavoriteStoreMessage
             {
-                Store = new IdNameMessage
+                Store = new StoreMessage
                 {
-                    Id = model?.Store?.Id.ToString() ?? "",
-                    Name = model?.Store?.Name ?? ""
+                    Id = model?.Id.ToString() ?? "",
+                    Name = model?.Name ?? "",
+                    Slug = model?.Slug ?? "",
+                    SlugKey = model?.SlugKey ?? ""
                 }
             }, headers);
             
@@ -83,10 +87,12 @@ namespace Aggregator.Api.Services.Favorite
         {
             return new FavoriteCampaignModel
             {
-                Campaign = new Models.Shared.IdNameModel
+                Campaign = new CampaignModel
                 {
                     Id = message.Campaign.Id.ToGuid(),
-                    Name = message.Campaign.Name
+                    Title = message.Campaign.Title,
+                    Slug = message.Campaign.Slug,
+                    SlugKey = message.Campaign.SlugKey
                 },
                 UserInfo = new UserModel
                 {
@@ -101,10 +107,12 @@ namespace Aggregator.Api.Services.Favorite
         {
             return new FavoriteStoreModel
             {
-                Store = new Models.Shared.IdNameModel
+                Store = new StoreModel
                 {
                     Id = message.Store.Id.ToGuid(),
-                    Name = message.Store.Name
+                    Name = message.Store.Name,
+                    Slug = message.Store.Slug,
+                    SlugKey = message.Store.SlugKey
                 },
                 UserInfo = new UserModel
                 {

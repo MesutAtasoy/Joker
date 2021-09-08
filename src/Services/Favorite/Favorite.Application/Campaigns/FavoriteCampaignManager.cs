@@ -31,10 +31,12 @@ namespace Favorite.Application.Campaigns
         {
             var favoriteCampaign = new FavoriteCampaign
             {
-                Campaign = new IdNameRef
+                Campaign = new Campaign
                 {
-                    Id = request.Campaign.Id,
-                    Name = request.Campaign.Name
+                    Id = request.Id,
+                    Title = request.Title,
+                    Slug = request.Slug,
+                    SlugKey = request.SlugKey
                 },
                 UserInfo = new User
                 {

@@ -28,13 +28,15 @@ namespace Aggregator.Api.Controllers
         [HttpPost("Campaigns")]
         public async Task<ActionResult> AddFavoriteCampaign([FromBody] AddCampaignModel model)
         {
-            var campaign = await _campaignService.GetByIdAsync(model.Campaign.Id);
+            var campaign = await _campaignService.GetByIdAsync(model.Id);
             if (campaign == null)
             {
                 return NotFound(new JokerBaseResponse<object>(null, 404, "Campaign is not found"));
             }
 
-            model.Campaign.Name = campaign.Title;
+            model.Title = campaign.Title;
+            model.Slug = campaign.Slug;
+            model.SlugKey = campaign.SlugKey;
 
             var response = await _favoriteService.AddFavoriteCampaignAsync(model);
 
@@ -44,15 +46,15 @@ namespace Aggregator.Api.Controllers
         [HttpPost("Stores")]
         public async Task<ActionResult> AddFavoriteStore([FromBody] AddStoreModel model)
         {
-            var store = await _storeService.GetByIdAsync(model.Store.Id);
+            var store = await _storeService.GetByIdAsync(model.Id);
             if (store == null)
             {
                 return NotFound(new JokerBaseResponse<object>(null, 404, "Campaign is not found"));
             }
 
-            model.Store.Name = store.Name;
-
-            var response = await _favoriteService.AddFavoriteStoreAsync(model);
+           model.Name = store.Name;
+           
+           var response = await _favoriteService.AddFavoriteStoreAsync(model);
 
             return StatusCode(response.StatusCode, response);
         }

@@ -1,8 +1,8 @@
 using System;
 
-namespace Aggregator.Api.Models.Favorite
+namespace Favorite.Application.Stores.Dto
 {
-    public class AddStoreModel
+    public class StoreDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

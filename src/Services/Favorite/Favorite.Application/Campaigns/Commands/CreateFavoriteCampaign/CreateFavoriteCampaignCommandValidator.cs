@@ -6,8 +6,10 @@ namespace Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign
     {
         public CreateFavoriteCampaignCommandValidator()
         {
-            RuleFor(x => x.Campaign.Id).NotEmpty().NotNull();
-            RuleFor(x => x.Campaign.Name).NotEmpty().NotNull();
+            RuleFor(x => x.Id).NotEmpty().NotNull();
+            RuleFor(x => x.Title).NotEmpty().NotNull();
+            RuleFor(x => x.Slug).NotEmpty().NotNull();
+            RuleFor(x => x.SlugKey).NotEmpty().NotNull();
         }
     }
 }

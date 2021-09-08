@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Favorite.Api.Grpc;
 using Favorite.Application.Campaigns;
 using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
-using Favorite.Application.Shared.Dto;
 using Favorite.Application.Stores;
 using Favorite.Application.Stores.Commands.CreateFavoriteStore;
 using Google.Protobuf.WellKnownTypes;
@@ -30,19 +29,20 @@ namespace Favorite.Api.GrpcServices
         {
             var response = await _storeManager.AddFavoriteStoreAsync(new CreateFavoriteStoreCommand
             {
-                Store = new IdNameDto
-                {
-                    Id = request.Store.Id.ToGuid(),
-                    Name = request.Store.Name
-                }
+                Id = request.Store.Id.ToGuid(),
+                Name = request.Store.Name,
+                Slug = request.Store.Slug,
+                SlugKey = request.Store.SlugKey
             });
 
             var favoriteCampaignMessage = new FavoriteStoreMessage
             {
-                Store = new IdNameMessage
+                Store = new StoreMessage
                 {
                     Id = response?.Store?.Id.ToString() ?? " ",
-                    Name = response?.Store?.Name ?? " "
+                    Name = response?.Store?.Name ?? " ",
+                    Slug = response?.Store?.Slug ?? " ",
+                    SlugKey = response?.Store?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {
@@ -64,19 +64,20 @@ namespace Favorite.Api.GrpcServices
         {
             var response = await _campaignManager.AddFavoriteCampaignAsync(new CreateFavoriteCampaignCommand 
             {
-                Campaign = new IdNameDto
-                {
-                    Id = request.Campaign.Id.ToGuid(),
-                    Name = request.Campaign.Name
-                }
+                Id = request.Campaign.Id.ToGuid(),
+                Title = request.Campaign.Title,
+                Slug = request.Campaign.Slug,
+                SlugKey = request.Campaign.SlugKey
             });
 
             var favoriteCampaignMessage = new FavoriteCampaignMessage
             {
-                Campaign = new IdNameMessage
+                Campaign = new CampaignMessage
                 {
                     Id = response?.Campaign?.Id.ToString() ?? " ",
-                    Name = response?.Campaign?.Name ?? " "
+                    Title = response?.Campaign?.Title ?? " ",
+                    Slug = response?.Campaign?.Slug ?? " ",
+                    SlugKey = response?.Campaign?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {
@@ -100,10 +101,12 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
             {
-                Store = new IdNameMessage
+                Store = new StoreMessage
                 {
                     Id = x?.Store?.Id.ToString() ?? " ",
-                    Name = x?.Store?.Name ?? " "
+                    Name = x?.Store?.Name ?? " ",
+                    Slug = x?.Store?.Slug ?? " ",
+                    SlugKey = x?.Store?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {
@@ -133,10 +136,12 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
             {
-                Campaign = new IdNameMessage
+                Campaign = new CampaignMessage
                 {
                     Id = x?.Campaign?.Id.ToString() ?? " ",
-                    Name = x?.Campaign?.Name ?? " "
+                    Title = x?.Campaign?.Title ?? " ",
+                    Slug = x?.Campaign?.Slug ?? " ",
+                    SlugKey = x?.Campaign?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {
@@ -165,10 +170,12 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
             {
-                Store = new IdNameMessage
+                Store = new StoreMessage
                 {
                     Id = x?.Store?.Id.ToString() ?? " ",
-                    Name = x?.Store?.Name ?? " "
+                    Name = x?.Store?.Name ?? " ",
+                    Slug = x?.Store?.Slug ?? " ",
+                    SlugKey = x?.Store?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {
@@ -197,10 +204,12 @@ namespace Favorite.Api.GrpcServices
 
             var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
             {
-                Campaign = new IdNameMessage
+                Campaign = new CampaignMessage
                 {
                     Id = x?.Campaign?.Id.ToString() ?? " ",
-                    Name = x?.Campaign?.Name ?? " "
+                    Title = x?.Campaign?.Title ?? " ",
+                    Slug = x?.Campaign?.Slug ?? " ",
+                    SlugKey = x?.Campaign?.SlugKey ?? ""
                 },
                 User = new UserMessage
                 {

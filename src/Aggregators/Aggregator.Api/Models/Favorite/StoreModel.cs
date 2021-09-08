@@ -2,7 +2,7 @@ using System;
 
 namespace Aggregator.Api.Models.Favorite
 {
-    public class AddStoreModel
+    public class StoreModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

@@ -30,10 +30,12 @@ namespace Favorite.Application.Stores
         {
             var favoriteStore = new FavoriteStore
             {
-                Store = new IdNameRef
+                Store = new Store
                 {
-                    Id = request.Store.Id,
-                    Name = request.Store.Name
+                    Id = request.Id,
+                    Name = request.Name,
+                    Slug = request.Slug,
+                    SlugKey = request.SlugKey
                 },
                 UserInfo = new User
                 {

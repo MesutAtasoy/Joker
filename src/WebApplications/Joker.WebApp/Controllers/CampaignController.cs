@@ -159,11 +159,8 @@ namespace Joker.WebApp.Controllers
         {
             var response = await _favoriteService.AddFavoriteCampaignAsync(new AddFavoriteCampaignViewModel
             {
-                Campaign = new IdNameViewModel
-                {
-                    Id = campaignId,
-                    Name = campaignName
-                }
+                Id = campaignId,
+                Title = campaignName
             });
 
 

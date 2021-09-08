@@ -9,6 +9,7 @@ namespace Favorite.Application.Stores
         public StoreMappingProfile()
         {
             CreateMap<FavoriteStore, FavoriteStoreDto>();
+            CreateMap<Store, StoreDto>();
         }
     }
 }

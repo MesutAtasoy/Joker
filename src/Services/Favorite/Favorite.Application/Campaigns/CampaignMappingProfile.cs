@@ -9,6 +9,7 @@ namespace Favorite.Application.Campaigns
         public CampaignMappingProfile()
         {
             CreateMap<FavoriteCampaign, FavoriteCampaignDto>();
+            CreateMap<Campaign, CampaignDto>();
         }
     }
 }

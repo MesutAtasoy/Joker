@@ -39,7 +39,7 @@ namespace Joker.WebApp.Services
             
             if (!responseMessage.IsSuccessStatusCode)
             {
-                throw new ArgumentException("Campaign Service can not respond success response");
+                throw new ArgumentException("Favorite Service can not respond success response");
             }
 
             var favoriteCampaigns = await responseMessage.Content.ReadFromJsonAsync<List<FavoriteCampaignViewModel>>();

@@ -5,8 +5,16 @@ namespace Joker.WebApp.ViewModels.Favorite
 {
     public class FavoriteCampaignViewModel
     {
-        public IdNameViewModel Campaign { get; set; }
+        public FavoriteCampaignDetailViewModel Campaign { get; set; }
         public UserViewModel UserInfo { get; set; }
         public DateTime CreatedDate { get; set; }
+    }
+    
+    public class FavoriteCampaignDetailViewModel
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Slug { get; set; }
+        public string SlugKey { get; set; }
     }
 }
