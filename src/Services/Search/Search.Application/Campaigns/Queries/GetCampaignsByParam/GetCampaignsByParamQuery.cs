@@ -6,6 +6,7 @@ namespace Search.Application.Campaigns.Queries.GetCampaignsByParam
 {
     public class GetCampaignsByParamQuery : SearchBaseRequest, IRequest<SearchBaseResponse<CampaignIndexModel>>
     {
+        public string StoreId { get; set; }
         public string StoreName  { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }

@@ -42,6 +42,12 @@ namespace Search.Application.Campaigns.Queries.GetCampaignsByParam
                                 .Operator(Operator.Or));
                         }
 
+                        if (!string.IsNullOrEmpty(request.StoreId))
+                        {
+                            queryContainer &= q.Term(t => 
+                                t.Field(ff => ff.StoreId.Suffix("keyword")).Value(request.StoreId));
+                        }
+
                         if (!string.IsNullOrEmpty(request.StoreName))
                         {
                             queryContainer &= q.Term(t =>
