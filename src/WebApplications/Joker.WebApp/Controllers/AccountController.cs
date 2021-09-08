@@ -15,17 +15,20 @@ namespace Joker.WebApp.Controllers
         private readonly IMerchantService _merchantService;
         private readonly ICampaignService _campaignService;
         private readonly ISubscriptionService _subscriptionService;
+        private readonly IFavoriteService _favoriteService;
         private readonly IUserService _userService;
 
         public AccountController(IMerchantService merchantService,
             IUserService userService, 
             ICampaignService campaignService, 
-            ISubscriptionService subscriptionService)
+            ISubscriptionService subscriptionService, 
+            IFavoriteService favoriteService)
         {
             _merchantService = merchantService;
             _userService = userService;
             _campaignService = campaignService;
             _subscriptionService = subscriptionService;
+            _favoriteService = favoriteService;
         }
 
         public async Task<IActionResult> Logout()
@@ -79,6 +82,13 @@ namespace Joker.WebApp.Controllers
             }
             
             return View(model);
+        }
+        
+        public async Task<IActionResult> MyFavoriteCampaigns()
+        {
+            var userId = _userService.GetUserId();
+            var favoriteCampaigns = await _favoriteService.GetFavoriteCampaignAsync(userId);
+            return View(favoriteCampaigns);
         }
 
         [Authorize(Roles = "PaidUser")]

@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
+using Joker.Extensions;
 using Joker.WebApp.Services.Abstract;
 using Microsoft.AspNetCore.Http;
 
@@ -23,6 +25,11 @@ namespace Joker.WebApp.Services
         public string GetOrganizationName()
         {
             return _accessor?.HttpContext?.User.Claims.FirstOrDefault(x => x.Type == "organizationName")?.Value;
+        }
+        
+        public Guid GetUserId()
+        {
+            return _accessor?.HttpContext?.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value.ToGuid() ?? Guid.Empty;
         }
     }
 }

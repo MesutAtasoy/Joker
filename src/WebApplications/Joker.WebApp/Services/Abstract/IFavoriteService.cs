@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joker.WebApp.ViewModels.Favorite;
 using Joker.WebApp.ViewModels.Favorite.Request;
@@ -9,5 +11,6 @@ namespace Joker.WebApp.Services.Abstract
     {
         Task<JokerBaseResponseViewModel<FavoriteCampaignViewModel>> AddFavoriteCampaignAsync(AddFavoriteCampaignViewModel model);
         Task<JokerBaseResponseViewModel<FavoriteStoreViewModel>> AddFavoriteStoreAsync(AddFavoriteStoreViewModel model);
+        Task<List<FavoriteCampaignViewModel>> GetFavoriteCampaignAsync(Guid userId);
     }
 }

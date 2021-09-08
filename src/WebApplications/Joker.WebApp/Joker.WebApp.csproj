@@ -14,6 +14,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

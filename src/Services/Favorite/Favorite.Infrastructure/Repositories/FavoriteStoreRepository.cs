@@ -49,7 +49,7 @@ namespace Favorite.Infrastructure.Repositories
             var scope = await bucket.DefaultScopeAsync();
 
             var favoriteStores = await scope.QueryAsync<FavoriteStore>($"SELECT c.* FROM  favorite._default.store c " +
-                                                                             $"WHERE c.userinfo.id =\"{userId}\"");
+                                                                             $"WHERE c.userInfo.id =\"{userId}\"");
 
             return await favoriteStores.Rows.ToListAsync();
         }

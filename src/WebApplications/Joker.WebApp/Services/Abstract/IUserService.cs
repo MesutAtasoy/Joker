@@ -6,5 +6,6 @@ namespace Joker.WebApp.Services.Abstract
     {
         Guid GetOrganizationId();
         string GetOrganizationName();
+        Guid GetUserId();
     }
 }
