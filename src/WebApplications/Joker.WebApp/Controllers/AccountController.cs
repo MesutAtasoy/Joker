@@ -90,6 +90,13 @@ namespace Joker.WebApp.Controllers
             var favoriteCampaigns = await _favoriteService.GetFavoriteCampaignAsync(userId);
             return View(favoriteCampaigns);
         }
+        
+        public async Task<IActionResult> MyFavoriteStores()
+        {
+            var userId = _userService.GetUserId();
+            var favoriteStores = await _favoriteService.GetFavoriteStoreAsync(userId);
+            return View(favoriteStores);
+        }
 
         [Authorize(Roles = "PaidUser")]
         public async Task<IActionResult> MyStores(int page = 1)

@@ -12,5 +12,6 @@ namespace Joker.WebApp.Services.Abstract
         Task<JokerBaseResponseViewModel<FavoriteCampaignViewModel>> AddFavoriteCampaignAsync(AddFavoriteCampaignViewModel model);
         Task<JokerBaseResponseViewModel<FavoriteStoreViewModel>> AddFavoriteStoreAsync(AddFavoriteStoreViewModel model);
         Task<List<FavoriteCampaignViewModel>> GetFavoriteCampaignAsync(Guid userId);
+        Task<List<FavoriteStoreViewModel>> GetFavoriteStoreAsync(Guid userId);
     }
 }

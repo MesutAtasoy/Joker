@@ -1,0 +1,98 @@
+﻿@model Joker.WebApp.ViewModels.Store.StoreExploreViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col col-lg-8">
+            @if (Model.Campaigns.Documents.Any())
+            {
+                <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="card-header">
+                        <h5 class="card-title bg-gradient-light p-3">Campaigns</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            @foreach (var campaign in Model.Campaigns.Documents)
+                            {
+                                <div class="card col-lg-3 m-3">
+                                    <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
+                                        <a asp-controller="Campaign" asp-action="Explore" asp-route-id="@campaign.Slug" class="d-block">
+                                            <img src="~/images/joker.png" class="img-fluid border-radius-lg">
+                                        </a>
+                                    </div>
+
+                                    <div class="card-body pt-2">
+                                        <span class="text-gradient text-primary text-uppercase text-xs font-weight-bold my-2">Joker</span>
+                                        <a asp-controller="Campaign" asp-action="Explore" asp-route-id="@campaign.Slug" class="card-title h5 d-block text-darker">
+                                            @campaign.Title
+                                        </a>
+                                        <p class="card-description mb-4">
+                                            @campaign.Description
+                                        </p>
+                                        <div class="author align-items-center">
+                                            <img src="~/theme/img/team-2.jpg" alt="..." class="avatar shadow">
+                                            <div class="name ps-3">
+                                                <span>@campaign.StoreName</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col col-lg-4">
+            @if (Model.Store != null)
+            {
+                <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+                    <div class="card-header">
+                        <h5 class="card-title bg-gradient-light p-3">@Model.Store.Name</h5>
+                        <p class="card-text">@Model.Store.Description</p>
+                        <p class="card-text">@Model.Store.Slogan</p>
+                        <p class="card-text">@Model.Store.PhoneNumber</p>
+                        <p class="card-text">@Model.Store.Email</p>
+                        <p class="card-text">@Model.Store.Location.Address, @Model.Store.Location.District</p>
+                    </div>
+                </div>
+                <div class="col-12 mx-auto">
+                    <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-store">LIKE STORE</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+       $(document).ready(function () {
+
+           var storeId = '@Model.Store.Id';
+           var storeName = '@Model.Store.Name';
+
+           $("#like-store").click(function (e) {
+             $.ajax({
+                   type: "POST",
+                   url: '@Url.Action("AddFavoriteStore")',
+                   data: {storeId: storeId, storeName: storeName},
+                   dataType: "text",
+                   success: function (msg) {
+                       if (msg){
+                           Swal.fire('You liked the store')
+                       }
+                   },
+                   error: function (req, status, error) {
+                       console.log(error);
+                   }
+               });
+           });
+       });
+    </script>
+
+}

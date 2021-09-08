@@ -10,6 +10,11 @@
                 My Favorite Campaigns
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyFavoriteStores">
+                My Favorite Stores
+            </a>
+        </li>
         @if (User.IsInRole("PaidUser"))
         {
             <li class="nav-item">

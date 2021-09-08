@@ -46,6 +46,19 @@ namespace Joker.WebApp.Services
 
             return favoriteCampaigns;
         }
-        
+
+        public async Task<List<FavoriteStoreViewModel>> GetFavoriteStoreAsync(Guid userId)
+        {
+            var responseMessage = await _httpClient.GetAsync($"favorite/api/Stores/Users/{userId}");
+            
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new ArgumentException("Favorite Service can not respond success response");
+            }
+
+            var favoriteStores = await responseMessage.Content.ReadFromJsonAsync<List<FavoriteStoreViewModel>>();
+
+            return favoriteStores;        
+        }
     }
 }

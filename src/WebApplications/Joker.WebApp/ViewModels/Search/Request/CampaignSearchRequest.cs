@@ -2,6 +2,7 @@ namespace Joker.WebApp.ViewModels.Search.Request
 {
     public class CampaignSearchRequest : SearchBaseRequest
     {
+        public string StoreId { get; set; }
         public string StoreName  { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }
