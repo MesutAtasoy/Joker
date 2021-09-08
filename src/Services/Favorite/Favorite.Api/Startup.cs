@@ -36,6 +36,8 @@ namespace Favorite.Api
             services.AddJokerCouchbase(Configuration);
             services.AddCouchbaseInitializers();
             services.AddJokerConsul(Configuration);
+            services.AddJokerAuthentication(Configuration);
+            services.AddJokerAuthorization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

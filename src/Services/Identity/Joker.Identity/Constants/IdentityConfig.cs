@@ -21,7 +21,7 @@ namespace Joker.Identity.Constants
         {
             new ApiScope("campaign", "Campaign Management"),
             new ApiScope("merchant", "Merchant Management"),
-            new ApiScope("subscription", "Subscription Management"),
+            new ApiScope("subscription", "Subscription Management")
         };
         
         public static IEnumerable<ApiResource> ApiResources =>
@@ -47,6 +47,7 @@ namespace Joker.Identity.Constants
                 },
                 new ("favoriteapi", "Favorite API")
                 {
+                    Scopes = { "campaign", "merchant"},
                     ApiSecrets = {new Secret("apisecret".Sha256())}
                 },
                 new ("searchapi", "Search API")

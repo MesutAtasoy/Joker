@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
 using Joker.WebApp.ViewModels.Campaign;
 using Joker.WebApp.ViewModels.Campaign.Request;
+using Joker.WebApp.ViewModels.Favorite.Request;
 using Joker.WebApp.ViewModels.Search.Request;
 using Joker.WebApp.ViewModels.Shared;
 using Microsoft.AspNetCore.Authorization;
@@ -18,18 +19,20 @@ namespace Joker.WebApp.Controllers
         private readonly IUserService _userService;
         private readonly IMerchantService _merchantService;
         private readonly ICampaignService _campaignService;
+        private readonly IFavoriteService _favoriteService;
         
         public CampaignController(ISearchService searchService,
             IManagementApiService managementApiService,
             IUserService userService,
             IMerchantService merchantService,
-            ICampaignService campaignService)
+            ICampaignService campaignService, IFavoriteService favoriteService)
         {
             _searchService = searchService;
             _managementApiService = managementApiService;
             _userService = userService;
             _merchantService = merchantService;
             _campaignService = campaignService;
+            _favoriteService = favoriteService;
         }
 
 
@@ -148,6 +151,24 @@ namespace Joker.WebApp.Controllers
             campaignViewModel.Store = storeResponse.Documents.FirstOrDefault();
 
             return View(campaignViewModel);
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> AddFavoriteCampaign(Guid campaignId, string campaignName)
+        {
+            var response = await _favoriteService.AddFavoriteCampaignAsync(new AddFavoriteCampaignViewModel
+            {
+                Campaign = new IdNameViewModel
+                {
+                    Id = campaignId,
+                    Name = campaignName
+                }
+            });
+
+
+            var isSuccess = response.StatusCode == 200;
+            return new JsonResult(isSuccess);
         }
     }
 }

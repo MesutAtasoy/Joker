@@ -1,6 +1,7 @@
 using Couchbase.Extensions.DependencyInjection;
 using Couchbase.Linq;
 using Favorite.Api.Interceptors;
+using Favorite.Application.Services;
 using Favorite.Infrastructure.Initializers;
 using IdentityServer4.AccessTokenValidation;
 using Joker.CAP;
@@ -79,6 +80,8 @@ namespace Favorite.Api.Extensions
 
         public static IServiceCollection AddJokerAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IUserService, UserService>();
+            
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {

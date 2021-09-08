@@ -38,7 +38,40 @@
                         <p class="card-text">@Model.Store.Address, @Model.Store.DistrictName, @Model.Store.CityName </p>
                     </div>
                 </div>
+                <div class="col-12 mx-auto">
+                    <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-campaign">LIKE CAMPAIGN</button>
+                </div>
             }
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+       $(document).ready(function () {
+                  
+           var campaignId = '@Model.Campaign.Id';
+           var campaignName = '@Model.Campaign.Title';
+           
+           $("#like-campaign").click(function (e) {   
+             $.ajax({
+                   type: "POST",
+                   url: '@Url.Action("AddFavoriteCampaign")',
+                   data: {campaignId: campaignId, campaignName: campaignName},
+                   dataType: "text",
+                   success: function (msg) {
+                       if (msg){
+                           Swal.fire('You liked the campaign')
+                       }
+                   },
+                   error: function (req, status, error) {
+                       console.log(error);
+                   }
+               });  
+           });
+       });
+    </script>
+
+}

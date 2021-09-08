@@ -4,12 +4,14 @@ using Favorite.Application.Stores.Commands.CreateFavoriteStore;
 using Favorite.Application.Stores.Queries.GetStoresByStoreId;
 using Favorite.Application.Stores.Queries.GetStoresByUserId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Favorite.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Stores")]
+    [Authorize]
     public class StoreController : ControllerBase
     {
         private readonly IMediator _mediator;

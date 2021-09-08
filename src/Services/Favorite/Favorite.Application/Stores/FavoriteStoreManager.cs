@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Favorite.Application.Services;
 using Favorite.Application.Stores.Commands.CreateFavoriteStore;
 using Favorite.Application.Stores.Dto;
 using Favorite.Core.Entities;
@@ -13,13 +14,15 @@ namespace Favorite.Application.Stores
     public class FavoriteStoreManager
     {
         private readonly IFavoriteStoreRepository _favoriteStoreRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
         public FavoriteStoreManager(IFavoriteStoreRepository favoriteStoreRepository,
-            IMapper mapper)
+            IMapper mapper, IUserService userService)
         {
             _favoriteStoreRepository = favoriteStoreRepository;
             _mapper = mapper;
+            _userService = userService;
         }
 
 
@@ -34,8 +37,8 @@ namespace Favorite.Application.Stores
                 },
                 UserInfo = new User
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Username = Guid.NewGuid().ToString()
+                    Id = _userService.GetUserId().ToString(),
+                    Username = _userService.GetGivenName()
                 },
                 CreatedDate = DateTime.UtcNow
             };

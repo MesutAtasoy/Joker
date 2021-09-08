@@ -4,12 +4,14 @@ using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
 using Favorite.Application.Campaigns.Queries.GetCampaignsByCampaignId;
 using Favorite.Application.Campaigns.Queries.GetCampaignsByUserId;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Favorite.Api.Controllers
 {
     [ApiVersion("1")]
     [Route("api/Campaigns")]
+    [Authorize]
     public class CampaignController : ControllerBase
     {
         private readonly IMediator _mediator;

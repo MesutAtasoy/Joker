@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
 using Favorite.Application.Campaigns.Dto;
+using Favorite.Application.Services;
 using Favorite.Core.Entities;
 using Favorite.Core.Entities.Shared;
 using Favorite.Core.Repositories;
@@ -13,12 +14,15 @@ namespace Favorite.Application.Campaigns
     public class FavoriteCampaignManager
     {
         private readonly IFavoriteCampaignRepository _favoriteCampaignRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
         public FavoriteCampaignManager(IFavoriteCampaignRepository favoriteCampaignRepository,
+            IUserService userService,
             IMapper mapper)
         {
             _favoriteCampaignRepository = favoriteCampaignRepository;
+            _userService = userService;
             _mapper = mapper;
         }
 
@@ -34,8 +38,8 @@ namespace Favorite.Application.Campaigns
                 },
                 UserInfo = new User
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Username = Guid.NewGuid().ToString()
+                    Id = _userService.GetUserId().ToString(),
+                    Username = _userService.GetGivenName()
                 },
                 CreatedDate = DateTime.UtcNow
             };

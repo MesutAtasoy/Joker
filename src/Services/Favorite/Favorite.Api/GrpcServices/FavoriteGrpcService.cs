@@ -6,13 +6,14 @@ using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
 using Favorite.Application.Shared.Dto;
 using Favorite.Application.Stores;
 using Favorite.Application.Stores.Commands.CreateFavoriteStore;
-using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Joker.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Favorite.Api.GrpcServices
 {
+    [Authorize]
     public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcServiceBase
     {
         private readonly FavoriteCampaignManager _campaignManager;
