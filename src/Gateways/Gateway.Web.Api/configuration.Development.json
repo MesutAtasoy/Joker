@@ -111,6 +111,22 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Favorite.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/favorite/api/{everything}",
+      "SwaggerKey": "favorite",
+      "UpstreamHttpMethod": ["GET"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
   ],
   "SwaggerEndPoints": [
@@ -181,6 +197,16 @@
           "Name": "Subscription API",
           "Version": "v1",
           "Url": "http://localhost:5007/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "favorite",
+      "Config": [
+        {
+          "Name": "Favorite API",
+          "Version": "v1",
+          "Url": "http://localhost:5005/swagger/v1/swagger.json"
         }
       ]
     }
