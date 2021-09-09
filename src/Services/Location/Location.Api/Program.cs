@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using Joker.EntityFrameworkCore.Migration;
+using Joker.Logging;
 using Location.Infrastructure;
 using Location.Infrastructure.Seed;
 using Microsoft.AspNetCore.Hosting;
@@ -103,11 +104,14 @@ namespace Location.Api
 
         public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
-            return new LoggerConfiguration()
-                .Enrich.WithProperty("ApplicationContext", applicationName)
-                .Enrich.FromLogContext()
-                .ReadFrom.Configuration(configuration)
-                .CreateLogger();
+            return LoggerBuilder.CreateLoggerElasticSearch(x =>
+            {
+                x.Url = configuration["elk:url"];
+                x.BasicAuthEnabled = false;
+                x.IndexFormat = "joker-logs";
+                x.AppName = applicationName;
+                x.Enabled = true;
+            });
         }
         
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)

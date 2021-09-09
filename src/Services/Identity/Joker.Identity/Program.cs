@@ -3,6 +3,7 @@ using System.IO;
 using Joker.EntityFrameworkCore.Migration;
 using Joker.Identity.Models;
 using Joker.Identity.Models.Seeders;
+using Joker.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -90,22 +91,14 @@ namespace Joker.Identity
 
         public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
-            return new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-                .MinimumLevel.Override("System", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .Enrich.WithProperty("ApplicationContext", applicationName)
-                
-                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
-                .CreateLogger();
-            //
-            // return new LoggerConfiguration()
-            //     .Enrich.FromLogContext()
-            //     .ReadFrom.Configuration(configuration)
-            //     .CreateLogger();
+            return LoggerBuilder.CreateLoggerElasticSearch(x =>
+            {
+                x.Url = configuration["elk:url"];
+                x.BasicAuthEnabled = false;
+                x.IndexFormat = "joker-logs";
+                x.AppName = applicationName;
+                x.Enabled = true;
+            });
         }
     }
 }

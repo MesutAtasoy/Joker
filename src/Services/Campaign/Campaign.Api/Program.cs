@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+using Joker.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
@@ -79,13 +80,16 @@ namespace Campaign.Api
             return builder.Build();
         }
 
-        private  static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
+        private static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
-            return new LoggerConfiguration()
-                .Enrich.WithProperty("ApplicationContext", applicationName)
-                .Enrich.FromLogContext()
-                .ReadFrom.Configuration(configuration)
-                .CreateLogger();
+            return LoggerBuilder.CreateLoggerElasticSearch(x =>
+            {
+                x.Url = configuration["elk:url"];
+                x.BasicAuthEnabled = false;
+                x.IndexFormat = "joker-logs";
+                x.AppName = applicationName;
+                x.Enabled = true;
+            });
         }
 
         private static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
@@ -95,12 +99,13 @@ namespace Campaign.Api
             {
                 grpcPort = 5011;
             }
+
             var isValidPort = int.TryParse(config["PORT"], out var port);
             if (!isValidPort || port <= 0)
             {
                 port = 5001;
             }
-            
+
             return (port, grpcPort);
         }
     }

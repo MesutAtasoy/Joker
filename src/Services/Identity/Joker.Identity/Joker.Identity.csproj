@@ -34,6 +34,7 @@
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EventBus\Joker.EventBus.csproj" />
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Migrations" />

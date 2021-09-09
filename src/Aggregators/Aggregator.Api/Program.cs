@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
+using Joker.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
@@ -85,11 +86,14 @@ namespace Aggregator.Api
 
         public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
-            return new LoggerConfiguration()
-                .Enrich.WithProperty("ApplicationContext", applicationName)
-                .Enrich.FromLogContext()
-                .ReadFrom.Configuration(configuration)
-                .CreateLogger();
+            return LoggerBuilder.CreateLoggerElasticSearch(x =>
+            {
+                x.Url = configuration["elk:url"];
+                x.BasicAuthEnabled = false;
+                x.IndexFormat = "joker-logs";
+                x.AppName = applicationName;
+                x.Enabled = true;
+            });
         }
 
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)

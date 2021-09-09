@@ -28,6 +28,7 @@
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
       <ProjectReference Include="..\Management.Application\Management.Application.csproj" />
       <ProjectReference Include="..\Management.Infrastructure\Management.Infrastructure.csproj" />

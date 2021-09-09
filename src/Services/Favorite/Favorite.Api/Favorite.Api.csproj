@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
       <ProjectReference Include="..\Favorite.Application\Favorite.Application.csproj" />
     </ItemGroup>

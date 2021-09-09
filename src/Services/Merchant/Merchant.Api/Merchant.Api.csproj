@@ -17,6 +17,7 @@
         <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.1.1" />
+        <PackageReference Include="Serilog" Version="2.9.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
         <PackageReference Include="Google.Protobuf" Version="3.17.3" />
@@ -29,6 +30,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
       <ProjectReference Include="..\Merchant.Application\Merchant.Application.csproj" />
       <ProjectReference Include="..\Merchant.Infrastructure\Merchant.Infrastructure.csproj" />
     </ItemGroup>

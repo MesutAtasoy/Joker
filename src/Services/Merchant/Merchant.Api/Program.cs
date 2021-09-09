@@ -1,11 +1,16 @@
 using System;
 using System.IO;
 using System.Net;
+using Joker.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
+using Serilog.Exceptions;
+using Serilog.Formatting.Elasticsearch;
+using Serilog.Sinks.Elasticsearch;
 
 namespace Merchant.Api
 {
@@ -82,13 +87,16 @@ namespace Merchant.Api
             return builder.Build();
         }
 
-        public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
+        private static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
         {
-            return new LoggerConfiguration()
-                .Enrich.WithProperty("ApplicationContext", applicationName)
-                .Enrich.FromLogContext()
-                .ReadFrom.Configuration(configuration)
-                .CreateLogger();
+            return LoggerBuilder.CreateLoggerElasticSearch(x =>
+            {
+                x.Url = configuration["elk:url"];
+                x.BasicAuthEnabled = false;
+                x.IndexFormat = "joker-logs";
+                x.AppName = applicationName;
+                x.Enabled = true;
+            });
         }
 
         public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)

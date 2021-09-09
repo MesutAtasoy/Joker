@@ -13,4 +13,8 @@
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
+    </ItemGroup>
+
 </Project>
