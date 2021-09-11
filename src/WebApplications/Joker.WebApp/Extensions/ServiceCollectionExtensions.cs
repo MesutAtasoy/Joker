@@ -1,5 +1,7 @@
 using System;
 using IdentityModel;
+using Joker.CAP;
+using Joker.WebApp.Events;
 using Joker.WebApp.HttpHandlers;
 using Joker.WebApp.Services;
 using Joker.WebApp.Services.Abstract;
@@ -112,6 +114,35 @@ namespace Joker.WebApp.Extensions
         public static IServiceCollection AddUserServices(this IServiceCollection services)
         {
             return services.AddTransient<IUserService, UserService>();
+        }
+        
+        public static IServiceCollection AddJokerEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddJokerCAP(capOptions =>
+            {
+                capOptions.UseRabbitMQ(x =>
+                {
+                    x.Password = configuration["rabbitMQSettings:password"];
+                    x.UserName = configuration["rabbitMQSettings:username"];
+                    x.HostName = configuration["rabbitMQSettings:host"];
+                    x.Port = int.Parse(configuration["rabbitMQSettings:port"]);
+                });
+
+                capOptions.UseMongoDB(opt => // Persistence
+                {
+                    opt.DatabaseConnection = configuration["mongo:ConnectionString"];
+                    opt.DatabaseName = configuration["mongo:DefaultDatabaseName"] + "-eventHistories";
+                    opt.PublishedCollection = "PublishedEvents";
+                    opt.ReceivedCollection = "ReceivedEvents";
+                });
+
+                capOptions.FailedRetryCount = 3;
+                capOptions.FailedRetryInterval = 60;
+            });
+            
+            services.RegisterCAPEventHandlers(typeof(CampaignCreatedNotificationEvent));
+
+            return services;
         }
     }
 }

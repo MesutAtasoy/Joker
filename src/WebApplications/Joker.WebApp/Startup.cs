@@ -1,4 +1,5 @@
 using Joker.WebApp.Extensions;
+using Joker.WebApp.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +31,9 @@ namespace Joker.WebApp
             services.AddJokerAuthentication(Configuration);
             services.AddApiServices();
             services.AddUserServices();
+            services.AddJokerEventBus(Configuration);
             services.AddDataProtection();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +60,7 @@ namespace Joker.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<CampaignCreatedNotificationHub>("/campaignCreated");
             });
         }
     }
