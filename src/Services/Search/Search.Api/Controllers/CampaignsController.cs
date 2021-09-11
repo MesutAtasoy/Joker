@@ -15,13 +15,15 @@ namespace Search.Api.Controllers
         {
             _mediator = mediator;
         }
-        
+
         /// <summary>
-        /// Returns searched merchants
+        /// Returns searched campaigns
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] GetCampaignsByParamQuery query)
-            => Ok(await _mediator.Send(query));
+        {
+            return Ok(await _mediator.Send(query));
+        }
     }
     
 }

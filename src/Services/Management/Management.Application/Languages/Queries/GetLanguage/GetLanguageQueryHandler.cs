@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Management.Core.Entities;
 using Management.Core.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Management.Application.Languages.Queries.GetLanguage
 {
@@ -19,8 +20,8 @@ namespace Management.Application.Languages.Queries.GetLanguage
 
         public async Task<List<Language>> Handle(GetLanguageQuery request, CancellationToken cancellationToken)
         {
-            var languages = await Task.FromResult(_languageRepository.Get(x=>!x.IsDeleted)
-                .ToList());
+            var languages = await _languageRepository.Get(x=>!x.IsDeleted)
+                .ToListAsync(cancellationToken);
 
             return languages;
         }

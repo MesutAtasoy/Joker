@@ -11,7 +11,7 @@ namespace Subscription.Api.Controllers
         [HttpHead("api-status")]
         public ActionResult ApiStatus()
         {
-            return Ok("Merchant Api is awake!");
+            return Ok("Subscription Api is awake!");
         }
     }
 }

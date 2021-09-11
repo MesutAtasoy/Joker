@@ -43,7 +43,7 @@ namespace Subscription.Api
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Merchant.Api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Subscription.Api v1"));
             app.UseErrorHandler();
             app.UseRouting();
             app.UseAuthentication();    

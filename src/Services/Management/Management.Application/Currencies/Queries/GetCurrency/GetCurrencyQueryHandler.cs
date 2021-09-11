@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Management.Core.Entities;
 using Management.Core.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Management.Application.Currencies.Queries.GetCurrency
 {
@@ -19,8 +20,8 @@ namespace Management.Application.Currencies.Queries.GetCurrency
 
         public async Task<List<Currency>> Handle(GetCurrencyQuery request, CancellationToken cancellationToken)
         {
-            var currencies = await Task.FromResult(_currencyRepository.Get(x => !x.IsDeleted)
-                .ToList());
+            var currencies = await _currencyRepository.Get(x => !x.IsDeleted)
+                .ToListAsync(cancellationToken);
             
             return currencies;
         }

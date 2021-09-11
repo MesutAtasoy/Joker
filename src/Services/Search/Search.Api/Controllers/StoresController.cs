@@ -15,12 +15,14 @@ namespace Search.Api.Controllers
         {
             _mediator = mediator;
         }
-        
+
         /// <summary>
         /// Returns searched stores
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAsync([FromQuery] GetStoresByParamQuery query)
-            => Ok(await _mediator.Send(query));
+        {
+            return Ok(await _mediator.Send(query));
+        }
     }
 }

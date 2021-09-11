@@ -17,7 +17,7 @@ namespace Management.Api.Controllers
         }
         
         /// <summary>
-        /// Returns currencies
+        /// Returns languages
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAsync()

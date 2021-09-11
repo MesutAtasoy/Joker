@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Management.Core.Entities;
 using Management.Core.Repositories;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Management.Application.BusinessDirectories.Queries.GetBusinessDirectories
 {
@@ -20,11 +21,10 @@ namespace Management.Application.BusinessDirectories.Queries.GetBusinessDirector
         public async Task<List<BusinessDirectory>> Handle(GetBusinessDirectoriesQuery request,
             CancellationToken cancellationToken)
         {
-            var businessDirectories = await Task.FromResult(
-                _businessCategoryRepository
+            var businessDirectories = await _businessCategoryRepository
                     .Get(x => !x.IsDeleted)
                     .OrderBy(x => x.Order)
-                    .ToList());
+                    .ToListAsync(cancellationToken);
 
             return businessDirectories;
         }

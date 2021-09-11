@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotNetCore.CAP;
 using Joker.CAP.IntegrationEvent;
@@ -22,7 +23,7 @@ namespace Subscription.Application.Subscriptions.EventHandlers
             var subscriptions = await _subscriptionRepository.GetAsync(x => x.Merchant.RefId == @event.MerchantId);
 
             var merchant = MerchantRef.Create(@event.MerchantId, @event.NewName);
-
+            
             foreach (var subscription in subscriptions)
             {
                 subscription.UpdateMerchant(merchant);

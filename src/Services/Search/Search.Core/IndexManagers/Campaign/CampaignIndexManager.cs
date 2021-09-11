@@ -11,13 +11,10 @@ namespace Search.Core.IndexManagers.Campaign
     public class CampaignIndexManager : ICampaignIndexManager
     {
         private readonly IElasticSearchManager _indexManager;
-        private readonly IElasticClient _elasticClient;
-
-        public CampaignIndexManager(IElasticSearchManager indexManager,
-            IElasticClient elasticClient)
+        
+        public CampaignIndexManager(IElasticSearchManager indexManager)
         {
             _indexManager = indexManager;
-            _elasticClient = elasticClient;
         }
 
         public async Task BulkAddOrUpdateAsync(List<CampaignIndexModel> list, int bulkNum = 1000)

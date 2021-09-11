@@ -11,13 +11,10 @@ namespace Search.Core.IndexManagers.Store
     public class StoreIndexManager : IStoreIndexManager
     {
         private readonly IElasticSearchManager _indexManager;
-        private readonly IElasticClient _elasticClient;
 
-        public StoreIndexManager(IElasticSearchManager indexManager,
-            IElasticClient elasticClient)
+        public StoreIndexManager(IElasticSearchManager indexManager)
         {
             _indexManager = indexManager;
-            _elasticClient = elasticClient;
         }
 
         public async Task BulkAddOrUpdateAsync(List<StoreIndexModel> list)

@@ -20,14 +20,14 @@ namespace Management.Api.Controllers
         }
         
         /// <summary>
-        /// Returns currencies
+        /// Returns pricing plans
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAsync()
             => Ok(await _mediator.Send(new GetPricingPlansQuery()));
         
         /// <summary>
-        /// Returns currencies
+        /// Returns pricing plans
         /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(Guid id)
@@ -35,7 +35,7 @@ namespace Management.Api.Controllers
         
         
         /// <summary>
-        /// Returns currencies
+        /// Returns pricing plans
         /// </summary>
         [HttpGet("BySlug/{slug}")]
         public async Task<IActionResult> GetBySlugAsync(string slug)
