@@ -41,8 +41,6 @@
     (function setupConnection() {
           var connection = new signalR.HubConnectionBuilder().withUrl("/campaignCreated").build();
           connection.on("lastCampaignCreated", function (message) {  
-              debugger;
-              console.log(message);
               var title = message.storeName;
               var toastMessage = 'New Campaign Published ('+ message.campaignTitle+' )';
               toastr.success(toastMessage, title);
