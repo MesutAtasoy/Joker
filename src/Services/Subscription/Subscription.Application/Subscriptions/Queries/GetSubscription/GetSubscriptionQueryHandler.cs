@@ -24,10 +24,10 @@ namespace Subscription.Application.Subscriptions.Queries.GetSubscription
 
         public async Task<List<SubscriptionDto>> Handle(GetSubscriptionQuery request, CancellationToken cancellationToken)
         {
-            return await _subscriptionRepository.Get()
+            return await Task.FromResult(_subscriptionRepository.Get()
                 .Where(x => x.Merchant.RefId == request.MerchantId)
                 .ProjectTo<SubscriptionDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+                .ToList());
         }
     }
 }
