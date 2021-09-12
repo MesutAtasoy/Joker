@@ -1,114 +1,53 @@
 version: '3.4'
-
 services:
-  consul:
-    image: consul
-    
-  nosqldata:
-    image: mongo
-    
-  postgres:
-    image: postgres
-    
-  seq:
-    image: datalust/seq:latest
-    
-  couchbase:
-    image: couchbase    
-
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-
   campaign-api:
     image: joker/campaignapi
     build:
       context: .
       dockerfile: src/Services/Campaign/Campaign.Api/Dockerfile
-    depends_on:
-      - nosqldata
-      - seq
-      - rabbitmq     
-      - consul
 
   location-api:
     image: joker/locationapi
     build:
       context: .
       dockerfile: src/Services/Location/Location.Api/Dockerfile
-    depends_on:
-      - postgres
-      - seq
-      - rabbitmq
-      - consul
           
   management-api:
     image: joker/managementapi
     build:
       context: .
       dockerfile: src/Services/Management/Management.Api/Dockerfile
-    depends_on:
-      - postgres
-      - seq
-      - rabbitmq
-      - consul
       
   merchant-api:
     image: joker/merchantapi
     build:
       context: .
       dockerfile: src/Services/Merchant/Merchant.Api/Dockerfile
-    depends_on:
-      - nosqldata
-      - seq
-      - rabbitmq
-      - consul
       
   favorite-api:
     image: joker/favoriteapi
     build:
       context: .
       dockerfile: src/Services/Favorite/Favorite.Api/Dockerfile
-    depends_on:
-      - nosqldata
-      - seq
-      - rabbitmq
-      - consul    
-      - couchbase
         
   search-api:
     image: joker/searchapi
     build:
       context: .
       dockerfile: src/Services/Search/Search.Api/Dockerfile
-    depends_on:
-      - seq
-      - rabbitmq
-      - consul
   
   identity-api:
     image: joker/identityapi
     build:
       context: .
       dockerfile: src/Services/Identity/Joker.Identity/Dockerfile
-    depends_on:
-      - postgres
-      - seq
-      - rabbitmq      
   
   subscription-api:
     image: joker/subscriptionapi
     build:
       context: .
       dockerfile: src/Services/Subscription/Subscription.Api/Dockerfile
-    depends_on:
-      - nosqldata
-      - seq
-      - rabbitmq
-      - consul
-    
+   
   aggregator-api:
     image: joker/aggregatorapi
     build:
@@ -122,7 +61,6 @@ services:
       - subscription-api
       - location-api
       - campaign-api
-      - consul
   
   gateway-web-api:
     image: joker/gatewaywebapi

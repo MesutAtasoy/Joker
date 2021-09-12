@@ -1,0 +1,106 @@
+version: '3.4'
+services:
+
+  consul:
+    image: consul:latest
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    hostname: consul
+    container_name: consul
+    networks:
+      - joker-network
+    ports:
+      - "8500:8500"  
+         
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - joker-network      
+        
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/volumes/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - joker-network
+    
+  nosqldata:
+    image: mongo
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/volumes/mongo:/data/db
+    networks:
+      - joker-network 
+      
+  couchbase:
+     image: couchbase
+     container_name: "couchbase"
+     ports:
+       - "8091:8091"
+       - "8093:8093"
+       - "11210:11210"
+     networks:
+       - joker-network
+         
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    networks:
+      - joker-network
+
+  elasticsearch01:
+      container_name: elasticsearch01
+      environment:
+        - http.host=0.0.0.0
+        - transport.host=127.0.0.1
+        - xpack.security.enabled=false
+        - "ELASTIC_USERNAME=elastic"
+        - "ELASTIC_PASSWORD=secret!"
+      image: docker.elastic.co/elasticsearch/elasticsearch:7.0.1
+      volumes:
+        - esdata01:/usr/share/elasticsearch/data
+      ports:
+        - 9200:9200
+      networks:
+        - joker-network
+
+  kibana:
+      image: docker.elastic.co/kibana/kibana:7.0.1
+      container_name: kibana
+      environment:
+        - "ELASTICSEARCH_HOSTS=http://elasticsearch01:9200"
+        - "ELASTICSEARCH_USERNAME=elastic"
+        - "ELASTICSEARCH_PASSWORD=secret!"
+      depends_on:
+        - elasticsearch01
+      ports:
+        - "5601:5601"
+      networks:
+        - joker-network
+
+volumes:
+  esdata01:
+    driver: local        
+
+networks:
+  joker-network:
+    external: true        
