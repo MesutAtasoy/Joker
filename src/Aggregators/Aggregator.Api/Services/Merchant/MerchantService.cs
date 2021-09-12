@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Aggregator.Api.Extensions;
 using Aggregator.Api.Models.Merchant;
 using Grpc.Core;
 using Joker.Extensions;

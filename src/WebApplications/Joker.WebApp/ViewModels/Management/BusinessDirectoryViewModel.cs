@@ -1,5 +1,4 @@
 using System;
-using Joker.WebApp.ViewModels.Store;
 
 namespace Joker.WebApp.ViewModels.Management
 {

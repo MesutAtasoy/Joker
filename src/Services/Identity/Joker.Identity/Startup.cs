@@ -30,6 +30,7 @@ namespace Joker.Identity
             services.AddJokerCors();
             services.AddJokerEvents();
             services.AddJokerEventBus(_configuration);
+            services.AddJokerOpenTelemetry(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

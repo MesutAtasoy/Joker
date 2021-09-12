@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Joker.Extensions.Models;
 using MediatR;
 using Merchant.Application.Stores.Dto;

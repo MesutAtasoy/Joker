@@ -7,10 +7,6 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Serilog.Events;
-using Serilog.Exceptions;
-using Serilog.Formatting.Elasticsearch;
-using Serilog.Sinks.Elasticsearch;
 
 namespace Merchant.Api
 {

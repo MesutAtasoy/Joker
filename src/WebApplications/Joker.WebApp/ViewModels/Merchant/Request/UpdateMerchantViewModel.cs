@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Joker.WebApp.ViewModels.Merchant.Request

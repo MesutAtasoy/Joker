@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Joker.ElasticSearch.Models;
 
 namespace Search.Core.IndexModels

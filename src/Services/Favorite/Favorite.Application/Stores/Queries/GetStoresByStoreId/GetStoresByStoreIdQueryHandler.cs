@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using Favorite.Application.Campaigns.Dto;
-using Favorite.Application.Campaigns.Queries.GetCampaignsByCampaignId;
 using Favorite.Application.Stores.Dto;
-using Favorite.Core.Repositories;
 using MediatR;
 
 namespace Favorite.Application.Stores.Queries.GetStoresByStoreId

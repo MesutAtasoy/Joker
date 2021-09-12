@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Aggregator.Api.Interceptors;
 using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Favorite;
@@ -18,6 +17,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace Aggregator.Api.Extensions
 {
@@ -31,7 +32,7 @@ namespace Aggregator.Api.Extensions
             services.AddScoped<ILocationService, LocationService>();
             services.AddScoped<IManagementService, ManagementService>();
             services.AddScoped<IFavoriteService, FavoriteService>();
-            
+
             services.AddTransient<GrpcExceptionInterceptor>();
 
             services.AddGrpcClient<ManagementApiGrpcService.ManagementApiGrpcServiceClient>(x =>
@@ -41,23 +42,24 @@ namespace Aggregator.Api.Extensions
             services.AddGrpcClient<CampaignApiGrpcService.CampaignApiGrpcServiceClient>(x =>
                     x.Address = new Uri(configuration["serviceUrls:campaign"]))
                 .AddInterceptor<GrpcExceptionInterceptor>();
-            
+
             services.AddGrpcClient<MerchantApiGrpcService.MerchantApiGrpcServiceClient>(x =>
                     x.Address = new Uri(configuration["serviceUrls:merchant"]))
                 .AddInterceptor<GrpcExceptionInterceptor>();
-            
+
             services.AddGrpcClient<LocationApiGrpcService.LocationApiGrpcServiceClient>(x =>
                     x.Address = new Uri(configuration["serviceUrls:location"]))
                 .AddInterceptor<GrpcExceptionInterceptor>();
-            
+
             services.AddGrpcClient<FavoriteApiGrpcService.FavoriteApiGrpcServiceClient>(x =>
                     x.Address = new Uri(configuration["serviceUrls:favorite"]))
                 .AddInterceptor<GrpcExceptionInterceptor>();
-            
+
             return services;
         }
 
-        public static IServiceCollection AddJokerAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddJokerAuthentication(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
@@ -68,7 +70,7 @@ namespace Aggregator.Api.Extensions
                     options.SupportedTokens = SupportedTokens.Reference;
                     options.RequireHttpsMetadata = false;
                 });
-            
+
             return services;
         }
 
@@ -77,7 +79,7 @@ namespace Aggregator.Api.Extensions
             services.RegisterConsulServices(x => configuration.GetSection("ServiceDiscovery").Bind(x));
             return services;
         }
-        
+
         public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
         {
             services.AddAuthorization(options =>
@@ -86,11 +88,30 @@ namespace Aggregator.Api.Extensions
                 {
                     builder.RequireAuthenticatedUser();
                     builder.RequireScope("campaign", "merchant");
-                    builder.RequireRole("FreeUser","PaidUser");
-                });   
+                    builder.RequireRole("FreeUser", "PaidUser");
+                });
             });
 
             return services;
-        }    
+        }
+
+        public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOpenTelemetryTracing(
+                (builder) => builder
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddGrpcClientInstrumentation()
+                    .AddJaegerExporter(j =>
+                    {
+                        j.AgentHost = configuration["jaeger:host"];
+                        j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                    })
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("AggregatorApi"))
+            );
+
+            return services;
+        }
     }
 }

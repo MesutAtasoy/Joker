@@ -19,6 +19,9 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+
   campaign-api:
     image: joker/campaignapi
     build:

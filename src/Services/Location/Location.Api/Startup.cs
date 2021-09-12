@@ -33,6 +33,7 @@ namespace Location.Api
             services.AddJokerMediatr(typeof(LocationApplicationModule));
             services.AddSwaggerGen();
             services.AddJokerConsul(Configuration);
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

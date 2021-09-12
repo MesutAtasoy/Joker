@@ -1,13 +1,13 @@
 using Joker.Consul;
 using Joker.EntityFrameworkCore;
-using Location.Api.Interceptors;
-using Location.Infrastructure;
+using Management.Api.Interceptors;
+using Management.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-namespace Location.Api.Extensions
+namespace Management.Api.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -17,26 +17,25 @@ namespace Location.Api.Extensions
             services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
             return services;
         }
-
-        public static IServiceCollection AddJokerContext(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddJokerNpDbContext<LocationContext>(x =>
-            {
-                x.ConnectionString = configuration["connectionString"];
-                x.EnableMigration = true;
-                x.MaxRetryCount = 3;
-            });
-            return services;
-        }
-        
         public static IServiceCollection AddJokerConsul(this IServiceCollection services, IConfiguration configuration)
         {
             services.RegisterConsulServices(x => configuration.GetSection("ServiceDiscovery").Bind(x));
             return services;
         }
+
+        public static IServiceCollection AddJokerContext(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddJokerNpDbContext<ManagementContext>(x =>
+            {
+                x.ConnectionString = configuration["connectionString"];
+                x.EnableMigration = true;
+                x.MaxRetryCount = 3;
+            });
+
+            return services;
+        }
         
-           
         public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -50,7 +49,7 @@ namespace Location.Api.Extensions
                         j.AgentHost = configuration["jaeger:host"];
                         j.AgentPort = int.Parse(configuration["jaeger:port"]);
                     })
-                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("LocationApi"))
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ManagementApi"))
             );
 
             return services;

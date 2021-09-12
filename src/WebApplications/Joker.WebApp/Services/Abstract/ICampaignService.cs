@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Campaign;
 using Joker.WebApp.ViewModels.Campaign.Request;
 using Joker.WebApp.ViewModels.Shared;

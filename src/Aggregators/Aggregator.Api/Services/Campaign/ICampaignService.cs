@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Aggregator.Api.Models.Campaign;
-using Campaign.Api.Grpc;
 using Joker.Response;
 
 namespace Aggregator.Api.Services.Campaign

@@ -32,6 +32,7 @@ namespace Subscription.Api
             services.AddJokerConsul(Configuration);
             services.AddJokerAuthorization();
             services.AddJokerAuthentication(Configuration);
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

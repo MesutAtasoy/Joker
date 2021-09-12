@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
-using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Management;
 using Joker.WebApp.ViewModels.Shared;
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Favorite.Application.Campaigns.Dto;
 using MediatR;

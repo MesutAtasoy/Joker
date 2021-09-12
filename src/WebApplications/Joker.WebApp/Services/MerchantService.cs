@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
-using Joker.WebApp.ViewModels;
 using Joker.WebApp.ViewModels.Merchant;
 using Joker.WebApp.ViewModels.Merchant.Request;
 using Joker.WebApp.ViewModels.Shared;

@@ -20,6 +20,11 @@
         <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
         <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
         <PackageReference Include="Grpc.Tools" Version="2.38.1" />
+        <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.2.0-alpha2" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc7" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc7" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc7" />
     </ItemGroup>
     
     <ItemGroup>

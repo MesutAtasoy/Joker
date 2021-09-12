@@ -3,10 +3,11 @@ using Joker.CAP;
 using Joker.Consul;
 using Joker.Mongo;
 using Joker.Mongo.Domain;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using Subscription.Infrastructure;
 
 namespace Subscription.Api.Extensions
@@ -83,5 +84,23 @@ namespace Subscription.Api.Extensions
 
             return services;
         }    
+        
+        public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOpenTelemetryTracing(
+                (builder) => builder
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddJaegerExporter(j =>
+                    {
+                        j.AgentHost = configuration["jaeger:host"];
+                        j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                    })
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SubscriptionApi"))
+            );
+
+            return services;
+        }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using Campaign.Domain.CampaignAggregate.Events;
-using Campaign.Domain.CampaignAggregate.Rules;
 using Campaign.Domain.Refs;
 using Joker.Domain;
 using Joker.Domain.Entities;

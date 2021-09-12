@@ -6,7 +6,6 @@ using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
 using Favorite.Application.Campaigns.Dto;
 using Favorite.Application.Services;
 using Favorite.Core.Entities;
-using Favorite.Core.Entities.Shared;
 using Favorite.Core.Repositories;
 
 namespace Favorite.Application.Campaigns

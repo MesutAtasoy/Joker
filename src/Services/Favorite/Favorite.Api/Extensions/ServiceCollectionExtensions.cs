@@ -10,6 +10,8 @@ using Joker.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace Favorite.Api.Extensions
 {
@@ -99,6 +101,25 @@ namespace Favorite.Api.Extensions
         {
             services.AddAuthorization();
         
+            return services;
+        }
+        
+        public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOpenTelemetryTracing(
+                (builder) => builder
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddGrpcClientInstrumentation()
+                    .AddJaegerExporter(j =>
+                    {
+                        j.AgentHost = configuration["jaeger:host"];
+                        j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                    })
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("FavoriteApi"))
+            );
+
             return services;
         }
     }

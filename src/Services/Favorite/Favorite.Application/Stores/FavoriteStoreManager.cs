@@ -6,7 +6,6 @@ using Favorite.Application.Services;
 using Favorite.Application.Stores.Commands.CreateFavoriteStore;
 using Favorite.Application.Stores.Dto;
 using Favorite.Core.Entities;
-using Favorite.Core.Entities.Shared;
 using Favorite.Core.Repositories;
 
 namespace Favorite.Application.Stores

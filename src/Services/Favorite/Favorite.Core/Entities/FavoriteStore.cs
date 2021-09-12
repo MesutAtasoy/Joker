@@ -1,5 +1,4 @@
 using System;
-using Favorite.Core.Entities.Shared;
 
 namespace Favorite.Core.Entities
 {

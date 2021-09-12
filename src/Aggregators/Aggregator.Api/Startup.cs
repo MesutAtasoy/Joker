@@ -29,6 +29,7 @@ namespace Aggregator.Api
             services.AddJokerAuthentication(_configuration);
             services.AddJokerAuthorization();
             services.AddJokerConsul(_configuration);
+            services.AddJokerOpenTelemetry(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

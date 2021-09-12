@@ -1,11 +1,8 @@
 using AutoMapper;
-using Joker.Consul;
-using Joker.EntityFrameworkCore;
 using Joker.Mvc;
+using Management.Api.Extensions;
 using Management.Api.GrpcServices;
-using Management.Api.Interceptors;
 using Management.Application;
-using Management.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,24 +25,15 @@ namespace Management.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiVersion();
-            services.AddTransient<GrpcExceptionInterceptor>();
-            services.AddGrpc(x => x.Interceptors.Add<GrpcExceptionInterceptor>());
-            services.AddControllers().AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            );
-            
-            services.AddJokerNpDbContext<ManagementContext>(x =>
-            {
-                x.ConnectionString = Configuration["connectionString"];
-                x.EnableMigration = true;
-                x.MaxRetryCount = 3;
-            });
-            
+            services.AddJokerGrpc();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddJokerContext(Configuration);
             services.AddApplicationModule();
             services.AddAutoMapper(typeof(ManagementGrpcMappingProfile));
             services.AddJokerMediatr(typeof(ManagementApplicationModule));
             services.AddSwaggerGen();
-            services.RegisterConsulServices(x => Configuration.GetSection("ServiceDiscovery").Bind(x));
+            services.AddJokerConsul(Configuration);
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

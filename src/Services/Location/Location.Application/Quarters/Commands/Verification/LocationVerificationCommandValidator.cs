@@ -1,4 +1,3 @@
-using System.Data;
 using FluentValidation;
 
 namespace Location.Application.Quarters.Commands.Verification

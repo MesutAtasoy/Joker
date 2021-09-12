@@ -34,6 +34,7 @@ namespace Joker.WebApp
             services.AddJokerEventBus(Configuration);
             services.AddDataProtection();
             services.AddSignalR();
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,8 +1,6 @@
-using Couchbase.Extensions.DependencyInjection;
 using Favorite.Api.Extensions;
 using Favorite.Api.GrpcServices;
 using Favorite.Application;
-using Favorite.Infrastructure.Initializers;
 using Joker.Mvc;
 using Joker.Mvc.Initializers;
 using Microsoft.AspNetCore.Builder;
@@ -38,6 +36,7 @@ namespace Favorite.Api
             services.AddJokerConsul(Configuration);
             services.AddJokerAuthentication(Configuration);
             services.AddJokerAuthorization();
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,4 @@
+using Gateway.Web.Api.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,7 @@ namespace Gateway.Web.Api
             
             services.AddCors(options => options.AddDefaultPolicy(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
             services.AddSwaggerForOcelot(_configuration);
+            services.AddJokerOpenTelemetry(_configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -34,6 +34,7 @@ namespace Search.Api
             services.AddElasticService(Configuration);
             services.AddJokerEventBus(Configuration);
             services.AddJokerConsul(Configuration);
+            services.AddJokerOpenTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

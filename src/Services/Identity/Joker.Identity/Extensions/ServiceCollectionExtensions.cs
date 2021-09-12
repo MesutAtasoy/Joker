@@ -5,6 +5,8 @@ using Joker.Identity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 
 namespace Joker.Identity.Extensions
@@ -61,6 +63,24 @@ namespace Joker.Identity.Extensions
         {
             services.RegisterCAPEvents(typeof(SubscribedEvent));
             services.RegisterCAPEventHandlers(typeof(SubscribedEventHandler));
+            return services;
+        }
+        
+        public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOpenTelemetryTracing(
+                (builder) => builder
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddJaegerExporter(j =>
+                    {
+                        j.AgentHost = configuration["jaeger:host"];
+                        j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                    })
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("JokerIdentity"))
+            );
+
             return services;
         }
 

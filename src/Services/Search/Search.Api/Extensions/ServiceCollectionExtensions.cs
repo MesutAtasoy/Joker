@@ -4,6 +4,8 @@ using Joker.ElasticSearch;
 using Joker.ElasticSearch.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace Search.Api.Extensions
 {
@@ -54,6 +56,24 @@ namespace Search.Api.Extensions
                     HostUrl = configuration["elasticSearch:host"]
                 };
             });
+            return services;
+        }
+        
+        public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddOpenTelemetryTracing(
+                (builder) => builder
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddJaegerExporter(j =>
+                    {
+                        j.AgentHost = configuration["jaeger:host"];
+                        j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                    })
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SearchApi"))
+            );
+
             return services;
         }
     }

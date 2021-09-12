@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Joker.ElasticSearch.Service;
-using Nest;
 using Search.Core.Constants;
 using Search.Core.IndexModels;
 

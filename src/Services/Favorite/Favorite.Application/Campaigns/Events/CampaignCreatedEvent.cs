@@ -1,6 +1,5 @@
 using System;
 using Joker.EventBus;
-using Microsoft.AspNetCore.StaticFiles;
 
 namespace Favorite.Application.Campaigns.Events
 {
