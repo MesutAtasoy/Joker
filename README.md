@@ -26,19 +26,19 @@ Joker platform is location based campaign marketplace. An example of microservic
 
 `git submodule update --init --recursive` 
 
-4. Create Docker Network
+3. Create Docker Network
 
 `docker network create joker-network` 
-
-3. Build the containers
-
-`docker-compose build` 
 
 4. Run the insfrastructure containters
 
 `docker-compose -f docker-compose-insfrastructure.yml up -d` 
 
-5. Run the containers
+5. Build the containers
+
+`docker-compose build` 
+
+6. Run the containers
 
 `docker-compose up -d` 
 
