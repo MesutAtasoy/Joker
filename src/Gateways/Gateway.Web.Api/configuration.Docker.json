@@ -78,7 +78,7 @@
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
         "DurationOfBreak": 1000,
-        "TimeoutValue": 500000
+        "TimeoutValue": 5000
       },
       "LoadBalancerOptions": {
         "Type": "LeastConnection"

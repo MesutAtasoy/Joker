@@ -83,7 +83,8 @@ namespace Joker.WebApp.Extensions
                 client.BaseAddress = new Uri(configuration.GetValue<string>("GatewayUrl"));
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
-            }).AddHttpMessageHandler<BearerTokenHandler>();
+            }).AddHttpMessageHandler<BearerTokenHandler>()
+                .AddPolicyHandler(PolicyExtensions.GetCircuitBreakerPolicy());
 
             return services;
         }
@@ -96,7 +97,7 @@ namespace Joker.WebApp.Extensions
                 client.BaseAddress = new Uri(configuration.GetValue<string>("IdentityInternalUrl"));
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
-            });
+            }).AddPolicyHandler(PolicyExtensions.GetCircuitBreakerPolicy());
 
             return services;
         }
