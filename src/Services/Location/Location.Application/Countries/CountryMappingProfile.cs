@@ -2,13 +2,12 @@
 using Location.Application.Countries.Dto;
 using Location.Core.Entities;
 
-namespace Location.Application.Countries
+namespace Location.Application.Countries;
+
+public class CountryMappingProfile : Profile
 {
-    public class CountryMappingProfile : Profile
+    public CountryMappingProfile()
     {
-        public CountryMappingProfile()
-        {
-            CreateMap<Country, CountryDto>();
-        }
+        CreateMap<Country, CountryDto>();
     }
 }

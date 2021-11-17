@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Management.Core.Entities;
+﻿using Management.Core.Entities;
 using MediatR;
 
-namespace Management.Application.PaymentMethods.Queries.GetPaymentMethod
+namespace Management.Application.PaymentMethods.Queries.GetPaymentMethod;
+
+public class GetPaymentMethodQuery : IRequest<List<PaymentMethod>>
 {
-    public class GetPaymentMethodQuery : IRequest<List<PaymentMethod>>
-    {
-    }
 }

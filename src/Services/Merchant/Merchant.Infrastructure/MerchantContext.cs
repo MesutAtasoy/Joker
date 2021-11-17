@@ -5,24 +5,23 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-namespace Merchant.Infrastructure
+namespace Merchant.Infrastructure;
+
+public class MerchantContext : MongoDomainContext
 {
-    public class MerchantContext : MongoDomainContext
+    public MerchantContext(IMongoDatabase database) 
+        : base(database)
     {
-        public MerchantContext(IMongoDatabase database) 
-            : base(database)
-        {
-        }
+    }
         
-        public static void ApplyConfiguration()
-        {
+    public static void ApplyConfiguration()
+    {
 #pragma warning disable 618
-            BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
+        BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
 #pragma warning restore 618
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
-            BsonClassMappingConfiguration.ApplyConfigurationsFromAssembly(typeof(MerchantContext).Assembly);
-        }
+        BsonClassMappingConfiguration.ApplyConfigurationsFromAssembly(typeof(MerchantContext).Assembly);
     }
 }

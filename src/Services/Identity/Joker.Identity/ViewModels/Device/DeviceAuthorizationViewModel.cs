@@ -4,11 +4,10 @@
 
 using Joker.Identity.ViewModels.Consent;
 
-namespace Joker.Identity.ViewModels.Device
+namespace Joker.Identity.ViewModels.Device;
+
+public class DeviceAuthorizationViewModel : ConsentViewModel
 {
-    public class DeviceAuthorizationViewModel : ConsentViewModel
-    {
-        public string UserCode { get; set; }
-        public bool ConfirmUserCode { get; set; }
-    }
+    public string UserCode { get; set; }
+    public bool ConfirmUserCode { get; set; }
 }

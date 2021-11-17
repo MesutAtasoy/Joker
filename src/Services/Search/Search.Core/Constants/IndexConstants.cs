@@ -1,8 +1,7 @@
-namespace Search.Core.Constants
+namespace Search.Core.Constants;
+
+public struct IndexConstants
 {
-    public struct IndexConstants
-    {
-        public static string CampaignIndex = "campaigns";
-        public static string StoreIndex = "stores";
-    }
+    public static string CampaignIndex = "campaigns";
+    public static string StoreIndex = "stores";
 }

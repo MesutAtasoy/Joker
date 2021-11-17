@@ -1,5 +1,3 @@
-using System;
-
 namespace Location.Core.Entities
 {
     public abstract class BaseEntityModel

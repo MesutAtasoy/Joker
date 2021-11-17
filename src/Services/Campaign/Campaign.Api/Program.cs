@@ -1,12 +1,8 @@
-using System;
-using System.IO;
 using System.Net;
 using Joker.Logging;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Serilog;
+using ILogger = Serilog.ILogger;
 
 namespace Campaign.Api
 {

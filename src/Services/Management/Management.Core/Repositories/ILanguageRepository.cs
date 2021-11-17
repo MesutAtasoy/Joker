@@ -1,11 +1,9 @@
-﻿using System.Threading.Tasks;
-using Joker.Repositories;
+﻿using Joker.Repositories;
 using Management.Core.Entities;
 
-namespace Management.Core.Repositories
+namespace Management.Core.Repositories;
+
+public interface ILanguageRepository : IRepository<Language>
 {
-    public interface ILanguageRepository : IRepository<Language>
-    {
-        Task<Language> GetDefaultLanguageAsync();
-    }
+    Task<Language> GetDefaultLanguageAsync();
 }

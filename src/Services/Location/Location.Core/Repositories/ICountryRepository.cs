@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Joker.Repositories;
 using Location.Core.Entities;
 

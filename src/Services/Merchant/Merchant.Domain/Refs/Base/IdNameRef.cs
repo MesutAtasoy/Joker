@@ -1,10 +1,7 @@
-using System;
+namespace Merchant.Domain.Refs.Base;
 
-namespace Merchant.Domain.Refs.Base
+public abstract class IdNameRef 
 {
-    public abstract class IdNameRef 
-    {
-        public Guid RefId { get; protected init; }
-        public string Name { get; protected init; }
-    }
+    public Guid RefId { get; protected init; }
+    public string Name { get; protected init; }
 }

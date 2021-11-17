@@ -1,9 +1,8 @@
 ﻿using Location.Application.Countries.Dto;
 using MediatR;
 
-namespace Location.Application.Countries.Queries.GetCountry
+namespace Location.Application.Countries.Queries.GetCountry;
+
+public class GetCountryQuery : IRequest<CountryDto>
 {
-    public class GetCountryQuery : IRequest<CountryDto>
-    {
-    }
 }

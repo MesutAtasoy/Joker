@@ -1,13 +1,10 @@
-using System;
-using System.Threading.Tasks;
 using Joker.Repositories;
 
-namespace Campaign.Domain.CampaignAggregate.Repositories
+namespace Campaign.Domain.CampaignAggregate.Repositories;
+
+public interface ICampaignRepository : IRepository<Campaign>
 {
-    public interface ICampaignRepository : IRepository<Campaign>
-    {
-        Task<Campaign> GetByIdAsync(Guid id);
-        Task UpdateMerchantNameAsync(Guid merchantId, string merchantName);
-        Task UpdateStoreNameAsync(Guid storeId, string storeName);
-    }
+    Task<Campaign> GetByIdAsync(Guid id);
+    Task UpdateMerchantNameAsync(Guid merchantId, string merchantName);
+    Task UpdateStoreNameAsync(Guid storeId, string storeName);
 }

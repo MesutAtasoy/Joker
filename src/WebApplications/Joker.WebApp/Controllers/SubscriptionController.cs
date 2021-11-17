@@ -1,28 +1,26 @@
-using System.Threading.Tasks;
 using Joker.WebApp.Services.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Joker.WebApp.Controllers
+namespace Joker.WebApp.Controllers;
+
+[Authorize]
+public class SubscriptionController : Controller
 {
-    [Authorize]
-    public class SubscriptionController : Controller
+    private readonly IManagementApiService _managementApiService;
+        
+    public SubscriptionController(IManagementApiService managementApiService)
     {
-        private readonly IManagementApiService _managementApiService;
+        _managementApiService = managementApiService;
+    }
         
-        public SubscriptionController(IManagementApiService managementApiService)
+    public async Task<IActionResult> Index()
+    {
+        if (User.IsInRole("PaidUser"))
         {
-            _managementApiService = managementApiService;
+            return RedirectToAction("Index", "Account");
         }
-        
-        public async Task<IActionResult> Index()
-        {
-            if (User.IsInRole("PaidUser"))
-            {
-                return RedirectToAction("Index", "Account");
-            }
-            var pricingPlans = await _managementApiService.GetPricingPlansAsync();
-            return View(pricingPlans);
-        }
+        var pricingPlans = await _managementApiService.GetPricingPlansAsync();
+        return View(pricingPlans);
     }
 }

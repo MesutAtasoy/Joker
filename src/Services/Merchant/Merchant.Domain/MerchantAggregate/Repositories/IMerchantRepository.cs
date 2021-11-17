@@ -1,11 +1,8 @@
-using System;
-using System.Threading.Tasks;
 using Joker.Repositories;
 
-namespace Merchant.Domain.MerchantAggregate.Repositories
+namespace Merchant.Domain.MerchantAggregate.Repositories;
+
+public interface IMerchantRepository : IRepository<Merchant>
 {
-    public interface IMerchantRepository : IRepository<Merchant>
-    {
-        Task<Merchant> GetByIdAsync(Guid id);
-    }
+    Task<Merchant> GetByIdAsync(Guid id);
 }

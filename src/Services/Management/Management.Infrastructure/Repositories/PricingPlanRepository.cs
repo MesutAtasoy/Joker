@@ -2,14 +2,13 @@
 using Management.Core.Entities;
 using Management.Core.Repositories;
 
-namespace Management.Infrastructure.Repositories
+namespace Management.Infrastructure.Repositories;
+
+public class PricingPlanRepository : EntityFrameworkCoreRepository<ManagementContext, PricingPlan>,
+    IPricingPlanRepository
 {
-    public class PricingPlanRepository : EntityFrameworkCoreRepository<ManagementContext, PricingPlan>,
-        IPricingPlanRepository
+    public PricingPlanRepository(ManagementContext context)
+        : base(context)
     {
-        public PricingPlanRepository(ManagementContext context)
-            : base(context)
-        {
-        }
     }
 }

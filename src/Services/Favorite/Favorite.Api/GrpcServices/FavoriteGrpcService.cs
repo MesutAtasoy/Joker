@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Favorite.Api.Grpc;
 using Favorite.Application.Campaigns;
 using Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign;
@@ -10,226 +8,225 @@ using Grpc.Core;
 using Joker.Extensions;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Favorite.Api.GrpcServices
+namespace Favorite.Api.GrpcServices;
+
+[Authorize]
+public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcServiceBase
 {
-    [Authorize]
-    public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcServiceBase
+    private readonly FavoriteCampaignManager _campaignManager;
+    private readonly FavoriteStoreManager _storeManager;
+        
+    public FavoriteGrpcService(FavoriteCampaignManager campaignManager, 
+        FavoriteStoreManager storeManager)
     {
-        private readonly FavoriteCampaignManager _campaignManager;
-        private readonly FavoriteStoreManager _storeManager;
+        _campaignManager = campaignManager;
+        _storeManager = storeManager;
+    }
         
-        public FavoriteGrpcService(FavoriteCampaignManager campaignManager, 
-            FavoriteStoreManager storeManager)
+    public override async Task<CampaignBaseGrpcResponse> AddFavoriteStore(CreateFavoriteStoreMessage request, ServerCallContext context)
+    {
+        var response = await _storeManager.AddFavoriteStoreAsync(new CreateFavoriteStoreCommand
         {
-            _campaignManager = campaignManager;
-            _storeManager = storeManager;
-        }
-        
-        public override async Task<CampaignBaseGrpcResponse> AddFavoriteStore(CreateFavoriteStoreMessage request, ServerCallContext context)
-        {
-            var response = await _storeManager.AddFavoriteStoreAsync(new CreateFavoriteStoreCommand
-            {
-                Id = request.Store.Id.ToGuid(),
-                Name = request.Store.Name,
-                Slug = request.Store.Slug,
-                SlugKey = request.Store.SlugKey
-            });
+            Id = request.Store.Id.ToGuid(),
+            Name = request.Store.Name,
+            Slug = request.Store.Slug,
+            SlugKey = request.Store.SlugKey
+        });
 
-            var favoriteCampaignMessage = new FavoriteStoreMessage
+        var favoriteCampaignMessage = new FavoriteStoreMessage
+        {
+            Store = new StoreMessage
             {
-                Store = new StoreMessage
-                {
-                    Id = response?.Store?.Id.ToString() ?? " ",
-                    Name = response?.Store?.Name ?? " ",
-                    Slug = response?.Store?.Slug ?? " ",
-                    SlugKey = response?.Store?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = response?.UserInfo?.Id ?? " ",
-                    UserName = response?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = response?.CreatedDate.ToTimestamp()
-            };
+                Id = response?.Store?.Id.ToString() ?? " ",
+                Name = response?.Store?.Name ?? " ",
+                Slug = response?.Store?.Slug ?? " ",
+                SlugKey = response?.Store?.SlugKey ?? ""
+            },
+            User = new UserMessage
+            {
+                Id = response?.UserInfo?.Id ?? " ",
+                UserName = response?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = response?.CreatedDate.ToTimestamp()
+        };
             
-            return new CampaignBaseGrpcResponse
-            {
-                Data = Any.Pack(favoriteCampaignMessage),
-                Message = " ",
-                Status = 200
-            };
-        }
-
-        public override async Task<CampaignBaseGrpcResponse> AddFavoriteCampaign(CreateFavoriteCampaignMessage request, ServerCallContext context)
+        return new CampaignBaseGrpcResponse
         {
-            var response = await _campaignManager.AddFavoriteCampaignAsync(new CreateFavoriteCampaignCommand 
-            {
-                Id = request.Campaign.Id.ToGuid(),
-                Title = request.Campaign.Title,
-                Slug = request.Campaign.Slug,
-                SlugKey = request.Campaign.SlugKey
-            });
+            Data = Any.Pack(favoriteCampaignMessage),
+            Message = " ",
+            Status = 200
+        };
+    }
 
-            var favoriteCampaignMessage = new FavoriteCampaignMessage
-            {
-                Campaign = new CampaignMessage
-                {
-                    Id = response?.Campaign?.Id.ToString() ?? " ",
-                    Title = response?.Campaign?.Title ?? " ",
-                    Slug = response?.Campaign?.Slug ?? " ",
-                    SlugKey = response?.Campaign?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = response?.UserInfo?.Id ?? " ",
-                    UserName = response?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = response?.CreatedDate.ToTimestamp()
-            };
-            
-            return new CampaignBaseGrpcResponse
-            {
-                Data = Any.Pack(favoriteCampaignMessage),
-                Message = " ",
-                Status = 200
-            };
-        }
-
-        public override async Task<CampaignBaseGrpcResponse> GetFavoriteStoresByUserId(ByIdMessage request, ServerCallContext context)
+    public override async Task<CampaignBaseGrpcResponse> AddFavoriteCampaign(CreateFavoriteCampaignMessage request, ServerCallContext context)
+    {
+        var response = await _campaignManager.AddFavoriteCampaignAsync(new CreateFavoriteCampaignCommand 
         {
-            var stores = await _storeManager.GetStoresByUserIdAsync(request.Id);
+            Id = request.Campaign.Id.ToGuid(),
+            Title = request.Campaign.Title,
+            Slug = request.Campaign.Slug,
+            SlugKey = request.Campaign.SlugKey
+        });
 
-            var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
-            {
-                Store = new StoreMessage
-                {
-                    Id = x?.Store?.Id.ToString() ?? " ",
-                    Name = x?.Store?.Name ?? " ",
-                    Slug = x?.Store?.Slug ?? " ",
-                    SlugKey = x?.Store?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = x?.UserInfo?.Id ?? " ",
-                    UserName = x?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = x?.CreatedDate.ToTimestamp()
-            }).ToList();
-
-            var favoriteStoreMessageList = new FavoriteStoreMessageList
-            {
-                Stores = { favoriteCampaignMessages }
-            };
-            
-            return new CampaignBaseGrpcResponse
-            {
-                Data = Any.Pack(favoriteStoreMessageList),
-                Message = " ",
-                Status = 200
-            };
-
-        }
-
-        public override async Task<CampaignBaseGrpcResponse> GetFavoriteCampaignsByCampaignId(ByIdMessage request, ServerCallContext context)
+        var favoriteCampaignMessage = new FavoriteCampaignMessage
         {
-            var campaigns = await _campaignManager.GetCampaignsByCampaignIdAsync(request.Id);
-
-            var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
+            Campaign = new CampaignMessage
             {
-                Campaign = new CampaignMessage
-                {
-                    Id = x?.Campaign?.Id.ToString() ?? " ",
-                    Title = x?.Campaign?.Title ?? " ",
-                    Slug = x?.Campaign?.Slug ?? " ",
-                    SlugKey = x?.Campaign?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = x?.UserInfo?.Id ?? " ",
-                    UserName = x?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = x?.CreatedDate.ToTimestamp()
-            }).ToList();
-
-            var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
+                Id = response?.Campaign?.Id.ToString() ?? " ",
+                Title = response?.Campaign?.Title ?? " ",
+                Slug = response?.Campaign?.Slug ?? " ",
+                SlugKey = response?.Campaign?.SlugKey ?? ""
+            },
+            User = new UserMessage
             {
-                Campaigns = { favoriteCampaignMessages }
-            };
+                Id = response?.UserInfo?.Id ?? " ",
+                UserName = response?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = response?.CreatedDate.ToTimestamp()
+        };
             
-            return new CampaignBaseGrpcResponse
-            {
-                Data = Any.Pack(favoriteCampaignMessageList),
-                Message = " ",
-                Status = 200
-            };        
-        }
-
-        public override async Task<CampaignBaseGrpcResponse> GetFavoriteStoresByStoreId(ByIdMessage request, ServerCallContext context)
+        return new CampaignBaseGrpcResponse
         {
-            var stores = await _storeManager.GetStoresByStoreIdAsync(request.Id);
+            Data = Any.Pack(favoriteCampaignMessage),
+            Message = " ",
+            Status = 200
+        };
+    }
 
-            var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
-            {
-                Store = new StoreMessage
-                {
-                    Id = x?.Store?.Id.ToString() ?? " ",
-                    Name = x?.Store?.Name ?? " ",
-                    Slug = x?.Store?.Slug ?? " ",
-                    SlugKey = x?.Store?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = x?.UserInfo?.Id ?? " ",
-                    UserName = x?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = x?.CreatedDate.ToTimestamp()
-            }).ToList();
+    public override async Task<CampaignBaseGrpcResponse> GetFavoriteStoresByUserId(ByIdMessage request, ServerCallContext context)
+    {
+        var stores = await _storeManager.GetStoresByUserIdAsync(request.Id);
 
-            var favoriteStoreMessageList = new FavoriteStoreMessageList
-            {
-                Stores = { favoriteCampaignMessages }
-            };
-            
-            return new CampaignBaseGrpcResponse
-            {
-                Data = Any.Pack(favoriteStoreMessageList),
-                Message = " ",
-                Status = 200
-            };        
-        }
-
-        public override async Task<CampaignBaseGrpcResponse> GetFavoriteCampaignsByUserId(ByIdMessage request, ServerCallContext context)
+        var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
         {
-            var campaigns = await _campaignManager.GetCampaignsByUserIdAsync(request.Id);
-
-            var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
+            Store = new StoreMessage
             {
-                Campaign = new CampaignMessage
-                {
-                    Id = x?.Campaign?.Id.ToString() ?? " ",
-                    Title = x?.Campaign?.Title ?? " ",
-                    Slug = x?.Campaign?.Slug ?? " ",
-                    SlugKey = x?.Campaign?.SlugKey ?? ""
-                },
-                User = new UserMessage
-                {
-                    Id = x?.UserInfo?.Id ?? " ",
-                    UserName = x?.UserInfo?.Username ?? " "
-                },
-                CreatedDate = x?.CreatedDate.ToTimestamp()
-            }).ToList();
-
-            var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
+                Id = x?.Store?.Id.ToString() ?? " ",
+                Name = x?.Store?.Name ?? " ",
+                Slug = x?.Store?.Slug ?? " ",
+                SlugKey = x?.Store?.SlugKey ?? ""
+            },
+            User = new UserMessage
             {
-                Campaigns = { favoriteCampaignMessages }
-            };
+                Id = x?.UserInfo?.Id ?? " ",
+                UserName = x?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = x?.CreatedDate.ToTimestamp()
+        }).ToList();
+
+        var favoriteStoreMessageList = new FavoriteStoreMessageList
+        {
+            Stores = { favoriteCampaignMessages }
+        };
             
-            return new CampaignBaseGrpcResponse
+        return new CampaignBaseGrpcResponse
+        {
+            Data = Any.Pack(favoriteStoreMessageList),
+            Message = " ",
+            Status = 200
+        };
+
+    }
+
+    public override async Task<CampaignBaseGrpcResponse> GetFavoriteCampaignsByCampaignId(ByIdMessage request, ServerCallContext context)
+    {
+        var campaigns = await _campaignManager.GetCampaignsByCampaignIdAsync(request.Id);
+
+        var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
+        {
+            Campaign = new CampaignMessage
             {
-                Data = Any.Pack(favoriteCampaignMessageList),
-                Message = " ",
-                Status = 200
-            };        
-        }
+                Id = x?.Campaign?.Id.ToString() ?? " ",
+                Title = x?.Campaign?.Title ?? " ",
+                Slug = x?.Campaign?.Slug ?? " ",
+                SlugKey = x?.Campaign?.SlugKey ?? ""
+            },
+            User = new UserMessage
+            {
+                Id = x?.UserInfo?.Id ?? " ",
+                UserName = x?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = x?.CreatedDate.ToTimestamp()
+        }).ToList();
+
+        var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
+        {
+            Campaigns = { favoriteCampaignMessages }
+        };
+            
+        return new CampaignBaseGrpcResponse
+        {
+            Data = Any.Pack(favoriteCampaignMessageList),
+            Message = " ",
+            Status = 200
+        };        
+    }
+
+    public override async Task<CampaignBaseGrpcResponse> GetFavoriteStoresByStoreId(ByIdMessage request, ServerCallContext context)
+    {
+        var stores = await _storeManager.GetStoresByStoreIdAsync(request.Id);
+
+        var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
+        {
+            Store = new StoreMessage
+            {
+                Id = x?.Store?.Id.ToString() ?? " ",
+                Name = x?.Store?.Name ?? " ",
+                Slug = x?.Store?.Slug ?? " ",
+                SlugKey = x?.Store?.SlugKey ?? ""
+            },
+            User = new UserMessage
+            {
+                Id = x?.UserInfo?.Id ?? " ",
+                UserName = x?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = x?.CreatedDate.ToTimestamp()
+        }).ToList();
+
+        var favoriteStoreMessageList = new FavoriteStoreMessageList
+        {
+            Stores = { favoriteCampaignMessages }
+        };
+            
+        return new CampaignBaseGrpcResponse
+        {
+            Data = Any.Pack(favoriteStoreMessageList),
+            Message = " ",
+            Status = 200
+        };        
+    }
+
+    public override async Task<CampaignBaseGrpcResponse> GetFavoriteCampaignsByUserId(ByIdMessage request, ServerCallContext context)
+    {
+        var campaigns = await _campaignManager.GetCampaignsByUserIdAsync(request.Id);
+
+        var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
+        {
+            Campaign = new CampaignMessage
+            {
+                Id = x?.Campaign?.Id.ToString() ?? " ",
+                Title = x?.Campaign?.Title ?? " ",
+                Slug = x?.Campaign?.Slug ?? " ",
+                SlugKey = x?.Campaign?.SlugKey ?? ""
+            },
+            User = new UserMessage
+            {
+                Id = x?.UserInfo?.Id ?? " ",
+                UserName = x?.UserInfo?.Username ?? " "
+            },
+            CreatedDate = x?.CreatedDate.ToTimestamp()
+        }).ToList();
+
+        var favoriteCampaignMessageList = new FavoriteCampaignMessageList()
+        {
+            Campaigns = { favoriteCampaignMessages }
+        };
+            
+        return new CampaignBaseGrpcResponse
+        {
+            Data = Any.Pack(favoriteCampaignMessageList),
+            Message = " ",
+            Status = 200
+        };        
     }
 }

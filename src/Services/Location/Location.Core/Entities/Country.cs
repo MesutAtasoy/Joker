@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Location.Core.Entities
+﻿namespace Location.Core.Entities
 {
     public partial class Country :  BaseEntityModel
     {

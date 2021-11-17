@@ -4,19 +4,18 @@
 
 using IdentityServer4.Models;
 
-namespace Joker.Identity.ViewModels
+namespace Joker.Identity.ViewModels;
+
+public class ErrorViewModel
 {
-    public class ErrorViewModel
+    public ErrorViewModel()
     {
-        public ErrorViewModel()
-        {
-        }
-
-        public ErrorViewModel(string error)
-        {
-            Error = new ErrorMessage {Error = error};
-        }
-
-        public ErrorMessage Error { get; set; }
     }
+
+    public ErrorViewModel(string error)
+    {
+        Error = new ErrorMessage {Error = error};
+    }
+
+    public ErrorMessage Error { get; set; }
 }

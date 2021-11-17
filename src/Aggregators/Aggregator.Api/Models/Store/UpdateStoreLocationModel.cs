@@ -1,10 +1,7 @@
-using System;
+namespace Aggregator.Api.Models.Store;
 
-namespace Aggregator.Api.Models.Store
+public class UpdateStoreLocationModel
 {
-    public class UpdateStoreLocationModel
-    {
-        public Guid Id { get; set; }
-        public StoreLocationModel Location { get; set; }
-    }
+    public Guid Id { get; set; }
+    public StoreLocationModel Location { get; set; }
 }

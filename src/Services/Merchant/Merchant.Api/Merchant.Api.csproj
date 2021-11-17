@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
         <UserSecretsId>95e240b9-3215-40da-b39a-fdfa52460e1b</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..\..\..</DockerfileContext>
+        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
         <None Remove="Protos\merchant.proto" />
     </ItemGroup>
     <ItemGroup>    
-        <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.1.1" />
         <PackageReference Include="Serilog" Version="2.9.0" />
@@ -30,6 +31,7 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc7" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc7" />
         <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc7" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     </ItemGroup>
     
     <ItemGroup>

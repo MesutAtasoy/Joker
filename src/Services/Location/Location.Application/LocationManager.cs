@@ -1,5 +1,3 @@
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Location.Application.Cities.Dto;
 using Location.Application.Countries.Dto;
@@ -10,48 +8,47 @@ using Location.Application.Quarters.Dto;
 using Location.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Location.Application
+namespace Location.Application;
+
+public class LocationManager
 {
-    public class LocationManager
+    private readonly IQuarterRepository _quarterRepository;
+    private readonly IMapper _mapper;
+
+    public LocationManager(IQuarterRepository quarterRepository, 
+        IMapper mapper)
     {
-        private readonly IQuarterRepository _quarterRepository;
-        private readonly IMapper _mapper;
+        _quarterRepository = quarterRepository;
+        _mapper = mapper;
+    }
 
-        public LocationManager(IQuarterRepository quarterRepository, 
-            IMapper mapper)
+    public async Task<LocationDto> ValidateAsync(LocationVerificationCommand request)
+    {
+        var quarter = await _quarterRepository.Get()
+            .Where(c => c.CountryId == request.CountryId &&
+                        c.CityId == request.CityId &&
+                        c.DistrictId == request.DistrictId &&
+                        c.NeighborhoodId == request.NeighborhoodId &&
+                        c.Id == request.QuarterId)
+            .Include(x=>x.Country)
+            .Include(x=>x.City)
+            .Include(x=>x.District)
+            .Include(x=>x.Neighborhood)
+            .FirstOrDefaultAsync();
+
+        if (quarter == null)
         {
-            _quarterRepository = quarterRepository;
-            _mapper = mapper;
+            return new LocationDto {IsValid = false};
         }
 
-        public async Task<LocationDto> ValidateAsync(LocationVerificationCommand request)
+        return new LocationDto
         {
-            var quarter = await _quarterRepository.Get()
-                .Where(c => c.CountryId == request.CountryId &&
-                            c.CityId == request.CityId &&
-                            c.DistrictId == request.DistrictId &&
-                            c.NeighborhoodId == request.NeighborhoodId &&
-                            c.Id == request.QuarterId)
-                .Include(x=>x.Country)
-                .Include(x=>x.City)
-                .Include(x=>x.District)
-                .Include(x=>x.Neighborhood)
-                .FirstOrDefaultAsync();
-
-            if (quarter == null)
-            {
-                return new LocationDto {IsValid = false};
-            }
-
-            return new LocationDto
-            {
-                Country = _mapper.Map<CountryDto>(quarter.Country),
-                City = _mapper.Map<CityDto>(quarter.City),
-                District = _mapper.Map<DistrictDto>(quarter.District),
-                Neighborhood = _mapper.Map<NeighborhoodDto>(quarter.Neighborhood),
-                Quarter = _mapper.Map<QuarterDto>(quarter),
-                IsValid = true
-            };
-        }
+            Country = _mapper.Map<CountryDto>(quarter.Country),
+            City = _mapper.Map<CityDto>(quarter.City),
+            District = _mapper.Map<DistrictDto>(quarter.District),
+            Neighborhood = _mapper.Map<NeighborhoodDto>(quarter.Neighborhood),
+            Quarter = _mapper.Map<QuarterDto>(quarter),
+            IsValid = true
+        };
     }
 }

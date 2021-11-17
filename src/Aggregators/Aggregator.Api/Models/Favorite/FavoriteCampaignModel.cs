@@ -1,12 +1,10 @@
-using System;
 using Aggregator.Api.Models.Shared;
 
-namespace Aggregator.Api.Models.Favorite
+namespace Aggregator.Api.Models.Favorite;
+
+public class FavoriteCampaignModel
 {
-    public class FavoriteCampaignModel
-    {
-        public CampaignModel Campaign { get; set; }
-        public UserModel UserInfo { get; set; }
-        public DateTime CreatedDate { get; set; }
-    }
+    public CampaignModel Campaign { get; set; }
+    public UserModel UserInfo { get; set; }
+    public DateTime CreatedDate { get; set; }
 }

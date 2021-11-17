@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Location.Core.Entities
+﻿namespace Location.Core.Entities
 {
     public partial class Quarter : BaseEntityModel
     {

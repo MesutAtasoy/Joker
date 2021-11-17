@@ -1,8 +1,7 @@
-namespace Aggregator.Api.Models.Shared
+namespace Aggregator.Api.Models.Shared;
+
+public class UserModel
 {
-    public class UserModel
-    {
-        public string Id { get; set; }
-        public string Username { get; set; }
-    }
+    public string Id { get; set; }
+    public string Username { get; set; }
 }

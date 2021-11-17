@@ -2,14 +2,13 @@ using Joker.Mongo.Mapping;
 using Merchant.Domain.StoreAggregate;
 using MongoDB.Bson.Serialization;
 
-namespace Merchant.Infrastructure.Mappings
+namespace Merchant.Infrastructure.Mappings;
+
+public class StoreMapping: MongoDbClassMap<Store>
 {
-    public class StoreMapping: MongoDbClassMap<Store>
+    protected override void Map(BsonClassMap<Store> map)
     {
-        protected override void Map(BsonClassMap<Store> map)
-        {
-            map.AutoMap();
-            map.MapIdProperty(x => x.Id);
-        }
+        map.AutoMap();
+        map.MapIdProperty(x => x.Id);
     }
 }

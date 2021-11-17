@@ -1,12 +1,11 @@
 using FluentValidation;
 
-namespace Campaign.Application.Campaigns.Command.DeleteCampaign
+namespace Campaign.Application.Campaigns.Command.DeleteCampaign;
+
+public class DeleteCampaignCommandValidator : AbstractValidator<DeleteCampaignCommand>
 {
-    public class DeleteCampaignCommandValidator : AbstractValidator<DeleteCampaignCommand>
+    public DeleteCampaignCommandValidator()
     {
-        public DeleteCampaignCommandValidator()
-        {
-            RuleFor(x => x.CampaignId).NotEmpty();
-        }
+        RuleFor(x => x.CampaignId).NotEmpty();
     }
 }

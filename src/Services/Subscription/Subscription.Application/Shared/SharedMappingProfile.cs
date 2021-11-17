@@ -2,14 +2,13 @@ using AutoMapper;
 using Subscription.Application.Shared.Dto;
 using Subscription.Domain.Refs;
 
-namespace Subscription.Application.Shared
+namespace Subscription.Application.Shared;
+
+public class SharedMappingProfile : Profile
 {
-    public class SharedMappingProfile : Profile
+    public SharedMappingProfile()
     {
-        public SharedMappingProfile()
-        {
-            CreateMap<PricingPlanRef, IdNameDto>();
-            CreateMap<MerchantRef, IdNameDto>();
-        }
+        CreateMap<PricingPlanRef, IdNameDto>();
+        CreateMap<MerchantRef, IdNameDto>();
     }
 }

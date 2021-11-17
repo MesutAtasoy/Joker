@@ -1,63 +1,58 @@
-using System;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using Joker.WebApp.Extensions;
 using Joker.WebApp.Services.Abstract;
 using Joker.WebApp.ViewModels.Search;
 using Joker.WebApp.ViewModels.Search.Request;
 
-namespace Joker.WebApp.Services
+namespace Joker.WebApp.Services;
+
+public class SearchService : ISearchService
 {
-    public class SearchService : ISearchService
+    private readonly IHttpClientFactory _clientFactory;
+    private readonly HttpClient _httpClient;
+
+    public SearchService(IHttpClientFactory clientFactory)
     {
-        private readonly IHttpClientFactory _clientFactory;
-        private readonly HttpClient _httpClient;
+        _clientFactory = clientFactory;
+        _httpClient = _clientFactory.CreateClient("GatewayApi");
+    }
 
-        public SearchService(IHttpClientFactory clientFactory)
+    public async Task<SearchBaseResponse<CampaignSearchResponse>> SearchCampaignAsync(CampaignSearchRequest request)
+    {
+        var queryString = UrlExtensions.GetUrlQueryString(request);
+
+        var requestUri = string.IsNullOrEmpty(queryString)
+            ? "search/api/campaigns"
+            : $"search/api/campaigns?{queryString}";
+            
+        var responseMessage = await _httpClient.GetAsync(requestUri);
+            
+        if (!responseMessage.IsSuccessStatusCode)
         {
-            _clientFactory = clientFactory;
-            _httpClient = _clientFactory.CreateClient("GatewayApi");
+            throw new ArgumentException("Search Service can not respond success response");
         }
 
-        public async Task<SearchBaseResponse<CampaignSearchResponse>> SearchCampaignAsync(CampaignSearchRequest request)
+        var campaigns =
+            await responseMessage.Content.ReadFromJsonAsync<SearchBaseResponse<CampaignSearchResponse>>();
+
+        return campaigns;
+    }
+
+    public async Task<SearchBaseResponse<StoreSearchResponse>> SearchStoreAsync(StoreSearchRequest request)
+    {
+        var queryString = UrlExtensions.GetUrlQueryString(request);
+            
+        var requestUri = string.IsNullOrEmpty(queryString)
+            ? "search/api/stores"
+            : $"search/api/stores?{queryString}";
+            
+        var responseMessage = await _httpClient.GetAsync(requestUri);
+        if (!responseMessage.IsSuccessStatusCode)
         {
-            var queryString = UrlExtensions.GetUrlQueryString(request);
-
-            var requestUri = string.IsNullOrEmpty(queryString)
-                ? "search/api/campaigns"
-                : $"search/api/campaigns?{queryString}";
-            
-            var responseMessage = await _httpClient.GetAsync(requestUri);
-            
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Search Service can not respond success response");
-            }
-
-            var campaigns =
-                await responseMessage.Content.ReadFromJsonAsync<SearchBaseResponse<CampaignSearchResponse>>();
-
-            return campaigns;
+            throw new ArgumentException("Search Service can not respond success response");
         }
 
-        public async Task<SearchBaseResponse<StoreSearchResponse>> SearchStoreAsync(StoreSearchRequest request)
-        {
-            var queryString = UrlExtensions.GetUrlQueryString(request);
-            
-            var requestUri = string.IsNullOrEmpty(queryString)
-                ? "search/api/stores"
-                : $"search/api/stores?{queryString}";
-            
-            var responseMessage = await _httpClient.GetAsync(requestUri);
-            if (!responseMessage.IsSuccessStatusCode)
-            {
-                throw new ArgumentException("Search Service can not respond success response");
-            }
+        var stores = await responseMessage.Content.ReadFromJsonAsync<SearchBaseResponse<StoreSearchResponse>>();
 
-            var stores = await responseMessage.Content.ReadFromJsonAsync<SearchBaseResponse<StoreSearchResponse>>();
-
-            return stores;
-        }
+        return stores;
     }
 }

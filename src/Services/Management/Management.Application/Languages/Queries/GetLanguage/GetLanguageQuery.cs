@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Management.Core.Entities;
+﻿using Management.Core.Entities;
 using MediatR;
 
-namespace Management.Application.Languages.Queries.GetLanguage
+namespace Management.Application.Languages.Queries.GetLanguage;
+
+public class GetLanguageQuery : IRequest<List<Language>>
 {
-    public class GetLanguageQuery : IRequest<List<Language>>
-    {
-    }
 }

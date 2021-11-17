@@ -1,10 +1,7 @@
-using System;
+namespace Campaign.Application.Shared.Dto;
 
-namespace Campaign.Application.Shared.Dto
+public class IdNameDto
 {
-    public class IdNameDto
-    {
-        public Guid RefId { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid RefId { get; set; }
+    public string Name { get; set; }
 }

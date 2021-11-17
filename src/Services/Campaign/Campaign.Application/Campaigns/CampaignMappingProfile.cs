@@ -1,13 +1,12 @@
 using AutoMapper;
 using Campaign.Application.Campaigns.Dto;
 
-namespace Campaign.Application.Campaigns
+namespace Campaign.Application.Campaigns;
+
+public class CampaignMappingProfile : Profile
 {
-    public class CampaignMappingProfile : Profile
+    public CampaignMappingProfile()
     {
-        public CampaignMappingProfile()
-        {
-            CreateMap<Domain.CampaignAggregate.Campaign, CampaignDto>();
-        }
+        CreateMap<Domain.CampaignAggregate.Campaign, CampaignDto>();
     }
 }

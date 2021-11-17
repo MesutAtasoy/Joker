@@ -2,13 +2,12 @@
 using Location.Application.Cities.Dto;
 using Location.Core.Entities;
 
-namespace Location.Application.Cities
+namespace Location.Application.Cities;
+
+public class CityMappingProfile : Profile
 {
-    public class CityMappingProfile : Profile
+    public CityMappingProfile()
     {
-        public CityMappingProfile()
-        {
-            CreateMap<City, CityDto>();
-        }
+        CreateMap<City, CityDto>();
     }
 }

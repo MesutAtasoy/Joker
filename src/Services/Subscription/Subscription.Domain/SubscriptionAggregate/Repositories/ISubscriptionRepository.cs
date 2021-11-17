@@ -1,9 +1,8 @@
 using Joker.Repositories;
 
-namespace Subscription.Domain.SubscriptionAggregate.Repositories
+namespace Subscription.Domain.SubscriptionAggregate.Repositories;
+
+public interface ISubscriptionRepository : IRepository<Subscription>
 {
-    public interface ISubscriptionRepository : IRepository<Subscription>
-    {
         
-    }
 }

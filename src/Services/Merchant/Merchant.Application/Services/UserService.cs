@@ -1,22 +1,19 @@
-using System;
-using System.Linq;
 using Joker.Extensions;
 using Microsoft.AspNetCore.Http;
 
-namespace Merchant.Application.Services
+namespace Merchant.Application.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly IHttpContextAccessor _contextAccessor;
+        
+    public UserService(IHttpContextAccessor contextAccessor)
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        _contextAccessor = contextAccessor;
+    }
         
-        public UserService(IHttpContextAccessor contextAccessor)
-        {
-            _contextAccessor = contextAccessor;
-        }
-        
-        public Guid GetUserId()
-        {
-            return _contextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(x => x.Type == "sub")?.Value.ToGuid() ?? Guid.Empty;
-        }
+    public Guid GetUserId()
+    {
+        return _contextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(x => x.Type == "sub")?.Value.ToGuid() ?? Guid.Empty;
     }
 }

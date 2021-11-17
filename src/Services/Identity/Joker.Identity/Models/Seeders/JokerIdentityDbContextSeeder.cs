@@ -1,42 +1,36 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
-namespace Joker.Identity.Models.Seeders
+namespace Joker.Identity.Models.Seeders;
+
+public class JokerIdentityDbContextSeeder
 {
-    public class JokerIdentityDbContextSeeder
+    public async Task SeedAsync(Action<JokerIdentityDbContextSeederOptions> action, IServiceProvider serviceProvider)
     {
-        public async Task SeedAsync(Action<JokerIdentityDbContextSeederOptions> action, IServiceProvider serviceProvider)
+        var options = new JokerIdentityDbContextSeederOptions();
+        action.Invoke(options);
+            
+        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            
+        try
         {
-            var options = new JokerIdentityDbContextSeederOptions();
-            action.Invoke(options);
-            
-            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            
-            try
+            if (!options.Context.Roles.Any())
             {
-                if (!options.Context.Roles.Any())
+                string[] roles = new [] {"Admin", "FreeUser", "PaidUser"};
+
+                foreach (string role in roles)
                 {
-                    string[] roles = new [] {"Admin", "FreeUser", "PaidUser"};
-
-                    foreach (string role in roles)
+                    if (!options.Context.Roles.Any(r => r.Name == role))
                     {
-                        if (!options.Context.Roles.Any(r => r.Name == role))
-                        {
-                            await roleManager.CreateAsync(new IdentityRole(role));
-                        }
+                        await roleManager.CreateAsync(new IdentityRole(role));
                     }
-
-                    await options.Context.SaveChangesAsync();
                 }
+
+                await options.Context.SaveChangesAsync();
             }
-            catch (Exception ex)
-            {
-                options.Logger.LogError(ex, "EXCEPTION ERROR while migrating {DbContextName}", nameof(JokerIdentityDbContext));
-            }
+        }
+        catch (Exception ex)
+        {
+            options.Logger.LogError(ex, "EXCEPTION ERROR while migrating {DbContextName}", nameof(JokerIdentityDbContext));
         }
     }
 }

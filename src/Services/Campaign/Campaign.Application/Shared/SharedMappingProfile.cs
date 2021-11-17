@@ -2,16 +2,15 @@ using AutoMapper;
 using Campaign.Application.Shared.Dto;
 using Campaign.Domain.Refs;
 
-namespace Campaign.Application.Shared
+namespace Campaign.Application.Shared;
+
+public class SharedMappingProfile : Profile
 {
-    public class SharedMappingProfile : Profile
+    public SharedMappingProfile()
     {
-        public SharedMappingProfile()
-        {
-            CreateMap<BadgeRef, IdNameDto>();
-            CreateMap<StoreRef, IdNameDto>();
-            CreateMap<MerchantRef, IdNameDto>();
-            CreateMap<BusinessDirectoryRef, IdNameDto>();
-        }
+        CreateMap<BadgeRef, IdNameDto>();
+        CreateMap<StoreRef, IdNameDto>();
+        CreateMap<MerchantRef, IdNameDto>();
+        CreateMap<BusinessDirectoryRef, IdNameDto>();
     }
 }

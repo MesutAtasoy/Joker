@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Location.Application.Districts.Dto;
+﻿using Location.Application.Districts.Dto;
 using MediatR;
 
-namespace Location.Application.Districts.Queries.GetDistrict
+namespace Location.Application.Districts.Queries.GetDistrict;
+
+public class GetDistrictQuery : IRequest<List<DistrictDto>>
 {
-    public class GetDistrictQuery : IRequest<List<DistrictDto>>
-    {
-        public Guid CityId { get; set; }
-    }
+    public Guid CityId { get; set; }
 }

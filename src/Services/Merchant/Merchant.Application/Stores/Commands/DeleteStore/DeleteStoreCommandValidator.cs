@@ -1,12 +1,11 @@
 using FluentValidation;
 
-namespace Merchant.Application.Stores.Commands.DeleteStore
+namespace Merchant.Application.Stores.Commands.DeleteStore;
+
+public class DeleteStoreCommandValidator : AbstractValidator<DeleteStoreCommand>
 {
-    public class DeleteStoreCommandValidator : AbstractValidator<DeleteStoreCommand>
+    public DeleteStoreCommandValidator()
     {
-        public DeleteStoreCommandValidator()
-        {
-            RuleFor(x => x.Id).NotEmpty();
-        }
+        RuleFor(x => x.Id).NotEmpty();
     }
 }

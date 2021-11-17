@@ -1,25 +1,23 @@
-using System.Threading.Tasks;
 using DotNetCore.CAP;
 using Joker.CAP.IntegrationEvent;
 using Joker.WebApp.Events;
 using Joker.WebApp.Hubs;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Joker.WebApp.EventHandlers
+namespace Joker.WebApp.EventHandlers;
+
+public class CampaignCreatedNotificationEventHandler : CAPIntegrationEventHandler<CampaignCreatedNotificationEvent>
 {
-    public class CampaignCreatedNotificationEventHandler : CAPIntegrationEventHandler<CampaignCreatedNotificationEvent>
+    private readonly IHubContext<CampaignCreatedNotificationHub> _hubContext;
+
+    public CampaignCreatedNotificationEventHandler(IHubContext<CampaignCreatedNotificationHub> hubContext)
     {
-        private readonly IHubContext<CampaignCreatedNotificationHub> _hubContext;
+        _hubContext = hubContext;
+    }
 
-        public CampaignCreatedNotificationEventHandler(IHubContext<CampaignCreatedNotificationHub> hubContext)
-        {
-            _hubContext = hubContext;
-        }
-
-        [CapSubscribe(nameof(CampaignCreatedNotificationEvent))]
-        public override async Task Handle(CampaignCreatedNotificationEvent @event)
-        {
-            await _hubContext.Clients.Users(@event.UserId).SendAsync("lastCampaignCreated", @event);
-        }
+    [CapSubscribe(nameof(CampaignCreatedNotificationEvent))]
+    public override async Task Handle(CampaignCreatedNotificationEvent @event)
+    {
+        await _hubContext.Clients.Users(@event.UserId).SendAsync("lastCampaignCreated", @event);
     }
 }

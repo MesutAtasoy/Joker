@@ -1,22 +1,19 @@
-using System.Threading;
-using System.Threading.Tasks;
 using MediatR;
 using Merchant.Application.Merchants.Dto;
 
-namespace Merchant.Application.Merchants.Commands.CreateMerchant
+namespace Merchant.Application.Merchants.Commands.CreateMerchant;
+
+public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantCommand, MerchantDto>
 {
-    public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantCommand, MerchantDto>
+    private readonly MerchantManager _merchantManager;
+
+    public CreateMerchantCommandHandler(MerchantManager merchantManager)
     {
-        private readonly MerchantManager _merchantManager;
+        _merchantManager = merchantManager;
+    }
 
-        public CreateMerchantCommandHandler(MerchantManager merchantManager)
-        {
-            _merchantManager = merchantManager;
-        }
-
-        public async Task<MerchantDto> Handle(CreateMerchantCommand request, CancellationToken cancellationToken)
-        {
-            return await _merchantManager.CreateAsync(request);
-        }
+    public async Task<MerchantDto> Handle(CreateMerchantCommand request, CancellationToken cancellationToken)
+    {
+        return await _merchantManager.CreateAsync(request);
     }
 }

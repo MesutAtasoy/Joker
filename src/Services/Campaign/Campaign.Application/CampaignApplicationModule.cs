@@ -7,28 +7,27 @@ using Campaign.Infrastructure.Repositories;
 using Joker.CAP;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Campaign.Application
-{
-    public static class CampaignApplicationModule
-    {
-        public static IServiceCollection AddApplicationModule(this IServiceCollection services)
-        {
-            //Repositories
-            services.AddScoped<ICampaignRepository, CampaignRepository>();
+namespace Campaign.Application;
 
-            //Event and EventHandlers
-            services.RegisterCAPEvents(typeof(CampaignApplicationModule));
-            services.RegisterCAPEventHandlers(typeof(CampaignApplicationModule));
+public static class CampaignApplicationModule
+{
+    public static IServiceCollection AddApplicationModule(this IServiceCollection services)
+    {
+        //Repositories
+        services.AddScoped<ICampaignRepository, CampaignRepository>();
+
+        //Event and EventHandlers
+        services.RegisterCAPEvents(typeof(CampaignApplicationModule));
+        services.RegisterCAPEventHandlers(typeof(CampaignApplicationModule));
             
-            //Automapper
-            services.AddAutoMapper(typeof(SharedMappingProfile));
+        //Automapper
+        services.AddAutoMapper(typeof(SharedMappingProfile));
             
-            //Application Services
-            services.AddScoped<CampaignManager>();
+        //Application Services
+        services.AddScoped<CampaignManager>();
             
-            CampaignContext.ApplyConfiguration();
+        CampaignContext.ApplyConfiguration();
             
-            return services;
-        }
+        return services;
     }
 }

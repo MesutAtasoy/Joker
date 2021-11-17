@@ -3,15 +3,14 @@
 using Joker.CAP;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Merchant.Domain
+namespace Merchant.Domain;
+
+public static class MerchantDomainModule
 {
-    public static class MerchantDomainModule
+    public static IServiceCollection AddDomainModule(this IServiceCollection services)
     {
-        public static IServiceCollection AddDomainModule(this IServiceCollection services)
-        {
-            services.RegisterCAPEvents(typeof(MerchantDomainModule));
-            services.RegisterCAPEventHandlers(typeof(MerchantDomainModule));
-            return services;
-        }
+        services.RegisterCAPEvents(typeof(MerchantDomainModule));
+        services.RegisterCAPEventHandlers(typeof(MerchantDomainModule));
+        return services;
     }
 }

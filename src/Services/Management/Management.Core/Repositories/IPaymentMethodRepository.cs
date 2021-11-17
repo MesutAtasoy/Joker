@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Joker.Repositories;
+﻿using Joker.Repositories;
 using Management.Core.Entities;
 
-namespace Management.Core.Repositories
+namespace Management.Core.Repositories;
+
+public interface IPaymentMethodRepository : IRepository<PaymentMethod>
 {
-    public interface IPaymentMethodRepository : IRepository<PaymentMethod>
-    {
-        Task<List<PaymentMethod>> GetAllActiveAsync();
-    }
+    Task<List<PaymentMethod>> GetAllActiveAsync();
 }

@@ -1,4 +1,4 @@
 [submodule "src/Submodules/Joker.Packages"]
 	path = src/Submodules/Joker.Packages
 	url = https://github.com/MesutAtasoy/Joker.Packages.git
-	branch = net50
+	branch = net60-preview

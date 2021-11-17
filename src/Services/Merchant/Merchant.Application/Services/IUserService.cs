@@ -1,9 +1,6 @@
-using System;
+namespace Merchant.Application.Services;
 
-namespace Merchant.Application.Services
+public interface IUserService
 {
-    public interface IUserService
-    {
-        Guid GetUserId();
-    }
+    Guid GetUserId();
 }

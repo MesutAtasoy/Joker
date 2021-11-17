@@ -1,10 +1,7 @@
-using System;
+namespace Joker.Identity.Dto;
 
-namespace Joker.Identity.Dto
+public class IdNameDto
 {
-    public class IdNameDto
-    {
-        public Guid RefId { get; private set; }
-        public string Name { get; private set; }
-    }
+    public Guid RefId { get; private set; }
+    public string Name { get; private set; }
 }

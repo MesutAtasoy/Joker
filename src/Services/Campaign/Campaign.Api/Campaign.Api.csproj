@@ -1,21 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
         <UserSecretsId>085cfb9f-2e0d-4267-a07e-d4e63152626d</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..\..\..</DockerfileContext>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <None Remove="Protos\campaign.proto" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
         <PackageReference Include="Google.Protobuf" Version="3.17.3" />
         <PackageReference Include="Grpc.AspNetCore" Version="2.32.0" />
         <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
@@ -28,8 +30,10 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.0.0-rc7" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
       <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />

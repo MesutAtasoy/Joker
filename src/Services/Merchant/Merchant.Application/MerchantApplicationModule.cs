@@ -9,33 +9,32 @@ using Merchant.Infrastructure;
 using Merchant.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Merchant.Application
-{
-    public static class MerchantApplicationModule
-    {
-        public static IServiceCollection AddApplicationModule(this IServiceCollection services)
-        {
-            //Repositories
-            services.AddScoped<IMerchantRepository, MerchantRepository>();
-            services.AddScoped<IStoreRepository, StoreRepository>();
-            
-            //Event and EventHandlers
-            services.RegisterCAPEvents(typeof(MerchantApplicationModule));
-            services.RegisterCAPEventHandlers(typeof(MerchantApplicationModule));
+namespace Merchant.Application;
 
-            //Automapper
-            services.AddAutoMapper(typeof(MerchantMappingProfile));
+public static class MerchantApplicationModule
+{
+    public static IServiceCollection AddApplicationModule(this IServiceCollection services)
+    {
+        //Repositories
+        services.AddScoped<IMerchantRepository, MerchantRepository>();
+        services.AddScoped<IStoreRepository, StoreRepository>();
             
-            //Application Services 
-            services.AddScoped<MerchantManager>();
-            services.AddScoped<StoreManager>();
+        //Event and EventHandlers
+        services.RegisterCAPEvents(typeof(MerchantApplicationModule));
+        services.RegisterCAPEventHandlers(typeof(MerchantApplicationModule));
+
+        //Automapper
+        services.AddAutoMapper(typeof(MerchantMappingProfile));
             
-            //Internal Services
-            services.AddSingleton<IUserService, UserService>();
+        //Application Services 
+        services.AddScoped<MerchantManager>();
+        services.AddScoped<StoreManager>();
             
-            MerchantContext.ApplyConfiguration();
+        //Internal Services
+        services.AddSingleton<IUserService, UserService>();
             
-            return services;
-        }
+        MerchantContext.ApplyConfiguration();
+            
+        return services;
     }
 }

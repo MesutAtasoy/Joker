@@ -1,10 +1,7 @@
-using System;
+namespace Aggregator.Api.Models.Shared;
 
-namespace Aggregator.Api.Models.Shared
+public class IdNameModel
 {
-    public class IdNameModel
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

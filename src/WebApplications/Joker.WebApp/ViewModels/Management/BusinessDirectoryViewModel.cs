@@ -1,10 +1,7 @@
-using System;
+namespace Joker.WebApp.ViewModels.Management;
 
-namespace Joker.WebApp.ViewModels.Management
+public class BusinessDirectoryViewModel
 {
-    public class BusinessDirectoryViewModel
-    {
-        public Guid Id { get; set; }
-        public string DisplayName { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string DisplayName { get; set; }
 }

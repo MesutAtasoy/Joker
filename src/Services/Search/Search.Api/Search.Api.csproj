@@ -1,26 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
         <UserSecretsId>71bdc7a6-4a30-4a59-8bcb-06a9bad489d7</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..\..\..</DockerfileContext>
+        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
-        <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.0.1" />
-        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.0.1" />
+        <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.1.1" />
         <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.2.0-alpha2" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />
         <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc7" />
         <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc7" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     </ItemGroup>
     
     <ItemGroup>

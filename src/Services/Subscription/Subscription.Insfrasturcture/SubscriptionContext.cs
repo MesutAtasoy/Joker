@@ -5,26 +5,25 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 
-namespace Subscription.Infrastructure
-{
-    public class SubscriptionContext : MongoDomainContext
-    {
-        public SubscriptionContext(IMongoDatabase database)
-            : base(database)
-        {
-        }
+namespace Subscription.Infrastructure;
 
-        public static void ApplyConfiguration()
-        {
+public class SubscriptionContext : MongoDomainContext
+{
+    public SubscriptionContext(IMongoDatabase database)
+        : base(database)
+    {
+    }
+
+    public static void ApplyConfiguration()
+    {
 #pragma warning disable 618
-            BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
+        BsonDefaults.GuidRepresentation = GuidRepresentation.Standard;
 #pragma warning restore 618
 
-            var sss = BsonSerializer.SerializerRegistry.GetSerializer<GuidSerializer>();
+        var sss = BsonSerializer.SerializerRegistry.GetSerializer<GuidSerializer>();
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
-            BsonClassMappingConfiguration.ApplyConfigurationsFromAssembly(typeof(SubscriptionContext).Assembly);
-        }
+        BsonClassMappingConfiguration.ApplyConfigurationsFromAssembly(typeof(SubscriptionContext).Assembly);
     }
 }

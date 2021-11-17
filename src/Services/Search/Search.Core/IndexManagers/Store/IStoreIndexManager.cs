@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Search.Core.IndexModels;
+﻿using Search.Core.IndexModels;
 
-namespace Search.Core.IndexManagers.Store
+namespace Search.Core.IndexManagers.Store;
+
+public interface IStoreIndexManager
 {
-    public interface IStoreIndexManager
-    {
-        Task BulkAddOrUpdateAsync(List<StoreIndexModel> list);
-        Task CreateIndexAsync();
-        Task AddOrUpdateAsync(StoreIndexModel model);
-        Task DeleteAsync(StoreIndexModel model);
-        Task DeleteAsync(Guid storeId);
-        Task ReIndexAsync();
-    }
+    Task BulkAddOrUpdateAsync(List<StoreIndexModel> list);
+    Task CreateIndexAsync();
+    Task AddOrUpdateAsync(StoreIndexModel model);
+    Task DeleteAsync(StoreIndexModel model);
+    Task DeleteAsync(Guid storeId);
+    Task ReIndexAsync();
 }

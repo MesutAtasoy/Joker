@@ -1,10 +1,7 @@
-using System;
+namespace Joker.WebApp.ViewModels.Shared;
 
-namespace Joker.WebApp.ViewModels.Shared
+public class IdNameViewModel
 {
-    public class IdNameViewModel
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }
