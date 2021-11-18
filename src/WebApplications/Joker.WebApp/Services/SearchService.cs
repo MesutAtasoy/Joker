@@ -9,10 +9,13 @@ public class SearchService : ISearchService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<SearchService> _logger;
 
-    public SearchService(IHttpClientFactory clientFactory)
+    public SearchService(IHttpClientFactory clientFactory, 
+        ILogger<SearchService> logger)
     {
         _clientFactory = clientFactory;
+        _logger = logger;
         _httpClient = _clientFactory.CreateClient("GatewayApi");
     }
 
@@ -28,6 +31,8 @@ public class SearchService : ISearchService
             
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Search Service can not respond success response");
         }
 

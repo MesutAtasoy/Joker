@@ -11,10 +11,13 @@ public class MerchantService : BaseService, IMerchantService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<MerchantService> _logger;
 
-    public MerchantService(IHttpClientFactory clientFactory)
+    public MerchantService(IHttpClientFactory clientFactory, ILogger<MerchantService> logger) 
+        :base(logger)
     {
         _clientFactory = clientFactory;
+        _logger = logger;
         _httpClient = _clientFactory.CreateClient("GatewayApi");
     }
 
@@ -35,6 +38,8 @@ public class MerchantService : BaseService, IMerchantService
         var responseMessage = await _httpClient.GetAsync($"merchant/api/Merchants/{id}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Merchant Service can not respond success response");
         }
 
@@ -48,6 +53,8 @@ public class MerchantService : BaseService, IMerchantService
         var responseMessage = await _httpClient.GetAsync($"merchant/api/Merchants/{merchantId}/Stores?PageNumber={page}&PageSize={pageSize}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Merchant Service can not respond success response");
         }
 
@@ -73,6 +80,8 @@ public class MerchantService : BaseService, IMerchantService
         var responseMessage = await _httpClient.GetAsync($"merchant/api/Stores/{id}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Merchant Service can not respond success response");
         }
 

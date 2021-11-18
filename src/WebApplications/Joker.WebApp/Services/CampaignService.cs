@@ -9,10 +9,13 @@ public class CampaignService : BaseService, ICampaignService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<CampaignService> _logger;
 
-    public CampaignService(IHttpClientFactory clientFactory)
+    public CampaignService(IHttpClientFactory clientFactory, 
+        ILogger<CampaignService> logger) : base(logger)
     {
         _clientFactory = clientFactory;
+        _logger = logger;
         _httpClient = _clientFactory.CreateClient("GatewayApi");
     }
 
@@ -22,6 +25,8 @@ public class CampaignService : BaseService, ICampaignService
         var responseMessage = await _httpClient.GetAsync($"campaign/api/Campaigns/Merchants/{merchantId}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Merchant Service can not respond success response");
         }
 
@@ -47,6 +52,8 @@ public class CampaignService : BaseService, ICampaignService
         var responseMessage = await _httpClient.GetAsync($"campaign/api/Campaigns/{id}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Campaign Service can not respond success response");
         }
 

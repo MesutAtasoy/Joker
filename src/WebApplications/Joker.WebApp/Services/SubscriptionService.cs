@@ -3,14 +3,17 @@ using Joker.WebApp.ViewModels.Subscription;
 
 namespace Joker.WebApp.Services;
 
-public class SubscriptionService : ISubscriptionService
+public class SubscriptionService : BaseService, ISubscriptionService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<SubscriptionService> _logger;
 
-    public SubscriptionService(IHttpClientFactory clientFactory)
+    public SubscriptionService(IHttpClientFactory clientFactory, ILogger<SubscriptionService> logger)
+         :base(logger)
     {
         _clientFactory = clientFactory;
+        _logger = logger;
         _httpClient = _clientFactory.CreateClient("GatewayApi");
     }
 
@@ -19,6 +22,8 @@ public class SubscriptionService : ISubscriptionService
         var responseMessage = await _httpClient.GetAsync($"/subscription/api/Subscriptions/{merchantId}");
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Subscription Service can not respond success response");
         }
 

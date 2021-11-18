@@ -56,12 +56,14 @@
                         <p class="card-text">@Model.Store.Slogan</p>
                         <p class="card-text">@Model.Store.PhoneNumber</p>
                         <p class="card-text">@Model.Store.Email</p>
-                        <p class="card-text">@Model.Store.Location.Address, @Model.Store.Location.District</p>
                     </div>
                 </div>
-                <div class="col-12 mx-auto">
-                    <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-store">LIKE STORE</button>
-                </div>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <div class="col-12 mx-auto">
+                        <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-store">LIKE STORE</button>
+                    </div>
+                }
             }
         </div>
     </div>

@@ -38,10 +38,13 @@
                         <p class="card-text">@Model.Store.Address, @Model.Store.DistrictName, @Model.Store.CityName </p>
                     </div>
                 </div>
-                <div class="col-12 mx-auto">
-                    <a class="btn bg-gradient-primary w-auto me-2" asp-controller="Store" asp-action="Explore" asp-route-id="@Model.Store.Id">STORE DETAILS</a>
-                    <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-campaign">LIKE CAMPAIGN</button>
-                </div>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <div class="col-12 mx-auto">
+                        <a class="btn bg-gradient-primary w-auto me-2" asp-controller="Store" asp-action="Explore" asp-route-id="@Model.Store.Id">STORE DETAILS</a>
+                        <button type="button" class="btn bg-gradient-success w-auto me-2" id="like-campaign">LIKE CAMPAIGN</button>
+                    </div>
+                }
             }
         </div>
     </div>

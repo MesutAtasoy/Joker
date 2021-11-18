@@ -33,8 +33,11 @@ public class StoreController : Controller
 
     public async Task<IActionResult> Explore(Guid id)
     {
-        var store = await _merchantService.GetStoreByIdAsync(id);
-        if (store == null)
+        var store = await _searchService.SearchStoreAsync(new StoreSearchRequest
+        {
+            StoreId = id
+        });
+        if (store.TotalDocumentCount == 0)
         {
             return NotFound("store is not found");
         }
@@ -46,7 +49,7 @@ public class StoreController : Controller
 
         var exploreViewModel = new StoreExploreViewModel
         {
-            Store = store,
+            Store = store.Documents.FirstOrDefault(),
             Campaigns = campaigns
         };
         return View(exploreViewModel);

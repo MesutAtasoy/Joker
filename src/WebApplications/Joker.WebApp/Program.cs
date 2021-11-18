@@ -45,6 +45,7 @@ public class Program
             {
                 webBuilder.UseStartup<Startup>();
             })
+            .ConfigureLogging(k=>k.ClearProviders())
             .UseSerilog();
 
     /// <summary>

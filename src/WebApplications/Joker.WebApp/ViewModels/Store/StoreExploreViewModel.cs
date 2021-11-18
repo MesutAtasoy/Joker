@@ -4,6 +4,6 @@ namespace Joker.WebApp.ViewModels.Store;
 
 public class StoreExploreViewModel
 {
-    public StoreViewModel Store { get; set; }
+    public StoreSearchResponse Store { get; set; }
     public SearchBaseResponse<CampaignSearchResponse> Campaigns { get; set; }
 }

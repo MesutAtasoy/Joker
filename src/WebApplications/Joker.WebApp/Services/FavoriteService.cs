@@ -9,10 +9,13 @@ public class FavoriteService : BaseService, IFavoriteService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<FavoriteService> _logger;
 
-    public FavoriteService(IHttpClientFactory clientFactory)
+    public FavoriteService(IHttpClientFactory clientFactory, ILogger<FavoriteService> logger) 
+        : base(logger)
     {
         _clientFactory = clientFactory;
+        _logger = logger;
         _httpClient = _clientFactory.CreateClient("GatewayApi");
     }
         
@@ -34,6 +37,8 @@ public class FavoriteService : BaseService, IFavoriteService
             
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Favorite Service can not respond success response");
         }
 
@@ -48,6 +53,8 @@ public class FavoriteService : BaseService, IFavoriteService
             
         if (!responseMessage.IsSuccessStatusCode)
         {
+            var response = await responseMessage.Content.ReadAsStringAsync();
+            _logger.LogError(response);
             throw new ArgumentException("Favorite Service can not respond success response");
         }
 
