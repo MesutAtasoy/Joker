@@ -8,8 +8,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5000:80"
+    expose:
+      - "80"
     networks:
       - joker-network        
       
@@ -20,8 +20,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5001:80"
+    expose:
+      - "80"
     networks:
       - joker-network      
         
@@ -32,8 +32,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5002:80"
+    expose:
+      - "80"
     networks:
       - joker-network      
         
@@ -44,8 +44,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5003:80"   
+    expose:
+      - "80" 
     networks:
       - joker-network      
         
@@ -56,8 +56,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5004:80"
+    expose:
+      - "80"
     networks:
       - joker-network      
 
@@ -68,8 +68,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5005:80"
+    expose:
+      - "80"
     networks:
       - joker-network
 
@@ -93,8 +93,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5007:80"
+    expose:
+      - "80"
     networks:
       - joker-network      
         
@@ -105,8 +105,8 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - GRPC_PORT=81
       - PORT=80
-    ports:
-      - "5006:80"
+    expose:
+      - "80"
     networks:
       - joker-network
         
@@ -115,8 +115,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "5009:80"
+    expose:
+      - "80"
     networks:
       - joker-network        
 
