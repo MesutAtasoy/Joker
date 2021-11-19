@@ -11,7 +11,7 @@ Joker platform is location based campaign marketplace. An example of microservic
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/Diagram.jpg)
 
 ## Tech Stack
- All service projects are written with .Net 5 framework. gRPC, Consul, CAP, Couchbase,  Rabbit MQ, Swagger, Ocelot, EF Core, Mongo, Elasticsearch, IdentityServer4, Automapper, FluentValidation.
+ All service projects are written with .Net 6 framework. gRPC, Consul, CAP, Couchbase,  Rabbit MQ, Swagger, Ocelot, EF Core, Mongo, Elasticsearch, IdentityServer4, Automapper, FluentValidation.
  All infrastructure codes are separated each class library. It can be accessed below link.
  
  https://github.com/MesutAtasoy/Joker.Packages
