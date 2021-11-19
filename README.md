@@ -3,12 +3,12 @@
 Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/actions/workflows/main.yml/badge.svg)
 
 
-![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/joker-web-ui-image.png)
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/WebApplications/Joker.WebApp/wwwroot/images/joker-web-ui-image.png)
 
 Joker platform is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
 
 ## Architecture Diagram
-![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/Diagram.jpg)
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/WebApplications/Joker.WebApp/wwwroot/images/Diagram.jpg)
 
 ## Tech Stack
  All service projects are written with .Net 6 framework. gRPC, Consul, CAP, Couchbase,  Rabbit MQ, Swagger, Ocelot, EF Core, Mongo, Elasticsearch, IdentityServer4, Automapper, FluentValidation.
