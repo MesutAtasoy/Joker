@@ -101,12 +101,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
-        services.AddScoped<IManagementApiService, ManagementApiService>();
         services.AddScoped<ISearchService, SearchService>();
-        services.AddScoped<IMerchantService, MerchantService>();
-        services.AddScoped<ICampaignService, CampaignService>();
-        services.AddScoped<ISubscriptionService, SubscriptionService>();
-        services.AddScoped<ILocationService, LocationService>();
         services.AddScoped<IFavoriteService, FavoriteService>();
         return services;
     }
