@@ -10,7 +10,6 @@ public static class IdentityConfig
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
-            new IdentityResources.Address(),
             new ("roles", "Your role(s)", new List<string>() {"role"}),
             new ("organization", "Your Organization Info(s)", new List<string>() {"organizationId", "organizationName"})
         };
@@ -19,7 +18,10 @@ public static class IdentityConfig
     {
         new ApiScope("campaign", "Campaign Management"),
         new ApiScope("merchant", "Merchant Management"),
-        new ApiScope("subscription", "Subscription Management")
+        new ApiScope("subscription", "Subscription Management"),
+        
+        new ApiScope("favorite.create", "Creates Campaign And Store favorites"),
+        new ApiScope("favorite.read", "Reads Campaign And Store favorites")
     };
         
     public static IEnumerable<ApiResource> ApiResources =>
@@ -45,7 +47,7 @@ public static class IdentityConfig
             },
             new ("favoriteapi", "Favorite API")
             {
-                Scopes = { "campaign", "merchant"},
+                Scopes = {"favorite.create", "favorite.read"},
                 ApiSecrets = {new Secret("apisecret".Sha256())}
             },
             new ("searchapi", "Search API")
@@ -92,20 +94,11 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Address,
                     "roles",
-                    "organization",
-                    "merchant",
-                    "campaign",
-                    "subscription",
-                    "merchantapi",
-                    "campaignapi",
-                    "managementapi",
-                    "locationapi",
                     "favoriteapi",
                     "searchapi",
-                    "subscriptionapi",
-                    "aggregatorapi"
+                    "favorite.read",
+                    "favorite.create"
                 },
                 ClientSecrets =
                 {
