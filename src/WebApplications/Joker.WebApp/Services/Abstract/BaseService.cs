@@ -15,6 +15,8 @@ public abstract class BaseService
     {
         try
         {
+            _logger.LogError(await message.Content.ReadAsStringAsync());
+            _logger.LogError(message.StatusCode.ToString());
             var responseViewModel = await message.Content.ReadFromJsonAsync<JokerBaseResponseViewModel<T>>();
             return responseViewModel;
         }

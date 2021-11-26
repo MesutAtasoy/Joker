@@ -1,8 +1,10 @@
+using System.Net;
 using Joker.Logging;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
-namespace Joker.WebApp;
+namespace Aggregator.StoreFront.Api;
 
 public class Program
 {
@@ -13,16 +15,15 @@ public class Program
     public static void Main(string[] args)
     {
         var configuration = GetConfiguration();
-        Log.Logger = CreateSerilogLogger(configuration, "Joker.WebApp");
+        Log.Logger = CreateSerilogLogger(configuration, "Aggregator.StoreFront.Api");
 
         try
         {
             Log.Information("Application starting up...");
 
-            CreateHostBuilder(args)
+            CreateHostBuilder(configuration, args)
                 .Build()
                 .Run();
-                    
         }
         catch (Exception ex)
         {
@@ -38,14 +39,28 @@ public class Program
     /// Creates Host Builder
     /// </summary>
     /// <param name="args"></param>
+    /// <param name="configuration"></param>
     /// <returns></returns>
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
+    public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
         Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
             {
+                var ports = GetDefinedPorts(configuration);
+                    
                 webBuilder.UseStartup<Startup>();
+                webBuilder.ConfigureKestrel(options =>
+                {
+                    options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
+                    {
+                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+                    });
+
+                    options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+                    {
+                        listenOptions.Protocols = HttpProtocols.Http2;
+                    });
+                });
             })
-            .ConfigureLogging(k=>k.ClearProviders())
             .UseSerilog();
 
     /// <summary>
@@ -58,7 +73,7 @@ public class Program
 
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
             .AddEnvironmentVariables();
 
@@ -75,5 +90,12 @@ public class Program
             x.AppName = applicationName;
             x.Enabled = true;
         });
+    }
+
+    public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
+    {
+        var grpcPort = config.GetValue("GRPC_PORT", 5040);
+        var port = config.GetValue("PORT", 5020);
+        return (port, grpcPort);
     }
 }

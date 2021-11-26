@@ -97,7 +97,6 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
     {
         services.AddAuthorization();
-        
         return services;
     }
         

@@ -21,19 +21,19 @@ public class FavoriteService : BaseService, IFavoriteService
         
     public async Task<JokerBaseResponseViewModel<FavoriteCampaignViewModel>> AddFavoriteCampaignAsync(AddFavoriteCampaignViewModel model)
     {
-        var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Favorites/Campaigns", model);
+        var responseMessage = await _httpClient.PostAsJsonAsync("/aggregator/storefront/api/Favorites/Campaigns", model);
         return await HandleRequestAsync<FavoriteCampaignViewModel>(responseMessage);
     }
 
     public async Task<JokerBaseResponseViewModel<FavoriteStoreViewModel>> AddFavoriteStoreAsync(AddFavoriteStoreViewModel model)
     {
-        var responseMessage = await _httpClient.PostAsJsonAsync("aggregator/api/Favorites/Stores", model);
+        var responseMessage = await _httpClient.PostAsJsonAsync("/aggregator/storefront/api/Favorites/Stores", model);
         return await HandleRequestAsync<FavoriteStoreViewModel>(responseMessage);
     }
 
     public async Task<List<FavoriteCampaignViewModel>> GetFavoriteCampaignAsync(Guid userId)
     {
-        var responseMessage = await _httpClient.GetAsync($"favorite/api/Campaigns/Users/{userId}");
+        var responseMessage = await _httpClient.GetAsync($"/favorite/api/Campaigns/Users/{userId}");
             
         if (!responseMessage.IsSuccessStatusCode)
         {
@@ -49,7 +49,7 @@ public class FavoriteService : BaseService, IFavoriteService
 
     public async Task<List<FavoriteStoreViewModel>> GetFavoriteStoreAsync(Guid userId)
     {
-        var responseMessage = await _httpClient.GetAsync($"favorite/api/Stores/Users/{userId}");
+        var responseMessage = await _httpClient.GetAsync($"/favorite/api/Stores/Users/{userId}");
             
         if (!responseMessage.IsSuccessStatusCode)
         {

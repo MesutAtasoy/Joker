@@ -44,6 +44,8 @@ public static class ServiceCollectionExtensions
                 options.Scope.Add("offline_access");
                 options.Scope.Add("favorite.read");
                 options.Scope.Add("favorite.create");
+                options.Scope.Add("merchant.read");
+                options.Scope.Add("campaign.read");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");

@@ -109,6 +109,18 @@ services:
       - "80"
     networks:
       - joker-network
+      
+  aggregator-storefront-api:
+    container_name: "aggregator-storefront-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
+    expose:
+      - "80"
+    networks:
+      - joker-network      
         
   gateway-web-api:
     container_name: "gateway-web-api"

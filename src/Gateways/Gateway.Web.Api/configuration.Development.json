@@ -18,6 +18,22 @@
     },
     {
       "DownstreamScheme": "http",
+      "ServiceName": "Aggregator.StoreFront.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/aggregator/storefront/api/{everything}",
+      "SwaggerKey": "aggregator-storefront",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 500000
+      },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    },
+    {
+      "DownstreamScheme": "http",
       "ServiceName": "Favorite.Api",
       "DownstreamPathTemplate": "/api/{everything}",
       "UpstreamPathTemplate": "/favorite/api/{everything}",
@@ -51,6 +67,16 @@
           "Name": "Favorite API",
           "Version": "v1",
           "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "aggregator-storefront",
+      "Config": [
+        {
+          "Name": "Aggregator StoreFront API",
+          "Version": "v1",
+          "Url": "http://localhost:5020/swagger/v1/swagger.json"
         }
       ]
     }

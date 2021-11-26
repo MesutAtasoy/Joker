@@ -83,7 +83,7 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("merchant");
+                builder.RequireScope("merchant.create", "merchant.read", "merchant.delete");
                 builder.RequireRole("FreeUser","PaidUser");
             });   
         });

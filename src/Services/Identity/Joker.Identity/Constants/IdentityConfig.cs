@@ -16,9 +16,18 @@ public static class IdentityConfig
 
     public static IEnumerable<ApiScope> ApiScopes => new[]
     {
-        new ApiScope("campaign", "Campaign Management"),
-        new ApiScope("merchant", "Merchant Management"),
+        
+        
         new ApiScope("subscription", "Subscription Management"),
+
+        
+        new ApiScope("merchant.create", "Creates merchant"),
+        new ApiScope("merchant.read", "Reads merchant"),
+        new ApiScope("merchant.delete", "Deletes merchant"),
+        
+        new ApiScope("campaign.create", "Creates campaign"),
+        new ApiScope("campaign.read", "Reads campaign"),
+        new ApiScope("campaign.delete", "Deletes campaign"),
         
         new ApiScope("favorite.create", "Creates Campaign And Store favorites"),
         new ApiScope("favorite.read", "Reads Campaign And Store favorites")
@@ -29,12 +38,12 @@ public static class IdentityConfig
         {
             new ("merchantapi", "Merchant API", new[] {"role" ,"organizationId","organizationName"})
             {
-                Scopes = { "merchant"},
+                Scopes = { "merchant.create", "merchant.read", "merchant.delete"},
                 ApiSecrets = {new Secret("apisecret".Sha256())}
             },
             new ("campaignapi", "Campaign API", new[] {"role", "organizationId","organizationName"})
             {
-                Scopes = { "campaign"},
+                Scopes = { "campaign.create", "campaign.read", "campaign.delete"},
                 ApiSecrets = {new Secret("apisecret".Sha256())}
             },
             new ("managementapi", "Management API")
@@ -45,7 +54,7 @@ public static class IdentityConfig
             {
                 ApiSecrets = {new Secret("apisecret".Sha256())}
             },
-            new ("favoriteapi", "Favorite API")
+            new ("favoriteapi", "Favorite API",new [] {"role"} )
             {
                 Scopes = {"favorite.create", "favorite.read"},
                 ApiSecrets = {new Secret("apisecret".Sha256())}
@@ -62,6 +71,12 @@ public static class IdentityConfig
             new ("aggregatorapi", "Aggregator API")
             {
                 Scopes = { "campaign", "merchant"},
+                ApiSecrets = {new Secret("apisecret".Sha256())}
+            },
+            
+            new ("aggregatorstorefrontapi", "Aggregator Store API", new [] {"role"} )
+            {
+                Scopes = {"favorite.create", "favorite.read", "merchant.read", "campaign.read"},
                 ApiSecrets = {new Secret("apisecret".Sha256())}
             }
         };
@@ -97,8 +112,11 @@ public static class IdentityConfig
                     "roles",
                     "favoriteapi",
                     "searchapi",
+                    "aggregatorstorefrontapi",
                     "favorite.read",
-                    "favorite.create"
+                    "favorite.create",
+                    "merchant.read",
+                    "campaign.read"
                 },
                 ClientSecrets =
                 {
