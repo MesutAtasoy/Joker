@@ -22,7 +22,7 @@
       "DownstreamPathTemplate": "/api/{everything}",
       "UpstreamPathTemplate": "/aggregator/storefront/api/{everything}",
       "SwaggerKey": "aggregator-storefront",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "UpstreamHttpMethod": ["GET", "POST"],
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
         "DurationOfBreak": 1000,

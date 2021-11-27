@@ -79,8 +79,16 @@ services:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
     depends_on:
-      - aggregator-api      
-        
+      - aggregator-api  
+      
+  gateway-backoffice-api:
+    image: joker/gatewaybackofficeapi
+    build:
+      context: .
+      dockerfile: src/Gateways/Gateway.BackOffice.Api/Dockerfile
+    depends_on:
+      - aggregator-api
+  
   joker-webapp:
     image: joker/jokerwebapp
     build:

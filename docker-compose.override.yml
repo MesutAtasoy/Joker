@@ -131,6 +131,16 @@ services:
     networks:
       - joker-network        
 
+  gateway-backoffice-api:
+    container_name: "gateway-backoffice-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "5200:80"
+    networks:
+      - joker-network
+      
   joker-webapp:
     container_name: "joker-webapp"
     environment:

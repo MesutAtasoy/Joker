@@ -83,6 +83,22 @@ public static class IdentityConfig
         {
             new ()
             {
+                ClientId = "Postman",
+                ClientName = "Postman Client",
+                AccessTokenLifetime = 60 * 60 * 24,
+                AccessTokenType = AccessTokenType.Reference,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                RequireClientSecret = false,
+                AllowOfflineAccess = true,
+                AllowedScopes = 
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    "roles"
+                }
+            },
+            new ()
+            {
                 AccessTokenType = AccessTokenType.Reference,
                 AccessTokenLifetime = 3600,
                 AllowOfflineAccess = true,

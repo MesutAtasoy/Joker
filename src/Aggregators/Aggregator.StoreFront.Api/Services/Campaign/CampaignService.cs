@@ -26,7 +26,6 @@ public class CampaignService : ICampaignService
         var headers = await GetHeaders();
 
         var campaign = await _campaignApiGrpcServiceClient.GetByIdAsync(new ByIdMessage { Id = id.ToString() }, headers);
-        _logger.LogError(JsonSerializer.Serialize(campaign));
         return As(campaign);
     }
 
