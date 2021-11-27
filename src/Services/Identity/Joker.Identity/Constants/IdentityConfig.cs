@@ -15,20 +15,14 @@ public static class IdentityConfig
         };
 
     public static IEnumerable<ApiScope> ApiScopes => new[]
-    {
-        
-        
+    {   
         new ApiScope("subscription", "Subscription Management"),
-
-        
         new ApiScope("merchant.create", "Creates merchant"),
         new ApiScope("merchant.read", "Reads merchant"),
         new ApiScope("merchant.delete", "Deletes merchant"),
-        
         new ApiScope("campaign.create", "Creates campaign"),
         new ApiScope("campaign.read", "Reads campaign"),
         new ApiScope("campaign.delete", "Deletes campaign"),
-        
         new ApiScope("favorite.create", "Creates Campaign And Store favorites"),
         new ApiScope("favorite.read", "Reads Campaign And Store favorites")
     };
@@ -84,6 +78,7 @@ public static class IdentityConfig
     public static IEnumerable<Client> Clients(IConfiguration configuration)
     {
         var jokerWebAppUrl = configuration.GetValue<string>("JokerWebAppUrl");
+        var jokerBackOfficeUrl = configuration.GetValue<string>("JokerBackOfficeUrl");
         return new Client[]
         {
             new ()
@@ -92,8 +87,8 @@ public static class IdentityConfig
                 AccessTokenLifetime = 3600,
                 AllowOfflineAccess = true,
                 UpdateAccessTokenClaimsOnRefresh = true,
-                ClientName = "Joker Web Application",
-                ClientId = "joker.web.app",
+                ClientName = "Joker Store Front",
+                ClientId = "joker.store.front",
                 AllowedGrantTypes = GrantTypes.Code,
                 RequireConsent = false,
                 RequirePkce = true,
@@ -117,6 +112,36 @@ public static class IdentityConfig
                     "favorite.create",
                     "merchant.read",
                     "campaign.read"
+                },
+                ClientSecrets =
+                {
+                    new Secret("secret".Sha256())
+                }
+            },
+            new ()
+            {
+                AccessTokenType = AccessTokenType.Reference,
+                AccessTokenLifetime = 3600,
+                AllowOfflineAccess = true,
+                UpdateAccessTokenClaimsOnRefresh = true,
+                ClientName = "Joker Back Office",
+                ClientId = "joker.back.office",
+                AllowedGrantTypes = GrantTypes.Code,
+                RequireConsent = false,
+                RequirePkce = true,
+                RedirectUris = new List<string>()
+                {
+                    $"{jokerBackOfficeUrl}/signin-oidc",
+                },
+                PostLogoutRedirectUris = new List<string>()
+                {
+                    $"{jokerBackOfficeUrl}/signout-callback-oidc"
+                },
+                AllowedScopes =
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    "roles"
                 },
                 ClientSecrets =
                 {

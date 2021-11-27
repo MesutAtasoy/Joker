@@ -37,7 +37,7 @@ public static class ServiceCollectionExtensions
                 options.Authority = configuration.GetValue<string>("IdentityUrl");
                 options.MetadataAddress = $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.ClientId = "joker.web.app";
+                options.ClientId = "joker.store.front";
                 options.ClientSecret = "secret";
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.Scope.Add("roles");

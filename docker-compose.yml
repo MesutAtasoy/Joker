@@ -88,3 +88,11 @@ services:
       dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
     depends_on:
       - gateway-web-api
+
+  joker-backoffice:
+    image: joker/jokerbackoffice
+    build:
+      context: .
+      dockerfile: src/WebApplications/Joker.BackOffice/Dockerfile
+    depends_on:
+      - gateway-web-api

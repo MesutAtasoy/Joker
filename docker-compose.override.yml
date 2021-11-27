@@ -73,7 +73,6 @@ services:
     networks:
       - joker-network
 
-
   identity-api:
     container_name: "identity-api"
     environment:
@@ -134,6 +133,17 @@ services:
 
   joker-webapp:
     container_name: "joker-webapp"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - GatewayUrl=http://gateway-web-api
+    ports:
+      - "5030:80"
+    networks:
+      - joker-network
+
+  joker-backoffice:
+    container_name: "joker-backoffice"
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80

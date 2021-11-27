@@ -7,6 +7,7 @@ using IdentityServer4.AccessTokenValidation;
 using Joker.CAP;
 using Joker.Consul;
 using Joker.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -96,7 +97,16 @@ public static class ServiceCollectionExtensions
         
     public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
     {
-        services.AddAuthorization();
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("ScopePolicy", builder =>
+            {
+                builder.RequireAuthenticatedUser();
+                builder.RequireScope("favorite.create", "favorite.read");
+                builder.RequireRole("FreeUser","PaidUser");
+            });   
+        });
+
         return services;
     }
         

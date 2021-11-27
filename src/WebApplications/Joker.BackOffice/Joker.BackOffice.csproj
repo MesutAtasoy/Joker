@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="IdentityModel" Version="4.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
+        <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
+        <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="5.0.1" />
+        <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.2.0-alpha2" />
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc7" />
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc7" />
+        <PackageReference Include="Polly" Version="7.2.1" />
+        <PackageReference Include="Serilog" Version="2.9.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />
+        <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
+    </ItemGroup>
+    
+</Project>
