@@ -1,5 +1,6 @@
 using AutoMapper;
 using Joker.Exceptions;
+using Merchant.Application.Services;
 using Merchant.Application.Stores.Commands.CreateStore;
 using Merchant.Application.Stores.Commands.DeleteStore;
 using Merchant.Application.Stores.Commands.UpdateLocation;
@@ -15,26 +16,35 @@ namespace Merchant.Application.Stores;
 
 public class StoreManager
 {
+    private readonly IUserService _userService;
     private readonly IStoreRepository _storeRepository;
     private readonly IMerchantRepository _merchantRepository;
     private readonly IMapper _mapper;
 
     public StoreManager(IStoreRepository storeRepository,
         IMerchantRepository merchantRepository,
-        IMapper mapper)
+        IMapper mapper, 
+        IUserService userService)
     {
         _storeRepository = storeRepository;
         _mapper = mapper;
+        _userService = userService;
         _merchantRepository = merchantRepository;
     }
 
     public async Task<StoreDto> CreateAsync(CreateStoreCommand request)
     {
+        var organizationId = _userService.GetOrganizationId();
         var merchant = await _merchantRepository.GetByIdAsync(request.MerchantId);
 
         if (merchant == null)
         {
             throw new NotFoundException("Merchant is not found");
+        }
+        
+        if (merchant.OrganizationId != organizationId)
+        {
+            throw new NotFoundException("Invalid Merchant");
         }
 
         var merchantRef = MerchantRef.Create(merchant.Id, merchant.Name);
@@ -57,7 +67,8 @@ public class StoreManager
             request.PhoneNumber,
             request.Email,
             request.Description,
-            storeLocation
+            storeLocation,
+            organizationId
         );
 
         await _storeRepository.AddAsync(store);

@@ -1,13 +1,19 @@
 using Aggregator.StoreFront.Api.Interceptors;
 using Aggregator.StoreFront.Api.Services.Campaign;
 using Aggregator.StoreFront.Api.Services.Favorite;
+using Aggregator.StoreFront.Api.Services.Identity;
+using Aggregator.StoreFront.Api.Services.Management;
+using Aggregator.StoreFront.Api.Services.Merchant;
 using Aggregator.StoreFront.Api.Services.Store;
 using Campaign.Api.Grpc;
 using Favorite.Api.Grpc;
 using IdentityServer4.AccessTokenValidation;
 using Joker.Consul;
+using Management.Api.Grpc;
 using Merchant.Api.Grpc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -20,9 +26,16 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IStoreService, StoreService>();
         services.AddScoped<ICampaignService, CampaignService>();
         services.AddScoped<IFavoriteService, FavoriteService>();
+        services.AddScoped<IManagementService, ManagementService>();
+        services.AddScoped<IMerchantService, MerchantService>();
+        
 
         services.AddTransient<GrpcExceptionInterceptor>();
 
+        services.AddGrpcClient<ManagementApiGrpcService.ManagementApiGrpcServiceClient>(x =>
+                x.Address = new Uri(configuration["serviceUrls:management"]))
+            .AddInterceptor<GrpcExceptionInterceptor>();
+        
         services.AddGrpcClient<CampaignApiGrpcService.CampaignApiGrpcServiceClient>(x =>
                 x.Address = new Uri(configuration["serviceUrls:campaign"]))
             .AddInterceptor<GrpcExceptionInterceptor>();
@@ -67,7 +80,7 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("favorite.read","favorite.create", "merchant.read", "campaign.read");
+                builder.RequireScope("favorite.read","favorite.create", "merchant.read", "merchant.create", "campaign.read");
             });
         });
 
@@ -90,6 +103,21 @@ public static class ServiceCollectionExtensions
                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("AggregatorStoreFrontApi"))
         );
 
+        return services;
+    }
+    
+    public static IServiceCollection AddJokerIdentityApiClient(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddHttpClient("IdentityApi", client =>
+        {
+            client.BaseAddress = new Uri(configuration["urls:identityapi"]);
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+        }).AddPolicyHandler(PolicyExtensions.GetCircuitBreakerPolicy());
+
+        services.AddScoped<IIdentityService, IdentityService>();
+        
         return services;
     }
 }

@@ -8,7 +8,7 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore "src/WebApplications/Joker.BackOffice/Joker.BackOffice.csproj"
 COPY . .
-WORKDIR "/src/WebApplications/Joker.BackOffice"
+WORKDIR "/src/src/WebApplications/Joker.BackOffice"
 RUN dotnet build "Joker.BackOffice.csproj" -c Release -o /app/build
 
 FROM build AS publish

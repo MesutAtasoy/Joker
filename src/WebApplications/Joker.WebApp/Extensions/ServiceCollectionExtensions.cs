@@ -45,6 +45,7 @@ public static class ServiceCollectionExtensions
                 options.Scope.Add("favorite.read");
                 options.Scope.Add("favorite.create");
                 options.Scope.Add("merchant.read");
+                options.Scope.Add("merchant.create");
                 options.Scope.Add("campaign.read");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");

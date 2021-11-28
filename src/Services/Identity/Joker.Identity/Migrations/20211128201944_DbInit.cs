@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
+#nullable disable
+
 namespace Joker.Identity.Migrations
 {
-    public partial class JokerDbInit : Migration
+    public partial class DbInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +47,19 @@ namespace Joker.Identity.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organizations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,8 +174,7 @@ namespace Joker.Identity.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<string>(type: "text", nullable: true),
-                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrganizationName = table.Column<string>(type: "text", nullable: true)
+                    OrganizationId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,8 +183,13 @@ namespace Joker.Identity.Migrations
                         name: "FK_OrganizationUsers_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_OrganizationUsers_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -211,6 +230,11 @@ namespace Joker.Identity.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrganizationUsers_OrganizationId",
+                table: "OrganizationUsers",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrganizationUsers_UserId",
                 table: "OrganizationUsers",
                 column: "UserId");
@@ -241,6 +265,9 @@ namespace Joker.Identity.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Organizations");
         }
     }
 }

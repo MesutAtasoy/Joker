@@ -1,10 +1,4 @@
 using Joker.Identity.Extensions;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Joker.Identity
 {
@@ -23,12 +17,13 @@ namespace Joker.Identity
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddJokerIdentity();
+            services.AddHttpContextAccessor();
             services.AddJokerIdentityContext(_configuration);
             services.AddJokerIdentityServer(_configuration);
-            services.AddAuthentication();
+            services.AddJokerAuthentication();
+            services.AddJokerAuthorization();
             services.AddDataProtection();
             services.AddJokerCors();
-            services.AddJokerEvents();
             services.AddJokerEventBus(_configuration);
             services.AddJokerOpenTelemetry(_configuration);
         }
@@ -40,7 +35,6 @@ namespace Joker.Identity
             {
                 app.UseDeveloperExceptionPage();
             }
-
             
             app.UseStaticFiles();
             app.UseForwardedHeaders();
@@ -48,6 +42,7 @@ namespace Joker.Identity
             app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
             app.UseCors("CorsPolicy");
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
         }

@@ -21,6 +21,7 @@ public class Startup
         services.AddControllers();
         services.AddGrpc();
         services.AddSwaggerGen();
+        services.AddJokerIdentityApiClient(_configuration);
         services.AddJokerAuthentication(_configuration);
         services.AddJokerAuthorization();
         services.AddJokerConsul(_configuration);

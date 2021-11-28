@@ -55,10 +55,8 @@ public class BearerTokenHandler : DelegatingHandler
 
         var idpClient = _httpClientFactory.CreateClient("IdentityApi");
 
-            
         // get the discovery document
         var discoveryResponse = await idpClient.GetDiscoveryDocumentAsync();
-
             
         // refresh the tokens
         var refreshToken = await _httpContextAccessor
@@ -81,19 +79,22 @@ public class BearerTokenHandler : DelegatingHandler
         // store the tokens             
         var updatedTokens = new List<AuthenticationToken>
         {
-            new AuthenticationToken
+            new ()
             {
-                Name = OpenIdConnectParameterNames.IdToken, Value = refreshResponse.IdentityToken
+                Name = OpenIdConnectParameterNames.IdToken,
+                Value = refreshResponse.IdentityToken
             },
-            new AuthenticationToken
+            new ()
             {
-                Name = OpenIdConnectParameterNames.AccessToken, Value = refreshResponse.AccessToken
+                Name = OpenIdConnectParameterNames.AccessToken,
+                Value = refreshResponse.AccessToken
             },
-            new AuthenticationToken
+            new ()
             {
-                Name = OpenIdConnectParameterNames.RefreshToken, Value = refreshResponse.RefreshToken
+                Name = OpenIdConnectParameterNames.RefreshToken,
+                Value = refreshResponse.RefreshToken
             },
-            new AuthenticationToken
+            new()
             {
                 Name = "expires_at",
                 Value = (DateTime.UtcNow + TimeSpan.FromSeconds(refreshResponse.ExpiresIn)).ToString("o",

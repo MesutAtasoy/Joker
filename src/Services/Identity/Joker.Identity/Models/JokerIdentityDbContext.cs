@@ -5,6 +5,7 @@ namespace Joker.Identity.Models;
 
 public class JokerIdentityDbContext : IdentityDbContext<ApplicationUser>
 {
+    public DbSet<Organization> Organizations { get; set; }
     public DbSet<OrganizationUser> OrganizationUsers { get; set; }
         
     public JokerIdentityDbContext(DbContextOptions<JokerIdentityDbContext> options)

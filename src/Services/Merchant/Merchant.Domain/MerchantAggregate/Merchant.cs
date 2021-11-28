@@ -27,7 +27,9 @@ public class Merchant : DomainEntity, IAggregateRoot
     public Guid CreatedBy { get; private set; }
     public DateTime CreatedDate { get; private set; }
     public DateTime? ModifiedDate { get; private set; }
+    public Guid OrganizationId { get; private set; }
 
+    
     /// <summary>
     /// Creates a new merchant
     /// </summary>
@@ -42,6 +44,7 @@ public class Merchant : DomainEntity, IAggregateRoot
     /// <param name="pricingPlanId"></param>
     /// <param name="pricingPlanName"></param>
     /// <param name="userId"></param>
+    /// <param name="organizationId"></param>
     /// <returns></returns>
     public static Merchant Create(Guid id,
         string name,
@@ -53,7 +56,8 @@ public class Merchant : DomainEntity, IAggregateRoot
         string description,
         Guid pricingPlanId,
         string pricingPlanName,
-        Guid userId)
+        Guid userId,
+        Guid organizationId)
     {
         Check.NotEmpty(id, nameof(id));
         Check.NotEmpty(pricingPlanId, nameof(pricingPlanId));
@@ -61,6 +65,7 @@ public class Merchant : DomainEntity, IAggregateRoot
         Check.NotNullOrEmpty(name, nameof(name));
         Check.NotNullOrEmpty(slogan, nameof(slogan));
         Check.NotNullOrEmpty(pricingPlanName, nameof(pricingPlanName));
+        Check.NotEmpty(organizationId, nameof(organizationId));
 
         var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
 
@@ -79,11 +84,11 @@ public class Merchant : DomainEntity, IAggregateRoot
             EmailConfirmed = false,
             CreatedBy = userId,
             CreatedDate = DateTime.UtcNow,
-            IsDeleted = false
+            IsDeleted = false,
+            OrganizationId = organizationId
         };
-
-
-        merchant.AddDomainEvent(new MerchantCreatedEvent(id, name, pricingPlanId, pricingPlanName, userId));
+        
+        merchant.AddDomainEvent(new MerchantCreatedEvent(id, name, pricingPlanId, pricingPlanName, userId, organizationId));
             
         return merchant;
     }

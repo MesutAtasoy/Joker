@@ -12,7 +12,8 @@ public class StoreCreatedEvent : DomainEvent
         string phoneNumber,
         string email,
         string description,
-        StoreLocation location)
+        StoreLocation location,
+        Guid organizationId)
     {
         Id = id;
         MerchantId = merchant.RefId;
@@ -33,6 +34,7 @@ public class StoreCreatedEvent : DomainEvent
         QuarterId = location.Quarter.RefId;
         QuarterName = location.Quarter.Name;
         Address = location.Address;
+        OrganizationId = organizationId;
     }
 
     public Guid Id { get; private set; }
@@ -54,4 +56,5 @@ public class StoreCreatedEvent : DomainEvent
     public Guid QuarterId { get; private set; }
     public string QuarterName { get; private set; }
     public string Address { get; private set; }
+    public Guid OrganizationId { get; private set; }
 }
