@@ -82,14 +82,15 @@ message StoreMessage {
 
 
 message CreateMerchantMessage {
-  string name = 1;
-  string slogan = 2;
-  string websiteUrl = 3;
-  string phoneNumber = 4;
-  string taxNumber = 5;
-  string email = 6;
-  string description = 7;
-  IdNameMessage pricingPlan = 8;
+  string organizationId = 1;
+  string name = 2;
+  string slogan = 3;
+  string websiteUrl = 4;
+  string phoneNumber = 5;
+  string taxNumber = 6;
+  string email = 7;
+  string description = 8;
+  IdNameMessage pricingPlan = 9;
 }
 
 message UpdateMerchantMessage {

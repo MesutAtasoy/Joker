@@ -46,9 +46,5 @@
         <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Mvc\Joker.Mvc.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="HttpHandlers" />
-    </ItemGroup>
-
 
 </Project>

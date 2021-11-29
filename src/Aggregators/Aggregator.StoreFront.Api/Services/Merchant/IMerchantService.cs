@@ -7,5 +7,6 @@ public interface IMerchantService
 {
     Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel createMerchantModel,
         string pricingPlanId,
-        string pricingPlanName);
+        string pricingPlanName,
+        Guid organizationId);
 }

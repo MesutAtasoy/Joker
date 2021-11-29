@@ -6,6 +6,7 @@ public class CreateMerchantCommandValidator :  AbstractValidator<CreateMerchantC
 {
     public CreateMerchantCommandValidator()
     {
+        RuleFor(x => x.OrganizationId).NotEmpty();
         RuleFor(x => x.Name).NotEmpty();
         RuleFor(x => x.PricingPlan.RefId).NotEmpty();
         RuleFor(x => x.PricingPlan.Name).NotEmpty();

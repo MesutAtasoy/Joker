@@ -1,3 +1,4 @@
+using Joker.Identity.Models.Entities;
 using Joker.Identity.Models.Seeders.Base;
 using Microsoft.AspNetCore.Identity;
 
@@ -27,7 +28,25 @@ public class UserSeeder : ISeeder
 
                 if (identityResult.Succeeded)
                 {
-                    var roleAdded = await userManager.AddToRoleAsync(sa, "Admin");
+                    var roleAdded = await userManager.AddToRolesAsync(sa, new []{"Admin", "FreeUser"});
+                    if (!roleAdded.Succeeded)
+                    {
+                        logger.LogError(string.Join("," ,roleAdded.Errors.Select(x=>x.Description)));
+                    }
+                }
+
+                var user = new ApplicationUser
+                {
+                    Email = "mesut@mail.com",
+                    UserName = "mesut@mail.com",
+                    EmailConfirmed = true
+                };
+
+                var identityUserResult = await userManager.CreateAsync(user, "123456");
+
+                if (identityUserResult.Succeeded)
+                {
+                    var roleAdded = await userManager.AddToRolesAsync(user, new []{"FreeUser"});
                     if (!roleAdded.Succeeded)
                     {
                         logger.LogError(string.Join("," ,roleAdded.Errors.Select(x=>x.Description)));

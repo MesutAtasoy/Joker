@@ -4,5 +4,5 @@ namespace Aggregator.StoreFront.Api.Services.Identity;
 
 public interface IIdentityService
 {
-    Task<(bool isSucceed, CreateOrganizationResponse response)> CreateOrganization(string organizationName);
+    Task<(bool IsSucceed, CreateOrganizationResponse Response)> CreateOrganization(string organizationName);
 }

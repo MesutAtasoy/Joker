@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Joker.Identity.Migrations
 {
     [DbContext(typeof(JokerIdentityDbContext))]
-    [Migration("20211128201944_DbInit")]
+    [Migration("20211129172524_DbInit")]
     partial class DbInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Joker.Identity.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Joker.Identity.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
@@ -88,7 +88,7 @@ namespace Joker.Identity.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Joker.Identity.Models.Organization", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.Organization", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +105,7 @@ namespace Joker.Identity.Migrations
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("Joker.Identity.Models.OrganizationUser", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.OrganizationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -258,15 +258,15 @@ namespace Joker.Identity.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Joker.Identity.Models.OrganizationUser", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.OrganizationUser", b =>
                 {
-                    b.HasOne("Joker.Identity.Models.Organization", "Organization")
+                    b.HasOne("Joker.Identity.Models.Entities.Organization", "Organization")
                         .WithMany("OrganizationUsers")
                         .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Joker.Identity.Models.ApplicationUser", "User")
+                    b.HasOne("Joker.Identity.Models.Entities.ApplicationUser", "User")
                         .WithMany("OrganizationUsers")
                         .HasForeignKey("UserId");
 
@@ -286,7 +286,7 @@ namespace Joker.Identity.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Joker.Identity.Models.ApplicationUser", null)
+                    b.HasOne("Joker.Identity.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -295,7 +295,7 @@ namespace Joker.Identity.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Joker.Identity.Models.ApplicationUser", null)
+                    b.HasOne("Joker.Identity.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -310,7 +310,7 @@ namespace Joker.Identity.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Joker.Identity.Models.ApplicationUser", null)
+                    b.HasOne("Joker.Identity.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -319,19 +319,19 @@ namespace Joker.Identity.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Joker.Identity.Models.ApplicationUser", null)
+                    b.HasOne("Joker.Identity.Models.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Joker.Identity.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("OrganizationUsers");
                 });
 
-            modelBuilder.Entity("Joker.Identity.Models.Organization", b =>
+            modelBuilder.Entity("Joker.Identity.Models.Entities.Organization", b =>
                 {
                     b.Navigation("OrganizationUsers");
                 });

@@ -1,6 +1,7 @@
 using IdentityServer4;
 using IdentityServer4.Extensions;
 using Joker.Identity.Models;
+using Joker.Identity.Models.Entities;
 using Joker.Identity.ViewModels.Organization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

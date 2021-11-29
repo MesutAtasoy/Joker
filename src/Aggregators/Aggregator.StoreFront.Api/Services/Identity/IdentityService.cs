@@ -20,7 +20,7 @@ public class IdentityService : IIdentityService
         _httpClient = _clientFactory.CreateClient("IdentityApi");
     }
 
-    public async Task<(bool, CreateOrganizationResponse)> CreateOrganization(string organizationName)
+    public async Task<(bool IsSucceed, CreateOrganizationResponse Response)> CreateOrganization(string organizationName)
     {
         try
         {
@@ -28,7 +28,7 @@ public class IdentityService : IIdentityService
             
             var requestModel = new
             {
-                MerchantName = organizationName
+                Name = organizationName
             };
 
             var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken)! ??"";

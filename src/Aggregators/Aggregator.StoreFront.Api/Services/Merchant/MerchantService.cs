@@ -21,11 +21,14 @@ public class MerchantService : IMerchantService
     }
 
     public async Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel request,
-        string pricingPlanId, string pricingPlanName)
+        string pricingPlanId, 
+        string pricingPlanName,
+        Guid organizationId)
     {
         var headers = await GetHeaders();
         var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
         {
+            OrganizationId = organizationId.ToString(),
             Name = request.Name?? "",
             Description = request.Description?? "",
             Email = request.Email?? "",

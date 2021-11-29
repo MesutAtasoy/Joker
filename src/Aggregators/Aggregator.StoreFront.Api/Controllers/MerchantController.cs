@@ -37,7 +37,7 @@ public class MerchantController : ControllerBase
         }
 
         var organizationResult = await _identityService.CreateOrganization(model.Name);
-        if (!organizationResult.isSucceed)
+        if (!organizationResult.IsSucceed)
         {
             return StatusCode(400, new JokerBaseResponse<object>
             {
@@ -46,12 +46,12 @@ public class MerchantController : ControllerBase
             });
         }
         
-        var response = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
-        if (response.StatusCode != 200)
-        {
-            return StatusCode(response.StatusCode, response);
-        }
+        var response = await _merchantService.CreateAsync(model, 
+            pricingPlan.Id,
+            pricingPlan.Name,
+            organizationResult.Response.OrganizationId);
         
+        //ToDo: Depends on response, roll back scenerios needs to be wrote. 
         return StatusCode(response.StatusCode, response);
     }
 }

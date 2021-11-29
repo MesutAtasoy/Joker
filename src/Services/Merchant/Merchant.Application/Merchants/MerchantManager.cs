@@ -27,8 +27,6 @@ public class MerchantManager
     {
         var merchantId = IdGenerationFactory.Create();
 
-        var organizationId = _userService.GetOrganizationId();
-
         var merchant = Domain.MerchantAggregate.Merchant.Create(merchantId,
             request.Name,
             request.Slogan,
@@ -40,7 +38,7 @@ public class MerchantManager
             request.PricingPlan.RefId,
             request.PricingPlan.Name,
             _userService.GetUserId(),
-            organizationId);
+            request.OrganizationId);
 
         await _merchantRepository.AddAsync(merchant);
 

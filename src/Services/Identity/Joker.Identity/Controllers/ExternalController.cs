@@ -6,6 +6,7 @@ using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Joker.Identity.Extensions;
 using Joker.Identity.Models;
+using Joker.Identity.Models.Entities;
 using Joker.Identity.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;

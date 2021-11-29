@@ -6,6 +6,7 @@ namespace Merchant.Application.Merchants.Commands.CreateMerchant;
 
 public class CreateMerchantCommand : IRequest<MerchantDto>
 {
+    public Guid OrganizationId { get; set; } 
     public string Name { get; set; }
     public string Slogan { get; set; }
     public string WebSiteUrl { get; set; }

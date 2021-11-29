@@ -1,4 +1,4 @@
-namespace Joker.Identity.Models;
+namespace Joker.Identity.Models.Entities;
 
 public class OrganizationUser
 {

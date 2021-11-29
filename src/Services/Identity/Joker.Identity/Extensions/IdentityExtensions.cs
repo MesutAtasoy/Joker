@@ -1,4 +1,5 @@
 using Joker.Identity.Models;
+using Joker.Identity.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 
 

@@ -40,6 +40,7 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
         {
             var response = await _merchantManager.CreateAsync(new CreateMerchantCommand
             {
+                OrganizationId = request.OrganizationId.ToGuid(),
                 Description = request.Description,
                 Email = request.Email,
                 Name = request.Name,
