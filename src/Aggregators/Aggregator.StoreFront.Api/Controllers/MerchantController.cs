@@ -1,4 +1,4 @@
-using Aggregator.StoreFront.Api.Models.Merchant;
+using Aggregator.StoreFront.Api.Models.Merchant.Requests;
 using Aggregator.StoreFront.Api.Services.Identity;
 using Aggregator.StoreFront.Api.Services.Management;
 using Aggregator.StoreFront.Api.Services.Merchant;

@@ -14,11 +14,11 @@ service FavoriteApiGrpcService {
 }
 
 message CreateFavoriteCampaignMessage {
-  CampaignMessage campaign = 1;
+  FavoriteCampaignItemMessage campaign = 1;
 }
 
 message CreateFavoriteStoreMessage {
-  StoreMessage store = 1;
+  FavoriteStoreItemMessage store = 1;
 }
 
 message IdNameMessage {
@@ -42,13 +42,13 @@ message CampaignBaseGrpcResponse {
 }
 
 message FavoriteCampaignMessage {
-  CampaignMessage campaign = 1;
+  FavoriteCampaignItemMessage campaign = 1;
   UserMessage user = 2;
   google.protobuf.Timestamp createdDate = 3;
 }
 
 message FavoriteStoreMessage {
-  StoreMessage store = 1;
+  FavoriteStoreItemMessage store = 1;
   UserMessage user = 2;
   google.protobuf.Timestamp createdDate = 3;
 }
@@ -61,14 +61,14 @@ message FavoriteCampaignMessageList {
   repeated  FavoriteCampaignMessage Campaigns = 1;
 }
 
-message CampaignMessage {
+message FavoriteCampaignItemMessage {
   string id = 1;
   string title = 2;
   string slug = 3;
   string slugKey = 4;
 }
 
-message StoreMessage {
+message FavoriteStoreItemMessage {
   string id = 1;
   string name = 2;
   string slug = 3;

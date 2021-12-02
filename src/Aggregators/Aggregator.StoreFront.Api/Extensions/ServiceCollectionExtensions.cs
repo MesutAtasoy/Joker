@@ -1,4 +1,5 @@
 using Aggregator.StoreFront.Api.Interceptors;
+using Aggregator.StoreFront.Api.Services.BaseGrpc;
 using Aggregator.StoreFront.Api.Services.Campaign;
 using Aggregator.StoreFront.Api.Services.Favorite;
 using Aggregator.StoreFront.Api.Services.Identity;
@@ -12,7 +13,6 @@ using Joker.Consul;
 using Management.Api.Grpc;
 using Merchant.Api.Grpc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -23,13 +23,13 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddGrpcServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddSingleton<IBaseGrpcProvider, BaseGrpcProvider>();
         services.AddScoped<IStoreService, StoreService>();
         services.AddScoped<ICampaignService, CampaignService>();
         services.AddScoped<IFavoriteService, FavoriteService>();
         services.AddScoped<IManagementService, ManagementService>();
         services.AddScoped<IMerchantService, MerchantService>();
         
-
         services.AddTransient<GrpcExceptionInterceptor>();
 
         services.AddGrpcClient<ManagementApiGrpcService.ManagementApiGrpcServiceClient>(x =>

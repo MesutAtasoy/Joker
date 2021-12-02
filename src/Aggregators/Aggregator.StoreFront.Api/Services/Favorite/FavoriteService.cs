@@ -1,38 +1,35 @@
 using Aggregator.StoreFront.Api.Models.Favorite;
-using Aggregator.StoreFront.Api.Models.Shared;
+using Aggregator.StoreFront.Api.Models.Favorite.Requests;
+using Aggregator.StoreFront.Api.Services.BaseGrpc;
+using AutoMapper;
 using Favorite.Api.Grpc;
-using Grpc.Core;
-using Joker.Extensions;
 using Joker.Response;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Aggregator.StoreFront.Api.Services.Favorite;
 
 public class FavoriteService : IFavoriteService
 {
-    private readonly IHttpContextAccessor _contextAccessor;
     private readonly FavoriteApiGrpcService.FavoriteApiGrpcServiceClient _favoriteApiGrpcServiceClient;
-        
-    public FavoriteService(IHttpContextAccessor contextAccessor, 
-        FavoriteApiGrpcService.FavoriteApiGrpcServiceClient favoriteApiGrpcServiceClient)
+    private readonly IBaseGrpcProvider _grpcProvider;
+    private readonly IMapper _mapper;
+    
+    public FavoriteService(FavoriteApiGrpcService.FavoriteApiGrpcServiceClient favoriteApiGrpcServiceClient,
+        IBaseGrpcProvider grpcProvider,
+        IMapper mapper)
     {
-        _contextAccessor = contextAccessor;
         _favoriteApiGrpcServiceClient = favoriteApiGrpcServiceClient;
+        _grpcProvider = grpcProvider;
+        _mapper = mapper;
     }
-    public async Task<JokerBaseResponse<FavoriteCampaignModel>> AddFavoriteCampaignAsync(AddCampaignModel model)
+    public async Task<JokerBaseResponse<FavoriteCampaignModel>> AddFavoriteCampaignAsync(AddFavoriteCampaignRequestModel requestModel)
     {
-        var headers = await GetHeaders();
+        var headers = await _grpcProvider.GetDefaultHeadersAsync();
+
+        var request = _mapper.Map<FavoriteCampaignItemMessage>(requestModel);
 
         var response = await _favoriteApiGrpcServiceClient.AddFavoriteCampaignAsync(new CreateFavoriteCampaignMessage
         {
-            Campaign = new CampaignMessage
-            {
-                Id = model?.Id.ToString() ?? "",
-                Title = model?.Title ?? "",
-                Slug = model?.Slug ?? "",
-                SlugKey = model?.SlugKey ?? ""
-            },
+            Campaign = request
         }, headers);
             
         if (response.Status != 200)
@@ -41,23 +38,17 @@ public class FavoriteService : IFavoriteService
         }
             
         var favoriteCampaign = response.Data.Unpack<FavoriteCampaignMessage>();
-        return new JokerBaseResponse<FavoriteCampaignModel>(As(favoriteCampaign), 200);
+        var favoriteCampaignModel = _mapper.Map<FavoriteCampaignModel>(favoriteCampaign);
+        return new JokerBaseResponse<FavoriteCampaignModel>(favoriteCampaignModel, 200);
     }
 
-    public async Task<JokerBaseResponse<FavoriteStoreModel>> AddFavoriteStoreAsync(AddStoreModel model)
+    public async Task<JokerBaseResponse<FavoriteStoreModel>> AddFavoriteStoreAsync(AddFavoriteStoreRequestModel requestModel)
     {
-        var headers = await GetHeaders();
+        var headers = await _grpcProvider.GetDefaultHeadersAsync();
 
-        var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(new CreateFavoriteStoreMessage
-        {
-            Store = new StoreMessage
-            {
-                Id = model?.Id.ToString() ?? "",
-                Name = model?.Name ?? "",
-                Slug = model?.Slug ?? "",
-                SlugKey = model?.SlugKey ?? ""
-            }
-        }, headers);
+        var request = _mapper.Map<CreateFavoriteStoreMessage>(requestModel);
+        
+        var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(request, headers);
             
         if (response.Status != 200)
         {
@@ -65,59 +56,7 @@ public class FavoriteService : IFavoriteService
         }
             
         var favoriteStore = response.Data.Unpack<FavoriteStoreMessage>();
-        return new JokerBaseResponse<FavoriteStoreModel>(As(favoriteStore), 200);
-    }
-
-    private async Task<Metadata> GetHeaders()
-    {
-        var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-
-        var headers = new Metadata();
-        if (!string.IsNullOrEmpty(accessToken))
-        {
-            headers.Add("Authorization", $"Bearer {accessToken}");
-        }
-
-        return headers;
-    }
-
-    private FavoriteCampaignModel As(FavoriteCampaignMessage message)
-    {
-        return new FavoriteCampaignModel
-        {
-            Campaign = new CampaignModel
-            {
-                Id = message.Campaign.Id.ToGuid(),
-                Title = message.Campaign.Title,
-                Slug = message.Campaign.Slug,
-                SlugKey = message.Campaign.SlugKey
-            },
-            UserInfo = new UserModel
-            {
-                Id = message.User.Id,
-                Username = message.User.UserName
-            },
-            CreatedDate = message.CreatedDate.ToDateTime()
-        };
-    }
-        
-    private FavoriteStoreModel As(FavoriteStoreMessage message)
-    {
-        return new FavoriteStoreModel
-        {
-            Store = new StoreModel
-            {
-                Id = message.Store.Id.ToGuid(),
-                Name = message.Store.Name,
-                Slug = message.Store.Slug,
-                SlugKey = message.Store.SlugKey
-            },
-            UserInfo = new UserModel
-            {
-                Id = message.User.Id,
-                Username = message.User.UserName
-            },
-            CreatedDate = message.CreatedDate.ToDateTime()
-        };
+        var favoriteStoreModel = _mapper.Map<FavoriteStoreModel>(favoriteStore);
+        return new JokerBaseResponse<FavoriteStoreModel>(favoriteStoreModel, 200);
     }
 }

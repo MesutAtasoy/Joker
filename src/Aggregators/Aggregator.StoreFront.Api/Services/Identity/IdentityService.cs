@@ -1,5 +1,5 @@
 using System.Net.Http.Headers;
-using Aggregator.StoreFront.Api.Models.Organization;
+using Aggregator.StoreFront.Api.Models.Organization.Requests;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
@@ -9,13 +9,11 @@ public class IdentityService : IIdentityService
 {
     private readonly IHttpClientFactory _clientFactory;
     private readonly HttpClient _httpClient;
-    private readonly ILogger<IdentityService> _logger;
     private readonly IHttpContextAccessor _contextAccessor;
 
-    public IdentityService(IHttpClientFactory clientFactory, ILogger<IdentityService> logger, IHttpContextAccessor contextAccessor)
+    public IdentityService(IHttpClientFactory clientFactory, IHttpContextAccessor contextAccessor)
     {
         _clientFactory = clientFactory;
-        _logger = logger;
         _contextAccessor = contextAccessor;
         _httpClient = _clientFactory.CreateClient("IdentityApi");
     }

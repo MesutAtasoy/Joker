@@ -1,6 +1,6 @@
-namespace Aggregator.StoreFront.Api.Models.Favorite;
+namespace Aggregator.StoreFront.Api.Models.Favorite.Requests;
 
-public class AddStoreModel
+public class AddFavoriteStoreRequestModel
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

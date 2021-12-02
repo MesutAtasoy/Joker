@@ -1,4 +1,5 @@
 using Aggregator.StoreFront.Api.Models.Merchant;
+using Aggregator.StoreFront.Api.Models.Merchant.Requests;
 using Joker.Response;
 
 namespace Aggregator.StoreFront.Api.Services.Merchant;

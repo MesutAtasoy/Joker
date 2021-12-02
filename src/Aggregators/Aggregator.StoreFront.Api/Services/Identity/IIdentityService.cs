@@ -1,4 +1,4 @@
-using Aggregator.StoreFront.Api.Models.Organization;
+using Aggregator.StoreFront.Api.Models.Organization.Requests;
 
 namespace Aggregator.StoreFront.Api.Services.Identity;
 

@@ -26,7 +26,7 @@ public class FavoriteService : IFavoriteService
 
         var response = await _favoriteApiGrpcServiceClient.AddFavoriteCampaignAsync(new CreateFavoriteCampaignMessage
         {
-            Campaign = new CampaignMessage
+            Campaign = new FavoriteCampaignItemMessage
             {
                 Id = model?.Id.ToString() ?? "",
                 Title = model?.Title ?? "",
@@ -50,7 +50,7 @@ public class FavoriteService : IFavoriteService
 
         var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(new CreateFavoriteStoreMessage
         {
-            Store = new StoreMessage
+            Store = new FavoriteStoreItemMessage
             {
                 Id = model?.Id.ToString() ?? "",
                 Name = model?.Name ?? "",

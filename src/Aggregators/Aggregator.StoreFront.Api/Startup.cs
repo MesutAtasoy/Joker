@@ -1,4 +1,6 @@
 using Aggregator.StoreFront.Api.Extensions;
+using Aggregator.StoreFront.Api.Models.Campaign.MappingProfiles;
+using AutoMapper;
 using Joker.Mvc;
 
 namespace Aggregator.StoreFront.Api;
@@ -26,6 +28,7 @@ public class Startup
         services.AddJokerAuthorization();
         services.AddJokerConsul(_configuration);
         services.AddJokerOpenTelemetry(_configuration);
+        services.AddAutoMapper(typeof(CampaignMappingProfile));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

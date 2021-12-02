@@ -1,4 +1,4 @@
-using Aggregator.StoreFront.Api.Models.Favorite;
+using Aggregator.StoreFront.Api.Models.Favorite.Requests;
 using Aggregator.StoreFront.Api.Services.Campaign;
 using Aggregator.StoreFront.Api.Services.Favorite;
 using Aggregator.StoreFront.Api.Services.Store;
@@ -27,35 +27,35 @@ public class FavoriteController : ControllerBase
 
 
     [HttpPost("Campaigns")]
-    public async Task<ActionResult> AddFavoriteCampaign([FromBody] AddCampaignModel model)
+    public async Task<ActionResult> AddFavoriteCampaign([FromBody] AddFavoriteCampaignRequestModel requestModel)
     {
-        var campaign = await _campaignService.GetByIdAsync(model.Id);
+        var campaign = await _campaignService.GetByIdAsync(requestModel.Id);
         if (campaign == null)
         {
             return NotFound(new JokerBaseResponse<object>(null, 404, "Campaign is not found"));
         }
 
-        model.Title = campaign.Title;
-        model.Slug = campaign.Slug;
-        model.SlugKey = campaign.SlugKey;
+        requestModel.Title = campaign.Title;
+        requestModel.Slug = campaign.Slug;
+        requestModel.SlugKey = campaign.SlugKey;
 
-        var response = await _favoriteService.AddFavoriteCampaignAsync(model);
+        var response = await _favoriteService.AddFavoriteCampaignAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);
     }
         
     [HttpPost("Stores")]
-    public async Task<ActionResult> AddFavoriteStore([FromBody] AddStoreModel model)
+    public async Task<ActionResult> AddFavoriteStore([FromBody] AddFavoriteStoreRequestModel requestModel)
     {
-        var store = await _storeService.GetByIdAsync(model.Id);
+        var store = await _storeService.GetByIdAsync(requestModel.Id);
         if (store == null)
         {
             return NotFound(new JokerBaseResponse<object>(null, 404, "Campaign is not found"));
         }
 
-        model.Name = store.Name;
+        requestModel.Name = store.Name;
            
-        var response = await _favoriteService.AddFavoriteStoreAsync(model);
+        var response = await _favoriteService.AddFavoriteStoreAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);
     }

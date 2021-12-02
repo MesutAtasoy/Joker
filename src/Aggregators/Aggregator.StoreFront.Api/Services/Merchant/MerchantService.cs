@@ -1,23 +1,24 @@
 using Aggregator.StoreFront.Api.Models.Merchant;
-using Grpc.Core;
-using Joker.Extensions;
+using Aggregator.StoreFront.Api.Models.Merchant.Requests;
+using Aggregator.StoreFront.Api.Services.BaseGrpc;
+using AutoMapper;
 using Joker.Response;
 using Merchant.Api.Grpc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Aggregator.StoreFront.Api.Services.Merchant;
 
 public class MerchantService : IMerchantService
 {
     private readonly MerchantApiGrpcService.MerchantApiGrpcServiceClient _merchantApiGrpcServiceClient;
-    private readonly IHttpContextAccessor _contextAccessor;
+    private readonly IBaseGrpcProvider _grpcProvider;
+    private readonly IMapper _mapper;
 
     public MerchantService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient,
-        IHttpContextAccessor contextAccessor)
+        IMapper mapper, IBaseGrpcProvider grpcProvider)
     {
         _merchantApiGrpcServiceClient = merchantApiGrpcServiceClient;
-        _contextAccessor = contextAccessor;
+        _mapper = mapper;
+        _grpcProvider = grpcProvider;
     }
 
     public async Task<JokerBaseResponse<MerchantModel>> CreateAsync(CreateMerchantModel request,
@@ -25,23 +26,14 @@ public class MerchantService : IMerchantService
         string pricingPlanName,
         Guid organizationId)
     {
-        var headers = await GetHeaders();
-        var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(new CreateMerchantMessage
-        {
-            OrganizationId = organizationId.ToString(),
-            Name = request.Name?? "",
-            Description = request.Description?? "",
-            Email = request.Email?? "",
-            Slogan = request.Slogan?? "",
-            PhoneNumber = request.PhoneNumber?? "",
-            TaxNumber = request.TaxNumber?? "",
-            WebsiteUrl = request.WebSiteUrl?? "",
-            PricingPlan = new IdNameMessage
-            {
-                Id = pricingPlanId,
-                Name = pricingPlanName
-            }
-        }, headers);
+        var headers = await _grpcProvider.GetDefaultHeadersAsync();
+
+        var createMerchantMessage = _mapper.Map<CreateMerchantMessage>(request);
+        
+        createMerchantMessage.OrganizationId = organizationId.ToString();
+        createMerchantMessage.PricingPlan = new IdNameMessage { Id = pricingPlanId, Name = pricingPlanName };
+
+        var response = await _merchantApiGrpcServiceClient.CreateMerchantAsync(createMerchantMessage, headers);
 
         if (response.Status != 200)
         {
@@ -49,41 +41,9 @@ public class MerchantService : IMerchantService
         }
 
         var merchant = response.Data.Unpack<MerchantMessage>();
-        return new JokerBaseResponse<MerchantModel>(As(merchant), 200);
+
+        var merchantModel = _mapper.Map<MerchantModel>(merchant);
+
+        return new JokerBaseResponse<MerchantModel>(merchantModel, 200);
     }
-  
-    private async Task<Metadata> GetHeaders()
-    {
-        var accessToken = await _contextAccessor?.HttpContext?.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-
-        var headers = new Metadata();
-        if (!string.IsNullOrEmpty(accessToken))
-        {
-            headers.Add("Authorization", $"Bearer {accessToken}");
-        }
-
-        return headers;
-    }
-
-    #region Model Converters
-
-    private MerchantModel As(MerchantMessage merchantMessage)
-    {
-        return new()
-        {
-            Id = merchantMessage.Id.ToGuid(),
-            Name = merchantMessage.Name,
-            Description = merchantMessage.Description,
-            Email = merchantMessage.Email,
-            Slogan = merchantMessage.Slogan,
-            TaxNumber = merchantMessage.TaxNumber,
-            PhoneNumber = merchantMessage.PhoneNumber,
-            EmailConfirmed = merchantMessage.EmailConfirmed,
-            WebSiteUrl = merchantMessage.WebsiteUrl,
-            CreatedDate = merchantMessage.CreatedDate.ToDateTime(),
-            ModifiedDate = merchantMessage.ModifiedDate?.ToDateTime()
-        };
-    }
-
-    #endregion
 }

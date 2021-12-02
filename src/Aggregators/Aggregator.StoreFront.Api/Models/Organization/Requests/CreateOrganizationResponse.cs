@@ -1,4 +1,4 @@
-namespace Aggregator.StoreFront.Api.Models.Organization;
+namespace Aggregator.StoreFront.Api.Models.Organization.Requests;
 
 public class CreateOrganizationResponse
 {

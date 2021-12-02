@@ -1,4 +1,4 @@
-namespace Aggregator.StoreFront.Api.Models.Merchant;
+namespace Aggregator.StoreFront.Api.Models.Merchant.Requests;
 
 public class CreateMerchantModel
 {
