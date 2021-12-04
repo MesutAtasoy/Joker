@@ -13,7 +13,7 @@ public class MerchantService : IMerchantService
     private readonly IBaseGrpcProvider _grpcProvider;
     private readonly ILogger<MerchantService> _logger;
     private readonly IMapper _mapper;
-    
+
     public MerchantService(MerchantApiGrpcService.MerchantApiGrpcServiceClient merchantApiGrpcServiceClient,
         ILogger<MerchantService> logger,
         IBaseGrpcProvider grpcProvider, IMapper mapper)
@@ -23,46 +23,33 @@ public class MerchantService : IMerchantService
         _grpcProvider = grpcProvider;
         _mapper = mapper;
     }
-    
+
     public async Task<JokerBaseResponse<MerchantModel>> UpdateAsync(UpdateMerchantModel updateMerchantModel)
     {
-        try
+        var headers = await _grpcProvider.GetDefaultHeadersAsync();
+
+        var updateMerchantItemMessage = _mapper.Map<UpdateMerchantItemMessage>(updateMerchantModel);
+
+        var request = new UpdateMerchantMessage
         {
-            var headers = await _grpcProvider.GetDefaultHeadersAsync();
+            MerchantId = updateMerchantModel.Id,
+            Merchant = updateMerchantItemMessage
+        };
 
-            var updateMerchantItemMessage = _mapper.Map<UpdateMerchantItemMessage>(updateMerchantModel);
+        var response = await _merchantApiGrpcServiceClient.UpdateMerchantAsync(request, headers);
 
-            Console.WriteLine(JsonSerializer.Serialize(updateMerchantItemMessage));
-
-            var request = new UpdateMerchantMessage
-            {
-                MerchantId = updateMerchantModel.Id,
-                Merchant = updateMerchantItemMessage
-            };
-
-            Console.WriteLine(JsonSerializer.Serialize(request));
-
-            var response = await _merchantApiGrpcServiceClient.UpdateMerchantAsync(request, headers);
-
-            if (response.Status != 200)
-            {
-                return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
-            }
-
-            var merchant = response.Data.Unpack<MerchantMessage>();
-            
-            var merchantModel = _mapper.Map<MerchantModel>(merchant);
-
-            return new JokerBaseResponse<MerchantModel>(merchantModel, 200);
-        }
-        catch (Exception e)
+        if (response.Status != 200)
         {
-            _logger.LogError(e.InnerException?.Message, e.StackTrace);
-            Console.WriteLine(e);
-            throw;
+            return new JokerBaseResponse<MerchantModel>(null, response.Status, response.Message);
         }
-        
+
+        var merchant = response.Data.Unpack<MerchantMessage>();
+
+        var merchantModel = _mapper.Map<MerchantModel>(merchant);
+
+        return new JokerBaseResponse<MerchantModel>(merchantModel, 200);
     }
+
 
     public async Task<JokerBaseResponse<bool>> DeleteAsync(Guid id)
     {
@@ -87,7 +74,7 @@ public class MerchantService : IMerchantService
         var merchant =
             await _merchantApiGrpcServiceClient.GetMerchantByIdAsync(new ByIdMessage { Id = id.ToString() },
                 headers);
-            
+
         var merchantModel = _mapper.Map<MerchantModel>(merchant);
 
         return merchantModel;
