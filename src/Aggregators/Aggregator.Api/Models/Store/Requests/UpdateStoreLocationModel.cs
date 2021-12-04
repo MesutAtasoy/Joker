@@ -1,4 +1,4 @@
-namespace Aggregator.Api.Models.Store;
+namespace Aggregator.Api.Models.Store.Requests;
 
 public class UpdateStoreLocationModel
 {

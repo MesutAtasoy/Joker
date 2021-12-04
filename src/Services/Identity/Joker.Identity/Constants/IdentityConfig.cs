@@ -155,7 +155,8 @@ public static class IdentityConfig
                     "merchant.delete",
                     "campaign.create",
                     "campaign.read",
-                    "campaign.delete"
+                    "campaign.delete",
+                    "organization"
                 }
             },
             new()
@@ -226,7 +227,7 @@ public static class IdentityConfig
                     "merchant.delete",
                     "campaign.create",
                     "campaign.read",
-                    "campaign.delete"
+                    "campaign.delete",
                 },
                 ClientSecrets =
                 {

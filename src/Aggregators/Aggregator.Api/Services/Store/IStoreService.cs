@@ -1,4 +1,5 @@
 using Aggregator.Api.Models.Store;
+using Aggregator.Api.Models.Store.Requests;
 using Joker.Response;
 
 namespace Aggregator.Api.Services.Store;

@@ -136,8 +136,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    expose:
-      - "80"
+    ports:
+      - "5400:80"
     networks:
       - joker-network
       
