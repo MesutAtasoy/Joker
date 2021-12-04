@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Joker.BackOffice.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -18,8 +19,7 @@ public class HomeController : Controller
     {
         return View();
     }
-
-    [Authorize]
+    
     public IActionResult Privacy()
     {
         return View();

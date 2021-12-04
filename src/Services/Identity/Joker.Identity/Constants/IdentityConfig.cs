@@ -219,7 +219,14 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    "roles"
+                    IdentityServerConstants.LocalApi.ScopeName,
+                    "roles",
+                    "merchant.create",
+                    "merchant.read",
+                    "merchant.delete",
+                    "campaign.create",
+                    "campaign.read",
+                    "campaign.delete"
                 },
                 ClientSecrets =
                 {

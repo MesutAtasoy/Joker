@@ -34,6 +34,13 @@ public static class ServiceCollectionExtensions
                 options.ClientSecret = "secret";
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.Scope.Add("roles");
+                options.Scope.Add("merchant.create");
+                options.Scope.Add("merchant.read");
+                options.Scope.Add("merchant.delete");
+                options.Scope.Add("campaign.create");
+                options.Scope.Add("campaign.read");
+                options.Scope.Add("campaign.delete");
+                options.Scope.Add("IdentityServerApi");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");
