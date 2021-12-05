@@ -22,15 +22,12 @@ public class CampaignMappingProfile : Profile
             .ReverseMap();
 
         CreateMap<CreateCampaignModel, CreateCampaignMessage>()
-            .ForMember(dest => dest.StartTime,
-                src => src.MapFrom(m => Timestamp.FromDateTime(m.StartTime ?? DateTime.Now)))
-            .ForMember(dest => dest.EndTime,
-                src => src.MapFrom(m => Timestamp.FromDateTime(m.EndTime ?? DateTime.Now)));
+            .ForMember(dest => dest.StartTime, src => src.Ignore())
+            .ForMember(dest => dest.EndTime, src => src.Ignore());
+
 
         CreateMap<UpdateCampaignModel, UpdateCampaignMessageItem>()
-            .ForMember(dest => dest.StartTime,
-                src => src.MapFrom(m => Timestamp.FromDateTime(m.StartTime ?? DateTime.Now)))
-            .ForMember(dest => dest.EndTime,
-                src => src.MapFrom(m => Timestamp.FromDateTime(m.EndTime ?? DateTime.Now)));
+            .ForMember(dest => dest.StartTime, src => src.Ignore())
+            .ForMember(dest => dest.EndTime, src => src.Ignore());
     }
 }

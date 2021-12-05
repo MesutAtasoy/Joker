@@ -19,6 +19,9 @@ public class Startup
         services.AddAuthorization();
         services.AddHttpClient();
         services.AddHttpContextAccessor();
+        services.AddApiServices();
+        services.AddJokerIdentityApiClient(Configuration);
+        services.AddJokerBackOfficeGatewayApiClient(Configuration);
         services.AddJokerAuthentication(Configuration);
         services.AddDataProtection();
         services.AddSignalR();

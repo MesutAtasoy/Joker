@@ -31,6 +31,9 @@ public class CampaignService : ICampaignService
         var headers = await _grpcProvider.GetDefaultHeadersAsync();
 
         var createCampaignMessage = _mapper.Map<CreateCampaignMessage>(request);
+
+        createCampaignMessage.StartTime = DateTime.SpecifyKind(request.StartTime ?? DateTime.Now, DateTimeKind.Utc).ToTimestamp();
+        createCampaignMessage.EndTime = DateTime.SpecifyKind(request.EndTime ?? DateTime.Now, DateTimeKind.Utc).ToTimestamp();
      
         var response = await _campaignApiGrpcServiceClient.CreateCampaignAsync(createCampaignMessage, headers);
 
@@ -51,6 +54,9 @@ public class CampaignService : ICampaignService
         var headers = await _grpcProvider.GetDefaultHeadersAsync();
 
         var updateCampaignMessageItem = _mapper.Map<UpdateCampaignMessageItem>(request);
+        
+        updateCampaignMessageItem.StartTime = DateTime.SpecifyKind(request.StartTime ?? DateTime.Now, DateTimeKind.Utc).ToTimestamp();
+        updateCampaignMessageItem.EndTime = DateTime.SpecifyKind(request.EndTime ?? DateTime.Now, DateTimeKind.Utc).ToTimestamp();
         
         var response = await _campaignApiGrpcServiceClient.UpdateCampaignAsync(new UpdateCampaignMessage
         {

@@ -1,0 +1,96 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@model Joker.BackOffice.ViewModels.Shared.PagedListViewModel<Joker.BackOffice.ViewModels.Campaign.CampaignViewModel>
+
+@{
+    ViewData["Title"] = "Campaigns";
+}
+
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new (1, false, "Home", "/"),
+        new (2, true, "Campaigns", "/")
+    }
+}))
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Campaigns</h3>
+                    <div class="text-right">
+                        <a asp-controller="Campaign" asp-action="New" class="btn btn-success">New Campaign</a>
+                    </div>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="text-center">Title</th>
+                            <th scope="col" class="text-center">Code</th>
+                            <th scope="col" class="text-center">Category</th>
+                            <th scope="col" class="text-center">Store Name</th>
+                            <th scope="col" class="text-center">Merchant Name</th>
+                            <th scope="col" class="text-center">Created Date</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                        @if (Model != null)
+                        {
+                            foreach (var campaign in Model.Data.ToList())
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        @campaign.Title
+                                    </td>
+                                    <td class="text-center">
+                                        @campaign.Code
+                                    </td>
+                                    <td class="text-center">
+                                        @campaign.BusinessDirectory.Name
+                                    </td>
+                                    <td class="text-center">
+                                        @campaign.Store.Name
+                                    </td>
+                                    <td class="text-center">
+                                        @campaign.Merchant.Name
+                                    </td>
+                                    <td class="text-center">
+                                        @campaign.CreatedDate.ToShortDateString()
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" asp-controller="Campaign" asp-action="Edit" asp-route-id="@campaign.Id">Edit</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Card footer -->
+                @(await Component.InvokeAsync<PagingComponent>(new PagingComponentViewModel
+                {
+                    PageNumber = Model.PageNumber,
+                    PageSize = Model.PageSize,
+                    TotalRecords = Model.TotalRecords,
+                    NextPage = Model.NextPage,
+                    PreviousPage = Model.PreviousPage,
+                    TotalPages = Model.TotalPages
+                }))
+
+            </div>
+        </div>
+    </div>
+</div>

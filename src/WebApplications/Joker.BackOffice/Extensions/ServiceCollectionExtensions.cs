@@ -1,10 +1,13 @@
 using IdentityModel;
 using Joker.BackOffice.HttpHandlers;
+using Joker.BackOffice.Services;
+using Joker.BackOffice.Services.Abstract;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
 
 namespace Joker.BackOffice.Extensions;
 
@@ -60,4 +63,46 @@ public static class ServiceCollectionExtensions
             });
         return services;
     }
+    
+    
+    public static IServiceCollection AddJokerBackOfficeGatewayApiClient(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddHttpClient("GatewayApi", client =>
+            {
+                client.BaseAddress = new Uri(configuration.GetValue<string>("GatewayUrl"));
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+            }).AddHttpMessageHandler<BearerTokenHandler>()
+            .AddPolicyHandler(PolicyExtensions.GetCircuitBreakerPolicy());
+
+        return services;
+    }
+    
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
+    {
+        services.AddScoped<IManagementApiService, ManagementApiService>();
+        services.AddScoped<IMerchantService, MerchantService>();
+        services.AddScoped<ICampaignService, CampaignService>();
+        services.AddScoped<ISubscriptionService, SubscriptionService>();
+        services.AddScoped<ILocationService, LocationService>();
+        
+        services.AddSingleton<IUserService, UserService>();
+
+        return services;
+    }
+    
+    public static IServiceCollection AddJokerIdentityApiClient(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddHttpClient("IdentityApi", client =>
+        {
+            client.BaseAddress = new Uri(configuration.GetValue<string>("IdentityInternalUrl"));
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+        }).AddPolicyHandler(PolicyExtensions.GetCircuitBreakerPolicy());
+
+        return services;
+    }
+
 }

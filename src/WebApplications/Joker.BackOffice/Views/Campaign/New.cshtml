@@ -1,0 +1,136 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@model Joker.BackOffice.ViewModels.Campaign.Request.CreateCampaignViewModel
+
+@{
+    ViewData["Title"] = "New Campaign";
+}
+
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new(1, false, "Home", "/"),
+        new(2, false, "Campaigns", "/Campaign"),
+        new(3, true, "New Campaign", "/")
+    }
+}))
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <partial name="_ValidationSummary"/>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <form asp-controller="Campaign" asp-action="New" autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@Model.Channel" asp-for="Channel">
+
+                        <div class="card-header">
+                            Campaign Information
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Merchant</label>
+                                    <select asp-for="Merchant.Id" id="merchantId" class="form-control" asp-items="@(new SelectList(@ViewBag.Merchants, "Id", "Name"))">
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Store</label>
+                                    <select asp-for="Store.Id" class="form-control" id="storeId"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Title</label>
+                                    <input class="form-control" placeholder="Title" type="text" asp-for="Title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Code</label>
+                                    <input class="form-control" placeholder="Code" aria-label="Code" type="text" asp-for="Code">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Category</label>
+                                    <select asp-for="BusinessDirectory.Id" class="form-control"
+                                            asp-items="@(new SelectList(@ViewBag.BusinessDirectories, "Id", "DisplayName"))">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <input class="form-control" placeholder="Description" aria-label="Description" type="text" asp-for="Description">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Condition</label>
+                                    <input class="form-control" placeholder="Condition" aria-label="Condition" type="text" asp-for="Condition">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-datetime-local-input" class="form-control-label">Start Time</label>
+                                    <input class="form-control" type="datetime-local" asp-for="StartTime" id="example-datetime-local-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-datetime-local-input" class="form-control-label">End Time</label>
+                                    <input class="form-control" type="datetime-local" asp-for="EndTime" id="example-datetime-local-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Save" class="btn bg-success mt-3 mb-0"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+       $(document).ready(function () { });
+       
+       $("#merchantId").change(function () {
+           getStores();
+       });
+       
+       var getStores = function () {
+           $.ajax({
+               url: '@Url.Action("GetStores", "Campaign")',
+               type: 'GET',
+               data: {
+                   merchantId: $('#merchantId').val(),
+               },
+               success: function (data) {
+                   $('#storeId').find('option').remove()
+                   $(data).each(
+                       function (index, item) {
+                           $('#storeId').append('<option value="' + item.id + '">' + item.name + '</option>')
+                       });
+               },
+               error: function () {
+               }
+           });
+       }      
+
+    </script>
+}

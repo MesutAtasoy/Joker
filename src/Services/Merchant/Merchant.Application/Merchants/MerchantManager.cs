@@ -82,6 +82,16 @@ public class MerchantManager
         return true;
     }
 
+
+    public async Task<List<MerchantDto>> GetMerchantsAsync()
+    {
+        var organizationId = _userService.GetOrganizationId();
+
+        var merchants = _merchantRepository.Get().Where(x => x.OrganizationId == organizationId).ToList();
+
+        return _mapper.Map<List<MerchantDto>>(merchants);
+    }
+    
     public async Task<MerchantDto> GetByIdAsync(Guid id)
     {
         var merchant = await _merchantRepository.GetByIdAsync(id);

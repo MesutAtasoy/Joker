@@ -1,0 +1,76 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@model Joker.BackOffice.ViewModels.Store.Request.UpdateStoreViewModel
+
+@{
+    ViewData["Title"] = Model.Name + " - Edit";
+}
+
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new (1, false, "Home", "/"),
+        new (2, false, "Stores", "/Store"),
+        new (3, true, Model?.Name, "/")
+    }
+}))
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <partial name="_ValidationSummary"/>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <form asp-controller="Store" asp-action="Edit" autocomplete="off">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@Model.Id" asp-for="Id">
+
+                        <div class="card-header">
+                            Store Information
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Name</label>
+                                    <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Slogan</label>
+                                    <input class="form-control" placeholder="Slogan" aria-label="Slogan" type="text" asp-for="Slogan">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Email</label>
+                                    <input class="form-control" placeholder="Email" aria-label="Email" type="email" asp-for="Email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Phone Number</label>
+                                    <input class="form-control" placeholder="Phone Number" aria-label="Phone Number" type="text" asp-for="PhoneNumber">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Save" class="btn bg-success mt-3 mb-0"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
