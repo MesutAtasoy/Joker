@@ -22,6 +22,7 @@ namespace Campaign.Api
             services.AddApiVersion();
             services.AddControllers();
             services.AddJokerGrpc();
+            services.AddHttpContextAccessor();
             services.AddJokerMongo(Configuration);
             services.AddApplicationModule();
             services.AddJokerMediatr(typeof(CampaignApplicationModule));

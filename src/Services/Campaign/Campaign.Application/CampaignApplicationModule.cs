@@ -1,5 +1,5 @@
-using AutoMapper;
 using Campaign.Application.Campaigns;
+using Campaign.Application.Services;
 using Campaign.Application.Shared;
 using Campaign.Domain.CampaignAggregate.Repositories;
 using Campaign.Infrastructure;
@@ -12,7 +12,10 @@ namespace Campaign.Application;
 public static class CampaignApplicationModule
 {
     public static IServiceCollection AddApplicationModule(this IServiceCollection services)
-    {
+    {   
+        //Services
+        services.AddSingleton<IUserService, UserService>();
+
         //Repositories
         services.AddScoped<ICampaignRepository, CampaignRepository>();
 

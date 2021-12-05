@@ -31,6 +31,7 @@ public class Campaign : DomainEntity, IAggregateRoot
     public bool IsDeleted { get; private set; }
     public DateTime CreatedDate { get; private set; }
     public DateTime? ModifiedDate { get; private set; }
+    public Guid OrganizationId { get; private set; }
 
     /// <summary>
     /// Creates a new campaign
@@ -47,6 +48,7 @@ public class Campaign : DomainEntity, IAggregateRoot
     /// <param name="startTime"></param>
     /// <param name="endTime"></param>
     /// <param name="channel"></param>
+    /// <param name="organizationId"></param>
     /// <returns></returns>
     public static Campaign Create(Guid id,
         StoreRef store,
@@ -59,12 +61,14 @@ public class Campaign : DomainEntity, IAggregateRoot
         string previewImageUrl,
         DateTime? startTime,
         DateTime? endTime,
-        string channel)
+        string channel,
+        Guid organizationId)
     {
         Check.NotEmpty(id, nameof(id));
         Check.NotNull(store, nameof(store));
         Check.NotNull(merchant, nameof(merchant));
         Check.NotNull(businessDirectory, nameof(businessDirectory));
+        Check.NotNull(organizationId, nameof(organizationId));
         Check.NotNullOrEmpty(title, nameof(title));
 
         var slugKey = IdGeneratorExtensions.GetNextIDThreadLocal();
@@ -86,7 +90,8 @@ public class Campaign : DomainEntity, IAggregateRoot
             Slug = slug,
             SlugKey = slugKey,
             IsDeleted = false,
-            CreatedDate = DateTime.UtcNow
+            CreatedDate = DateTime.UtcNow,
+            OrganizationId = organizationId
         };
             
         campaign.AddDomainEvent(new CampaignCreatedEvent(id,
@@ -136,8 +141,7 @@ public class Campaign : DomainEntity, IAggregateRoot
         EndTime = endTime;
         Slug = $"{title.GenerateSlug()}-{SlugKey}";
         ModifiedDate = DateTime.UtcNow;
-            
-            
+
         AddDomainEvent(new CampaignUpdatedEvent(Id,
             Store,
             BusinessDirectory,
