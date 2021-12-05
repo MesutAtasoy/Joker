@@ -3,6 +3,7 @@ using Campaign.Application.Campaigns.Command.DeleteCampaign;
 using Campaign.Application.Campaigns.Command.UpdateCampaign;
 using Campaign.Application.Campaigns.Dto.Request;
 using Campaign.Application.Campaigns.Queries.GetCampaignById;
+using Campaign.Application.Campaigns.Queries.GetCampaigns;
 using Campaign.Application.Campaigns.Queries.GetCampaignsByMerchantId;
 using Joker.Extensions.Models;
 using MediatR;
@@ -22,7 +23,13 @@ public class CampaignController : ControllerBase
     {
         _mediator = mediator;
     }
-        
+
+    [HttpGet]
+    public async Task<ActionResult> GetCampaigns([FromQuery] PaginationFilter filter)
+    {
+        return Ok(await _mediator.Send(new GetCampaignsQuery(filter)));
+    }
+
     [HttpGet("Merchants/{id}")]
     public async Task<ActionResult> GetByMerchantIdAsync(Guid id, [FromQuery] PaginationFilter filter)
     {
