@@ -1,3 +1,4 @@
+using Joker.Extensions.Models;
 using MediatR;
 using Merchant.Application.Stores.Commands.CreateStore;
 using Merchant.Application.Stores.Commands.DeleteStore;
@@ -6,6 +7,7 @@ using Merchant.Application.Stores.Commands.UpdateStore;
 using Merchant.Application.Stores.Dto;
 using Merchant.Application.Stores.Dto.Request;
 using Merchant.Application.Stores.Queries.GetStoreById;
+using Merchant.Application.Stores.Queries.GetStores;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +26,19 @@ public class StoreController : ControllerBase
     }
 
     /// <summary>
-    /// Returns merchant by id
+    /// Returns stores by filter
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    [HttpGet()]
+    public async Task<IActionResult> GetAsync(PaginationFilter filter)
+    {
+        return Ok(await _mediator.Send(new GetStoresQuery(filter)));
+    }
+    
+    
+    /// <summary>
+    /// Returns store by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
