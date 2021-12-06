@@ -47,6 +47,7 @@ public static class ServiceCollectionExtensions
                 options.Scope.Add("merchant.read");
                 options.Scope.Add("merchant.create");
                 options.Scope.Add("campaign.read");
+                options.Scope.Add("IdentityServerApi");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");
@@ -98,6 +99,8 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<ISearchService, SearchService>();
         services.AddScoped<IFavoriteService, FavoriteService>();
+        services.AddScoped<IManagementService, ManagementApiService>();
+        services.AddScoped<IMerchantService, MerchantService>();
         return services;
     }
 

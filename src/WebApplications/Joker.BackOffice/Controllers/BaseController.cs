@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Joker.BackOffice.Controllers;
 
-[Authorize]
+[Authorize(Roles = "PaidUser")]
 public class BaseController : Controller
 {
     

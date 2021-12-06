@@ -126,8 +126,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "5300:80"
+    expose:
+      - "80"
     networks:
       - joker-network        
 
@@ -136,8 +136,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    ports:
-      - "5400:80"
+    expose:
+      - "80"
     networks:
       - joker-network
       
@@ -157,9 +157,9 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-      - GatewayUrl=http://gateway-web-api
+      - GatewayUrl=http://gateway-backoffice-api
     ports:
-      - "5060:80"
+      - "5040:80"
     networks:
       - joker-network
 

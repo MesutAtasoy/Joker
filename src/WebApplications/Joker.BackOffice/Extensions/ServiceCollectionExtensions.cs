@@ -43,7 +43,6 @@ public static class ServiceCollectionExtensions
                 options.Scope.Add("campaign.create");
                 options.Scope.Add("campaign.read");
                 options.Scope.Add("campaign.delete");
-                options.Scope.Add("IdentityServerApi");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");

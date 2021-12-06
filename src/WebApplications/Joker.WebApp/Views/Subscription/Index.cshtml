@@ -1,0 +1,38 @@
+﻿@model List<Joker.WebApp.ViewModels.Management.PricingPlanViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<header>
+    <div class="page-header min-vh-25">
+        <div class="oblique position-absolute top-0 h-100 d-md-block d-none">
+            <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="d-flex justify-content-center flex-column">
+                    <h1 class="text-gradient text-primary">Joker</h1>
+                    <h1 class="mb-4">Best Campaigns which you may like, Explore them!</h1>
+                    <p class="lead pe-5 me-5">Joker is platform which you explore all popular campaigns where you live!</p>
+                    <p class="lead pe-5 me-5">Be the first to see the popular campaigns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="text-center">
+    <h3 class="text-gradient text-primary"> Subscription Plans</h3>
+</div>
+<div class="card-group">
+    @foreach (var pricingPlan in Model)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@pricingPlan.Name</h5>
+                <p class="card-text">@pricingPlan.Description</p>
+            </div>
+            <div class="card-footer text-center">
+                <a class="btn btn-primary" asp-controller="Account" asp-action="New" asp-route-id="@pricingPlan.Slug">Subscribe</a>
+            </div>
+        </div>
+    }
+</div>

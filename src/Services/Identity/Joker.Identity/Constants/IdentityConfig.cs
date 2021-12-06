@@ -148,7 +148,6 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.LocalApi.ScopeName,
                     "roles",
                     "merchant.create",
                     "merchant.read",
@@ -182,7 +181,9 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.LocalApi.ScopeName,
                     "roles",
+                    "managementapi",
                     "favoriteapi",
                     "searchapi",
                     "aggregatorstorefrontapi",
@@ -220,7 +221,6 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.LocalApi.ScopeName,
                     "roles",
                     "merchant.create",
                     "merchant.read",

@@ -27,8 +27,9 @@
                         </li>
                     }
 
+
                 </ul>
-                
+
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <ul class="navbar-nav d-lg-block d-none">
@@ -37,6 +38,18 @@
                         </li>
                     </ul>
                 }
+
+                @if (!User.Identity.IsAuthenticated || !User.IsInRole("PaidUser"))
+                {
+                    <ul class="navbar-nav d-lg-block d-none">
+                        <li class="nav-item">
+                            <a class="btn btn-sm  bg-gradient-primary  btn-round mb-0 me-1" role="button" asp-controller="Subscription" asp-action="Index">
+                                Become a Merchant
+                            </a>
+                        </li>
+                    </ul>
+                }
+
             </div>
         </div>
     </nav>
