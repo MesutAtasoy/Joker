@@ -3,10 +3,13 @@
 Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/actions/workflows/main.yml/badge.svg)
 
 Store Front
+
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/joker-web-ui-image.png)
 
 Back Office
+
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice.png)
+
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice2png)
 
 Joker platform is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
@@ -51,6 +54,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
  ## Template
 Joker Web Application Template -> https://github.com/creativetimofficial/soft-ui-design-system
+
 Back Office Web Application Template -> https://github.com/creativetimofficial/argon-dashboard
 
  ## Contributing
