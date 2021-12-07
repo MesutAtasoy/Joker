@@ -2,18 +2,20 @@
 
 Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/actions/workflows/main.yml/badge.svg)
 
+Store Front
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/joker-web-ui-image.png)
 
-![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/joker-web-ui-image.png)
+Back Office
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice.png)
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice2png)
 
 Joker platform is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
 
 ## Architecture Diagram
-![alt text](https://github.com/MesutAtasoy/Joker/blob/main/src/WebApplications/Joker.WebApp/wwwroot/images/Diagram.jpg)
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/joker.jpg)
 
 ## Tech Stack
- All service projects are written with .Net 5 framework. gRPC, Consul, CAP, Couchbase,  Rabbit MQ, Swagger, Ocelot, EF Core, Mongo, Elasticsearch, IdentityServer4, Automapper, FluentValidation.
- All infrastructure codes are separated each class library. It can be accessed below link.
- 
+ All service projects are written with .Net 6, gRPC, Consul, CAP, Couchbase,  Rabbit MQ, Swagger, Ocelot, EF Core, Mongo, Elasticsearch, IdentityServer4, Automapper, FluentValidation. All infrastructure codes are separated each class library. It can be accessed below link. 
  https://github.com/MesutAtasoy/Joker.Packages
  
  ## Project Setup 
@@ -49,6 +51,7 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
  ## Template
 Joker Web Application Template -> https://github.com/creativetimofficial/soft-ui-design-system
+Back Office Web Application Template -> https://github.com/creativetimofficial/argon-dashboard
 
  ## Contributing
 This project welcomes contributions and suggestions. When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
