@@ -33,9 +33,4 @@
         <ProjectReference Include="..\..\Submodules\Joker.Packages\Joker.Logging\Joker.Logging.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <AdditionalFiles Include="Views\Campaign\Index.cshtml" />
-      <AdditionalFiles Include="Views\Campaign\New.cshtml" />
-    </ItemGroup>
-    
 </Project>

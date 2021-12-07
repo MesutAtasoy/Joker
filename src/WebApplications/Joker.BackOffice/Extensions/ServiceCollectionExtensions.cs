@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace Joker.BackOffice.Extensions;
 
@@ -63,6 +65,23 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
+    public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddOpenTelemetryTracing(
+            (builder) => builder
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddJaegerExporter(j =>
+                {
+                    j.AgentHost = configuration["jaeger:host"];
+                    j.AgentPort = int.Parse(configuration["jaeger:port"]);
+                })
+                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("JokerBackOfficeApp"))
+        );
+
+        return services;
+    }
     
     public static IServiceCollection AddJokerBackOfficeGatewayApiClient(this IServiceCollection services,
         IConfiguration configuration)
