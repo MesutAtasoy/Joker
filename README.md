@@ -2,17 +2,19 @@
 
 Microservices Example!  ![main workflow](https://github.com/MesutAtasoy/Joker/actions/workflows/main.yml/badge.svg)
 
-Store Front
+
+Joker platform is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
+
+## Store Front
 
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/joker-web-ui-image.png)
 
-Back Office
+## Back Office
 
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice.png)
 
-![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice2png)
+![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/backoffice2.png)
 
-Joker platform is location based campaign marketplace. An example of microservices container based application which implemented different approaches within each microservice (DDD, CQRS, Simple CRUD)
 
 ## Architecture Diagram
 ![alt text](https://github.com/MesutAtasoy/Joker/blob/net60/src/images/joker.jpg)
