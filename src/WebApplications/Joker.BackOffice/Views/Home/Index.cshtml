@@ -1,0 +1,16 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@{
+    ViewData["Title"] = "Home Page";
+}
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new HeaderComponentItemViewModel(1, true, "Home", "/")
+    }
+}))
+
+<div class="container-fluid mt--6">
+    Home
+</div>

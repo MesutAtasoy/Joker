@@ -1,5 +1,6 @@
 using Aggregator.Api.Models.Location;
 using Aggregator.Api.Models.Store;
+using Aggregator.Api.Models.Store.Requests;
 using Aggregator.Api.Services.Location;
 using Aggregator.Api.Services.Store;
 using Joker.Response;

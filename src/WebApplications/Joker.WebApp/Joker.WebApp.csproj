@@ -362,6 +362,8 @@
         <_ContentIncludedByDefault Remove="wwwroot\theme\scss\bootstrap\_type.scss" />
         <_ContentIncludedByDefault Remove="wwwroot\theme\scss\bootstrap\_utilities.scss" />
         <_ContentIncludedByDefault Remove="wwwroot\theme\scss\bootstrap\_variables.scss" />
+        <_ContentIncludedByDefault Remove="Views\Subscription\Index.cshtml" />
+        <_ContentIncludedByDefault Remove="Views\Merchant\New.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,4 +1,6 @@
 using Aggregator.Api.Extensions;
+using Aggregator.Api.Models.Campaign.MappingProfiles;
+using AutoMapper;
 using Joker.Mvc;
 
 namespace Aggregator.Api;
@@ -21,6 +23,7 @@ public class Startup
         services.AddControllers();
         services.AddGrpc();
         services.AddSwaggerGen();
+        services.AddAutoMapper(typeof(CampaignMappingProfile));
         services.AddJokerAuthentication(_configuration);
         services.AddJokerAuthorization();
         services.AddJokerConsul(_configuration);

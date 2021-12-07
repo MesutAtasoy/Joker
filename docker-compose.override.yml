@@ -73,7 +73,6 @@ services:
     networks:
       - joker-network
 
-
   identity-api:
     container_name: "identity-api"
     environment:
@@ -109,6 +108,18 @@ services:
       - "80"
     networks:
       - joker-network
+      
+  aggregator-storefront-api:
+    container_name: "aggregator-storefront-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
+    expose:
+      - "80"
+    networks:
+      - joker-network      
         
   gateway-web-api:
     container_name: "gateway-web-api"
@@ -120,6 +131,16 @@ services:
     networks:
       - joker-network        
 
+  gateway-backoffice-api:
+    container_name: "gateway-backoffice-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+    expose:
+      - "80"
+    networks:
+      - joker-network
+      
   joker-webapp:
     container_name: "joker-webapp"
     environment:
@@ -128,6 +149,17 @@ services:
       - GatewayUrl=http://gateway-web-api
     ports:
       - "5030:80"
+    networks:
+      - joker-network
+
+  joker-backoffice:
+    container_name: "joker-backoffice"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80
+      - GatewayUrl=http://gateway-backoffice-api
+    ports:
+      - "5040:80"
     networks:
       - joker-network
 

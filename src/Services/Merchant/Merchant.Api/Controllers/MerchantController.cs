@@ -5,6 +5,7 @@ using Merchant.Application.Merchants.Commands.DeleteMerchant;
 using Merchant.Application.Merchants.Commands.UpdateMerchant;
 using Merchant.Application.Merchants.Dto.Requests;
 using Merchant.Application.Merchants.Queries.GetMerchantById;
+using Merchant.Application.Merchants.Queries.GetMerchants;
 using Merchant.Application.Stores.Queries.GetStoresByMerchantId;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +23,19 @@ public class MerchantController : ControllerBase
     {
         _mediator = mediator;
     }
+    
+       
         
+    /// <summary>
+    /// Returns merchants by organization id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<IActionResult> GetAsync()
+    {
+        return Ok(await _mediator.Send(new GetMerchantsQuery()));
+    }
         
     /// <summary>
     /// Returns merchant by id

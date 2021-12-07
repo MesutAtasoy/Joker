@@ -7,9 +7,9 @@ namespace Joker.WebApp.Controllers;
 [Authorize]
 public class SubscriptionController : Controller
 {
-    private readonly IManagementApiService _managementApiService;
+    private readonly IManagementService _managementApiService;
         
-    public SubscriptionController(IManagementApiService managementApiService)
+    public SubscriptionController(IManagementService managementApiService)
     {
         _managementApiService = managementApiService;
     }

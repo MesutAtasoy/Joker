@@ -1,5 +1,6 @@
 using Joker.Identity.Constants;
 using Joker.Identity.Models;
+using Joker.Identity.Models.Entities;
 using Joker.Identity.Services;
 
 

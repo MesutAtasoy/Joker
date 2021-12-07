@@ -4,6 +4,7 @@ using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Joker.Identity.Models;
+using Joker.Identity.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,11 +42,13 @@ public class ProfileService : IProfileService
  
         if (await _userManager.IsInRoleAsync(user, "PaidUser"))
         {
-            var organization = await _dbContext.OrganizationUsers.FirstOrDefaultAsync(x => x.UserId == user.Id);
+            var organization = await _dbContext.OrganizationUsers
+                .Include(x=>x.Organization)
+                .FirstOrDefaultAsync(x => x.UserId == user.Id);
             if (organization != null)
             {
                 claims.Add(new Claim("organizationId", organization.OrganizationId.ToString()));
-                claims.Add(new Claim("organizationName", organization.OrganizationName));    
+                claims.Add(new Claim("organizationName", organization?.Organization?.Name ?? ""));    
             }
                 
         }

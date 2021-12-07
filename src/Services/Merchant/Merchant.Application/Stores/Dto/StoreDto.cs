@@ -15,4 +15,5 @@ public class StoreDto
     public DateTime CreatedDate { get;  set; }
     public DateTime? ModifiedDate { get;  set; }
     public StoreLocationDto Location { get; set; }
+    public Guid OrganizationId { get; set; }
 }

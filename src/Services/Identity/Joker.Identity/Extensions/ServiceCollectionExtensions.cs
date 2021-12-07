@@ -1,7 +1,7 @@
+using IdentityServer4;
 using Joker.CAP;
-using Joker.Identity.EventHandlers;
-using Joker.Identity.Events;
 using Joker.Identity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -57,13 +57,6 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddJokerEvents(this IServiceCollection services)
-    {
-        services.RegisterCAPEvents(typeof(SubscribedEvent));
-        services.RegisterCAPEventHandlers(typeof(SubscribedEventHandler));
-        return services;
-    }
-        
     public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
         IConfiguration configuration)
     {
@@ -79,6 +72,28 @@ public static class ServiceCollectionExtensions
                 .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("JokerIdentity"))
         );
 
+        return services;
+    }
+
+    public static IServiceCollection AddJokerAuthentication(this IServiceCollection services)
+    {
+        services.AddLocalApiAuthentication();
+        return services;
+    }
+
+
+    public static IServiceCollection AddJokerAuthorization(this IServiceCollection services)
+    {
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireLocalApi", policy =>
+            {
+                policy.AddAuthenticationSchemes(IdentityServerConstants.LocalApi.AuthenticationScheme);
+                policy.RequireScope("merchant.create", "local");
+                policy.RequireAuthenticatedUser();
+            });
+        });
+        
         return services;
     }
 

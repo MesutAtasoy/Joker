@@ -25,6 +25,7 @@ public class Store : DomainEntity, IAggregateRoot
     public DateTime CreatedDate { get; private set; }
     public DateTime? ModifiedDate { get; private set; }
     public bool IsDeleted { get; private set; }
+    public Guid OrganizationId { get; private set; }
 
 
     /// <summary>
@@ -38,6 +39,7 @@ public class Store : DomainEntity, IAggregateRoot
     /// <param name="email"></param>
     /// <param name="description"></param>
     /// <param name="location"></param>
+    /// <param name="organizationId"></param>
     /// <returns></returns>
     public static Store Create(Guid id,
         MerchantRef merchant,
@@ -46,11 +48,13 @@ public class Store : DomainEntity, IAggregateRoot
         string phoneNumber,
         string email,
         string description,
-        StoreLocation location)
+        StoreLocation location,
+        Guid organizationId)
     {
         Check.NotEmpty(id, nameof(id));
         Check.NotNull(merchant, nameof(merchant));
         Check.NotNull(location, nameof(location));
+        Check.NotNull(organizationId, nameof(organizationId));
         Check.NotNullOrEmpty(name, nameof(name));
 
         var store = new Store
@@ -65,7 +69,8 @@ public class Store : DomainEntity, IAggregateRoot
             Location = location,
             EmailConfirmed = false,
             IsDeleted = false,
-            CreatedDate = DateTime.UtcNow
+            CreatedDate = DateTime.UtcNow,
+            OrganizationId = organizationId
         };
 
         store.AddDomainEvent(new StoreCreatedEvent(id, 
@@ -75,7 +80,8 @@ public class Store : DomainEntity, IAggregateRoot
             phoneNumber,
             email,
             description,
-            location));
+            location,
+            organizationId));
 
         return store;
     }

@@ -61,19 +61,46 @@ services:
       - subscription-api
       - location-api
       - campaign-api
-  
+        
+  aggregator-storefront-api:
+    image: joker/aggregatorstorefrontapi
+    build:
+      context: .
+      dockerfile: src/Aggregators/Aggregator.StoreFront.Api/Dockerfile
+    depends_on:
+      - identity-api
+      - merchant-api
+      - campaign-api
+      - favorite-api
+        
   gateway-web-api:
     image: joker/gatewaywebapi
     build:
       context: .
       dockerfile: src/Gateways/Gateway.Web.Api/Dockerfile
     depends_on:
-      - aggregator-api      
-        
+      - aggregator-api  
+      
+  gateway-backoffice-api:
+    image: joker/gatewaybackofficeapi
+    build:
+      context: .
+      dockerfile: src/Gateways/Gateway.BackOffice.Api/Dockerfile
+    depends_on:
+      - aggregator-api
+  
   joker-webapp:
     image: joker/jokerwebapp
     build:
       context: .
       dockerfile: src/WebApplications/Joker.WebApp/Dockerfile              
+    depends_on:
+      - gateway-web-api
+
+  joker-backoffice:
+    image: joker/jokerbackoffice
+    build:
+      context: .
+      dockerfile: src/WebApplications/Joker.BackOffice/Dockerfile
     depends_on:
       - gateway-web-api

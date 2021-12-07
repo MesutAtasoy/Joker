@@ -1,0 +1,112 @@
+﻿@using Joker.WebApp.ViewModels.Management
+@model Joker.WebApp.ViewModels.Merchant.Request.CreateMerchantViewModel
+@{
+    ViewData["Title"] = "Become a Merchant";
+    Layout = "_Layout";
+    var pricingPlan = (PricingPlanViewModel)ViewData["PricingPlan"];
+}
+<header>
+    <div class="page-header min-vh-25">
+        <div class="oblique position-absolute top-0 h-100 d-md-block d-none">
+            <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="d-flex justify-content-center flex-column">
+                    <h1 class="text-gradient text-primary">Joker</h1>
+                    <h1 class="mb-4">Best Campaigns which you may like, Explore them!</h1>
+                    <p class="lead pe-5 me-5">Joker is platform which you explore all popular campaigns where you live!</p>
+                    <p class="lead pe-5 me-5">Be the first to see the popular campaigns.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<header>
+    <div class="page-header min-vh-25">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 d-flex justify-content-center flex-column">
+                    <div class="card d-flex blur justify-content-center p-4 shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+                        <div class="text-center">
+                            <h3 class="text-gradient text-primary">Merchant Information</h3>
+                        </div>
+                        <form asp-controller="Account" asp-action="New" autocomplete="off">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" value="@pricingPlan.Id" asp-for="PricingPlanId">
+                            <div class="row">
+                                <partial name="_ValidationSummary"/>
+                            </div>
+                            <div class="card-body pb-2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Name</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" placeholder="Merchant Name" aria-label="Merchant Name" type="text" asp-for="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <label>Website url</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Web site url" asp-for="WebSiteUrl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Slogan</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" placeholder="Merchant's slogan" aria-label="Merchant's slogan" type="text" asp-for="Slogan">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <label>Tax Number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Tax Number" asp-for="TaxNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                        <div class="input-group mb-4">
+                                            <input class="form-control" placeholder="Email" aria-label="Email" type="email" asp-for="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 ps-md-2">
+                                        <label>Phone Number</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Phone Number" asp-for="PhoneNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0 mt-md-0 mt-4">
+                                    <label>Description</label>
+                                    <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <input type="submit" value="Apply" class="btn bg-gradient-primary mt-3 mb-0"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-start flex-column">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@pricingPlan.Name</h5>
+                            <p class="card-text">@pricingPlan.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

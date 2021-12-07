@@ -16,4 +16,10 @@ public class UserService : IUserService
     {
         return _contextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(x => x.Type == "sub")?.Value.ToGuid() ?? Guid.Empty;
     }
+
+    public Guid GetOrganizationId()
+    {
+        return _contextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(x => x.Type == "organizationId")?.Value.ToGuid() ??
+               Guid.Empty;
+    }
 }

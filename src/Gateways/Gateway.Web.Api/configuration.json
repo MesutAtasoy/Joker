@@ -2,11 +2,11 @@
   "Routes": [
     {
       "DownstreamScheme": "http",
-      "ServiceName": "Merchant.Api",
+      "ServiceName": "Search.Api",
       "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/merchant/api/{everything}",
-      "SwaggerKey": "merchant",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "UpstreamPathTemplate": "/search/api/{everything}",
+      "SwaggerKey": "search",
+      "UpstreamHttpMethod": ["GET"],
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
         "DurationOfBreak": 1000,
@@ -31,82 +31,18 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
-    },    
-    {
-      "DownstreamScheme": "http",
-      "ServiceName": "Location.Api",
-      "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/location/api/{everything}",
-      "SwaggerKey": "location",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
-      "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,
-        "DurationOfBreak": 1000,
-        "TimeoutValue": 5000
-      },
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      }
     },
     {
       "DownstreamScheme": "http",
-      "ServiceName": "Campaign.Api",
+      "ServiceName": "Aggregator.StoreFront.Api",
       "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/campaign/api/{everything}",
-      "SwaggerKey": "campaign",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
-      "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,
-        "DurationOfBreak": 1000,
-        "TimeoutValue": 5000
-      },
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      }
-    },
-    {
-      "DownstreamScheme": "http",
-      "ServiceName": "Search.Api",
-      "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/search/api/{everything}",
-      "SwaggerKey": "search",
-      "UpstreamHttpMethod": ["GET"],
-      "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,
-        "DurationOfBreak": 1000,
-        "TimeoutValue": 5000
-      },
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      }
-    },
-    {
-      "DownstreamScheme": "http",
-      "ServiceName": "Aggregator.Api",
-      "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/aggregator/api/{everything}",
-      "SwaggerKey": "aggregator",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
+      "UpstreamPathTemplate": "/aggregator/storefront/api/{everything}",
+      "SwaggerKey": "aggregator-storefront",
+      "UpstreamHttpMethod": ["GET", "POST"],
       "QoSOptions": {
         "ExceptionsAllowedBeforeBreaking": 3,
         "DurationOfBreak": 1000,
         "TimeoutValue": 500000
-      },
-      "LoadBalancerOptions": {
-        "Type": "LeastConnection"
-      }
-    },
-    {
-      "DownstreamScheme": "http",
-      "ServiceName": "Subscription.Api",
-      "DownstreamPathTemplate": "/api/{everything}",
-      "UpstreamPathTemplate": "/subscription/api/{everything}",
-      "SwaggerKey": "subscription",
-      "UpstreamHttpMethod": ["GET"],
-      "QoSOptions": {
-        "ExceptionsAllowedBeforeBreaking": 3,
-        "DurationOfBreak": 1000,
-        "TimeoutValue": 5000
       },
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
@@ -129,24 +65,14 @@
       }
     }
   ],
-  "SwaggerEndPoints": [
+  "SwaggerEndPoints": [   
     {
-      "Key": "merchant",
+      "Key": "search",
       "Config": [
         {
-          "Name": "Merchant API",
+          "Name": "Search API",
           "Version": "v1",
-          "Url": "http://localhost:5000/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "campaign",
-      "Config": [
-        {
-          "Name": "Campaign API",
-          "Version": "v1",
-          "Url": "http://localhost:5001/swagger/v1/swagger.json"
+          "Url": "http://localhost:5004/swagger/v1/swagger.json"
         }
       ]
     },
@@ -161,52 +87,22 @@
       ]
     },
     {
-      "Key": "location",
-      "Config": [
-        {
-          "Name": "Location API",
-          "Version": "v1",
-          "Url": "http://localhost:5003/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "search",
-      "Config": [
-        {
-          "Name": "Search API",
-          "Version": "v1",
-          "Url": "http://localhost:5004/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "aggregator",
-      "Config": [
-        {
-          "Name": "Aggregator API",
-          "Version": "v1",
-          "Url": "http://localhost:5006/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
-      "Key": "subscription",
-      "Config": [
-        {
-          "Name": "Subscription API",
-          "Version": "v1",
-          "Url": "http://localhost:5007/swagger/v1/swagger.json"
-        }
-      ]
-    },
-    {
       "Key": "favorite",
       "Config": [
         {
           "Name": "Favorite API",
           "Version": "v1",
           "Url": "http://localhost:5005/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "aggregator-storefront",
+      "Config": [
+        {
+          "Name": "Aggregator StoreFront API",
+          "Version": "v1",
+          "Url": "http://localhost:5020/swagger/v1/swagger.json"
         }
       ]
     }

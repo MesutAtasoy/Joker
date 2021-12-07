@@ -8,13 +8,19 @@ public class MerchantCreatedEvent : DomainEvent
     {
     }
 
-    public MerchantCreatedEvent(Guid id, string name, Guid pricingPlanId, string pricingPlanName, Guid userId)
+    public MerchantCreatedEvent(Guid id, 
+        string name,
+        Guid pricingPlanId,
+        string pricingPlanName,
+        Guid userId,
+        Guid organizationId)
     {
         Id = id;
         Name = name;
         PricingPlanId = pricingPlanId;
         PricingPlanName = pricingPlanName;
         UserId = userId;
+        OrganizationId = organizationId;
     }
 
     public Guid Id { get; private set; }
@@ -22,4 +28,5 @@ public class MerchantCreatedEvent : DomainEvent
     public Guid PricingPlanId { get; private set; }
     public string PricingPlanName { get; private set; }
     public Guid UserId { get; private set; }
+    public Guid OrganizationId { get; private set; }
 }

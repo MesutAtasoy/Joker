@@ -15,28 +15,5 @@
                 My Favorite Stores
             </a>
         </li>
-        @if (User.IsInRole("PaidUser"))
-        {
-            <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyMerchant">
-                    My Merchant
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyStores">
-                    My Stores
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MyCampaigns">
-                    My Campaigns
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link mb-0 px-0 py-1" asp-controller="Account" asp-action="MySubscriptions">
-                    My Subscription Plans
-                </a>
-            </li>
-        }
     </ul>
 </div>

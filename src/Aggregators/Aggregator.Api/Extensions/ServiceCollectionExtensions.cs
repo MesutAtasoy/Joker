@@ -1,4 +1,5 @@
 using Aggregator.Api.Interceptors;
+using Aggregator.Api.Services.BaseGrpc;
 using Aggregator.Api.Services.Campaign;
 using Aggregator.Api.Services.Favorite;
 using Aggregator.Api.Services.Location;
@@ -22,6 +23,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddGrpcServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddSingleton<IBaseGrpcProvider, BaseGrpcProvider>();
         services.AddScoped<IMerchantService, MerchantService>();
         services.AddScoped<IStoreService, StoreService>();
         services.AddScoped<ICampaignService, CampaignService>();
@@ -83,8 +85,8 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("campaign", "merchant");
-                builder.RequireRole("FreeUser", "PaidUser");
+                builder.RequireScope("campaign.create","campaign.read", "campaign.delete", "merchant.create","merchant.read", "merchant.delete");
+                builder.RequireRole("Admin","PaidUser");
             });
         });
 

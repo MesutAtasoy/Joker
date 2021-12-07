@@ -35,7 +35,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessage = new FavoriteStoreMessage
         {
-            Store = new StoreMessage
+            Store = new FavoriteStoreItemMessage
             {
                 Id = response?.Store?.Id.ToString() ?? " ",
                 Name = response?.Store?.Name ?? " ",
@@ -70,7 +70,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessage = new FavoriteCampaignMessage
         {
-            Campaign = new CampaignMessage
+            Campaign = new FavoriteCampaignItemMessage
             {
                 Id = response?.Campaign?.Id.ToString() ?? " ",
                 Title = response?.Campaign?.Title ?? " ",
@@ -99,7 +99,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
         {
-            Store = new StoreMessage
+            Store = new FavoriteStoreItemMessage
             {
                 Id = x?.Store?.Id.ToString() ?? " ",
                 Name = x?.Store?.Name ?? " ",
@@ -134,7 +134,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
         {
-            Campaign = new CampaignMessage
+            Campaign = new FavoriteCampaignItemMessage
             {
                 Id = x?.Campaign?.Id.ToString() ?? " ",
                 Title = x?.Campaign?.Title ?? " ",
@@ -168,7 +168,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessages = stores.Select(x =>  new FavoriteStoreMessage
         {
-            Store = new StoreMessage
+            Store = new FavoriteStoreItemMessage
             {
                 Id = x?.Store?.Id.ToString() ?? " ",
                 Name = x?.Store?.Name ?? " ",
@@ -202,7 +202,7 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
 
         var favoriteCampaignMessages = campaigns.Select(x =>  new FavoriteCampaignMessage
         {
-            Campaign = new CampaignMessage
+            Campaign = new FavoriteCampaignItemMessage
             {
                 Id = x?.Campaign?.Id.ToString() ?? " ",
                 Title = x?.Campaign?.Title ?? " ",

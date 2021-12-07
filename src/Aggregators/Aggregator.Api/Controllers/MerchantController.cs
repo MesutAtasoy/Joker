@@ -13,27 +13,12 @@ namespace Aggregator.Api.Controllers;
 public class MerchantController : ControllerBase
 {
     private readonly IMerchantService _merchantService;
-    private readonly IManagementService _managementService;
 
-    public MerchantController(IMerchantService merchantService,
-        IManagementService managementService)
+    public MerchantController(IMerchantService merchantService)
     {
         _merchantService = merchantService;
-        _managementService = managementService;
     }
 
-    [HttpPost]
-    public async Task<ActionResult> CreateAsync([FromBody] CreateMerchantModel model)
-    {
-        var pricingPlan = await _managementService.GetPricingPlanByIdAsync(model.PricingPlanId);
-        if (pricingPlan == null)
-        {
-            return NotFound(new JokerBaseResponse<object>(null, 404, "Pricing plan is not found"));
-        }
-
-        var response = await _merchantService.CreateAsync(model, pricingPlan.Id, pricingPlan.Name);
-        return StatusCode(response.StatusCode, response);
-    }
 
     [HttpPut]
     public async Task<ActionResult> UpdateAsync([FromBody] UpdateMerchantModel model)

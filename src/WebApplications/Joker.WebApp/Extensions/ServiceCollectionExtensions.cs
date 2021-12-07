@@ -35,25 +35,24 @@ public static class ServiceCollectionExtensions
             .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
             {
                 options.Authority = configuration.GetValue<string>("IdentityUrl");
-                options.MetadataAddress =
-                    $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
+                options.MetadataAddress = $"{configuration.GetValue<string>("IdentityInternalUrl")}/.well-known/openid-configuration";
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.ClientId = "joker.web.app";
+                options.ClientId = "joker.store.front";
                 options.ClientSecret = "secret";
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.Scope.Add("roles");
                 options.Scope.Add("offline_access");
-                options.Scope.Add("merchant");
-                options.Scope.Add("campaign");
-                options.Scope.Add("subscription");
-                options.Scope.Add("organization");
+                options.Scope.Add("favorite.read");
+                options.Scope.Add("favorite.create");
+                options.Scope.Add("merchant.read");
+                options.Scope.Add("merchant.create");
+                options.Scope.Add("campaign.read");
+                options.Scope.Add("IdentityServerApi");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");
                 options.ClaimActions.DeleteClaim("auth_time");
                 options.ClaimActions.MapUniqueJsonKey("role", "role");
-                options.ClaimActions.MapUniqueJsonKey("organizationId", "organizationId");
-                options.ClaimActions.MapUniqueJsonKey("organizationName", "organizationName");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -61,12 +60,9 @@ public static class ServiceCollectionExtensions
                     NameClaimType = JwtClaimTypes.GivenName,
                     RoleClaimType = JwtClaimTypes.Role
                 };
-                options.Events.OnRedirectToIdentityProvider = context => 
-                    context.RedirectToIdentityProvider(configuration.GetValue<string>("IdentityUrl"));
-                options.Events.OnRedirectToIdentityProviderForSignOut = context => 
-                    context.RedirectToIdentityProviderForSignOut(configuration.GetValue<string>("IdentityUrl"));
-                options.Events.OnUserInformationReceived = context => 
-                    context.MapRoles(); 
+                options.Events.OnRedirectToIdentityProvider = context => context.RedirectToIdentityProvider(configuration.GetValue<string>("IdentityUrl"));
+                options.Events.OnRedirectToIdentityProviderForSignOut = context => context.RedirectToIdentityProviderForSignOut(configuration.GetValue<string>("IdentityUrl"));
+                options.Events.OnUserInformationReceived = context => context.MapRoles(); 
                 options.RequireHttpsMetadata = false;
             });
         return services;
@@ -101,13 +97,10 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
-        services.AddScoped<IManagementApiService, ManagementApiService>();
         services.AddScoped<ISearchService, SearchService>();
-        services.AddScoped<IMerchantService, MerchantService>();
-        services.AddScoped<ICampaignService, CampaignService>();
-        services.AddScoped<ISubscriptionService, SubscriptionService>();
-        services.AddScoped<ILocationService, LocationService>();
         services.AddScoped<IFavoriteService, FavoriteService>();
+        services.AddScoped<IManagementService, ManagementApiService>();
+        services.AddScoped<IMerchantService, MerchantService>();
         return services;
     }
 

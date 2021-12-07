@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+using Joker.Identity.Models.Seeders.Base;
 
 namespace Joker.Identity.Models.Seeders;
 
@@ -8,29 +8,37 @@ public class JokerIdentityDbContextSeeder
     {
         var options = new JokerIdentityDbContextSeederOptions();
         action.Invoke(options);
+        
+        CheckNull(options);
             
-        var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            
-        try
+        var context = options.Context;
+        var seeders = GetClassByType<ISeeder>();
+        var tasks = seeders.OrderBy(o => o.Order).ToList();
+        
+        foreach (var seeder in tasks)
         {
-            if (!options.Context.Roles.Any())
-            {
-                string[] roles = new [] {"Admin", "FreeUser", "PaidUser"};
-
-                foreach (string role in roles)
-                {
-                    if (!options.Context.Roles.Any(r => r.Name == role))
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role));
-                    }
-                }
-
-                await options.Context.SaveChangesAsync();
-            }
-        }
-        catch (Exception ex)
-        {
-            options.Logger.LogError(ex, "EXCEPTION ERROR while migrating {DbContextName}", nameof(JokerIdentityDbContext));
+            await seeder.SeedAsync(context, options.Logger, serviceProvider);
         }
     }
+    
+    #region Utilies Functions
+
+    public void CheckNull(JokerIdentityDbContextSeederOptions options)
+    {
+        if (options.Context == null)
+            throw new ArgumentNullException(nameof(options.Context));
+        if (options.RetryCount == default)
+            options.RetryCount = 5;
+    }
+
+    public IList<T> GetClassByType<T>()
+    {
+        return AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(s => s.GetTypes())
+            .Where(p => typeof(T).IsAssignableFrom(p) && !p.IsAbstract && !p.IsInterface)
+            .Select(c => (T) Activator.CreateInstance(c))
+            .ToList();
+    }
+
+    #endregion
 }

@@ -16,20 +16,17 @@ namespace Favorite.Application.Campaigns.EventHandlers
     {
         private readonly IEventDispatcher _eventDispatcher;
         private readonly IFavoriteStoreRepository _storeRepository;
-        private readonly ILogger<CampaignCreatedEventHandler> _logger;
 
         public CampaignCreatedEventHandler(IFavoriteStoreRepository storeRepository,
-            IEventDispatcher eventDispatcher, ILogger<CampaignCreatedEventHandler> logger)
+            IEventDispatcher eventDispatcher)
         {
             _storeRepository = storeRepository;
             _eventDispatcher = eventDispatcher;
-            _logger = logger;
         }
 
         [CapSubscribe(nameof(CampaignCreatedEvent))]
         public override async Task Handle(CampaignCreatedEvent @event)
         {
-            _logger.LogInformation("Event'ı aldım hacı");
             var favoriteStores = await _storeRepository.GetStoresByStoreIdAsync(@event.StoreId.ToString());
 
             var users = favoriteStores.Select(x => x.UserInfo);
@@ -50,8 +47,6 @@ namespace Favorite.Application.Campaigns.EventHandlers
 
                 await Task.WhenAll(items);
             }
-            
-            _logger.LogInformation("Event'ı gönderdim hacı");
         }
 
         private CampaignCreatedNotificationEvent CreateEvent(User user, 

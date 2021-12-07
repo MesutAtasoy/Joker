@@ -1,0 +1,226 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@model Joker.BackOffice.ViewModels.Store.Request.CreateStoreViewModel
+
+@{
+    ViewData["Title"] = "New Store";
+}
+
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new (1, false, "Home", "/"),
+        new (2, false, "Stores", "/Store"),
+        new (3, true, "New Store", "/")
+    }
+}))
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <partial name="_ValidationSummary"/>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <form asp-controller="Store" asp-action="New" autocomplete="off">
+                        @Html.AntiForgeryToken()
+
+                        <div class="card-header">
+                            Store Information
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Merchant</label>
+                                    <select asp-for="MerchantId" class="form-control" asp-items="@(new SelectList(@ViewBag.Merchants, "Id", "Name"))">
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Name</label>
+                                    <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Slogan</label>
+                                    <input class="form-control" placeholder="Slogan" aria-label="Slogan" type="text" asp-for="Slogan">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Email</label>
+                                    <input class="form-control" placeholder="Email" aria-label="Email" type="email" asp-for="Email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Phone Number</label>
+                                    <input class="form-control" placeholder="Phone Number" aria-label="Phone Number" type="text" asp-for="PhoneNumber">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-header">
+                            Location
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Country</label>
+                                    <select asp-for="Location.Country.Id" class="form-control" id="countryId"
+                                            asp-items="@(new SelectList(@ViewBag.Countries, "Id", "Name"))">
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">City</label>
+                                    <select asp-for="Location.City.Id" class="form-control" id="cityId"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">District</label>
+                                    <select asp-for="Location.District.Id" class="form-control" id="districtId"></select>
+                                </div>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Neighborhood</label>
+                                    <select asp-for="Location.Neighborhood.Id" class="form-control" id="neighborhoodId"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Quarter</label>
+                                    <select asp-for="Location.Quarter.Id" class="form-control" id="quarterId"></select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Address</label>
+                                    <input class="form-control" placeholder="Address" aria-label="Phone Number" type="text" asp-for="Location.Address">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Save" class="btn bg-success mt-3 mb-0"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+       $(document).ready(function () {
+           getCities();
+       });
+       
+       $("#countryId").change(function () {
+           getCities();
+       });
+       
+       $("#cityId").change(function () {
+           getDistricts();
+       });
+       
+       $("#districtId").change(function () {
+           getNeighborhoods();
+       });
+       
+       $("#neighborhoodId").change(function () {
+           getQuarters();
+       });
+       
+       
+       var getCities = function () {
+           $.ajax({
+               url: '@Url.Action("GetCities", "Store")',
+               type: 'GET',
+               data: {
+                   countryId: $('#countryId').val(),
+               },
+               success: function (data) {
+                   $('#cityId').find('option').remove()
+                   $(data).each(
+                       function (index, item) {
+                           $('#cityId').append('<option value="' + item.id + '">' + item.name + '</option>')
+                       });
+               },
+               error: function () {
+               }
+           });
+       }
+       
+       var getDistricts = function () {
+           $.ajax({
+               url: '@Url.Action("GetDistricts", "Store")',
+               type: 'GET',
+               data: {
+                   cityId: $('#cityId').val(),
+               },
+               success: function (data) {
+                   $('#districtId').find('option').remove()
+                   $(data).each(
+                       function (index, item) {
+                           $('#districtId').append('<option value="' + item.id + '">' + item.name + '</option>')
+                       });
+               },
+               error: function () {
+               }
+           });
+       }
+       
+       var getNeighborhoods = function () {
+           $.ajax({
+               url: '@Url.Action("GetNeighborhoods", "Store")',
+               type: 'GET',
+               data: {
+                   districtId: $('#districtId').val(),
+               },
+               success: function (data) {
+                   $('#neighborhoodId').find('option').remove()
+                   $(data).each(
+                       function (index, item) {
+                           $('#neighborhoodId').append('<option value="' + item.id + '">' + item.name + '</option>')
+                       });
+               },
+               error: function () {
+               }
+           });
+       }
+       
+       var getQuarters = function () {
+           $.ajax({
+               url: '@Url.Action("GetQuarters", "Store")',
+               type: 'GET',
+               data: {
+                   neighborhoodId: $('#neighborhoodId').val(),
+               },
+               success: function (data) {
+                   $('#quarterId').find('option').remove()
+                   $(data).each(
+                       function (index, item) {
+                           $('#quarterId').append('<option value="' + item.id + '">' + item.name + '</option>')
+                       });
+               },
+               error: function () {
+               }
+           });
+       }
+
+    </script>
+}

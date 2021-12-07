@@ -1,0 +1,87 @@
+﻿@using Joker.BackOffice.ViewComponents
+@using Joker.BackOffice.ViewModels.Shared
+@model Joker.BackOffice.ViewModels.Campaign.Request.UpdateCampaignViewModel
+
+@{
+    ViewData["Title"] = Model.Title + " - Edit";
+}
+
+@(await Component.InvokeAsync<HeaderComponent>(new HeaderComponentViewModel
+{
+    Headers = new List<HeaderComponentItemViewModel>
+    {
+        new(1, false, "Home", "/"),
+        new(2, false, "Campaigns", "/Campaign"),
+        new(3, true, @Model.Title, "/")
+    }
+}))
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <partial name="_ValidationSummary"/>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <form asp-controller="Campaign" asp-action="Edit" autocomplete="off">
+                        @Html.AntiForgeryToken()
+
+                        <div class="card-header">
+                            Campaign Information
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Title</label>
+                                    <input class="form-control" placeholder="Title" type="text" asp-for="Title">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Code</label>
+                                    <input class="form-control" placeholder="Code" aria-label="Code" type="text" asp-for="Code">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <input class="form-control" placeholder="Description" aria-label="Description" type="text" asp-for="Description">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Condition</label>
+                                    <input class="form-control" placeholder="Condition" aria-label="Condition" type="text" asp-for="Condition">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description</label>
+                                    <textarea class="form-control" id="message" rows="6" placeholder="Describe your merchant" asp-for="Description"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-datetime-local-input" class="form-control-label">Start Time</label>
+                                    <input class="form-control" type="datetime-local" asp-for="StartTime" value="@Model.StartTime" id="example-datetime-local-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-datetime-local-input" class="form-control-label">End Time</label>
+                                    <input class="form-control" type="datetime-local" asp-for="EndTime"  value="@Model.EndTime" id="example-datetime-local-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Save" class="btn bg-success mt-3 mb-0"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

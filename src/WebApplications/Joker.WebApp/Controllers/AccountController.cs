@@ -11,23 +11,20 @@ namespace Joker.WebApp.Controllers;
 [Authorize]
 public class AccountController : Controller
 {
-    private readonly IMerchantService _merchantService;
-    private readonly ICampaignService _campaignService;
-    private readonly ISubscriptionService _subscriptionService;
     private readonly IFavoriteService _favoriteService;
     private readonly IUserService _userService;
+    private readonly IManagementService _managementService;
+    private readonly IMerchantService _merchantService;
 
-    public AccountController(IMerchantService merchantService,
-        IUserService userService, 
-        ICampaignService campaignService, 
-        ISubscriptionService subscriptionService, 
-        IFavoriteService favoriteService)
+    public AccountController(IUserService userService,  
+        IFavoriteService favoriteService, 
+        IManagementService managementService, 
+        IMerchantService merchantService)
     {
-        _merchantService = merchantService;
         _userService = userService;
-        _campaignService = campaignService;
-        _subscriptionService = subscriptionService;
         _favoriteService = favoriteService;
+        _managementService = managementService;
+        _merchantService = merchantService;
     }
 
     public async Task<IActionResult> Logout()
@@ -50,39 +47,6 @@ public class AccountController : Controller
         return View();
     }
         
-    [Authorize(Roles = "PaidUser")]
-    public async Task<IActionResult> MyMerchant()
-    {
-        var merchantId = _userService.GetOrganizationId();
-        var merchant = await _merchantService.GetByIdAsync(merchantId);
-        var updateMerchantViewModel = new UpdateMerchantViewModel
-        {
-            Id = merchantId.ToString(),
-            Name = merchant.Name,
-            Description = merchant.Description,
-            Email = merchant.Email,
-            Slogan = merchant.Slogan,
-            PhoneNumber = merchant.PhoneNumber,
-            TaxNumber = merchant.TaxNumber,
-            WebSiteUrl = merchant.WebSiteUrl
-        };
-        return View(updateMerchantViewModel);
-    }
-        
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    [Authorize(Roles = "PaidUser")]
-    public async Task<IActionResult> MyMerchant(UpdateMerchantViewModel model)
-    {
-        if (ModelState.IsValid)
-        {
-            await _merchantService.UpdateAsync(model);
-            return RedirectToAction("Index", "Account");
-        }
-            
-        return View(model);
-    }
-        
     public async Task<IActionResult> MyFavoriteCampaigns()
     {
         var userId = _userService.GetUserId();
@@ -97,27 +61,34 @@ public class AccountController : Controller
         return View(favoriteStores);
     }
 
-    [Authorize(Roles = "PaidUser")]
-    public async Task<IActionResult> MyStores(int page = 1)
+    
+    public async Task<ActionResult> New(string id)
     {
-        var merchantId = _userService.GetOrganizationId();
-        var stores = await _merchantService.GetStoresAsync(merchantId, page);
-        return View(stores);
+        var pricingPlan = await _managementService.GetPricingPlanAsync(id);
+        ViewData["PricingPlan"] = pricingPlan;
+        return View();
     }
         
-    [Authorize(Roles = "PaidUser")]
-    public async Task<IActionResult> MyCampaigns(int page = 1)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> New(CreateMerchantViewModel model)
     {
-        var merchantId = _userService.GetOrganizationId();
-        var campaigns = await _campaignService.GetCampaigns(merchantId, page);
-        return View(campaigns);
-    }
-        
-    [Authorize(Roles = "PaidUser")]
-    public async Task<IActionResult> MySubscriptions()
-    {
-        var merchantId = _userService.GetOrganizationId();
-        var subscriptions = await _subscriptionService.GetSubscriptions(merchantId);
-        return View(subscriptions);
+        if (ModelState.IsValid)
+        {
+            var response = await _merchantService.CreateAsync(model);
+            if (response.StatusCode == 200)
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+            
+                var homeUrl = Url.Action(nameof(HomeController.Index), "Home");
+            
+                return new SignOutResult(OpenIdConnectDefaults.AuthenticationScheme, new AuthenticationProperties { RedirectUri = homeUrl });
+            }
+
+            ModelState.AddModelError("", response.Message);
+        }
+            
+        return View(model);
     }
 }

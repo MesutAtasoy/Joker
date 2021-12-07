@@ -3,6 +3,7 @@ using Campaign.Application.Campaigns.Command.CreateCampaign;
 using Campaign.Application.Campaigns.Command.DeleteCampaign;
 using Campaign.Application.Campaigns.Command.UpdateCampaign;
 using Campaign.Application.Campaigns.Dto;
+using Campaign.Application.Services;
 using Campaign.Domain.CampaignAggregate.Repositories;
 using Campaign.Domain.Refs;
 using Campaign.Infrastructure.Factories;
@@ -14,17 +15,22 @@ public class CampaignManager
 {
     private readonly ICampaignRepository _campaignRepository;
     private readonly IMapper _mapper;
+    private readonly IUserService _userService;
 
     public CampaignManager(ICampaignRepository campaignRepository,
-        IMapper mapper)
+        IMapper mapper, 
+        IUserService userService)
     {
         _campaignRepository = campaignRepository;
         _mapper = mapper;
+        _userService = userService;
     }
 
     public async Task<CampaignDto> CreateAsync(CreateCampaignCommand request)
     {
         var campaignId = IdGenerationFactory.Create();
+
+        var organizationId = _userService.GetOrganizationId();
             
         var businessDirectoryRef = BusinessDirectoryRef.Create(request.BusinessDirectory.RefId,
             request.BusinessDirectory.Name);
@@ -46,7 +52,8 @@ public class CampaignManager
             request.PreviewImageUrl,
             request.StartTime,
             request.EndTime,
-            request.Channel);
+            request.Channel,
+            organizationId);
 
         await _campaignRepository.AddAsync(campaign);
             
