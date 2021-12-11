@@ -24,4 +24,5 @@ public class StoreCreatedEvent : IntegrationEvent
     public Guid QuarterId { get; set; }
     public string QuarterName { get; set; }
     public string Address { get; set; }
+    public Guid OrganizationId { get; private set; }
 }

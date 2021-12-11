@@ -70,10 +70,9 @@ message CampaignMessage {
   string code = 8;
   string description = 9;
   string condition = 10;
-  string previewImageUrl = 11;
-  google.protobuf.Timestamp startTime = 12;
-  google.protobuf.Timestamp endTime = 13;
-  string channel = 14;
-  google.protobuf.Timestamp createdDate = 15;
-  google.protobuf.Timestamp modifiedDate = 16;  
+  google.protobuf.Timestamp startTime = 11;
+  google.protobuf.Timestamp endTime = 12;
+  google.protobuf.Timestamp createdDate = 13;
+  google.protobuf.Timestamp modifiedDate = 14;
+  string organizationId = 15;
 }

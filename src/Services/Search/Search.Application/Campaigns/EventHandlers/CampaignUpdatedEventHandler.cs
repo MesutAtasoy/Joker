@@ -32,7 +32,6 @@ public class CampaignUpdatedEventHandler : CAPIntegrationEventHandler<CampaignUp
             EndTime = @event.EndTime,
             StoreId = @event.StoreId,
             StoreName = @event.StoreName,
-            PreviewImageUrl = @event.PreviewImageUrl
         };
 
         await _campaignIndexManager.AddOrUpdateAsync(campaignIndexModel);

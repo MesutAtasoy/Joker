@@ -78,6 +78,7 @@ message StoreMessage {
   google.protobuf.Timestamp createdDate = 9;
   google.protobuf.Timestamp modifiedDate = 10;
   StoreLocationMessage location = 11;
+  string organizationId = 12;
 }
 
 
@@ -121,9 +122,10 @@ message MerchantMessage {
   string taxNumber = 6;
   string email = 7;
   string description = 8;
-  bool emailConfirmed = 9 ;
+  bool emailConfirmed = 9;
   google.protobuf.Timestamp createdDate = 10;
   google.protobuf.Timestamp modifiedDate = 11;
+  string organizationId = 12;
 }
 
 message MerchantBaseGrpcResponse {

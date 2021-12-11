@@ -33,10 +33,7 @@ public class CampaignController : BaseController
     {
         await FillViewBagInNewAsync();
 
-        return View(new CreateCampaignViewModel
-        {
-            Channel = "WEB"
-        });
+        return View(new CreateCampaignViewModel());
     }
 
     public async Task FillViewBagInNewAsync()

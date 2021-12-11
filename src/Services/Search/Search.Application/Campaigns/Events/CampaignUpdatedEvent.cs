@@ -18,8 +18,6 @@ public class CampaignUpdatedEvent : IntegrationEvent
     public string Code { get; private set; }
     public string Description { get; private set; }
     public string Condition { get; private set; }
-    public string PreviewImageUrl { get; private set; }
     public DateTime? StartTime { get; private set; }
     public DateTime? EndTime { get; private set; }
-    public string Channel { get; private set; }
 }

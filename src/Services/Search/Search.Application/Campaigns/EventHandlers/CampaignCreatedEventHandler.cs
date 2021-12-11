@@ -34,9 +34,9 @@ public class CampaignCreatedEventHandler : CAPIntegrationEventHandler<CampaignCr
             StoreName = @event.StoreName,
             MerchantId = @event.MerchantId,
             MerchantName = @event.MerchantName,
-            PreviewImageUrl = @event.PreviewImageUrl,
             BusinessDirectoryId = @event.BusinessDirectoryId,
-            BusinessDirectoryName = @event.BusinessDirectoryName
+            BusinessDirectoryName = @event.BusinessDirectoryName,
+            OrganizationId = @event.OrganizationId
         };
 
         await _campaignIndexManager.AddOrUpdateAsync(campaignIndexModel);

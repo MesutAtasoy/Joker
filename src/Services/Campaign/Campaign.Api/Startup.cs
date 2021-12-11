@@ -1,5 +1,6 @@
 using Campaign.Api.Extensions;
 using Campaign.Api.GrpcServices;
+using Campaign.Api.GrpcServices.MappingProfiles;
 using Campaign.Application;
 using Joker.Mvc;
 
@@ -32,6 +33,7 @@ namespace Campaign.Api
             services.AddJokerAuthorization();
             services.AddJokerAuthentication(Configuration);
             services.AddJokerOpenTelemetry(Configuration);
+            services.AddAutoMapper(typeof(CampaignMappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

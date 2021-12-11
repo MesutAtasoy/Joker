@@ -13,7 +13,6 @@ public class StoreDto
     public bool EmailConfirmed { get;  set; }
     public string Description { get;  set; }
     public DateTime CreatedDate { get;  set; }
-    public DateTime? ModifiedDate { get;  set; }
     public StoreLocationDto Location { get; set; }
     public Guid OrganizationId { get; set; }
 }

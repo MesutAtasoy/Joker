@@ -39,7 +39,8 @@ public class StoreCreatedEventHandler : CAPIntegrationEventHandler<StoreCreatedE
             Address = @event.Address,
             PhoneNumber = @event.PhoneNumber,
             MerchantId = @event.MerchantId,
-            MerchantName = @event.MerchantName
+            MerchantName = @event.MerchantName,
+            OrganizationId = @event.OrganizationId
         };
 
         await _storeIndexManager.AddOrUpdateAsync(storeIndexModel);
