@@ -34,7 +34,8 @@ namespace Favorite.Application.Stores
                     Id = request.Id,
                     Name = request.Name,
                     Slug = request.Slug,
-                    SlugKey = request.SlugKey
+                    SlugKey = request.SlugKey,
+                    OrganizationId = request.OrganizationId
                 },
                 UserInfo = new User
                 {

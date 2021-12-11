@@ -38,7 +38,8 @@ public class FavoriteController : ControllerBase
         requestModel.Title = campaign.Title;
         requestModel.Slug = campaign.Slug;
         requestModel.SlugKey = campaign.SlugKey;
-
+        requestModel.OrganizationId = campaign.OrganizationId;
+        
         var response = await _favoriteService.AddFavoriteCampaignAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);
@@ -54,7 +55,8 @@ public class FavoriteController : ControllerBase
         }
 
         requestModel.Name = store.Name;
-           
+        requestModel.OrganizationId = store.OrganizationId;
+        
         var response = await _favoriteService.AddFavoriteStoreAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);

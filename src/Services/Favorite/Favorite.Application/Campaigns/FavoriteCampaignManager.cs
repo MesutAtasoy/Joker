@@ -35,7 +35,8 @@ namespace Favorite.Application.Campaigns
                     Id = request.Id,
                     Title = request.Title,
                     Slug = request.Slug,
-                    SlugKey = request.SlugKey
+                    SlugKey = request.SlugKey,
+                    OrganizationId = request.OrganizationId
                 },
                 UserInfo = new User
                 {

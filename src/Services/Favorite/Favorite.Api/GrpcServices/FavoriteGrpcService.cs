@@ -30,7 +30,8 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
             Id = request.Store.Id.ToGuid(),
             Name = request.Store.Name,
             Slug = request.Store.Slug,
-            SlugKey = request.Store.SlugKey
+            SlugKey = request.Store.SlugKey,
+            OrganizationId = request.Store.OrganizationId.ToGuid()
         });
 
         var favoriteCampaignMessage = new FavoriteStoreMessage
@@ -65,7 +66,8 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
             Id = request.Campaign.Id.ToGuid(),
             Title = request.Campaign.Title,
             Slug = request.Campaign.Slug,
-            SlugKey = request.Campaign.SlugKey
+            SlugKey = request.Campaign.SlugKey,
+            OrganizationId = request.Campaign.OrganizationId.ToGuid()
         });
 
         var favoriteCampaignMessage = new FavoriteCampaignMessage
