@@ -36,9 +36,6 @@
         <Protobuf Include="..\..\Services\Campaign\Campaign.Api\Protos\campaign.proto" GrpcServices="Client">
             <Link>Protos\campaign.proto</Link>
         </Protobuf>
-        <Protobuf Include="..\..\Services\Favorite\Favorite.Api\Protos\favorite.proto" GrpcServices="Client">
-            <Link>Protos\favorite.proto</Link>
-        </Protobuf>
     </ItemGroup>
 
     <ItemGroup>
