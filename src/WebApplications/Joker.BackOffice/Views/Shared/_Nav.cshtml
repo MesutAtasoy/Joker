@@ -1,3 +1,4 @@
+@using Joker.BackOffice.ViewComponents
 <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-              
+                    @(await Component.InvokeAsync<NotificationComponent>())
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">

@@ -20,11 +20,16 @@ public class GetUserNotificationsQueryHandler : IRequestHandler<GetUserNotificat
     
     public async Task<List<UserNotificationDto>> Handle(GetUserNotificationsQuery request, CancellationToken cancellationToken)
     {
-        var list = _notificationRepository.Get()
-            .Where(x => !x.IsDeleted && x.OwnerId == request.OwnerId)
-            .ProjectTo<UserNotificationDto>(_mapper.ConfigurationProvider)
+        var query = _notificationRepository.Get().Where(x => !x.IsDeleted && x.OwnerId == request.OwnerId);
+
+        if (request.IsRead.HasValue)
+        {
+            query = query.Where(x => x.IsRead == request.IsRead.Value);
+        }
+
+        var userNotifications = query.ProjectTo<UserNotificationDto>(_mapper.ConfigurationProvider)
             .ToList();
 
-        return list;
+        return userNotifications;
     }
 }

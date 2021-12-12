@@ -11,8 +11,7 @@ public static class IdentityConfig
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
             new("roles", "Your role(s)", new List<string>() { "role" }),
-            new("organization", "Your Organization Info(s)",
-                new List<string>() { "organizationId", "organizationName" })
+            new("organization", "Your Organization Info(s)", new List<string>() { "organizationId", "organizationName" })
         };
 
     public static IEnumerable<ApiScope> ApiScopes => new[]
@@ -25,6 +24,7 @@ public static class IdentityConfig
         new ApiScope("campaign.delete", "Deletes campaign"),
         new ApiScope("favorite.create", "Creates Campaign And Store favorites"),
         new ApiScope("favorite.read", "Reads Campaign And Store favorites"),
+        new ApiScope("notification", "Notification Management"),
         new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
 
@@ -76,6 +76,11 @@ public static class IdentityConfig
             {
                 ApiSecrets = { new Secret("apisecret".Sha256()) }
             },
+            new("notificationapi", "Notification API")
+            {
+                Scopes = {"notification"},
+                ApiSecrets = { new Secret("apisecret".Sha256()) }
+            },
             new("aggregatorapi", "Aggregator API", new[] { "role", "organizationId", "organizationName" })
             {
                 Scopes =
@@ -112,54 +117,6 @@ public static class IdentityConfig
         {
             new()
             {
-                ClientId = "Postman.Store.Front",
-                ClientName = "Postman Store Front Client",
-                AccessTokenLifetime = 60 * 60 * 24,
-                AccessTokenType = AccessTokenType.Reference,
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                RequireClientSecret = false,
-                AllowOfflineAccess = true,
-                AllowedScopes =
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.LocalApi.ScopeName,
-                    "roles",
-                    "favoriteapi",
-                    "searchapi",
-                    "aggregatorstorefrontapi",
-                    "favorite.read",
-                    "favorite.create",
-                    "merchant.read",
-                    "merchant.create",
-                    "campaign.read"
-                }
-            },
-            new()
-            {
-                ClientId = "Postman.Back.Office",
-                ClientName = "Postman Back Office Client",
-                AccessTokenLifetime = 60 * 60 * 24,
-                AccessTokenType = AccessTokenType.Reference,
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                RequireClientSecret = false,
-                AllowOfflineAccess = true,
-                AllowedScopes =
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    "roles",
-                    "merchant.create",
-                    "merchant.read",
-                    "merchant.delete",
-                    "campaign.create",
-                    "campaign.read",
-                    "campaign.delete",
-                    "organization"
-                }
-            },
-            new()
-            {
                 AccessTokenType = AccessTokenType.Reference,
                 AccessTokenLifetime = 3600,
                 AllowOfflineAccess = true,
@@ -191,7 +148,8 @@ public static class IdentityConfig
                     "favorite.create",
                     "merchant.read",
                     "merchant.create",
-                    "campaign.read"
+                    "campaign.read",
+                    "notification"
                 },
                 ClientSecrets =
                 {
@@ -221,6 +179,7 @@ public static class IdentityConfig
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
+                    "organization",
                     "roles",
                     "merchant.create",
                     "merchant.read",
@@ -228,6 +187,7 @@ public static class IdentityConfig
                     "campaign.create",
                     "campaign.read",
                     "campaign.delete",
+                    "notification"
                 },
                 ClientSecrets =
                 {

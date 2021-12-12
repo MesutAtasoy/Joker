@@ -83,6 +83,22 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       }
+    },
+    {
+      "DownstreamScheme": "http",
+      "ServiceName": "Notification.Api",
+      "DownstreamPathTemplate": "/api/{everything}",
+      "UpstreamPathTemplate": "/notification/api/{everything}",
+      "SwaggerKey": "notification",
+      "UpstreamHttpMethod": ["GET"],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 1000,
+        "TimeoutValue": 5000
+      },
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
     }
   ],
   "SwaggerEndPoints": [
@@ -143,6 +159,16 @@
           "Name": "Subscription API",
           "Version": "v1",
           "Url": "http://subscription-api/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "notification",
+      "Config": [
+        {
+          "Name": "Notification API",
+          "Version": "v1",
+          "Url": "http://notification-api/swagger/v1/swagger.json"
         }
       ]
     }

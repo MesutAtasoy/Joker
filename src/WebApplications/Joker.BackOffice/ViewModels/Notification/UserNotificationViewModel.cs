@@ -1,6 +1,6 @@
-namespace Notification.Application.UserNotifications.Dto;
+namespace Joker.BackOffice.ViewModels.Notification;
 
-public class UserNotificationDto
+public class UserNotificationViewModel
 {
     public Guid Id { get; set; }
     public Guid OwnerId { get; set; }
