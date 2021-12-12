@@ -46,9 +46,12 @@ public class FavoriteService : IFavoriteService
     {
         var headers = await _grpcProvider.GetDefaultHeadersAsync();
 
-        var request = _mapper.Map<CreateFavoriteStoreMessage>(requestModel);
+        var request = _mapper.Map<FavoriteStoreItemMessage>(requestModel);
         
-        var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(request, headers);
+        var response = await _favoriteApiGrpcServiceClient.AddFavoriteStoreAsync(new CreateFavoriteStoreMessage
+        {
+            Store = request
+        }, headers);
             
         if (response.Status != 200)
         {

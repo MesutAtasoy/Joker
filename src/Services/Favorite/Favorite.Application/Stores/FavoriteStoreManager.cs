@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using Favorite.Application.Services;
+using Favorite.Application.Services.Notification;
+using Favorite.Application.Services.User;
 using Favorite.Application.Stores.Commands.CreateFavoriteStore;
 using Favorite.Application.Stores.Dto;
 using Favorite.Core.Entities;
@@ -15,13 +16,17 @@ namespace Favorite.Application.Stores
         private readonly IFavoriteStoreRepository _favoriteStoreRepository;
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
-
+        private readonly INotificationService _notificationService;
+        
         public FavoriteStoreManager(IFavoriteStoreRepository favoriteStoreRepository,
-            IMapper mapper, IUserService userService)
+            IMapper mapper, 
+            IUserService userService,
+            INotificationService notificationService)
         {
             _favoriteStoreRepository = favoriteStoreRepository;
             _mapper = mapper;
             _userService = userService;
+            _notificationService = notificationService;
         }
 
 
@@ -46,6 +51,9 @@ namespace Favorite.Application.Stores
             };
 
             await _favoriteStoreRepository.AddFavoriteStoreAsync(favoriteStore);
+
+            await _notificationService.SendAsync(request.OrganizationId, "New Like Store", $"The store ({request.Name}) is liked by someone.");
+
             return _mapper.Map<FavoriteStoreDto>(favoriteStore);
         }
 

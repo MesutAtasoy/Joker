@@ -1,6 +1,6 @@
 using System;
 
-namespace Favorite.Application.Services
+namespace Favorite.Application.Services.User
 {
     public interface IUserService
     {

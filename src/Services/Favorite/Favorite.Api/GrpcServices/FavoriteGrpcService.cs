@@ -29,8 +29,6 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
         {
             Id = request.Store.Id.ToGuid(),
             Name = request.Store.Name,
-            Slug = request.Store.Slug,
-            SlugKey = request.Store.SlugKey,
             OrganizationId = request.Store.OrganizationId.ToGuid()
         });
 
@@ -40,8 +38,6 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
             {
                 Id = response?.Store?.Id.ToString() ?? " ",
                 Name = response?.Store?.Name ?? " ",
-                Slug = response?.Store?.Slug ?? " ",
-                SlugKey = response?.Store?.SlugKey ?? ""
             },
             User = new UserMessage
             {
@@ -105,8 +101,6 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
             {
                 Id = x?.Store?.Id.ToString() ?? " ",
                 Name = x?.Store?.Name ?? " ",
-                Slug = x?.Store?.Slug ?? " ",
-                SlugKey = x?.Store?.SlugKey ?? ""
             },
             User = new UserMessage
             {
@@ -174,8 +168,6 @@ public class FavoriteGrpcService : FavoriteApiGrpcService.FavoriteApiGrpcService
             {
                 Id = x?.Store?.Id.ToString() ?? " ",
                 Name = x?.Store?.Name ?? " ",
-                Slug = x?.Store?.Slug ?? " ",
-                SlugKey = x?.Store?.SlugKey ?? ""
             },
             User = new UserMessage
             {

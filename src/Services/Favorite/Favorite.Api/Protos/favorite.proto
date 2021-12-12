@@ -72,7 +72,5 @@ message FavoriteCampaignItemMessage {
 message FavoriteStoreItemMessage {
   string id = 1;
   string name = 2;
-  string slug = 3;
-  string slugKey = 4;
-  string organizationId = 5;
+  string organizationId = 3;
 }

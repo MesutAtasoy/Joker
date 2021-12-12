@@ -3,7 +3,7 @@ using System.Linq;
 using Joker.Extensions;
 using Microsoft.AspNetCore.Http;
 
-namespace Favorite.Application.Services
+namespace Favorite.Application.Services.User
 {
     public class UserService : IUserService
     {

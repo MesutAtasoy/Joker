@@ -96,6 +96,16 @@ services:
       - "80"
     networks:
       - joker-network      
+
+  notification-api:
+    container_name: "notification-api"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:80      
+    expose:
+      - "80"
+    networks:
+      - joker-network
         
   aggregator-api:
     container_name: "aggregator-api"

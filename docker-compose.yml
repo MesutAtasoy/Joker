@@ -47,7 +47,13 @@ services:
     build:
       context: .
       dockerfile: src/Services/Subscription/Subscription.Api/Dockerfile
-   
+  
+  notification-api:
+    image: joker/notificationapi
+    build:
+      context: .
+      dockerfile: src/Services/Notification/Notification.Api/Dockerfile
+      
   aggregator-api:
     image: joker/aggregatorapi
     build:

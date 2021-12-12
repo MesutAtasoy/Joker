@@ -8,7 +8,6 @@ using Favorite.Core.Entities;
 using Favorite.Core.Repositories;
 using Joker.CAP.IntegrationEvent;
 using Joker.EventBus;
-using Microsoft.Extensions.Logging;
 
 namespace Favorite.Application.Campaigns.EventHandlers
 {
