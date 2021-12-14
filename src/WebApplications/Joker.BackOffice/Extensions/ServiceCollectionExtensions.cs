@@ -71,6 +71,20 @@ public static class ServiceCollectionExtensions
             });
         return services;
     }
+    
+    public static IServiceCollection AddJokerCors(this IServiceCollection services)
+    {
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy",
+                builder => builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed((host) => true)
+                    .AllowCredentials());
+        });
+        return services;
+    }
 
     public static IServiceCollection AddJokerOpenTelemetry(this IServiceCollection services,
         IConfiguration configuration)

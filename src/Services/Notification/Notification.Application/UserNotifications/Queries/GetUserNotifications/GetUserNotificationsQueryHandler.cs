@@ -28,6 +28,8 @@ public class GetUserNotificationsQueryHandler : IRequestHandler<GetUserNotificat
         }
 
         var userNotifications = query.ProjectTo<UserNotificationDto>(_mapper.ConfigurationProvider)
+            .OrderByDescending(x=>x.CreatedDate)
+            .Take(5)
             .ToList();
 
         return userNotifications;

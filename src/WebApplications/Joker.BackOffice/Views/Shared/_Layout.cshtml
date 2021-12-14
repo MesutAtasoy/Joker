@@ -18,7 +18,7 @@
     <partial name="_Nav"/>
 
     @RenderBody()
- 
+
 </div>
 
 
@@ -28,6 +28,34 @@
 <script src="~/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
 <script src="~/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <script src="~/assets/js/argon.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.7/signalr.min.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
+
+
+@using Microsoft.AspNetCore.Authentication;
+@using Microsoft.Extensions.Options
+@inject IOptions<UrlSettings> settings
+<script>
+    var notificationHubUrl = '@settings.Value.NotificationHub';    
+    
+(function setupConnection() {
+          var connection = new signalR.HubConnectionBuilder().withUrl( notificationHubUrl + "/notification").build();
+          connection.on("new", function (message) {  
+            alert("a")
+            console.log(message);
+            var div = $(".notification-list");   
+            var title = message.title;
+            var createdDate = "now";
+            var content = message.content;
+            var notificationContent = "<a href=\"#!\" class=\"list-group-item list-group-item-action\"><div class=\"row align-items-center\"> <div class=\"col-auto\"> <img alt=\"Image placeholder\" src=\"/images/joker.png\" class=\"avatar rounded-circle\"> </div> <div class=\"col ml--2\"> <div class=\"d-flex justify-content-between align-items-center\"> <div> <h4 class=\"mb-0 text-sm\">"+ title +"</h4> </div> <div class=\"text-right text-muted\"> <small>"+ createdDate+"</small> </div> </div> <p class=\"text-sm mb-0\">"+content+"</p> </div> </div></a>"
+            div.prepend(notificationContent);
+          });
+          connection.start({ withCredentials: false })
+          .catch(err => console.error(err.toString()))
+          .then(response => console.log("connected"));
+      }) ();  
+   
+</script>
+
 </body>
 </html>

@@ -10,13 +10,12 @@
         <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">@Model?.Count</strong> notifications.</h6>
     </div>
     <!-- List group -->
-    <div class="list-group list-group-flush">
+    <div class="list-group list-group-flush notification-list">
         @foreach (var notification in Model)
         {
             <a href="#!" class="list-group-item list-group-item-action">
                 <div class="row align-items-center">
                     <div class="col-auto">
-                        <!-- Avatar -->
                         <img alt="Image placeholder" src="~/images/joker.png" class="avatar rounded-circle">
                     </div>
                     <div class="col ml--2">

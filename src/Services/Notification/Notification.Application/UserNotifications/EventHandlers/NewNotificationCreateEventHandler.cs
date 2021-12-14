@@ -1,5 +1,6 @@
 using DotNetCore.CAP;
 using Joker.CAP.IntegrationEvent;
+using Joker.EventBus;
 using Notification.Application.UserNotifications.Events;
 using Notification.Core.Models;
 using Notification.Core.Repositories;
@@ -9,10 +10,13 @@ namespace Notification.Application.UserNotifications.EventHandlers;
 public class NewNotificationCreateEventHandler: CAPIntegrationEventHandler<NewNotificationCreateEvent>
 {
     private readonly IUserNotificationRepository _repository;
-
-    public NewNotificationCreateEventHandler(IUserNotificationRepository repository)
+    private readonly IEventDispatcher _eventDispatcher;
+    
+    public NewNotificationCreateEventHandler(IUserNotificationRepository repository,
+        IEventDispatcher eventDispatcher)
     {
         _repository = repository;
+        _eventDispatcher = eventDispatcher;
     }
 
     [CapSubscribe(nameof(NewNotificationCreateEvent))]
@@ -26,5 +30,7 @@ public class NewNotificationCreateEventHandler: CAPIntegrationEventHandler<NewNo
             CreatedDate = DateTime.UtcNow,
             IsRead = false,
         });
+
+        await _eventDispatcher.Dispatch(new NewNotificationCreatedEvent(@event.OwnerId, @event.Title, @event.Content));
     }
 }
