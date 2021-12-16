@@ -16,15 +16,12 @@ public static class IdentityConfig
 
     public static IEnumerable<ApiScope> ApiScopes => new[]
     {
-        new ApiScope("merchant.create", "Creates merchant"),
-        new ApiScope("merchant.read", "Reads merchant"),
-        new ApiScope("merchant.delete", "Deletes merchant"),
-        new ApiScope("campaign.create", "Creates campaign"),
-        new ApiScope("campaign.read", "Reads campaign"),
-        new ApiScope("campaign.delete", "Deletes campaign"),
-        new ApiScope("favorite.create", "Creates Campaign And Store favorites"),
-        new ApiScope("favorite.read", "Reads Campaign And Store favorites"),
+        new ApiScope("merchant", "Merchant Management"),
+        new ApiScope("campaign", "Campaign Management"),
+        new ApiScope("favorite", "Favorite Management"),
         new ApiScope("notification", "Notification Management"),
+        new ApiScope("notificationhub", "Real Time Notification Management"),
+        new ApiScope("subscription", "Subscription Management"),
         new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
 
@@ -33,80 +30,47 @@ public static class IdentityConfig
         {
             new("merchantapi", "Merchant API", new[] { "role", "organizationId", "organizationName" })
             {
-                Scopes =
-                {
-                    "merchant.create",
-                    "merchant.read",
-                    "merchant.delete"
-                },
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "merchant" }
             },
             new("campaignapi", "Campaign API", new[] { "role", "organizationId", "organizationName" })
             {
-                Scopes =
-                {
-                    "campaign.create",
-                    "campaign.read",
-                    "campaign.delete"
-                },
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
-            },
-            new("managementapi", "Management API")
-            {
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
-            },
-            new("locationapi", "Location API")
-            {
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "campaign" }
             },
             new("favoriteapi", "Favorite API", new[] { "role" })
             {
-                Scopes =
-                {
-                    "favorite.create",
-                    "favorite.read"
-                },
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
-            },
-            new("searchapi", "Search API")
-            {
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
-            },
-            new("subscriptionapi", "Subscription API")
-            {
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "favorite" }
             },
             new("notificationapi", "Notification API")
             {
-                Scopes = {"notification"},
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "notification" }
             },
             new("aggregatorapi", "Aggregator API", new[] { "role", "organizationId", "organizationName" })
             {
-                Scopes =
-                {
-                    "merchant.create",
-                    "merchant.read",
-                    "merchant.delete",
-                    "campaign.create",
-                    "campaign.read",
-                    "campaign.delete"
-                },
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "merchant", "campaign", "notification", "notificationhub" }
             },
-
             new("aggregatorstorefrontapi", "Aggregator Store API", new[] { "role" })
             {
-                Scopes =
-                {
-                    "favorite.create",
-                    "favorite.read",
-                    "merchant.read",
-                    "merchant.create",
-                    "campaign.read"
-                },
-                ApiSecrets = { new Secret("apisecret".Sha256()) }
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "merchant", "campaign", "notification", "notificationhub", "favorite" }
             },
+            new("notificationhub", "Notification Hub")
+            {
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "notificationhub" }
+            },
+            new("subscriptionapi", "Subscription API") 
+            {
+                ApiSecrets = { new Secret("apisecret".Sha256()) },
+                Scopes = new List<string> { "subscription" }
+            },
+            new("managementapi", "Management API"),
+            new("locationapi", "Location API"),
+            new("searchapi", "Search API")
         };
 
     public static IEnumerable<Client> Clients(IConfiguration configuration)
@@ -140,16 +104,9 @@ public static class IdentityConfig
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.LocalApi.ScopeName,
                     "roles",
-                    "managementapi",
-                    "favoriteapi",
-                    "searchapi",
-                    "aggregatorstorefrontapi",
-                    "favorite.read",
-                    "favorite.create",
-                    "merchant.read",
-                    "merchant.create",
-                    "campaign.read",
-                    "notification"
+                    "favorite",
+                    "merchant",
+                    "campaign"
                 },
                 ClientSecrets =
                 {
@@ -181,13 +138,10 @@ public static class IdentityConfig
                     IdentityServerConstants.StandardScopes.Profile,
                     "organization",
                     "roles",
-                    "merchant.create",
-                    "merchant.read",
-                    "merchant.delete",
-                    "campaign.create",
-                    "campaign.read",
-                    "campaign.delete",
-                    "notification"
+                    "merchant",
+                    "campaign",
+                    "notification",
+                    "notificationhub"
                 },
                 ClientSecrets =
                 {

@@ -39,10 +39,12 @@
     var notificationHubUrl = '@settings.Value.NotificationHub';    
     
 (function setupConnection() {
-          var connection = new signalR.HubConnectionBuilder().withUrl( notificationHubUrl + "/notification").build();
-          connection.on("new", function (message) {  
-            alert("a")
-            console.log(message);
+          var connection = new signalR.HubConnectionBuilder().withUrl( notificationHubUrl + "/notification", {
+               accessTokenFactory: () => {
+                    return "Authorization", getToken();
+                }              
+          }).build();
+          connection.on("new", function (message) {
             var div = $(".notification-list");   
             var title = message.title;
             var createdDate = "now";
@@ -54,6 +56,10 @@
           .catch(err => console.error(err.toString()))
           .then(response => console.log("connected"));
       }) ();  
+    
+function getToken(){
+    return '@Context.GetTokenAsync("access_token").Result'
+}
    
 </script>
 

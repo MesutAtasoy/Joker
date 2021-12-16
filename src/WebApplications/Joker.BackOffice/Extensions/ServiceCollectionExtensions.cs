@@ -41,13 +41,10 @@ public static class ServiceCollectionExtensions
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.Scope.Add("roles");
                 options.Scope.Add("organization");
-                options.Scope.Add("merchant.create");
-                options.Scope.Add("merchant.read");
-                options.Scope.Add("merchant.delete");
-                options.Scope.Add("campaign.create");
-                options.Scope.Add("campaign.read");
-                options.Scope.Add("campaign.delete");
+                options.Scope.Add("merchant");
+                options.Scope.Add("campaign");
                 options.Scope.Add("notification");
+                options.Scope.Add("notificationhub");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");
                 options.ClaimActions.DeleteClaim("s_hash");

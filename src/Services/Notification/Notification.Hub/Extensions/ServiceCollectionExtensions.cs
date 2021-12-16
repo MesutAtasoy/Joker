@@ -1,7 +1,7 @@
 using IdentityServer4.AccessTokenValidation;
 using Joker.CAP;
 using Joker.Consul;
-using Joker.Mongo;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Notification.Hub.Integrations.Events;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -57,6 +57,7 @@ public static class ServiceCollectionExtensions
                 options.ApiSecret = "apisecret";
                 options.SupportedTokens = SupportedTokens.Reference;
                 options.RequireHttpsMetadata = false;
+                options.TokenRetriever = AuthQueryStringTokenRetriever.FromHeaderAndQueryString;
             });
 
         return services;

@@ -103,7 +103,6 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("favorite.create", "favorite.read");
                 builder.RequireRole("FreeUser","PaidUser");
             });   
         });
