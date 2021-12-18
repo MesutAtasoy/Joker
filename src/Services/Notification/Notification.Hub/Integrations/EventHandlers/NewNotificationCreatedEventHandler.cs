@@ -17,6 +17,6 @@ public class NewNotificationCreatedEventHandler :  CAPIntegrationEventHandler<Ne
     [CapSubscribe(nameof(NewNotificationCreatedEvent))]
     public override async Task Handle(NewNotificationCreatedEvent @event)
     {
-        await _hubContext.Clients.All.SendAsync("new", @event);
+        await _hubContext.Clients.Group(@event.OwnerId.ToString()).SendAsync("new", @event);
     }
 }
