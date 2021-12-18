@@ -1,3 +1,4 @@
+using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Joker.Extensions;
@@ -6,9 +7,7 @@ using Merchant.Application.Merchants;
 using Merchant.Application.Merchants.Commands.CreateMerchant;
 using Merchant.Application.Merchants.Commands.DeleteMerchant;
 using Merchant.Application.Merchants.Commands.UpdateMerchant;
-using Merchant.Application.Merchants.Dto;
 using Merchant.Application.Merchants.Dto.Requests;
-using Merchant.Application.Shared.Dto;
 using Merchant.Application.Stores;
 using Merchant.Application.Stores.Commands.CreateStore;
 using Merchant.Application.Stores.Commands.DeleteStore;
@@ -25,12 +24,15 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
 {
     private readonly StoreManager _storeManager;
     private readonly MerchantManager _merchantManager;
+    private readonly IMapper _mapper;
 
     public MerchantGrpcService(StoreManager storeManager,
-        MerchantManager merchantManager)
+        MerchantManager merchantManager,
+        IMapper mapper)
     {
         _storeManager = storeManager;
         _merchantManager = merchantManager;
+        _mapper = mapper;
     }
 
     public override async Task<MerchantBaseGrpcResponse> CreateMerchant(CreateMerchantMessage request,
@@ -38,24 +40,12 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
     {
         try
         {
-            var response = await _merchantManager.CreateAsync(new CreateMerchantCommand
-            {
-                OrganizationId = request.OrganizationId.ToGuid(),
-                Description = request.Description,
-                Email = request.Email,
-                Name = request.Name,
-                Slogan = request.Slogan,
-                PhoneNumber = request.PhoneNumber,
-                TaxNumber = request.TaxNumber,
-                WebSiteUrl = request.WebsiteUrl,
-                PricingPlan = new IdNameDto
-                {
-                    Name = request.PricingPlan.Name,
-                    RefId = request.PricingPlan.Id.ToGuid()
-                }
-            });
+            var createMerchantCommand = _mapper.Map<CreateMerchantCommand>(request);
+            
+            var response = await _merchantManager.CreateAsync(createMerchantCommand);
 
-            var merchantMessage = As(response);
+            var merchantMessage = _mapper.Map<MerchantMessage>(response);
+            
             return new MerchantBaseGrpcResponse
             {
                 Data = Any.Pack(merchantMessage),
@@ -80,21 +70,13 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
     {
         try
         {
-            var updateMerchantModel = new UpdateMerchantDto
-            {
-                Description = request.Merchant.Description,
-                Email = request.Merchant.Email,
-                Name = request.Merchant.Name,
-                Slogan = request.Merchant.Slogan,
-                PhoneNumber = request.Merchant.PhoneNumber,
-                TaxNumber = request.Merchant.TaxNumber,
-                WebSiteUrl = request.Merchant.WebsiteUrl
-            };
+            var updateMerchantModel = _mapper.Map<UpdateMerchantDto>(request.Merchant);
 
             var response = await _merchantManager.UpdateAsync(new UpdateMerchantCommand(request.MerchantId.ToGuid(),
                 updateMerchantModel));
 
-            var merchantMessage = As(response);
+            var merchantMessage = _mapper.Map<MerchantMessage>(response);
+            
             return new MerchantBaseGrpcResponse
             {
                 Data = Any.Pack(merchantMessage),
@@ -143,7 +125,7 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
         ServerCallContext context)
     {
         var response = await _merchantManager.GetByIdAsync(request.Id.ToGuid());
-        return As(response);
+        return _mapper.Map<MerchantMessage>(response);
     }
 
     public override async Task<MerchantBaseGrpcResponse> CreateStore(CreateStoreMessage request,
@@ -151,46 +133,11 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
     {
         try
         {
-            var response = await _storeManager.CreateAsync(new CreateStoreCommand
-            {
-                Name = request.Name,
-                Description = request.Description,
-                Email = request.Email,
-                Slogan = request.Slogan,
-                MerchantId = request.MerchantId.ToGuid(),
-                PhoneNumber = request.PhoneNumber,
-                Location = new StoreLocationDto
-                {
-                    Address = request.Location.Address,
-                    Country = new IdNameDto
-                    {
-                        RefId = request.Location.Country.Id.ToGuid(),
-                        Name = request.Location.Country.Name
-                    },
-                    City = new IdNameDto
-                    {
-                        RefId = request.Location.City.Id.ToGuid(),
-                        Name = request.Location.City.Name
-                    },
-                    District = new IdNameDto
-                    {
-                        RefId = request.Location.District.Id.ToGuid(),
-                        Name = request.Location.District.Name
-                    },
-                    Neighborhood = new IdNameDto
-                    {
-                        RefId = request.Location.Neighborhood.Id.ToGuid(),
-                        Name = request.Location.Neighborhood.Name
-                    },
-                    Quarter = new IdNameDto
-                    {
-                        RefId = request.Location.Quarter.Id.ToGuid(),
-                        Name = request.Location.Quarter.Name
-                    }
-                }
-            });
+            var createStoreCommand = _mapper.Map<CreateStoreCommand>(request);
+            
+            var response = await _storeManager.CreateAsync(createStoreCommand);
 
-            var storeMessage = As(response);
+            var storeMessage = _mapper.Map<StoreMessage>(response);
             return new MerchantBaseGrpcResponse
             {
                 Data = Any.Pack(storeMessage),
@@ -215,18 +162,11 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
     {
         try
         {
-            var updateStoreModel = new UpdateStoreDto
-            {
-                Name = request.Store.Name,
-                Description = request.Store.Description,
-                Email = request.Store.Email,
-                Slogan = request.Store.Slogan,
-                PhoneNumber = request.Store.PhoneNumber,
-            };
+            var updateStoreModel = _mapper.Map<UpdateStoreDto>(request.Store);
 
             var response = await _storeManager.UpdateAsync(new UpdateStoreCommand(request.StoreId.ToGuid(), updateStoreModel));
 
-            var storeMessage = As(response);
+            var storeMessage = _mapper.Map<StoreMessage>(response);
             return new MerchantBaseGrpcResponse
             {
                 Data = Any.Pack(storeMessage),
@@ -248,68 +188,13 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
 
     public override async Task<MerchantBaseGrpcResponse> UpdateLocation(UpdateStoreLocationMessage request, ServerCallContext context)
     {
-        var storeLocation = new StoreLocationDto
-        {
-            Country = new IdNameDto
-            {
-                RefId = request.Location.Country.Id.ToGuid(),
-                Name = request.Location.Country.Name
-            },
-            City = new IdNameDto
-            {
-                RefId = request.Location.City.Id.ToGuid(),
-                Name = request.Location.City.Name
-            },
-            District = new IdNameDto
-            {
-                RefId = request.Location.District.Id.ToGuid(),
-                Name = request.Location.District.Name
-            },
-            Neighborhood = new IdNameDto
-            {
-                RefId = request.Location.Neighborhood.Id.ToGuid(),
-                Name = request.Location.Neighborhood.Name
-            },
-            Quarter = new IdNameDto
-            {
-                RefId = request.Location.Quarter.Id.ToGuid(),
-                Name = request.Location.Quarter.Name
-            },
-            Address = request.Location.Address
-        };
+        var storeLocation = _mapper.Map<StoreLocationDto>(request.Location);
+        
         try
         {
             var response = await _storeManager.UpdateLocationAsync(new UpdateLocationCommand(request.StoreId.ToGuid(), storeLocation));
 
-            var storeLocationMessage = new StoreLocationMessage
-            {
-                Country = new IdNameMessage
-                {
-                    Id = response.Country.RefId.ToString(),
-                    Name = response.Country.Name
-                },
-                City = new IdNameMessage
-                {
-                    Id = response.City.RefId.ToString(),
-                    Name = response.City.Name
-                },
-                District = new IdNameMessage
-                {
-                    Id = response.District.RefId.ToString(),
-                    Name = response.District.Name
-                },
-                Neighborhood = new IdNameMessage
-                {
-                    Id = response.Neighborhood.RefId.ToString(),
-                    Name = response.Neighborhood.Name
-                },
-                Quarter = new IdNameMessage
-                {
-                    Id = response.Quarter.RefId.ToString(),
-                    Name = response.Quarter.Name
-                },
-                Address = response.Address
-            };
+            var storeLocationMessage = _mapper.Map<StoreLocationMessage>(response);
                 
             return new MerchantBaseGrpcResponse
             {
@@ -359,78 +244,6 @@ public class MerchantGrpcService : MerchantApiGrpcService.MerchantApiGrpcService
         ServerCallContext context)
     {
         var store = await _storeManager.GetByIdAsync(request.Id.ToGuid());
-        return As(store);
+        return _mapper.Map<StoreMessage>(store);
     }
-
-    #region Model Converters
-
-    private StoreMessage As(StoreDto store)
-    {
-        return new()
-        {
-            Id = store.Id.ToString(),
-            Description = store.Description,
-            Email = store.Email,
-            Merchant = new IdNameMessage
-            {
-                Id = store.Merchant.RefId.ToString(),
-                Name = store.Merchant.Name
-            },
-            Name = store.Name,
-            Slogan = store.Slogan,
-            CreatedDate = store.CreatedDate.ToTimestamp(),
-            EmailConfirmed = store.EmailConfirmed,
-            ModifiedDate = store.ModifiedDate?.ToTimestamp(),
-            PhoneNumber = store.PhoneNumber,
-            Location = new StoreLocationMessage
-            {
-                Address = store.Location.Address,
-                Country = new IdNameMessage
-                {
-                    Id = store.Location.Country.RefId.ToString(),
-                    Name = store.Location.Country.Name,
-                },
-                City = new IdNameMessage
-                {
-                    Id = store.Location.City.RefId.ToString(),
-                    Name = store.Location.City.Name,
-                },
-                District = new IdNameMessage
-                {
-                    Id = store.Location.District.RefId.ToString(),
-                    Name = store.Location.District.Name,
-                },
-                Neighborhood = new IdNameMessage
-                {
-                    Id = store.Location.Neighborhood.RefId.ToString(),
-                    Name = store.Location.Neighborhood.Name,
-                },
-                Quarter = new IdNameMessage
-                {
-                    Id = store.Location.Quarter.RefId.ToString(),
-                    Name = store.Location.Quarter.Name,
-                }
-            }
-        };
-    }
-
-    private MerchantMessage As(MerchantDto merchant)
-    {
-        return new MerchantMessage
-        {
-            Id = merchant.Id.ToString(),
-            Description = merchant.Description,
-            Email = merchant.Email,
-            Name = merchant.Name,
-            Slogan = merchant.Slogan,
-            CreatedDate = merchant.CreatedDate.ToTimestamp(),
-            EmailConfirmed = merchant.EmailConfirmed,
-            ModifiedDate = merchant.ModifiedDate?.ToTimestamp(),
-            PhoneNumber = merchant.PhoneNumber,
-            TaxNumber = merchant.TaxNumber,
-            WebsiteUrl = merchant.WebSiteUrl
-        };
-    }
-
-    #endregion
 }

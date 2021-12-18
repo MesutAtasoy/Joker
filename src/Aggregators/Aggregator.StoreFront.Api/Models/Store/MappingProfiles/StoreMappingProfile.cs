@@ -10,7 +10,10 @@ public class StoreMappingProfile : Profile
     public StoreMappingProfile()
     {
         CreateMap<StoreMessage, StoreModel>()
-            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToGuid()));
+            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToGuid()))
+            .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToDateTime()));
+
+        CreateMap<StoreLocationMessage, StoreLocationModel>();
 
         CreateMap<IdNameMessage, IdNameModel>()
             .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToGuid()));

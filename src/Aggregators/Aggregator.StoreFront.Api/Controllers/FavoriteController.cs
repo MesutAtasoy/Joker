@@ -38,7 +38,8 @@ public class FavoriteController : ControllerBase
         requestModel.Title = campaign.Title;
         requestModel.Slug = campaign.Slug;
         requestModel.SlugKey = campaign.SlugKey;
-
+        requestModel.OrganizationId = campaign.OrganizationId;
+        
         var response = await _favoriteService.AddFavoriteCampaignAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);
@@ -50,11 +51,12 @@ public class FavoriteController : ControllerBase
         var store = await _storeService.GetByIdAsync(requestModel.Id);
         if (store == null)
         {
-            return NotFound(new JokerBaseResponse<object>(null, 404, "Campaign is not found"));
+            return NotFound(new JokerBaseResponse<object>(null, 404, "Store is not found"));
         }
 
         requestModel.Name = store.Name;
-           
+        requestModel.OrganizationId = store.OrganizationId;
+
         var response = await _favoriteService.AddFavoriteStoreAsync(requestModel);
 
         return StatusCode(response.StatusCode, response);

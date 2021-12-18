@@ -1,13 +1,11 @@
 using Aggregator.Api.Interceptors;
 using Aggregator.Api.Services.BaseGrpc;
 using Aggregator.Api.Services.Campaign;
-using Aggregator.Api.Services.Favorite;
 using Aggregator.Api.Services.Location;
 using Aggregator.Api.Services.Management;
 using Aggregator.Api.Services.Merchant;
 using Aggregator.Api.Services.Store;
 using Campaign.Api.Grpc;
-using Favorite.Api.Grpc;
 using IdentityServer4.AccessTokenValidation;
 using Joker.Consul;
 using Location.Api.Grpc;
@@ -29,7 +27,6 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICampaignService, CampaignService>();
         services.AddScoped<ILocationService, LocationService>();
         services.AddScoped<IManagementService, ManagementService>();
-        services.AddScoped<IFavoriteService, FavoriteService>();
 
         services.AddTransient<GrpcExceptionInterceptor>();
 
@@ -47,10 +44,6 @@ public static class ServiceCollectionExtensions
 
         services.AddGrpcClient<LocationApiGrpcService.LocationApiGrpcServiceClient>(x =>
                 x.Address = new Uri(configuration["serviceUrls:location"]))
-            .AddInterceptor<GrpcExceptionInterceptor>();
-
-        services.AddGrpcClient<FavoriteApiGrpcService.FavoriteApiGrpcServiceClient>(x =>
-                x.Address = new Uri(configuration["serviceUrls:favorite"]))
             .AddInterceptor<GrpcExceptionInterceptor>();
 
         return services;
@@ -85,7 +78,6 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("campaign.create","campaign.read", "campaign.delete", "merchant.create","merchant.read", "merchant.delete");
                 builder.RequireRole("Admin","PaidUser");
             });
         });

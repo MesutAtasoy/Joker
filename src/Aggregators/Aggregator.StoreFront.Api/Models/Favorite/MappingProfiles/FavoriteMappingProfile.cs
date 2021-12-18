@@ -14,7 +14,7 @@ public class FavoriteMappingProfile : Profile
 
         CreateMap<FavoriteCampaignItemMessage, FavoriteCampaignItemModel>()
             .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToGuid()));
-        
+
         CreateMap<FavoriteStoreItemMessage, FavoriteStoreItemModel>()
             .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToGuid()));
         
@@ -25,10 +25,12 @@ public class FavoriteMappingProfile : Profile
             .ForMember(dest => dest.CreatedDate, src => src.MapFrom(m => m.CreatedDate.ToDateTime()));
         
         CreateMap<AddFavoriteStoreRequestModel, FavoriteStoreItemMessage>()
-            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToString()));
+            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToString()))
+            .ForMember(dest => dest.OrganizationId, src => src.MapFrom(m => m.OrganizationId.ToString()));
 
         CreateMap<AddFavoriteCampaignRequestModel, FavoriteCampaignItemMessage>()
-            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToString()));
+            .ForMember(dest => dest.Id, src => src.MapFrom(m => m.Id.ToString()))
+            .ForMember(dest => dest.OrganizationId, src => src.MapFrom(m => m.OrganizationId.ToString()));
 
     }
 }

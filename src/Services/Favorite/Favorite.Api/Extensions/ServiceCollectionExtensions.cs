@@ -2,6 +2,7 @@ using Couchbase.Extensions.DependencyInjection;
 using Couchbase.Linq;
 using Favorite.Api.Interceptors;
 using Favorite.Application.Services;
+using Favorite.Application.Services.User;
 using Favorite.Infrastructure.Initializers;
 using IdentityServer4.AccessTokenValidation;
 using Joker.CAP;
@@ -102,7 +103,6 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("favorite.create", "favorite.read");
                 builder.RequireRole("FreeUser","PaidUser");
             });   
         });

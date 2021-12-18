@@ -80,7 +80,6 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("ScopePolicy", builder =>
             {
                 builder.RequireAuthenticatedUser();
-                builder.RequireScope("favorite.read","favorite.create", "merchant.read", "merchant.create", "campaign.read");
             });
         });
 

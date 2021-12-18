@@ -24,10 +24,8 @@ public class Campaign : DomainEntity, IAggregateRoot
     public string Code { get; private set; }
     public string Description { get; private set; }
     public string Condition { get; private set; }
-    public string PreviewImageUrl { get; private set; }
     public DateTime? StartTime { get; private set; }
     public DateTime? EndTime { get; private set; }
-    public string Channel { get; private set; }
     public bool IsDeleted { get; private set; }
     public DateTime CreatedDate { get; private set; }
     public DateTime? ModifiedDate { get; private set; }
@@ -44,10 +42,8 @@ public class Campaign : DomainEntity, IAggregateRoot
     /// <param name="code"></param>
     /// <param name="description"></param>
     /// <param name="condition"></param>
-    /// <param name="previewImageUrl"></param>
     /// <param name="startTime"></param>
     /// <param name="endTime"></param>
-    /// <param name="channel"></param>
     /// <param name="organizationId"></param>
     /// <returns></returns>
     public static Campaign Create(Guid id,
@@ -58,10 +54,8 @@ public class Campaign : DomainEntity, IAggregateRoot
         string code,
         string description,
         string condition,
-        string previewImageUrl,
         DateTime? startTime,
         DateTime? endTime,
-        string channel,
         Guid organizationId)
     {
         Check.NotEmpty(id, nameof(id));
@@ -83,10 +77,8 @@ public class Campaign : DomainEntity, IAggregateRoot
             Code = code,
             Description = description,
             Condition = condition,
-            PreviewImageUrl = previewImageUrl,
             StartTime = startTime,
             EndTime = endTime,
-            Channel = channel,
             Slug = slug,
             SlugKey = slugKey,
             IsDeleted = false,
@@ -104,10 +96,9 @@ public class Campaign : DomainEntity, IAggregateRoot
             code,
             description,
             condition,
-            previewImageUrl,
             startTime,
             endTime,
-            channel));
+            organizationId));
 
         return campaign;
     }
@@ -119,14 +110,12 @@ public class Campaign : DomainEntity, IAggregateRoot
     /// <param name="code"></param>
     /// <param name="description"></param>
     /// <param name="condition"></param>
-    /// <param name="previewImageUrl"></param>
     /// <param name="startTime"></param>
     /// <param name="endTime"></param>
     public void Update(string title,
         string code,
         string description,
         string condition,
-        string previewImageUrl,
         DateTime? startTime,
         DateTime? endTime)
     {
@@ -136,7 +125,6 @@ public class Campaign : DomainEntity, IAggregateRoot
         Code = code;
         Description = description;
         Condition = condition;
-        PreviewImageUrl = previewImageUrl;
         StartTime = startTime;
         EndTime = endTime;
         Slug = $"{title.GenerateSlug()}-{SlugKey}";
@@ -151,10 +139,8 @@ public class Campaign : DomainEntity, IAggregateRoot
             Code,
             Description,
             Condition,
-            PreviewImageUrl,
             StartTime,
-            EndTime,
-            Channel));
+            EndTime));
     }
 
     /// <summary>

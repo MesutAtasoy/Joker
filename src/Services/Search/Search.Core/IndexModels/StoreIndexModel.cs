@@ -24,4 +24,6 @@ public class StoreIndexModel : ElasticEntity<Guid>
     public Guid QuarterId { get; set; }
     public string QuarterName { get; set; }
     public string Address { get; set; }
+    public Guid OrganizationId { get; set; }
+
 }

@@ -49,10 +49,8 @@ public class CampaignManager
             request.Code,
             request.Description,
             request.Condition,
-            request.PreviewImageUrl,
             request.StartTime,
             request.EndTime,
-            request.Channel,
             organizationId);
 
         await _campaignRepository.AddAsync(campaign);
@@ -73,7 +71,6 @@ public class CampaignManager
             request.Campaign.Code,
             request.Campaign.Description,
             request.Campaign.Condition,
-            request.Campaign.PreviewImageUrl,
             request.Campaign.StartTime,
             request.Campaign.EndTime);
 

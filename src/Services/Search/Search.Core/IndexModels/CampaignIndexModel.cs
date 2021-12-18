@@ -16,7 +16,7 @@ public sealed class CampaignIndexModel : ElasticEntity<Guid>
     public string Code { get; set; }
     public string Description { get; set; }
     public string Condition { get; set; }
-    public string PreviewImageUrl { get; set; }
     public DateTime? StartTime { get; set; }
     public DateTime? EndTime { get; set; }
+    public Guid OrganizationId { get; set; }
 }

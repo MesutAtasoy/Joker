@@ -1,5 +1,6 @@
 using AutoMapper;
 using Favorite.Application.Campaigns;
+using Favorite.Application.Services.Notification;
 using Favorite.Application.Shared;
 using Favorite.Application.Stores;
 using Favorite.Core.Repositories;
@@ -26,6 +27,10 @@ namespace Favorite.Application
             
             services.AddTransient<IFavoriteCampaignRepository, FavoriteCampaignRepository>();
             services.AddTransient<IFavoriteStoreRepository, FavoriteStoreRepository>();
+            
+            //Services 
+            services.AddTransient<INotificationService, NotificationService>();
+            
             return services;
         }
     }

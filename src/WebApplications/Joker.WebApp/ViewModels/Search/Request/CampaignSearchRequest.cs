@@ -10,5 +10,4 @@ public class CampaignSearchRequest : SearchBaseRequest
     public string Code { get; set; }
     public string Description { get; set; }
     public string Condition { get; set; }
-    public string PreviewImageUrl { get; set; }
 }

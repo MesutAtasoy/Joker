@@ -16,10 +16,8 @@ public class CampaignUpdatedEvent : DomainEvent
         string code,
         string description,
         string condition,
-        string previewImageUrl,
         DateTime? startTime,
-        DateTime? endTime,
-        string channel)
+        DateTime? endTime)
     {
         Id = id;
         StoreId = store.RefId;
@@ -32,10 +30,8 @@ public class CampaignUpdatedEvent : DomainEvent
         Code = code;
         Description = description;
         Condition = condition;
-        PreviewImageUrl = previewImageUrl;
         StartTime = startTime;
         EndTime = endTime;
-        Channel = channel;
     }
 
     public Guid Id { get; private set; }
@@ -49,8 +45,6 @@ public class CampaignUpdatedEvent : DomainEvent
     public string Code { get; private set; }
     public string Description { get; private set; }
     public string Condition { get; private set; }
-    public string PreviewImageUrl { get; private set; }
     public DateTime? StartTime { get; private set; }
     public DateTime? EndTime { get; private set; }
-    public string Channel { get; private set; }
 }

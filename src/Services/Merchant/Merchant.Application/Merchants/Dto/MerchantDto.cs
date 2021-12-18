@@ -14,6 +14,5 @@ public class MerchantDto
     public string Description { get; set; }
     public bool EmailConfirmed { get; set; }
     public DateTime CreatedDate { get; set; }
-    public DateTime? ModifiedDate { get; set; }
     public Guid OrganizationId { get; set; }
 }

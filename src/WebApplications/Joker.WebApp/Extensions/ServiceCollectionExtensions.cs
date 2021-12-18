@@ -42,11 +42,9 @@ public static class ServiceCollectionExtensions
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.Scope.Add("roles");
                 options.Scope.Add("offline_access");
-                options.Scope.Add("favorite.read");
-                options.Scope.Add("favorite.create");
-                options.Scope.Add("merchant.read");
-                options.Scope.Add("merchant.create");
-                options.Scope.Add("campaign.read");
+                options.Scope.Add("favorite");
+                options.Scope.Add("merchant");
+                options.Scope.Add("campaign");
                 options.Scope.Add("IdentityServerApi");
                 options.ClaimActions.DeleteClaim("sid");
                 options.ClaimActions.DeleteClaim("idp");

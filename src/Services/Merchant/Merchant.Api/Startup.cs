@@ -1,6 +1,8 @@
+using AutoMapper;
 using Joker.Mvc;
 using Merchant.Api.Extensions;
 using Merchant.Api.GrpcServices;
+using Merchant.Api.GrpcServices.MappingProfiles;
 using Merchant.Application;
 using Merchant.Domain;
 
@@ -34,6 +36,7 @@ public class Startup
         services.AddJokerAuthorization();
         services.AddJokerAuthentication(Configuration);
         services.AddJokerOpenTelemetry(Configuration);
+        services.AddAutoMapper(typeof(StoreMappingProfile));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

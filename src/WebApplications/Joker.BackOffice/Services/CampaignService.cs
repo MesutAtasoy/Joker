@@ -26,7 +26,7 @@ public class CampaignService : BaseService, ICampaignService
         {
             var response = await responseMessage.Content.ReadAsStringAsync();
             _logger.LogError(response);
-            throw new ArgumentException("Merchant Service can not respond success response");
+            throw new ArgumentException("Campaign Service can not respond success response");
         }
 
         var campaigns = await responseMessage.Content.ReadFromJsonAsync<PagedListViewModel<CampaignViewModel>>();
@@ -42,7 +42,7 @@ public class CampaignService : BaseService, ICampaignService
         {
             var response = await responseMessage.Content.ReadAsStringAsync();
             _logger.LogError(response);
-            throw new ArgumentException("Merchant Service can not respond success response");
+            throw new ArgumentException("Campaign Service can not respond success response");
         }
 
         var campaigns = await responseMessage.Content.ReadFromJsonAsync<PagedListViewModel<CampaignViewModel>>();

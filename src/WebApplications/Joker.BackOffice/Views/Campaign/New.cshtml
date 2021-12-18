@@ -27,8 +27,7 @@
                 <div class="p-4">
                     <form asp-controller="Campaign" asp-action="New" autocomplete="off">
                         @Html.AntiForgeryToken()
-                        <input type="hidden" value="@Model.Channel" asp-for="Channel">
-
+                        
                         <div class="card-header">
                             Campaign Information
                         </div>

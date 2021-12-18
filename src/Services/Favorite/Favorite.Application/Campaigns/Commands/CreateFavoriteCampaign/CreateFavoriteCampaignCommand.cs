@@ -10,5 +10,6 @@ namespace Favorite.Application.Campaigns.Commands.CreateFavoriteCampaign
         public string Title { get; set; }
         public string Slug { get; set; }
         public string SlugKey { get; set; }
+        public Guid OrganizationId { get; set; }
     }
 }
