@@ -151,6 +151,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Hub", "src\Services\Notification\Notification.Hub\Notification.Hub.csproj", "{3236B163-1B3B-4331-8FEC-200CDC65EFD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joker.Configuration", "src\Submodules\Joker.Packages\Joker.Configuration\Joker.Configuration.csproj", "{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -857,6 +859,18 @@ Global
 		{3236B163-1B3B-4331-8FEC-200CDC65EFD8}.Release|x64.Build.0 = Release|Any CPU
 		{3236B163-1B3B-4331-8FEC-200CDC65EFD8}.Release|x86.ActiveCfg = Release|Any CPU
 		{3236B163-1B3B-4331-8FEC-200CDC65EFD8}.Release|x86.Build.0 = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|x64.Build.0 = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Debug|x86.Build.0 = Debug|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|x64.ActiveCfg = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|x64.Build.0 = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|x86.ActiveCfg = Release|Any CPU
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -934,6 +948,7 @@ Global
 		{E08A18C4-AA80-4ACC-A5AB-1A4544E856E4} = {D9D4A998-694C-43DD-92F9-8EE2E5748C99}
 		{2A0BF5B2-6F0F-4ABE-835D-00621AD2152D} = {D9D4A998-694C-43DD-92F9-8EE2E5748C99}
 		{3236B163-1B3B-4331-8FEC-200CDC65EFD8} = {D9D4A998-694C-43DD-92F9-8EE2E5748C99}
+		{0929CFD4-B9A7-4BF1-80DD-94A3439CEEA0} = {718AF0D8-2CBD-41BD-BE8B-39A34ECA717F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F8E0F16-8053-401F-AC76-4568D8A282A5}
