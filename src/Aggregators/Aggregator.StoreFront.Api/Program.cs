@@ -1,101 +1,66 @@
-using System.Net;
+using Aggregator.Api.Extensions;
+using Aggregator.StoreFront.Api.Extensions;
+using Aggregator.StoreFront.Api.Models.Campaign.MappingProfiles;
+using AutoMapper;
+using Joker.Configuration;
 using Joker.Logging;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Joker.Mvc;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-namespace Aggregator.StoreFront.Api;
-
-public class Program
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    /// <summary>
-    /// Main
-    /// </summary>
-    /// <param name="args"></param>
-    public static void Main(string[] args)
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Aggregator.StoreFront.Api";
+    x.Enabled = true;
+});
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+    
+    builder.WebHost.BuildKestrel(configuration);
+    
+    var services = builder.Services;
+    services.AddGrpcServices(configuration);
+    services.AddApiVersion();
+    services.AddHttpContextAccessor();
+    services.AddControllers();
+    services.AddGrpc();
+    services.AddSwaggerGen();
+    services.AddJokerIdentityApiClient(configuration);
+    services.AddJokerAuthentication(configuration);
+    services.AddJokerAuthorization();
+    services.AddJokerConsul(configuration);
+    services.AddJokerOpenTelemetry(configuration);
+    services.AddAutoMapper(typeof(CampaignMappingProfile));
+    
+    var app = builder.Build();
+    
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Aggregator.StoreFront.Api v1"));
+    app.UseErrorHandler();
+    app.UseRouting();
+    app.UseAuthentication();    
+    app.UseAuthorization();        
+    app.UseEndpoints(endpoints =>
     {
-        var configuration = GetConfiguration();
-        Log.Logger = CreateSerilogLogger(configuration, "Aggregator.StoreFront.Api");
+        endpoints.MapDefaultControllerRoute();
+        endpoints.MapControllers();
+    });
 
-        try
-        {
-            Log.Information("Application starting up...");
-
-            CreateHostBuilder(configuration, args)
-                .Build()
-                .Run();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "The application failed to start correctly.");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
-
-    /// <summary>
-    /// Creates Host Builder
-    /// </summary>
-    /// <param name="args"></param>
-    /// <param name="configuration"></param>
-    /// <returns></returns>
-    public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                var ports = GetDefinedPorts(configuration);
-                    
-                webBuilder.UseStartup<Startup>();
-                webBuilder.ConfigureKestrel(options =>
-                {
-                    options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-                    {
-                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                    });
-
-                    options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-                    {
-                        listenOptions.Protocols = HttpProtocols.Http2;
-                    });
-                });
-            })
-            .UseSerilog();
-
-    /// <summary>
-    /// Returns configuration with environment
-    /// </summary>
-    /// <returns></returns>
-    private static IConfiguration GetConfiguration()
-    {
-        string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-            .AddEnvironmentVariables();
-
-        return builder.Build();
-    }
-
-    public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-    {
-        return LoggerBuilder.CreateLoggerElasticSearch(x =>
-        {
-            x.Url = configuration["elk:url"];
-            x.BasicAuthEnabled = false;
-            x.IndexFormat = "joker-logs";
-            x.AppName = applicationName;
-            x.Enabled = true;
-        });
-    }
-
-    public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
-    {
-        var grpcPort = config.GetValue("GRPC_PORT", 5040);
-        var port = config.GetValue("PORT", 5020);
-        return (port, grpcPort);
-    }
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
