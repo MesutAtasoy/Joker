@@ -30,6 +30,7 @@
     </ItemGroup>
     
     <ItemGroup>
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Configuration\Joker.Configuration.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Consul\Joker.Consul.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Extensions\Joker.Extensions.csproj" />

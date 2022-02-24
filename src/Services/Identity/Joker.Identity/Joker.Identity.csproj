@@ -38,6 +38,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.AspNetCore\Joker.AspNetCore.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.CAP\Joker.CAP.csproj" />
+        <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.Configuration\Joker.Configuration.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore.Migration\Joker.EntityFrameworkCore.Migration.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EntityFrameworkCore\Joker.EntityFrameworkCore.csproj" />
         <ProjectReference Include="..\..\..\Submodules\Joker.Packages\Joker.EventBus\Joker.EventBus.csproj" />
