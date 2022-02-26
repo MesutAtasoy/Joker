@@ -1,102 +1,73 @@
-using System;
-using System.IO;
+using Joker.Configuration;
 using Joker.EntityFrameworkCore.Migration;
+using Joker.Identity.Extensions;
 using Joker.Identity.Models;
 using Joker.Identity.Models.Seeders;
 using Joker.Logging;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-namespace Joker.Identity
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    public class Program
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Identity.Api";
+    x.Enabled = true;
+});
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+
+    var services = builder.Services;
+
+    services.AddControllersWithViews().AddRazorRuntimeCompilation();
+    services.AddJokerIdentity();
+    services.AddHttpContextAccessor();
+    services.AddJokerIdentityContext(configuration);
+    services.AddJokerIdentityServer(configuration);
+    services.AddJokerAuthentication();
+    services.AddJokerAuthorization();
+    services.AddDataProtection();
+    services.AddJokerCors();
+    services.AddJokerEventBus(configuration);
+    services.AddJokerOpenTelemetry(configuration);
+    
+    var app = builder.Build();
+
+    app.MigrateDbContext<JokerIdentityDbContext>((context, serviceProvider) =>
     {
-        /// <summary>
-        /// Main
-        /// </summary>
-        /// <param name="args"></param>
-        public static void Main(string[] args)
+        new JokerIdentityDbContextSeeder().SeedAsync(x =>
         {
-            var configuration = GetConfiguration();
-            Log.Logger = CreateSerilogLogger(configuration, "Identity.Api");
-
-            try
-            {
-                Log.Information("Application starting up...");
-
-                var host = CreateHostBuilder(args)
-                    .Build();
-
-                host.MigrateDbContext<JokerIdentityDbContext>((context, services) =>
-                {
-                    new JokerIdentityDbContextSeeder().SeedAsync(x =>
-                    {
-                        var logger = services.GetService<ILogger<JokerIdentityDbContext>>();
-                        x.Context = context;
-                        x.Logger = logger;
-                        x.RetryCount = 5;
-                    }, services).Wait();
-                });
-
-                host.Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "The application failed to start correctly.");
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
-
-        /// <summary>
-        /// Creates Host Builder
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                })
-                .UseSerilog();
-
-        /// <summary>
-        /// Returns configuration with environment
-        /// </summary>
-        /// <returns></returns>
-        private static IConfiguration GetConfiguration()
-        {
-            string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            Console.WriteLine(environmentName);
-            
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            return builder.Build();
-        }
-
-        public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-        {
-            return LoggerBuilder.CreateLoggerElasticSearch(x =>
-            {
-                x.Url = configuration["elk:url"];
-                x.BasicAuthEnabled = false;
-                x.IndexFormat = "joker-logs";
-                x.AppName = applicationName;
-                x.Enabled = true;
-            });
-        }
-    }
+            var logger = serviceProvider.GetService<ILogger<JokerIdentityDbContext>>();
+            x.Context = context;
+            x.Logger = logger;
+            x.RetryCount = 5;
+        }, serviceProvider).Wait();
+    });
+    
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
+    
+    app.UseStaticFiles();
+    app.UseForwardedHeaders();
+    app.UseIdentityServer();
+    app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
+    app.UseCors("CorsPolicy");
+    app.UseRouting();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
+    
+    app.Run();
 }
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
+

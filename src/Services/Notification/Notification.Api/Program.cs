@@ -1,77 +1,63 @@
+using Joker.Configuration;
 using Joker.Logging;
+using Joker.Mvc;
+using Notification.Api.Extensions;
+using Notification.Application;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-using Notification.Api;
-
-public class Program
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    /// <summary>
-    /// Main
-    /// </summary>
-    /// <param name="args"></param>
-    public static void Main(string[] args)
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Notification.Api";
+    x.Enabled = true;
+});
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+    
+    var services = builder.Services;
+    services.AddApiVersion();
+    services.AddControllers();
+    services.AddHttpContextAccessor();
+    services.AddJokerMongo(configuration);
+    services.AddApplicationModule();
+    services.AddHttpClient();
+    services.AddJokerMediatr(typeof(NotificationApplicationModule));
+    services.AddSwaggerGen();
+    services.AddJokerEventBus(configuration);
+    services.AddJokerConsul(configuration);
+    services.AddJokerAuthorization();
+    services.AddJokerAuthentication(configuration);
+    services.AddJokerOpenTelemetry(configuration);
+    
+    var app = builder.Build();
+    
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification.Api v1"));
+    app.UseErrorHandler();
+    app.UseRouting();
+    app.UseAuthentication();    
+    app.UseAuthorization();        
+    app.UseEndpoints(endpoints =>
     {
-        var configuration = GetConfiguration();
-        Log.Logger = CreateSerilogLogger(configuration, "Notification.Api");
+        endpoints.MapDefaultControllerRoute();
+        endpoints.MapControllers();
+    });
 
-        try
-        {
-            Log.Information("Application starting up...");
-
-            CreateHostBuilder(args)
-                .Build()
-                .Run();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "The application failed to start correctly.");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
-
-    /// <summary>
-    /// Creates Host Builder
-    /// </summary>
-    /// <param name="args"></param>
-    /// <returns></returns>
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            })
-            .UseSerilog();
-
-    /// <summary>
-    /// Returns configuration with environment
-    /// </summary>
-    /// <returns></returns>
-    private static IConfiguration GetConfiguration()
-    {
-        string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-            .AddEnvironmentVariables();
-
-        return builder.Build();
-    }
-
-    private static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-    {
-        return LoggerBuilder.CreateLoggerElasticSearch(x =>
-        {
-            x.Url = configuration["elk:url"];
-            x.BasicAuthEnabled = false;
-            x.IndexFormat = "joker-logs";
-            x.AppName = applicationName;
-            x.Enabled = true;
-        });
-    }
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }

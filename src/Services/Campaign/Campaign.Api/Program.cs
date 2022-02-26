@@ -1,108 +1,70 @@
-using System.Net;
+using Campaign.Api.Extensions;
+using Campaign.Api.GrpcServices;
+using Campaign.Api.GrpcServices.MappingProfiles;
+using Campaign.Application;
+using Joker.Configuration;
 using Joker.Logging;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
+using Joker.Mvc;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-namespace Campaign.Api
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    public class Program
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Campaign.Api";
+    x.Enabled = true;
+});
+
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+    
+    builder.WebHost.BuildKestrel(configuration);
+    
+    var services = builder.Services;
+    services.AddApiVersion();
+    services.AddControllers();
+    services.AddJokerGrpc();
+    services.AddHttpContextAccessor();
+    services.AddJokerMongo(configuration);
+    services.AddApplicationModule();
+    services.AddJokerMediatr(typeof(CampaignApplicationModule));
+    services.AddSwaggerGen();
+    services.AddJokerEventBus(configuration);
+    services.AddJokerConsul(configuration);
+    services.AddJokerAuthorization();
+    services.AddJokerAuthentication(configuration);
+    services.AddJokerOpenTelemetry(configuration);
+    services.AddAutoMapper(typeof(CampaignMappingProfile));
+   
+    var app = builder.Build();
+    
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Campaign.Api v1"));
+    app.UseErrorHandler();
+    app.UseRouting();
+    app.UseAuthentication();    
+    app.UseAuthorization();       
+    app.UseEndpoints(endpoints =>
     {
-        /// <summary>
-        /// Main
-        /// </summary>
-        /// <param name="args"></param>
-        public static void Main(string[] args)
-        {
-            var configuration = GetConfiguration();
-            Log.Logger = CreateSerilogLogger(configuration, "Campaign.Api");
-
-            try
-            {
-                Log.Information("Application starting up...");
-
-                CreateHostBuilder(configuration, args)
-                    .Build()
-                    .Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "The application failed to start correctly.");
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
-
-        /// <summary>
-        /// Creates Host Builder
-        /// </summary>
-        /// <param name="configuration"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    var ports = GetDefinedPorts(configuration);
-
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.Listen(IPAddress.Any, ports.httpPort,
-                            listenOptions => { listenOptions.Protocols = HttpProtocols.Http1AndHttp2; });
-
-                        options.Listen(IPAddress.Any, ports.grpcPort,
-                            listenOptions => { listenOptions.Protocols = HttpProtocols.Http2; });
-                    });
-                });
-
-        /// <summary>
-        /// Returns configuration with environment
-        /// </summary>
-        /// <returns></returns>
-        private static IConfiguration GetConfiguration()
-        {
-            string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            return builder.Build();
-        }
-
-        private static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-        {
-            return LoggerBuilder.CreateLoggerElasticSearch(x =>
-            {
-                x.Url = configuration["elk:url"];
-                x.BasicAuthEnabled = false;
-                x.IndexFormat = "joker-logs";
-                x.AppName = applicationName;
-                x.Enabled = true;
-            });
-        }
-
-        private static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
-        {
-            var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
-            if (!isValidGrpcPort || grpcPort <= 0)
-            {
-                grpcPort = 5011;
-            }
-
-            var isValidPort = int.TryParse(config["PORT"], out var port);
-            if (!isValidPort || port <= 0)
-            {
-                port = 5001;
-            }
-
-            return (port, grpcPort);
-        }
-    }
+        endpoints.MapDefaultControllerRoute();
+        endpoints.MapControllers();
+        endpoints.MapGrpcService<CampaignGrpcService>();
+    });
+    
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }

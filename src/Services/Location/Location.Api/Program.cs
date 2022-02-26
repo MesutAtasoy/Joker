@@ -1,133 +1,77 @@
-using System;
-using System.IO;
-using System.Net;
+using Joker.Configuration;
 using Joker.EntityFrameworkCore.Migration;
 using Joker.Logging;
+using Joker.Mvc;
+using Location.Api.Extensions;
+using Location.Api.GrpcServices;
+using Location.Application;
 using Location.Infrastructure;
 using Location.Infrastructure.Seed;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-namespace Location.Api
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    public class Program
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Location.Api";
+    x.Enabled = true;
+});
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.WebHost.BuildKestrel(configuration);
+
+    var services = builder.Services;
+    
+    services.AddApiVersion();
+    services.AddJokerGrpc();
+    services.AddControllers();
+    services.AddJokerContext(configuration);
+    services.AddApplicationModule();
+    services.AddJokerMediatr(typeof(LocationApplicationModule));
+    services.AddSwaggerGen();
+    services.AddJokerConsul(configuration);
+    services.AddJokerOpenTelemetry(configuration);
+
+    var app = builder.Build();
+
+    app.MigrateDbContext<LocationContext>((context, serviceProvider) =>
     {
-        /// <summary>
-        /// Main
-        /// </summary>
-        /// <param name="args"></param>
-        public static void Main(string[] args)
+        new LocationContextSeeder().SeedAsync(options =>
         {
-            var configuration = GetConfiguration();
-            Log.Logger = CreateSerilogLogger(configuration, "Location.Api");
+            var env = serviceProvider.GetService<IHostEnvironment>();
+            var logger = serviceProvider.GetService<ILogger<LocationContext>>();
+            options.Context = context;
+            options.ContentRootPath = env?.ContentRootPath;
+            options.Logger = logger;
+            options.RetryCount = 5;
+        }, serviceProvider).Wait();
+    });
 
-            try
-            {
-                Log.Information("Application starting up...");
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
 
-                var host = CreateHostBuilder(configuration,args)
-                    .Build();
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Location.Api v1"));
+    app.UseErrorHandler();
+    app.UseRouting();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapDefaultControllerRoute();
+        endpoints.MapControllers();
+        endpoints.MapGrpcService<LocationGrpcService>();
+    });
 
-                host.MigrateDbContext<LocationContext>((context, services) =>
-                {
-                    new LocationContextSeeder().SeedAsync(options =>
-                    {
-                        var env = services.GetService<IHostEnvironment>();
-                        var logger = services.GetService<ILogger<LocationContext>>();
-                        options.Context = context;
-                        options.ContentRootPath = env?.ContentRootPath;
-                        options.Logger = logger;
-                        options.RetryCount = 5;
-                    },services).Wait();
-                });
-
-                host.Run();
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "The application failed to start correctly.");
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
-
-        /// <summary>
-        /// Creates Host Builder
-        /// </summary>
-        /// <param name="configuration"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public static IHostBuilder CreateHostBuilder(IConfiguration configuration, string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    var ports = GetDefinedPorts(configuration);
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                        });
-
-                        options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
-                        {
-                            listenOptions.Protocols = HttpProtocols.Http2;
-                        });
-                    });
-                })
-                .UseSerilog();
-        /// <summary>
-        /// Returns configuration with environment
-        /// </summary>
-        /// <returns></returns>
-        private static IConfiguration GetConfiguration()
-        {
-            string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            return builder.Build();
-        }
-
-        public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-        {
-            return LoggerBuilder.CreateLoggerElasticSearch(x =>
-            {
-                x.Url = configuration["elk:url"];
-                x.BasicAuthEnabled = false;
-                x.IndexFormat = "joker-logs";
-                x.AppName = applicationName;
-                x.Enabled = true;
-            });
-        }
-        
-        public static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
-        {
-            var isValidGrpcPort = int.TryParse(config["GRPC_PORT"], out var grpcPort);
-            if (!isValidGrpcPort || grpcPort <= 0)
-            {
-                grpcPort = 5013;
-            }
-            var isValidPort = int.TryParse(config["PORT"], out var port);
-            if (!isValidPort || port <= 0)
-            {
-                port = 5003;
-            }
-            
-            return (port, grpcPort);
-        }
-    }
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }

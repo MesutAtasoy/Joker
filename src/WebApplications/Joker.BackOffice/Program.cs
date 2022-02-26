@@ -1,79 +1,69 @@
+using Joker.BackOffice.Extensions;
+using Joker.BackOffice.Models;
+using Joker.Configuration;
 using Joker.Logging;
 using Serilog;
-using ILogger = Serilog.ILogger;
 
-namespace Joker.BackOffice;
-
-public class Program
+var configuration = JokerConfigurationHelper.GetConfiguration();
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    /// <summary>
-    /// Main
-    /// </summary>
-    /// <param name="args"></param>
-    public static void Main(string[] args)
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Joker.BackOffice";
+    x.Enabled = true;
+});
+
+
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
+    var services = builder.Services;
+    services.AddControllersWithViews()
+        .AddRazorRuntimeCompilation();
+    services.AddAuthorization();
+    services.AddHttpClient();
+    services.AddHttpContextAccessor();
+    services.AddApiServices();
+    services.AddJokerIdentityApiClient(configuration);
+    services.AddJokerBackOfficeGatewayApiClient(configuration);
+    services.AddJokerAuthentication(configuration);
+    services.AddDataProtection();
+    services.AddJokerOpenTelemetry(configuration);
+    services.AddOptions();
+    services.Configure<UrlSettings>(configuration);
+
+    var app = builder.Build();
+
+
+    if (app.Environment.IsDevelopment())
     {
-        var configuration = GetConfiguration();
-        Log.Logger = CreateSerilogLogger(configuration, "Joker.WebApp");
-
-        try
-        {
-            Log.Information("Application starting up...");
-
-            CreateHostBuilder(args)
-                .Build()
-                .Run();
-                    
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "The application failed to start correctly.");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Home/Error");
+        app.UseHsts();
     }
 
-    /// <summary>
-    /// Creates Host Builder
-    /// </summary>
-    /// <param name="args"></param>
-    /// <returns></returns>
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            })
-            .ConfigureLogging(k=>k.ClearProviders())
-            .UseSerilog();
-
-    /// <summary>
-    /// Returns configuration with environment
-    /// </summary>
-    /// <returns></returns>
-    private static IConfiguration GetConfiguration()
+    app.UseStaticFiles();
+    app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
+    app.UseRouting();
+    app.UseForwardedHeaders();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.UseEndpoints(endpoints =>
     {
-        string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+    });
 
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-            .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-            .AddEnvironmentVariables();
-
-        return builder.Build();
-    }
-
-    public static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-    {
-        return LoggerBuilder.CreateLoggerElasticSearch(x =>
-        {
-            x.Url = configuration["elk:url"];
-            x.BasicAuthEnabled = false;
-            x.IndexFormat = "joker-logs";
-            x.AppName = applicationName;
-            x.Enabled = true;
-        });
-    }
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }

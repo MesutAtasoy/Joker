@@ -1,85 +1,58 @@
+using Gateway.BackOffice.Api.Extensions;
 using Joker.Logging;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
+using Ocelot.Provider.Consul;
+using Ocelot.Provider.Polly;
 using Serilog;
-using ILogger = Serilog.ILogger;
+using ConfigurationExtensions = Gateway.BackOffice.Api.Extensions.ConfigurationExtensions;
 
+var configuration = ConfigurationExtensions.GetConfiguration();
 
-namespace Gateway.BackOffice.Api;
-
-public class Program
+Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
-    /// <summary>
-    /// Main
-    /// </summary>
-    /// <param name="args"></param>
-    public static void Main(string[] args)
-    {
-        var configuration = GetConfiguration();
-        Log.Logger = CreateSerilogLogger(configuration, "Gateway.BackOffice.Api");
+    x.Url = configuration["elk:url"];
+    x.BasicAuthEnabled = false;
+    x.IndexFormat = "joker-logs";
+    x.AppName = "Gateway.BackOffice.Api";
+    x.Enabled = true;
+});
 
-        try
-        {
-            Log.Information("Application starting up...");
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
 
-            CreateHostBuilder(args)
-                .Build()
-                .Run();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "The application failed to start correctly.");
-        }
-        finally
-        {
-            Log.CloseAndFlush();
-        }
-    }
+    var services = builder.Services;
 
-    /// <summary>
-    /// Creates Host Builder
-    /// </summary>
-    /// <param name="configuration"></param>
-    /// <param name="args"></param>
-    /// <returns></returns>
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                config
-                    .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                    .AddJsonFile("appsettings.json", true, true)
-                    .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                    .AddJsonFile($"configuration.{hostingContext.HostingEnvironment.EnvironmentName}.json")
-                    .AddEnvironmentVariables();
-            })
-            .UseSerilog();
+    services.AddControllers();
 
-    /// <summary>
-    /// Returns configuration with environment
-    /// </summary>
-    /// <returns></returns>
-    private static IConfiguration GetConfiguration()
-    {
-        string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+    services.AddOcelot(configuration)
+        .AddConsul()
+        .AddPolly();
 
-        var builder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
-            .AddEnvironmentVariables();
+    services.AddCors(options =>
+        options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+    services.AddSwaggerForOcelot(configuration);
+    services.AddJokerOpenTelemetry(configuration);
 
-        return builder.Build();
-    }
+    var app = builder.Build();
 
-    private static ILogger CreateSerilogLogger(IConfiguration configuration, string applicationName)
-    {
-        return LoggerBuilder.CreateLoggerElasticSearch(x =>
-        {
-            x.Url = configuration["elk:url"];
-            x.BasicAuthEnabled = false;
-            x.IndexFormat = "joker-logs";
-            x.AppName = applicationName;
-            x.Enabled = true;
-        });
-    }
+    if (app.Environment.IsDevelopment())
+        app.UseDeveloperExceptionPage();
+
+    app.UseCors();
+    app.UseSwaggerForOcelotUI();
+    app.UseRouting();
+    app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+    app.UseOcelot().Wait();
+
+    app.Run();
+}
+catch (Exception e)
+{
+    Log.Fatal(e, "The application failed to start correctly");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
