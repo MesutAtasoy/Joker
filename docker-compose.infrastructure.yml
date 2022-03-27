@@ -66,7 +66,6 @@ services:
       - "9411:9411"
     networks:
       - joker-network
-
   elasticsearch01:
       container_name: elasticsearch01
       environment:
@@ -82,7 +81,31 @@ services:
         - 9200:9200
       networks:
         - joker-network
-
+  apm-server:
+      image: docker.elastic.co/apm/apm-server:7.0.1
+      hostname: apm-server
+      depends_on:
+        - elasticsearch01
+        - kibana
+      cap_add: ["CHOWN", "DAC_OVERRIDE", "SETGID", "SETUID"]
+      cap_drop: ["ALL"]
+      ports:
+      - 8200:8200
+      networks:
+        - joker-network          
+      command: >
+        apm-server -e
+          -E apm-server.rum.enabled=true
+          -E setup.kibana.host=kibana:5601
+          -E setup.template.settings.index.number_of_replicas=0
+          -E apm-server.kibana.enabled=true
+          -E apm-server.kibana.host=kibana:5601
+          -E output.elasticsearch.hosts=["elasticsearch01:9200"]
+      healthcheck:
+        interval: 10s
+        retries: 80
+        test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:8200/
+            
   kibana:
       image: docker.elastic.co/kibana/kibana:7.0.1
       container_name: kibana

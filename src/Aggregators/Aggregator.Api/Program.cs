@@ -1,12 +1,14 @@
 using Aggregator.Api.Extensions;
 using Aggregator.Api.Models.Campaign.MappingProfiles;
 using AutoMapper;
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.Logging;
 using Joker.Mvc;
 using Serilog;
 
 var configuration = JokerConfigurationHelper.GetConfiguration();
+
 Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
     x.Url = configuration["elk:url"];
@@ -14,6 +16,8 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Aggregator.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
 
 try
@@ -35,6 +39,8 @@ try
     services.AddJokerConsul(configuration);
     services.AddJokerOpenTelemetry(configuration);
     
+    builder.Host.UseSerilog();
+
     var app = builder.Build();
     
     if (app.Environment.IsDevelopment())
@@ -42,6 +48,7 @@ try
 
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Aggregator.Api v1"));
+    app.UseElasticApm(configuration);
     app.UseErrorHandler();
     app.UseRouting();
     app.UseAuthentication();    

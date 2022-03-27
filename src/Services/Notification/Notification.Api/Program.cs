@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.Logging;
 using Joker.Mvc;
@@ -13,6 +14,8 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Notification.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
 
 try
@@ -33,6 +36,8 @@ try
     services.AddJokerAuthorization();
     services.AddJokerAuthentication(configuration);
     services.AddJokerOpenTelemetry(configuration);
+
+    builder.Host.UseSerilog();
     
     var app = builder.Build();
     
@@ -41,6 +46,7 @@ try
 
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification.Api v1"));
+    app.UseElasticApm(configuration);
     app.UseErrorHandler();
     app.UseRouting();
     app.UseAuthentication();    

@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.Logging;
 using Joker.WebApp.Extensions;
@@ -12,6 +13,8 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Joker.WebApp";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
 
 try
@@ -35,6 +38,8 @@ try
     services.AddSignalR();
     services.AddJokerOpenTelemetry(configuration);
 
+    builder.Host.UseSerilog();
+
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())
@@ -47,6 +52,7 @@ try
         app.UseHsts();
     }
 
+    app.UseElasticApm(configuration);
     app.UseStaticFiles();
     app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
     app.UseRouting();

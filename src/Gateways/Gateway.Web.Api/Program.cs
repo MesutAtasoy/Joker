@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Gateway.Web.Api.Extensions;
 using Joker.Logging;
 using Ocelot.DependencyInjection;
@@ -16,6 +17,8 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Gateway.Web.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
 
 try
@@ -32,12 +35,15 @@ try
     services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
     services.AddSwaggerForOcelot(configuration);
     services.AddJokerOpenTelemetry(configuration);
+
+    builder.Host.UseSerilog();
     
     var app = builder.Build();
     
     if (app.Environment.IsDevelopment())
         app.UseDeveloperExceptionPage();
 
+    app.UseElasticApm(configuration);
     app.UseCors();
     app.UseSwaggerForOcelotUI();
     app.UseRouting();

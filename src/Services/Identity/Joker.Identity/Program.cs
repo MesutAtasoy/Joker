@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.EntityFrameworkCore.Migration;
 using Joker.Identity.Extensions;
@@ -14,7 +15,10 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Identity.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
+
 
 try
 {
@@ -33,6 +37,8 @@ try
     services.AddJokerCors();
     services.AddJokerEventBus(configuration);
     services.AddJokerOpenTelemetry(configuration);
+
+    builder.Host.UseSerilog();
     
     var app = builder.Build();
 
@@ -50,6 +56,7 @@ try
     if (app.Environment.IsDevelopment())
         app.UseDeveloperExceptionPage();
     
+    app.UseElasticApm(configuration);
     app.UseStaticFiles();
     app.UseForwardedHeaders();
     app.UseIdentityServer();

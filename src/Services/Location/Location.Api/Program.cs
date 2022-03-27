@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.EntityFrameworkCore.Migration;
 using Joker.Logging;
@@ -10,6 +11,7 @@ using Location.Infrastructure.Seed;
 using Serilog;
 
 var configuration = JokerConfigurationHelper.GetConfiguration();
+
 Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
     x.Url = configuration["elk:url"];
@@ -17,7 +19,11 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Location.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
+
+
 try
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +41,8 @@ try
     services.AddSwaggerGen();
     services.AddJokerConsul(configuration);
     services.AddJokerOpenTelemetry(configuration);
+
+    builder.Host.UseSerilog();
 
     var app = builder.Build();
 
@@ -56,6 +64,7 @@ try
 
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Location.Api v1"));
+    app.UseElasticApm(configuration);
     app.UseErrorHandler();
     app.UseRouting();
     app.UseEndpoints(endpoints =>

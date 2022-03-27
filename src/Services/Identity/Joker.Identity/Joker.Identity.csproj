@@ -7,6 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Elastic.Apm.AspNetCore" Version="1.14.1" />
         <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
         <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
         <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
@@ -21,7 +22,6 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="6.0.0" />
-        <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />

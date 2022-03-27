@@ -8,14 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Elastic.Apm.AspNetCore" Version="1.14.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
         <PackageReference Include="DotNetCore.CAP" Version="5.2.0" />
         <PackageReference Include="DotNetCore.CAP.Dashboard" Version="5.2.0" />
         <PackageReference Include="DotNetCore.CAP.MongoDB" Version="5.2.0" />
         <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.2.0" />
         <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.1.1" />
-        <PackageReference Include="Serilog" Version="2.9.0" />
-        <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
         <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
         <PackageReference Include="OpenTelemetry.Exporter.Jaeger" Version="1.2.0-alpha2" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />

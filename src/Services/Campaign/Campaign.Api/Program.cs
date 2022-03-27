@@ -2,12 +2,14 @@ using Campaign.Api.Extensions;
 using Campaign.Api.GrpcServices;
 using Campaign.Api.GrpcServices.MappingProfiles;
 using Campaign.Application;
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.Logging;
 using Joker.Mvc;
 using Serilog;
 
 var configuration = JokerConfigurationHelper.GetConfiguration();
+
 Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
     x.Url = configuration["elk:url"];
@@ -15,8 +17,9 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Campaign.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
-
 
 try
 {
@@ -39,7 +42,9 @@ try
     services.AddJokerAuthentication(configuration);
     services.AddJokerOpenTelemetry(configuration);
     services.AddAutoMapper(typeof(CampaignMappingProfile));
-   
+
+    builder.Host.UseSerilog();
+    
     var app = builder.Build();
     
     if (app.Environment.IsDevelopment())
@@ -47,6 +52,7 @@ try
 
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Campaign.Api v1"));
+    app.UseElasticApm(configuration);
     app.UseErrorHandler();
     app.UseRouting();
     app.UseAuthentication();    

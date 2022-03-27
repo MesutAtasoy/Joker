@@ -1,4 +1,5 @@
 using AutoMapper;
+using Elastic.Apm.AspNetCore;
 using Joker.Configuration;
 using Joker.Logging;
 using Joker.Mvc;
@@ -10,6 +11,7 @@ using Merchant.Domain;
 using Serilog;
 
 var configuration = JokerConfigurationHelper.GetConfiguration();
+
 Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
     x.Url = configuration["elk:url"];
@@ -17,6 +19,8 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Merchant.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
 
 try
@@ -26,6 +30,7 @@ try
     builder.WebHost.BuildKestrel(configuration);
     
     var services = builder.Services;
+
     services.AddApiVersion();
     services.AddJokerGrpc();
     services.AddControllers();
@@ -42,6 +47,8 @@ try
     services.AddJokerAuthentication(configuration);
     services.AddJokerOpenTelemetry(configuration);
     services.AddAutoMapper(typeof(StoreMappingProfile));
+
+    builder.Host.UseSerilog();
     
     var app = builder.Build();
     
@@ -49,6 +56,7 @@ try
         app.UseDeveloperExceptionPage();
 
     app.UseSwagger();
+    app.UseElasticApm(configuration);
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Merchant.Api v1"));
     app.UseErrorHandler();
     app.UseRouting();

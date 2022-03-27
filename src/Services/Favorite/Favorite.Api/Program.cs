@@ -1,3 +1,4 @@
+using Elastic.Apm.AspNetCore;
 using Favorite.Api.Extensions;
 using Favorite.Api.GrpcServices;
 using Favorite.Application;
@@ -8,6 +9,7 @@ using Joker.Mvc.Initializers;
 using Serilog;
 
 var configuration = JokerConfigurationHelper.GetConfiguration();
+
 Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
 {
     x.Url = configuration["elk:url"];
@@ -15,7 +17,10 @@ Log.Logger = LoggerBuilder.CreateLoggerElasticSearch(x =>
     x.IndexFormat = "joker-logs";
     x.AppName = "Favorite.Api";
     x.Enabled = true;
+    x.Configuration = configuration;
+    x.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 });
+
 
 try
 {
@@ -39,6 +44,8 @@ try
     services.AddJokerAuthorization();
     services.AddJokerOpenTelemetry(configuration);
 
+    builder.Host.UseSerilog();
+    
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())
@@ -46,6 +53,7 @@ try
 
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Favorite.Api v1"));
+    app.UseElasticApm(configuration);
     app.UseErrorHandler();
     app.UseRouting();
     app.UseAuthentication();
